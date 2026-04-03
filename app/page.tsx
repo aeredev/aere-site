@@ -94,18 +94,21 @@ export default function Teaser() {
           </div>
 
           {/* Headline */}
-          <h1 className="fade-up-2" style={{
+          <h1 className="fade-up-2 headline" style={{
             fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(28px, 5vw, 68px)',
             fontWeight: 400,
             color: '#FFFFFF',
             letterSpacing: '-0.03em',
             lineHeight: 1.15,
             textAlign: 'center',
             margin: '0 0 12px',
-            whiteSpace: 'nowrap' as const,
+            width: '100%',
+            overflowWrap: 'break-word' as const,
+            wordWrap: 'break-word' as const,
           }}>
-            <span style={{ display: 'block', fontSize: 'clamp(32px, 3.8vw, 58px)' }}>Your entire health history.</span>
-            <span style={{ display: 'block', fontSize: 'clamp(32px, 3.8vw, 58px)' }}>Intelligence that connects it all.</span>
+            <span className="headline-line" style={{ display: 'block' }}>Your entire health history.</span>
+            <span className="headline-line" style={{ display: 'block' }}>Intelligence that connects it all.</span>
           </h1>
 
           {/* Descriptor */}
@@ -228,6 +231,12 @@ export default function Teaser() {
           color: #5A5855;
         }
         @media (max-width: 560px) {
+          .headline {
+            white-space: normal !important;
+          }
+          .headline-line {
+            white-space: normal !important;
+          }
           .form-bar {
             flex-direction: column !important;
             border: none !important;
@@ -239,10 +248,14 @@ export default function Teaser() {
             border-radius: 10px !important;
             border: 1px solid #3A3835 !important;
             width: 100% !important;
+            height: 52px !important;
+            min-height: 52px !important;
           }
           .form-bar button {
             border-radius: 10px !important;
             width: 100% !important;
+            height: 52px !important;
+            min-height: 52px !important;
           }
         }
       `}</style>
