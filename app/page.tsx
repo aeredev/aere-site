@@ -70,6 +70,7 @@ export default function Teaser() {
               color: '#c87cff',
               letterSpacing: '-0.03em',
               lineHeight: 1,
+              WebkitTextStroke: '0.3px #c87cff',
             }}>
               Aere.
             </div>
