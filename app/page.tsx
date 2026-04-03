@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import AereLockup from '@/components/AereLockup'
 
 export default function Teaser() {
   const [email, setEmail] = useState('')
@@ -56,15 +55,35 @@ export default function Teaser() {
         <div style={{
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', textAlign: 'center',
-          maxWidth: 600, width: '100%',
+          width: '100%',
           flex: 1, justifyContent: 'center',
         }}>
-          {/* Brand lockup — SVG component, proportions baked in */}
-          <AereLockup
-            width={200}
-            className="fade-up-1"
-            style={{ marginBottom: 'clamp(48px, 5vw, 80px)' }}
-          />
+          {/* Brand lockup — CSS text, uses Next.js loaded DM Serif Display */}
+          <div className="fade-up-1" style={{
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: 'clamp(48px, 5vw, 80px)',
+          }}>
+            <div style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(32px, 3.5vw, 48px)', fontWeight: 400,
+              color: '#c87cff',
+              letterSpacing: '-0.03em',
+              lineHeight: 1,
+            }}>
+              Aere.
+            </div>
+            <div style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(11px, 1vw, 14px)', fontWeight: 500,
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase' as const,
+              color: '#7A7770',
+              marginTop: 'clamp(4px, 0.45vw, 6px)',
+            }}>
+              OWN YOUR HEALTH
+            </div>
+          </div>
 
           {/* Headline */}
           <h1 className="fade-up-2 headline" style={{
