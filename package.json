@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "npm run sync-brand && next build",
+    "start": "next start",
+    "postinstall": "npm run sync-brand",
+    "sync-brand": "mkdir -p public/brand && cp -r node_modules/@aere/brand/assets/* public/brand/"
   },
   "dependencies": {
+    "@aere/brand": "github:aeredev/aere-brand",
     "@supabase/supabase-js": "^2.101.1",
     "lucide-react": "^1.7.0",
     "next": "16.2.1",
