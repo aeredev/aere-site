@@ -79,7 +79,7 @@ export default function Teaser() {
             letterSpacing: '-0.03em',
             lineHeight: 1.15,
             textAlign: 'center',
-            margin: '0 0 12px',
+            margin: 0,
             whiteSpace: 'nowrap' as const,
             maxWidth: 'none',
             overflow: 'visible',
@@ -88,21 +88,28 @@ export default function Teaser() {
             <span style={{ display: 'block' }}>Intelligence that connects it all.</span>
           </h1>
 
-          {/* Descriptor */}
-          <p className="fade-up-2" style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 'clamp(10px, 0.8vw, 12px)',
-            fontWeight: 500,
-            color: '#7A7770',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase' as const,
-            margin: '0 0 clamp(48px, 5vw, 80px)',
-          }}>
-            THE HEALTHSPAN INTELLIGENCE PLATFORM
-          </p>
+          {/* Spacer — pushes form group down symmetrically */}
+          <div style={{ flex: 1 }} />
 
-          {/* Form / Success */}
-          <div className="fade-up-3" style={{ width: '100%', maxWidth: 480 }}>
+          {/* Descriptor + Form grouped together */}
+          <div className="fade-up-3" style={{
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', width: '100%',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(10px, 0.8vw, 12px)',
+              fontWeight: 500,
+              color: '#7A7770',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase' as const,
+              margin: '0 0 20px',
+            }}>
+              THE HEALTHSPAN INTELLIGENCE PLATFORM
+            </p>
+
+            {/* Form / Success */}
+            <div style={{ width: '100%', maxWidth: 480 }}>
             {state === 'success' ? (
               <p className="fade-up-1" style={{
                 fontFamily: 'var(--font-sans)',
@@ -175,6 +182,7 @@ export default function Teaser() {
                 )}
               </form>
             )}
+            </div>
           </div>
         </div>
 
