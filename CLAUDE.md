@@ -2,9 +2,9 @@
 
 ## Brand
 
-- **Logo lockup:** Use the `<AereLockup />` SVG component from `components/AereLockup.tsx`. Do NOT recreate the lockup with CSS text — all proportions are baked into the SVG and scale as one unit. Set `width` prop to control size.
-- **Brand tokens:** `lib/brand.ts` has all brand constants (colors, fonts, radii, shadows). Import from here instead of hardcoding values.
-- **Brand assets:** `public/brand/` has all logo SVGs and PNGs in dark/light/violet variants.
-- **Shared files with app project (`~/Desktop/aere`)** — keep in sync when updating:
-  - `lib/brand.ts`
-  - `components/AereLockup.tsx`
+- **Brand assets come from the `@aere/brand` private npm package** (`~/Desktop/aere-brand`, GitHub: `aeredev/aere-brand`). Do NOT add brand files directly to this project.
+- **`public/brand/`** is gitignored — it's populated automatically from the package at install/build time via `npm run sync-brand`.
+- **To update brand assets:** Edit files in `~/Desktop/aere-brand`, commit, push, then run `npm update @aere/brand` in this project.
+- **Logo SVGs are outlined vector paths** — no font dependencies. Never recreate logos with CSS text.
+- **Brand tokens:** Available via `import { BRAND_COLORS, BRAND_FONTS } from '@aere/brand'`
+- **AereLockup component:** Available via `import { AereLockup } from '@aere/brand'` — outlined SVG, scales as one unit.
