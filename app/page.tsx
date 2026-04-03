@@ -58,33 +58,17 @@ export default function Teaser() {
           width: '100%',
           flex: 1, justifyContent: 'center',
         }}>
-          {/* Brand lockup — CSS text, uses Next.js loaded DM Serif Display */}
-          <div className="fade-up-1" style={{
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center',
-            marginBottom: 'clamp(48px, 5vw, 80px)',
-          }}>
-            <div style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(32px, 3.5vw, 48px)', fontWeight: 400,
-              color: '#c87cff',
-              letterSpacing: '-0.03em',
-              lineHeight: 1,
-              WebkitTextStroke: '0.3px #c87cff',
-            }}>
-              Aere.
-            </div>
-            <div style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'clamp(11px, 1vw, 14px)', fontWeight: 500,
-              letterSpacing: '0.28em',
-              textTransform: 'uppercase' as const,
-              color: '#7A7770',
-              marginTop: 'clamp(4px, 0.45vw, 6px)',
-            }}>
-              OWN YOUR HEALTH
-            </div>
-          </div>
+          {/* Brand lockup — outlined SVG, no font dependencies */}
+          <img
+            src="/brand/logo-transparent-violet.svg"
+            alt="Aere. Own Your Health"
+            className="fade-up-1"
+            style={{
+              width: 'clamp(200px, 22vw, 320px)',
+              height: 'auto',
+              marginBottom: 'clamp(48px, 5vw, 80px)',
+            }}
+          />
 
           {/* Headline */}
           <h1 className="fade-up-2 headline" style={{
