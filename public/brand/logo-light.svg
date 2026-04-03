@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="276" viewBox="0 0 880 276">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@500&amp;display=swap');
+  </style>
+  <rect width="880" height="276" fill="#F5F4F0"/>
+  <text x="440" y="152" text-anchor="middle" font-family="'DM Serif Display', Georgia, serif" font-weight="400" font-size="208" letter-spacing="-0.03em" fill="#c87cff">Aere.</text>
+  <text x="440" y="228" text-anchor="middle" font-family="'DM Sans', sans-serif" font-weight="500" font-size="44" letter-spacing="12px" fill="#7A7770">OWN YOUR HEALTH</text>
+</svg>

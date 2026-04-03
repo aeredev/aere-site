@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@500&amp;display=swap');
+  </style>
+  <rect width="1200" height="630" fill="#1A1917"/>
+  <text x="600" y="280" text-anchor="middle" font-family="'DM Serif Display', Georgia, serif" font-weight="400" font-size="120" letter-spacing="-0.03em" fill="#c87cff">Aere.</text>
+  <text x="600" y="340" text-anchor="middle" font-family="'DM Sans', sans-serif" font-weight="500" font-size="28" letter-spacing="0.1em" fill="#7A7770">Own Your Health</text>
+  <text x="600" y="390" text-anchor="middle" font-family="'DM Sans', sans-serif" font-weight="500" font-size="20" fill="#4A4845">The Healthspan Intelligence Platform</text>
+</svg>

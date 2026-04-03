@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240" viewBox="0 0 640 240">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap');
+  </style>
+  <rect width="640" height="240" fill="#1A1917"/>
+  <text x="320" y="160" text-anchor="middle" font-family="'DM Serif Display', Georgia, serif" font-weight="400" font-size="208" letter-spacing="-0.03em" fill="#c87cff">Aere.</text>
+</svg>
