@@ -69,7 +69,7 @@ export default function Teaser() {
           {/* Headline */}
           <h1 className="fade-up-2 headline" style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(24px, 5vw, 68px)',
+            fontSize: 'clamp(24px, 3.8vw, 68px)',
             fontWeight: 400,
             color: '#FFFFFF',
             letterSpacing: '-0.03em',
@@ -77,11 +77,10 @@ export default function Teaser() {
             textAlign: 'center',
             margin: '0 0 12px',
             width: '100%',
-            overflowWrap: 'break-word' as const,
-            wordWrap: 'break-word' as const,
+            whiteSpace: 'nowrap' as const,
           }}>
-            <span className="headline-line" style={{ display: 'block' }}>Your entire health history.</span>
-            <span className="headline-line" style={{ display: 'block' }}>Intelligence that connects it all.</span>
+            <span style={{ display: 'block' }}>Your entire health history.</span>
+            <span style={{ display: 'block' }}>Intelligence that connects it all.</span>
           </h1>
 
           {/* Descriptor */}
