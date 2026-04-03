@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { Resend } from 'resend'
 import { supabase } from '@/lib/supabase/client'
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 const schema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -24,6 +29,14 @@ export async function POST(request: Request) {
         { status: 500 },
       )
     }
+
+    // Send notification email (don't block the response on failure)
+    getResend().emails.send({
+      from: 'Aere Health <no-reply@aere.health>',
+      to: 'admin@aere.health',
+      subject: 'New Aere waitlist signup',
+      text: `New waitlist signup: ${email}\nTime: ${new Date().toISOString()}\nSource: marketing_teaser`,
+    }).catch(() => {})
 
     return NextResponse.json({ success: true })
   } catch (err) {
