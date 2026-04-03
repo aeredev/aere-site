@@ -96,7 +96,6 @@ export default function Teaser() {
           {/* Headline */}
           <h1 className="fade-up-2" style={{
             fontFamily: 'var(--font-serif)',
-            fontFamily: 'var(--font-serif)',
             fontWeight: 400,
             color: '#FFFFFF',
             letterSpacing: '-0.03em',
