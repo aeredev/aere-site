@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "npm run sync-brand && next build",
     "start": "next start",
+    "preinstall": "test -n \"$NPM_TOKEN\" && git config --global url.\"https://${NPM_TOKEN}@github.com/\".insteadOf ssh://git@github.com/ && git config --global url.\"https://${NPM_TOKEN}@github.com/\".insteadOf git@github.com: || true",
     "postinstall": "npm run sync-brand",
     "sync-brand": "mkdir -p public/brand && cp -r node_modules/@aere/brand/assets/* public/brand/"
   },
