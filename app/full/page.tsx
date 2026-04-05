@@ -40,12 +40,8 @@ function SiteNav() {
         transition: 'border-color 0.2s',
         height: 56, display: 'flex', alignItems: 'center', padding: '0 32px',
       }}>
-        <Link href="/full#hero" style={{
-          fontFamily: 'var(--font-serif)', fontSize: 22,
-          color: 'var(--color-accent)', letterSpacing: '-0.03em',
-          fontWeight: 400, textDecoration: 'none', flexShrink: 0, marginRight: 40,
-        }}>
-          Aere.
+        <Link href="/full#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 34, display: 'block' }} />
         </Link>
 
         <div style={{ display: 'flex', gap: 2, flex: 1 }} className="nav-center">
