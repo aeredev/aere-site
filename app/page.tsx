@@ -64,7 +64,7 @@ export default function Teaser() {
             alt="Aere. Own Your Health"
             className="fade-up-1"
             style={{
-              width: 'clamp(120px, 12vw, 180px)',
+              width: 'clamp(160px, 16vw, 240px)',
               height: 'auto',
               marginBottom: 'clamp(48px, 5vw, 80px)',
             }}
