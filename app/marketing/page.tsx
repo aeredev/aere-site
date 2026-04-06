@@ -91,7 +91,7 @@ export default function MarketingSite() {
             color: '#A8A49C', lineHeight: 1.6,
             maxWidth: 560, margin: '0 auto 40px',
           }}>
-            Aere is the healthspan intelligence platform — a secure home for your medical records,
+            Aere is the healthspan intelligence platform — a secure home for your health records,
             wearable data, and biomarkers, with AI that finds the patterns that matter for how long and how well you live.
           </p>
 

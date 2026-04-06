@@ -16,7 +16,7 @@ const dmSerifDisplay = DM_Serif_Display({
 
 export const metadata: Metadata = {
   title: 'Aere — Own Your Health',
-  description: 'The longevity intelligence platform. A secure home for your medical records, wearables, and labs — with AI that tells you what it all means for how long and how well you live.',
+  description: 'The healthspan intelligence platform. A secure home for your health records, wearables, and labs — with AI that tells you what it all means for how long and how well you live.',
   metadataBase: new URL('https://aere.health'),
   openGraph: {
     title: 'Aere — Own Your Health',
