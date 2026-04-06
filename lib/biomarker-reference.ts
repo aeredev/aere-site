@@ -94,7 +94,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 6,
     citations: [
       { authors: 'DECODE Study Group', title: 'Glucose tolerance and cardiovascular mortality: comparison of fasting and 2-hour diagnostic criteria', journal: 'Archives of Internal Medicine', year: 2001, pmid: '11176766', url: 'https://pubmed.ncbi.nlm.nih.gov/11176766/' },
-      { authors: 'Levitan EB, Song Y, Ford ES, Liu S', title: 'Is nondiabetic hyperglycemia a risk factor for cardiovascular disease? A meta-analysis of prospective studies', journal: 'Archives of Internal Medicine', year: 2004, pmid: '15477584', url: 'https://pubmed.ncbi.nlm.nih.gov/15477584/' },
+      { authors: 'Levitan EB, Song Y, Ford ES, Liu S', title: 'Is nondiabetic hyperglycemia a risk factor for cardiovascular disease? A meta-analysis of prospective studies', journal: 'Archives of Internal Medicine', year: 2004, pmid: '15505129', url: 'https://pubmed.ncbi.nlm.nih.gov/15505129/' },
       { authors: 'Emerging Risk Factors Collaboration', title: 'Diabetes mellitus, fasting blood glucose concentration, and risk of vascular disease', journal: 'The Lancet', year: 2010, pmid: '20609967', url: 'https://pubmed.ncbi.nlm.nih.gov/20609967/' },
       { authors: 'Attia P', title: 'Outlive: The Science and Art of Longevity', journal: 'Harmony Books', year: 2023 },
     ],
@@ -118,7 +118,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'The ADA defines normal as below 5.7%, but multiple large prospective studies show that cardiovascular risk increases linearly starting well below this threshold. An HbA1c of 5.5% carries meaningfully more risk than 5.0%. Longevity medicine targets the lower portion of normal — reflecting truly optimal glucose metabolism, not merely non-diabetic status.',
     retest_interval_months: 6,
     citations: [
-      { authors: 'Selvin E, Steffes MW, Zhu H, et al.', title: 'Glycated hemoglobin, diabetes, and cardiovascular risk in nondiabetic adults', journal: 'New England Journal of Medicine', year: 2010, pmid: '20200383', url: 'https://pubmed.ncbi.nlm.nih.gov/20200383/' },
+      { authors: 'Selvin E, Steffes MW, Zhu H, et al.', title: 'Glycated hemoglobin, diabetes, and cardiovascular risk in nondiabetic adults', journal: 'New England Journal of Medicine', year: 2010, pmid: '20200384', url: 'https://pubmed.ncbi.nlm.nih.gov/20200384/' },
       { authors: 'Khaw KT, Wareham N, Bingham S, et al.', title: 'Association of hemoglobin A1c with cardiovascular disease and mortality in adults: the European Prospective Investigation into Cancer in Norfolk', journal: 'Annals of Internal Medicine', year: 2004, pmid: '15096331', url: 'https://pubmed.ncbi.nlm.nih.gov/15096331/' },
       { authors: 'Attia P', title: 'Outlive: The Science and Art of Longevity', journal: 'Harmony Books', year: 2023 },
     ],
@@ -142,7 +142,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'A fasting insulin below 25 μIU/mL is considered normal by most labs, but this threshold was set to identify overt hyperinsulinemia — not optimal metabolic function. Research by Reaven and others demonstrates that insulin resistance becomes clinically relevant well below the upper limit. Longevity medicine targets <6 μIU/mL as the zone associated with genuine insulin sensitivity.',
     retest_interval_months: 12,
     citations: [
-      { authors: 'Desprès JP, Lamarche B, Mauriège P, et al.', title: 'Hyperinsulinemia as an independent risk factor for ischemic heart disease', journal: 'New England Journal of Medicine', year: 1996, pmid: '8600079', url: 'https://pubmed.ncbi.nlm.nih.gov/8600079/' },
+      { authors: 'Desprès JP, Lamarche B, Mauriège P, et al.', title: 'Hyperinsulinemia as an independent risk factor for ischemic heart disease', journal: 'New England Journal of Medicine', year: 1996, pmid: '8596596', url: 'https://pubmed.ncbi.nlm.nih.gov/8596596/' },
       { authors: 'Reaven GM', title: 'Banting lecture 1988. Role of insulin resistance in human disease', journal: 'Diabetes', year: 1988, pmid: '3056758', url: 'https://pubmed.ncbi.nlm.nih.gov/3056758/' },
       { authors: 'Attia P', title: 'Outlive: The Science and Art of Longevity', journal: 'Harmony Books', year: 2023 },
     ],
@@ -168,7 +168,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'The standard threshold of <130 mg/dL was derived from population averages, not from the level associated with minimal cardiovascular risk. Mendelian randomization studies and outcome data from statin and PCSK9 inhibitor trials consistently show that lower is better, with cardiovascular event rates continuing to decline as LDL approaches 20–50 mg/dL. Longevity medicine targets <70 mg/dL for average-risk adults, with more aggressive targets for those with additional risk factors.',
     retest_interval_months: 12,
     citations: [
-      { authors: 'Silverman MG, Ference BA, Im K, et al.', title: 'Association between lowering LDL-C and cardiovascular risk reduction among different therapeutic interventions', journal: 'JAMA', year: 2016, pmid: '27218630', url: 'https://pubmed.ncbi.nlm.nih.gov/27218630/' },
+      { authors: 'Silverman MG, Ference BA, Im K, et al.', title: 'Association between lowering LDL-C and cardiovascular risk reduction among different therapeutic interventions', journal: 'JAMA', year: 2016, pmid: '27673306', url: 'https://pubmed.ncbi.nlm.nih.gov/27673306/' },
       { authors: 'Cholesterol Treatment Trialists\' Collaboration', title: 'Efficacy and safety of statin therapy in older people: a meta-analysis of individual participant data from 28 randomised controlled trials', journal: 'The Lancet', year: 2019, pmid: '30712900', url: 'https://pubmed.ncbi.nlm.nih.gov/30712900/' },
       { authors: 'Ference BA, Ginsberg HN, Graham I, et al.', title: 'Low-density lipoproteins cause atherosclerotic cardiovascular disease', journal: 'European Heart Journal', year: 2017, pmid: '28444290', url: 'https://pubmed.ncbi.nlm.nih.gov/28444290/' },
       { authors: 'Attia P', title: 'Outlive: The Science and Art of Longevity', journal: 'Harmony Books', year: 2023 },
@@ -187,7 +187,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['mmol/L'],
     standard_lab_range: { display: '>40 mg/dL (M) / >50 mg/dL (F)', source: 'ACC/AHA Guidelines' },
-    aere_optimal: { display: '>60 mg/dL (M) / >70 mg/dL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 60, display: '>60 mg/dL (M) / >70 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 40, display: '>40 mg/dL', source: 'ACC/AHA Guidelines' },
       aere_optimal: { low: 60, display: '>60 mg/dL', confidence: 'moderate' },
@@ -300,7 +300,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 6,
     citations: [
       { authors: 'Ridker PM, Hennekens CH, Buring JE, Rifai N', title: 'C-reactive protein and other markers of inflammation in the prediction of cardiovascular disease in women', journal: 'New England Journal of Medicine', year: 2000, pmid: '10733371', url: 'https://pubmed.ncbi.nlm.nih.gov/10733371/' },
-      { authors: 'Ridker PM, Rifai N, Rose L, et al.', title: 'Comparison of C-reactive protein and low-density lipoprotein cholesterol levels in the prediction of first cardiovascular events', journal: 'New England Journal of Medicine', year: 2002, pmid: '11794147', url: 'https://pubmed.ncbi.nlm.nih.gov/11794147/' },
+      { authors: 'Ridker PM, Rifai N, Rose L, et al.', title: 'Comparison of C-reactive protein and low-density lipoprotein cholesterol levels in the prediction of first cardiovascular events', journal: 'New England Journal of Medicine', year: 2002, pmid: '12432042', url: 'https://pubmed.ncbi.nlm.nih.gov/12432042/' },
       { authors: 'Ridker PM, Danielson E, Fonseca FA, et al.', title: 'Rosuvastatin to prevent vascular events in men and women with elevated C-reactive protein', journal: 'New England Journal of Medicine', year: 2008, pmid: '18997196', url: 'https://pubmed.ncbi.nlm.nih.gov/18997196/' },
     ],
     last_updated: '2025-11-01',
@@ -416,7 +416,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'ng/mL',
     unit_aliases: ['μg/L'],
     standard_lab_range: { display: '12–300 ng/mL (M) / 12–150 ng/mL (F)', source: 'LabCorp' },
-    aere_optimal: { display: '50–150 ng/mL (M) / 30–100 ng/mL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 30, high: 150, display: '50–150 ng/mL (M) / 30–100 ng/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 12, high: 300, display: '12–300 ng/mL', source: 'LabCorp' },
       aere_optimal: { low: 50, high: 150, display: '50–150 ng/mL', confidence: 'moderate' },
@@ -598,7 +598,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'U/L',
     unit_aliases: ['IU/L'],
     standard_lab_range: { display: '8–61 U/L (M) / 5–36 U/L (F)', source: 'LabCorp' },
-    aere_optimal: { display: '<20 U/L (M) / <15 U/L (F)', confidence: 'strong' },
+    aere_optimal: { high: 20, display: '<20 U/L (M) / <15 U/L (F)', confidence: 'strong' },
     male_ranges: {
       standard_lab_range: { low: 8, high: 61, display: '8–61 U/L', source: 'LabCorp' },
       aere_optimal: { high: 20, display: '<20 U/L', confidence: 'strong' },
@@ -656,7 +656,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['μmol/L'],
     standard_lab_range: { low: 0.59, high: 1.35, display: '0.59–1.35 mg/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 0.7, high: 1.1, display: '0.8–1.1 mg/dL (M) / 0.6–0.9 mg/dL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 0.6, high: 1.1, display: '0.8–1.1 mg/dL (M) / 0.6–0.9 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 0.74, high: 1.35, display: '0.74–1.35 mg/dL', source: 'LabCorp' },
       aere_optimal: { low: 0.8, high: 1.1, display: '0.8–1.1 mg/dL', confidence: 'moderate' },
@@ -826,7 +826,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'million/μL',
     unit_aliases: ['10^6/μL', 'M/μL', '×10¹²/L'],
     standard_lab_range: { low: 4.2, high: 6.1, display: '4.2–6.1 million/μL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 4.5, high: 5.8, display: '4.8–5.8 million/μL (M) / 4.3–5.2 million/μL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 4.3, high: 5.8, display: '4.8–5.8 million/μL (M) / 4.3–5.2 million/μL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 4.7, high: 6.1, display: '4.7–6.1 million/μL', source: 'LabCorp' },
       aere_optimal: { low: 4.8, high: 5.8, display: '4.8–5.8 million/μL', confidence: 'moderate' },
@@ -881,7 +881,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'g/dL',
     unit_aliases: ['g/L'],
     standard_lab_range: { low: 12.0, high: 17.5, display: '12.0–17.5 g/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 13.5, high: 16.5, display: '14.0–17.0 g/dL (M) / 13.0–15.5 g/dL (F)', confidence: 'strong' },
+    aere_optimal: { low: 13.0, high: 17.0, display: '14.0–17.0 g/dL (M) / 13.0–15.5 g/dL (F)', confidence: 'strong' },
     male_ranges: {
       standard_lab_range: { low: 13.5, high: 17.5, display: '13.5–17.5 g/dL', source: 'LabCorp' },
       aere_optimal: { low: 14.0, high: 17.0, display: '14.0–17.0 g/dL', confidence: 'strong' },
@@ -912,7 +912,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: '%',
     unit_aliases: ['L/L'],
     standard_lab_range: { low: 36.0, high: 53.0, display: '36–53% (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 40.0, high: 50.0, display: '42–50% (M) / 38–45% (F)', confidence: 'moderate' },
+    aere_optimal: { low: 38.0, high: 50.0, display: '42–50% (M) / 38–45% (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 41.0, high: 53.0, display: '41–53%', source: 'LabCorp' },
       aere_optimal: { low: 42.0, high: 50.0, display: '42–50%', confidence: 'moderate' },
@@ -990,7 +990,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'ng/dL',
     unit_aliases: ['nmol/L'],
     standard_lab_range: { low: 10, high: 916, display: '10–916 ng/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 500, high: 900, display: '500–900 ng/dL (M) / 25–55 ng/dL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 25, high: 900, display: '500–900 ng/dL (M) / 25–55 ng/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 264, high: 916, display: '264–916 ng/dL', source: 'LabCorp' },
       aere_optimal: { low: 500, high: 900, display: '500–900 ng/dL', confidence: 'moderate' },
@@ -1021,7 +1021,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'pg/mL',
     unit_aliases: ['ng/dL', 'pmol/L'],
     standard_lab_range: { low: 0.3, high: 21.5, display: '0.3–21.5 pg/mL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 12, high: 20, display: '12–20 pg/mL (M) / 1.0–3.0 pg/mL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 1.0, high: 20, display: '12–20 pg/mL (M) / 1.0–3.0 pg/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 6.8, high: 21.5, display: '6.8–21.5 pg/mL', source: 'LabCorp' },
       aere_optimal: { low: 12, high: 20, display: '12–20 pg/mL', confidence: 'moderate' },
@@ -1052,7 +1052,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'pg/mL',
     unit_aliases: ['pmol/L'],
     standard_lab_range: { low: 7.6, high: 411, display: '7.6–411 pg/mL (highly cycle- and sex-dependent)', source: 'LabCorp' },
-    aere_optimal: { low: 20, high: 35, display: '20–35 pg/mL (M) / Cycle-dependent (F)', confidence: 'moderate' },
+    aere_optimal: { low: 20, high: 200, display: '20–35 pg/mL (M) / Cycle-dependent (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 7.6, high: 42.6, display: '7.6–42.6 pg/mL', source: 'LabCorp' },
       aere_optimal: { low: 20, high: 35, display: '20–35 pg/mL', confidence: 'moderate' },
@@ -1083,7 +1083,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'μg/dL',
     unit_aliases: ['mcg/dL', 'nmol/L'],
     standard_lab_range: { low: 35, high: 483, display: '35–483 μg/dL (age- and sex-dependent)', source: 'LabCorp' },
-    aere_optimal: { low: 150, high: 400, display: '200–450 μg/dL (M) / 150–380 μg/dL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 150, high: 450, display: '200–450 μg/dL (M) / 150–380 μg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 88, high: 483, display: '88–483 μg/dL (age 25–44)', source: 'LabCorp' },
       aere_optimal: { low: 200, high: 450, display: '200–450 μg/dL (age 25–44)', confidence: 'moderate' },
@@ -1139,7 +1139,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'nmol/L',
     unit_aliases: ['nM'],
     standard_lab_range: { low: 10, high: 144, display: '10–144 nmol/L (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 20, high: 60, display: '20–40 nmol/L (M) / 30–80 nmol/L (F)', confidence: 'moderate' },
+    aere_optimal: { low: 20, high: 80, display: '20–40 nmol/L (M) / 30–80 nmol/L (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 10, high: 57, display: '10–57 nmol/L', source: 'LabCorp' },
       aere_optimal: { low: 20, high: 40, display: '20–40 nmol/L', confidence: 'moderate' },
@@ -1193,7 +1193,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['μmol/L'],
     standard_lab_range: { low: 2.5, high: 8.0, display: '2.5–8.0 mg/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 3.0, high: 5.5, display: '3.5–5.5 mg/dL (M) / 2.5–4.5 mg/dL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 2.5, high: 5.5, display: '3.5–5.5 mg/dL (M) / 2.5–4.5 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 4.0, high: 8.0, display: '4.0–8.0 mg/dL', source: 'LabCorp' },
       aere_optimal: { low: 3.5, high: 5.5, display: '3.5–5.5 mg/dL', confidence: 'moderate' },
@@ -1249,7 +1249,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['g/L'],
     standard_lab_range: { low: 101, high: 202, display: '101–202 mg/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 150, high: 200, display: '140–175 mg/dL (M) / 155–200 mg/dL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 140, high: 200, display: '140–175 mg/dL (M) / 155–200 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 101, high: 178, display: '101–178 mg/dL', source: 'LabCorp' },
       aere_optimal: { low: 140, high: 175, display: '140–175 mg/dL', confidence: 'moderate' },
@@ -1332,7 +1332,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'ng/mL',
     unit_aliases: ['mIU/L', 'μg/L'],
     standard_lab_range: { low: 2, high: 29, display: '2–29 ng/mL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 4, high: 15, display: '4–12 ng/mL (M) / 4–20 ng/mL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 4, high: 20, display: '4–12 ng/mL (M) / 4–20 ng/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 2, high: 18, display: '2–18 ng/mL', source: 'LabCorp' },
       aere_optimal: { low: 4, high: 12, display: '4–12 ng/mL', confidence: 'moderate' },
