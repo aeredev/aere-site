@@ -229,19 +229,12 @@ export default function FullMarketingSite() {
         background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)',
         borderBottom: '1px solid var(--color-border)', padding: '28px 24px',
       }}>
-        <p style={{
-          fontSize: 11, fontWeight: 500, textTransform: 'uppercase',
-          letterSpacing: '0.06em', color: 'var(--color-muted)',
-          textAlign: 'center', marginBottom: 20,
-        }}>
-          Built for the people who already know
-        </p>
         <div style={{
           maxWidth: 960, margin: '0 auto',
           display: 'flex', justifyContent: 'center', gap: 'clamp(24px, 4vw, 56px)',
           flexWrap: 'wrap', alignItems: 'center',
         }}>
-          {['120+ biomarkers tracked', 'HIPAA compliant', 'AI-powered healthspan insights', '97% parsing accuracy', 'Your data. Always.'].map(t => (
+          {['120+ biomarkers tracked', 'HIPAA compliant', 'AI-powered healthspan insights', 'Your data. Always.'].map(t => (
             <span key={t} style={{ fontSize: 12.5, color: 'var(--color-muted)', whiteSpace: 'nowrap' }}>{t}</span>
           ))}
         </div>
@@ -538,16 +531,19 @@ export default function FullMarketingSite() {
             display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
           }}>
             <TestimonialCard
-              quote="Finally a platform I can recommend to patients who are serious about their healthspan. The pre-visit brief alone saves us 10 minutes every appointment."
+              quote="[ TESTIMONIAL NEEDED ]"
               name="Functional Medicine Practitioner"
+              placeholder
             />
             <TestimonialCard
-              quote="I've been tracking everything for years. Aere is the first platform that actually connects it all and tells me something I didn't already know."
-              name="Oura + Function Health user"
+              quote="[ TESTIMONIAL NEEDED ]"
+              name="Health optimizer / Oura + Function Health user"
+              placeholder
             />
             <TestimonialCard
-              quote="The biomarker trending across years of labs is something I've wanted forever. This is what health data should look like."
+              quote="[ TESTIMONIAL NEEDED ]"
               name="Healthspan-focused professional"
+              placeholder
             />
           </div>
         </section>
@@ -922,15 +918,19 @@ function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   )
 }
 
-function TestimonialCard({ quote, name }: { quote: string; name: string }) {
+function TestimonialCard({ quote, name, placeholder }: { quote: string; name: string; placeholder?: boolean }) {
   return (
     <div style={{
       background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)',
       border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)',
       padding: '24px', textAlign: 'left',
     }}>
-      <p style={{ fontSize: 13.5, color: 'var(--color-text)', lineHeight: 1.7, fontStyle: 'italic', margin: '0 0 16px' }}>
-        &ldquo;{quote}&rdquo;
+      <p style={{
+        fontSize: 13.5, lineHeight: 1.7, margin: '0 0 16px',
+        color: placeholder ? '#ff0000' : 'var(--color-text)',
+        fontStyle: 'italic',
+      }}>
+        {placeholder ? quote : <>&ldquo;{quote}&rdquo;</>}
       </p>
       <p style={{ fontSize: 12, color: 'var(--color-muted)', margin: 0 }}>— {name}</p>
     </div>
