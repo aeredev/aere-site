@@ -1164,9 +1164,9 @@ function PricingSection() {
             note="No BAA included"
           />
 
-          {/* Aere Core */}
+          {/* AereCore */}
           <PricingCard
-            tier="Aere Core"
+            tier="AereCore"
             price={annual ? '$16' : '$25'}
             period={annual ? '/mo billed annually' : '/mo'}
             description="Health optimizer"
@@ -1183,9 +1183,9 @@ function PricingSection() {
             note={annual ? '$199/year · No BAA included' : 'No BAA included'}
           />
 
-          {/* Aere Pro */}
+          {/* AerePro */}
           <PricingCard
-            tier="Aere Pro"
+            tier="AerePro"
             price={annual ? '$125' : '$149'}
             period={annual ? '/mo billed annually' : '/mo'}
             description="Solo practitioners, coaches, trainers"
@@ -1201,9 +1201,9 @@ function PricingSection() {
             note={annual ? '$1,500/year' : undefined}
           />
 
-          {/* Aere Clinic */}
+          {/* AereClinic */}
           <PricingCard
-            tier="Aere Clinic"
+            tier="AereClinic"
             price={annual ? '$416' : '$499'}
             period={annual ? '/mo billed annually' : '/mo'}
             description="Multi-provider practices"
