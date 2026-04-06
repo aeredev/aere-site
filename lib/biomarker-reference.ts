@@ -896,7 +896,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     citations: [
       { authors: 'Zakai NA, Katz R, Hirsch C, et al.', title: 'A prospective study of anemia status, hemoglobin concentration, and mortality in an elderly cohort: the Cardiovascular Health Study', journal: 'Archives of Internal Medicine', year: 2005, pmid: '16009858', url: 'https://pubmed.ncbi.nlm.nih.gov/16009858/' },
       { authors: 'Culleton BF, Manns BJ, Zhang J, et al.', title: 'Impact of anemia on hospitalization and mortality in older adults', journal: 'Blood', year: 2006, pmid: '16249381', url: 'https://pubmed.ncbi.nlm.nih.gov/16249381/' },
-      { authors: 'Paul B, Wilfred NC, Engel LS, et al.', title: 'Association of hemoglobin concentration with mortality in the general population', journal: 'The Lancet Haematology', year: 2022 },
+      { authors: 'Paul B, Wilfred NC, Engel LS, et al.', title: 'Association of hemoglobin concentration with mortality in the general population', journal: 'The Lancet Haematology', year: 2022 }, // PMID not found on PubMed — verify citation
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -926,7 +926,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 12,
     citations: [
       { authors: 'Gagnon DR, Zhang TJ, Brand FN, Kannel WB', title: 'Hematocrit and the risk of cardiovascular disease — the Framingham study: a 34-year follow-up', journal: 'American Heart Journal', year: 1994, pmid: '7942431', url: 'https://pubmed.ncbi.nlm.nih.gov/7942431/' },
-      { authors: 'Kunnas T, Solakivi T, Huuskonen K, et al.', title: 'Hematocrit and the risk of coronary heart disease mortality in the TAMRISK study', journal: 'Research and Practice in Thrombosis and Haemostasis', year: 2020 },
+      { authors: 'Kunnas T, Solakivi T, Huuskonen K, et al.', title: 'Hematocrit and the risk of coronary heart disease mortality in the TAMRISK study', journal: 'Preventive Medicine', year: 2009, pmid: '19409924', url: 'https://pubmed.ncbi.nlm.nih.gov/19409924/' },
       { authors: 'Zakai NA, Katz R, Hirsch C, et al.', title: 'A prospective study of anemia status, hemoglobin concentration, and mortality in an elderly cohort: the Cardiovascular Health Study', journal: 'Archives of Internal Medicine', year: 2005, pmid: '16009858', url: 'https://pubmed.ncbi.nlm.nih.gov/16009858/' },
     ],
     last_updated: '2025-11-01',
@@ -949,7 +949,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 12,
     citations: [
       { authors: 'Thaulow E, Erikssen J, Sandvik L, et al.', title: 'Blood platelet count and function are related to total and cardiovascular death in apparently healthy men', journal: 'Circulation', year: 1991, pmid: '2060068', url: 'https://pubmed.ncbi.nlm.nih.gov/2060068/' },
-      { authors: 'Tsai MT, Chen YT, Lin CH, et al.', title: 'Platelet count and risk of all-cause mortality and cardiovascular events', journal: 'Thrombosis and Haemostasis', year: 2015 },
+      { authors: 'Tsai MT, Chen YT, Lin CH, et al.', title: 'U-shaped mortality curve associated with platelet count among older people: a community-based cohort study', journal: 'Blood', year: 2015, pmid: '26265696', url: 'https://pubmed.ncbi.nlm.nih.gov/26265696/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -971,8 +971,8 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 12,
     citations: [
       { authors: 'Patel KV, Semba RD, Ferrucci L, et al.', title: 'Red cell distribution width and mortality in older adults: a meta-analysis', journal: 'Archives of Internal Medicine', year: 2009, pmid: '19470554', url: 'https://pubmed.ncbi.nlm.nih.gov/19470554/' },
-      { authors: 'Gamaldo AA, Ferrucci L, Rifkind JM, Zonderman AB', title: 'Relationship between mean corpuscular volume and cognitive performance in older adults', journal: 'Journal of the American Geriatrics Society', year: 2013 },
-      { authors: 'Hsieh YP, Chang CC, Kor CT, et al.', title: 'Mean corpuscular volume and mortality in patients with CKD', journal: 'Postgraduate Medical Journal', year: 2017 },
+      { authors: 'Gamaldo AA, Ferrucci L, Rifkind JM, Zonderman AB', title: 'Relationship between mean corpuscular volume and cognitive performance in older adults', journal: 'Journal of the American Geriatrics Society', year: 2013, pmid: '23301873', url: 'https://pubmed.ncbi.nlm.nih.gov/23301873/' },
+      { authors: 'Hsieh YP, Chang CC, Kor CT, et al.', title: 'Mean corpuscular volume and mortality in patients with CKD', journal: 'Clinical Journal of the American Society of Nephrology', year: 2017, pmid: '28143866', url: 'https://pubmed.ncbi.nlm.nih.gov/28143866/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -1005,7 +1005,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     citations: [
       { authors: 'Laughlin GA, Barrett-Connor E, Bergstrom J', title: 'Low serum testosterone and mortality in older men', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2008, pmid: '17911176', url: 'https://pubmed.ncbi.nlm.nih.gov/17911176/' },
       { authors: 'Shores MM, Matsumoto AM, Sloan KL, Kivlahan DR', title: 'Low serum testosterone and mortality in male veterans', journal: 'Archives of Internal Medicine', year: 2006, pmid: '16847388', url: 'https://pubmed.ncbi.nlm.nih.gov/16847388/' },
-      { authors: 'Yeap BB, Alfonso H, Chubb SA, et al.', title: 'In older men an optimal plasma testosterone is associated with reduced all-cause mortality and higher dihydrotestosterone with reduced ischemic heart disease mortality', journal: 'European Journal of Endocrinology', year: 2014 },
+      { authors: 'Yeap BB, Alfonso H, Chubb SA, et al.', title: 'In older men an optimal plasma testosterone is associated with reduced all-cause mortality and higher dihydrotestosterone with reduced ischemic heart disease mortality', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2014, pmid: '24257908', url: 'https://pubmed.ncbi.nlm.nih.gov/24257908/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -1844,8 +1844,8 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 12,
     citations: [
       { authors: 'Vítek L, Jirsa M, Brodanová M', title: 'Gilbert syndrome and ischemic heart disease: a protective effect of elevated bilirubin levels', journal: 'Atherosclerosis', year: 2002, pmid: '11897479', url: 'https://pubmed.ncbi.nlm.nih.gov/11897479/' },
-      { authors: 'Horsfall LJ et al.', title: 'Serum bilirubin and risk of respiratory disease and death in the Whitehall II cohort study', journal: 'JAMA', year: 2011 },
-      { authors: 'Inoguchi T et al.', title: 'Bilirubin as an important physiological modulator of oxidative stress and chronic inflammation', journal: 'Biochimica et Biophysica Acta', year: 2016 },
+      { authors: 'Horsfall LJ et al.', title: 'Serum bilirubin and risk of respiratory disease and death in the Whitehall II cohort study', journal: 'JAMA', year: 2011, pmid: '21325185', url: 'https://pubmed.ncbi.nlm.nih.gov/21325185/' },
+      { authors: 'Inoguchi T et al.', title: 'Bilirubin as an important physiological modulator of oxidative stress and chronic inflammation', journal: 'Diabetology International', year: 2016, pmid: '30603284', url: 'https://pubmed.ncbi.nlm.nih.gov/30603284/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -2173,7 +2173,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     citations: [
       { authors: 'Bhatt DL et al.', title: 'Cardiovascular risk reduction with icosapentaenoic acid for hypertriglyceridemia (REDUCE-IT)', journal: 'NEJM', year: 2019, pmid: '30415628', url: 'https://pubmed.ncbi.nlm.nih.gov/30415628/' },
       { authors: 'Calder PC', title: 'Marine omega-3 fatty acids and inflammatory processes: effects, mechanisms and clinical relevance', journal: 'Biochemical Society Transactions', year: 2017, pmid: '28487380', url: 'https://pubmed.ncbi.nlm.nih.gov/28487380/' },
-      { authors: 'Mason RP et al.', title: 'Eicosapentaenoic acid reduces membrane viscosity, oxidation, and atherogenic properties of cholesterol-rich domains in human aortic endothelial cells', journal: 'Journal of the American Heart Association', year: 2020 },
+      { authors: 'Mason RP et al.', title: 'Eicosapentaenoic acid reduces membrane viscosity, oxidation, and atherogenic properties of cholesterol-rich domains in human aortic endothelial cells', journal: 'Journal of the American Heart Association', year: 2020, pmid: '32212849', url: 'https://pubmed.ncbi.nlm.nih.gov/32212849/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -2332,8 +2332,8 @@ export const BIOMARKERS: BiomarkerReference[] = [
     retest_interval_months: 12,
     citations: [
       { authors: 'Calder PC', title: 'Omega-3 fatty acids and inflammatory processes: from molecules to man', journal: 'Biochemical Society Transactions', year: 2017, pmid: '28487380', url: 'https://pubmed.ncbi.nlm.nih.gov/28487380/' },
-      { authors: 'Harris WS et al.', title: 'Erythrocyte fatty acids and risk of coronary heart disease', journal: 'Atherosclerosis', year: 2007 },
-      { authors: 'Katan MB et al.', title: 'Polyunsaturated fatty acids and cardiovascular prevention', journal: 'Current Atherosclerosis Reports', year: 2010 },
+      { authors: 'Harris WS et al.', title: 'Tissue n-3 and n-6 fatty acids and risk for coronary heart disease events', journal: 'Atherosclerosis', year: 2007, pmid: '17507020', url: 'https://pubmed.ncbi.nlm.nih.gov/17507020/' },
+      { authors: 'Katan MB et al.', title: 'n-3 fatty acids and cardiovascular events after myocardial infarction', journal: 'New England Journal of Medicine', year: 2010, pmid: '20929341', url: 'https://pubmed.ncbi.nlm.nih.gov/20929341/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -2539,7 +2539,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'Urine glucose is a binary marker (negative/positive) rather than an optimized continuous variable. The standard clinical negative result IS the appropriate target. Aere provides context: even trace glucosuria in a fasted morning sample should prompt blood glucose evaluation, as it indicates blood sugar excursions above 180 mg/dL at some point.',
     retest_interval_months: 12,
     citations: [
-      { authors: 'American Diabetes Association', title: 'Standards of Medical Care in Diabetes', journal: 'Diabetes Care', year: 2024 },
+      { authors: 'American Diabetes Association', title: 'Standards of Medical Care in Diabetes', journal: 'Diabetes Care', year: 2024, pmid: '38078589', url: 'https://pubmed.ncbi.nlm.nih.gov/38078589/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -2771,7 +2771,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'Hyaline casts in small numbers (0–2/lpf) are physiologically normal and not concerning. Any cellular cast (RBC, WBC, epithelial) or granular/waxy cast is pathological and warrants nephrology evaluation. Urine cast analysis requires freshly spun urine examined by a skilled microscopist — it is one of the most informative but underperformed components of urinalysis.',
     retest_interval_months: 12,
     citations: [
-      { authors: 'Fogazzi GB et al.', title: 'The urinary sediment: an integrated view', journal: 'Oxford University Press', year: 2010 },
+      { authors: 'Fogazzi GB et al.', title: 'The urinary sediment: an integrated view', journal: 'Elsevier', year: 2010, url: 'https://shop.elsevier.com/books/the-urinary-sediment/fogazzi/978-88-214-3016-9' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -2808,7 +2808,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'ng/mL',
     unit_aliases: ['µg/L'],
     standard_lab_range: { display: 'Male: 0.5–13.8 ng/mL; Female: 1.1–27.5 ng/mL', source: 'LabCorp' },
-    aere_optimal: { display: '0.5–7.0 ng/mL (M) / 1.1–14.0 ng/mL (F)', confidence: 'moderate' },
+    aere_optimal: { low: 0.5, high: 14.0, display: '0.5–7.0 ng/mL (M) / 1.1–14.0 ng/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 0.5, high: 13.8, display: '0.5–13.8 ng/mL', source: 'LabCorp' },
       aere_optimal: { low: 0.5, high: 7.0, display: '0.5–7.0 ng/mL', confidence: 'moderate' },
@@ -2823,7 +2823,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     citations: [
       { authors: 'Wannamethee SG, Tchernova J, Whincup P, et al.', title: 'Plasma leptin: associations with metabolic, inflammatory and haemostatic risk factors for cardiovascular disease', journal: 'Atherosclerosis', year: 2007, pmid: '16945371', url: 'https://pubmed.ncbi.nlm.nih.gov/16945371/' },
       { authors: 'Wallace AM, McMahon AD, Packard CJ, et al.', title: 'Plasma leptin and the risk of cardiovascular disease in the West of Scotland Coronary Prevention Study (WOSCOPS)', journal: 'Circulation', year: 2001, pmid: '11511491', url: 'https://pubmed.ncbi.nlm.nih.gov/11511491/' },
-      { authors: 'Beltowski J', title: 'Leptin and atherosclerosis', journal: 'Atherosclerosis', year: 2006 },
+      { authors: 'Beltowski J', title: 'Leptin and atherosclerosis', journal: 'Atherosclerosis', year: 2006, pmid: '16580676', url: 'https://pubmed.ncbi.nlm.nih.gov/16580676/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -3390,7 +3390,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'The standard and Aere targets are identical — myelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. Their presence in peripheral blood is always pathological. The clinical standard of zero IS the appropriate target.',
     retest_interval_months: 12,
     citations: [
-      { authors: 'Bain BJ', title: 'The peripheral blood smear', journal: 'Blood Cells, Molecules, and Diseases', year: 2007 },
+      { authors: 'Bain BJ', title: 'Diagnosis from the blood smear', journal: 'New England Journal of Medicine', year: 2005, pmid: '16079373', url: 'https://pubmed.ncbi.nlm.nih.gov/16079373/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
@@ -3411,7 +3411,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     why_range_differs: 'The standard and Aere targets are identical — myelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. The clinical standard of 0% IS the appropriate target.',
     retest_interval_months: 12,
     citations: [
-      { authors: 'Bain BJ', title: 'The peripheral blood smear', journal: 'Blood Cells, Molecules, and Diseases', year: 2007 },
+      { authors: 'Bain BJ', title: 'Diagnosis from the blood smear', journal: 'New England Journal of Medicine', year: 2005, pmid: '16079373', url: 'https://pubmed.ncbi.nlm.nih.gov/16079373/' },
     ],
     last_updated: '2025-11-01',
     version: 1,
