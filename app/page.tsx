@@ -160,7 +160,7 @@ export default function Teaser() {
                       minHeight: 52,
                     }}
                   >
-                    {state === 'loading' ? 'Joining...' : 'Get Early Access'}
+                    {state === 'loading' ? 'Joining...' : 'Request Early Access'}
                   </button>
                 </div>
                 {state === 'error' && (
