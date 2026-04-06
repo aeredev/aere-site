@@ -75,7 +75,7 @@ function SiteNav() {
           }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
-          >Get started free</Link>
+          >Start free trial</Link>
         </div>
 
         <button onClick={() => setMobileOpen(o => !o)} className="hamburger" style={{
@@ -104,7 +104,7 @@ function SiteNav() {
           <Link href="https://app.aere.health/signup" onClick={() => setMobileOpen(false)} style={{
             padding: '12px', textAlign: 'center', background: 'var(--color-accent)', color: 'white',
             borderRadius: 'var(--radius-md)', fontSize: 15, fontWeight: 500, textDecoration: 'none', marginTop: 4,
-          }}>Get started free</Link>
+          }}>Start free trial</Link>
         </div>
       )}
 
@@ -191,7 +191,7 @@ export default function FullMarketingSite() {
               onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              Start for free <ChevronRight size={16} />
+              Start free trial <ChevronRight size={16} />
             </Link>
             <Link href="/full#vault" style={{
               padding: '12px 28px', background: 'none', color: 'var(--color-muted)',
@@ -621,62 +621,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 11. PRICING ═══════════════════════ */}
       <SectionObserver>
-        <section id="pricing" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 40 }}>
-              <h2 style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(28px, 4vw, 44px)',
-                fontWeight: 400, color: 'var(--color-text)',
-                letterSpacing: '-0.02em', lineHeight: 1.12,
-                margin: '0 0 16px',
-              }}>
-                Start free. Go deeper when you&apos;re ready.
-              </h2>
-            </div>
-
-            {/* Founding member banner */}
-            <div style={{
-              background: 'var(--color-accent)', borderRadius: 'var(--radius-lg)',
-              padding: '16px 24px', textAlign: 'center', marginBottom: 24,
-            }}>
-              <p style={{
-                fontFamily: 'var(--font-serif)', fontSize: 18,
-                color: 'white', letterSpacing: '-0.01em', margin: 0,
-              }}>
-                Founding Member Rate — $99/year · All features · Locked forever · First 50 members only.
-              </p>
-            </div>
-
-            <div className="pricing-grid" style={{
-              display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16,
-              alignItems: 'start',
-            }}>
-              <PricingCard tier="Free" price="$0" period="/month" description="Try Aere" features={[
-                'Up to 10 documents', 'AI parsing and extraction', 'Basic biomarker view',
-              ]} cta="Get started free" ctaHref="https://app.aere.health/signup" />
-
-              <PricingCard tier="AereVault" price="$84" period="/year" description="Own your health history" highlighted features={[
-                'Unlimited records', 'AI parsing and extraction', 'Full biomarker history',
-                'AereShare secure sharing', 'AI chat (50 queries/month)', 'Less than $7/month',
-              ]} cta="Start AereVault" ctaHref="https://app.aere.health/signup"
-                note="Founding member rate: $99/year — price locked forever when you join during launch." />
-
-              <PricingCard tier="Aere Full" price="$29" period="/mo" description="Your complete healthspan platform" features={[
-                'Everything in Vault', 'Wearable integration — 50+ devices', 'Daily AerePulse dashboard',
-                'Nutrition tracking', 'Unlimited AI healthspan coaching',
-              ]} cta="Start Aere Full" ctaHref="https://app.aere.health/signup" badge="COMING SOON" />
-
-              <PricingCard tier="Practitioner" price="$99" period="/mo" description="For longevity practitioners" features={[
-                'Client roster management', 'AI pre-visit briefs', 'Longitudinal outcome tracking', 'HIPAA BAA included',
-              ]} cta="Contact us" ctaHref="#" />
-            </div>
-
-            <p style={{ fontSize: 13, color: 'var(--color-muted)', textAlign: 'center', marginTop: 24 }}>
-              Clinic plans available for multi-practitioner practices. Contact us for enterprise pricing.
-            </p>
-          </div>
-        </section>
+        <PricingSection />
       </SectionObserver>
 
       {/* ═══════════════════════ 12. TRUST (dark) ═══════════════════════ */}
@@ -791,7 +736,7 @@ export default function FullMarketingSite() {
               onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              Create your free account <ChevronRight size={16} />
+              Start your free trial <ChevronRight size={16} />
             </Link>
             <Link href="/full#pricing" style={{
               padding: '14px 32px', background: 'none', color: 'var(--color-muted)',
@@ -845,13 +790,13 @@ export default function FullMarketingSite() {
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
           .testimonial-grid { grid-template-columns: 1fr !important; }
-          .pricing-grid { grid-template-columns: 1fr 1fr !important; }
+          .pricing-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 560px) {
           .layers-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr !important; }
-          .pricing-grid { grid-template-columns: 1fr !important; }
+          .pricing-grid { grid-template-columns: 1fr 1fr !important; }
           .footer-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
@@ -1137,5 +1082,145 @@ function ShareMockup() {
         ))}
       </div>
     </div>
+  )
+}
+
+function PricingSection() {
+  const [annual, setAnnual] = useState(true)
+
+  return (
+    <section id="pricing" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 40 }}>
+          <h2 style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(28px, 4vw, 44px)',
+            fontWeight: 400, color: 'var(--color-text)',
+            letterSpacing: '-0.02em', lineHeight: 1.12,
+            margin: '0 0 16px',
+          }}>
+            Try everything free for 7 days.
+          </h2>
+          <p style={{ fontSize: 16, color: 'var(--color-muted)', margin: '0 0 28px' }}>
+            Full access. No restrictions. Cancel anytime.
+          </p>
+
+          {/* Billing toggle */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'var(--color-bg)', borderRadius: 100, padding: 4, border: '1px solid var(--color-border)' }}>
+            <button onClick={() => setAnnual(true)} style={{
+              padding: '8px 20px', borderRadius: 100, border: 'none', cursor: 'pointer',
+              fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
+              background: annual ? 'var(--color-surface)' : 'transparent',
+              color: annual ? 'var(--color-text)' : 'var(--color-muted)',
+              boxShadow: annual ? 'var(--shadow-card)' : 'none',
+              transition: 'all 0.15s',
+            }}>Annual <span style={{ fontSize: 11, color: 'var(--color-accent)', fontWeight: 600, marginLeft: 4 }}>Save 20%+</span></button>
+            <button onClick={() => setAnnual(false)} style={{
+              padding: '8px 20px', borderRadius: 100, border: 'none', cursor: 'pointer',
+              fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
+              background: !annual ? 'var(--color-surface)' : 'transparent',
+              color: !annual ? 'var(--color-text)' : 'var(--color-muted)',
+              boxShadow: !annual ? 'var(--shadow-card)' : 'none',
+              transition: 'all 0.15s',
+            }}>Monthly</button>
+          </div>
+        </div>
+
+        <div className="pricing-grid" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 14,
+          alignItems: 'start',
+        }}>
+          {/* Trial */}
+          <PricingCard
+            tier="Trial"
+            price="$0"
+            period="for 7 days"
+            description="Full access to everything"
+            features={[
+              '7 days free',
+              'Credit card required',
+              'All features unlocked',
+              'Cancel anytime',
+            ]}
+            cta="Start free trial"
+            ctaHref="https://app.aere.health/signup"
+          />
+
+          {/* AereVault */}
+          <PricingCard
+            tier="AereVault"
+            price={annual ? '$99' : '$99'}
+            period={annual ? '/year' : '/year'}
+            description="Individual record keeper"
+            features={[
+              'Unlimited health record uploads',
+              'AI parsing & biomarker extraction',
+              'Biomarker history & trend charts',
+              'AereShare — secure provider sharing',
+              'Health timeline',
+            ]}
+            cta="Start free trial"
+            ctaHref="https://app.aere.health/signup"
+            note="No BAA included"
+          />
+
+          {/* Aere Core */}
+          <PricingCard
+            tier="Aere Core"
+            price={annual ? '$16' : '$25'}
+            period={annual ? '/mo billed annually' : '/mo'}
+            description="Health optimizer"
+            features={[
+              'Everything in AereVault',
+              'AereInsight — personalized AI analysis',
+              'AI Chat across your full health history',
+              'Wearable integration (coming soon)',
+              'Dashboard intelligence',
+            ]}
+            cta="Start free trial"
+            ctaHref="https://app.aere.health/signup"
+            highlighted
+            note={annual ? '$199/year · No BAA included' : 'No BAA included'}
+          />
+
+          {/* Aere Pro */}
+          <PricingCard
+            tier="Aere Pro"
+            price={annual ? '$125' : '$149'}
+            period={annual ? '/mo billed annually' : '/mo'}
+            description="Solo practitioners, coaches, trainers"
+            features={[
+              'Everything in Core for yourself',
+              'Link and manage client accounts',
+              'Client health visibility via AereShare',
+              'AI pre-visit briefs',
+              'BAA included',
+            ]}
+            cta="Start free trial"
+            ctaHref="https://app.aere.health/signup"
+            note={annual ? '$1,500/year' : undefined}
+          />
+
+          {/* Aere Clinic */}
+          <PricingCard
+            tier="Aere Clinic"
+            price={annual ? '$416' : '$499'}
+            period={annual ? '/mo billed annually' : '/mo'}
+            description="Multi-provider practices"
+            features={[
+              'Everything in Pro',
+              'Full white label — custom branding',
+              'Multi-provider management',
+              'Custom domain',
+              'BAA included',
+              'Priority support',
+            ]}
+            cta="Start free trial"
+            ctaHref="https://app.aere.health/signup"
+            note={annual ? '$4,990/year' : undefined}
+          />
+        </div>
+      </div>
+    </section>
   )
 }

@@ -105,7 +105,7 @@ export default function Nav() {
               e.currentTarget.style.boxShadow = 'none'
             }}
           >
-            Get started free
+            Start free trial
           </Link>
         </div>
 
@@ -162,7 +162,7 @@ export default function Nav() {
               textDecoration: 'none', marginTop: 4,
             }}
           >
-            Get started free
+            Start free trial
           </Link>
         </div>
       )}
