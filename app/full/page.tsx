@@ -856,9 +856,9 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
   )
 }
 
-function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, badge, note }: {
+function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, note }: {
   tier: string; price: string; period: string; description: string; features: string[]
-  cta: string; ctaHref: string; highlighted?: boolean; badge?: string; note?: string
+  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; note?: string
 }) {
   return (
     <div style={{
@@ -868,13 +868,6 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       padding: 'clamp(24px, 2.5vw, 32px)', position: 'relative',
       transition: 'transform 0.15s, box-shadow 0.15s',
     }}>
-      {badge && (
-        <div style={{
-          position: 'absolute', top: 14, right: 14,
-          background: 'var(--color-amber-tint)', color: 'var(--color-amber)',
-          fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 100,
-        }}>{badge}</div>
-      )}
       {highlighted && (
         <div style={{
           position: 'absolute', top: 14, right: 14,
@@ -887,7 +880,16 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
         <span style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: 'var(--color-text)', letterSpacing: '-0.03em' }}>{price}</span>
         <span style={{ fontSize: 14, color: 'var(--color-muted)' }}>{period}</span>
       </div>
-      <p style={{ fontSize: 13, color: 'var(--color-muted)', margin: '0 0 20px' }}>{description}</p>
+      <p style={{ fontSize: 13, color: 'var(--color-muted)', margin: '0 0 6px' }}>{description}</p>
+      {baa && (
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 11, fontWeight: 600, color: 'var(--color-success)', marginBottom: 14 }}>
+          <CheckCircle size={12} strokeWidth={2.5} /> BAA included
+        </div>
+      )}
+      {baa === false && (
+        <p style={{ fontSize: 11, color: 'var(--color-muted)', margin: '0 0 14px' }}>No BAA included</p>
+      )}
+      {baa === undefined && <div style={{ marginBottom: 14 }} />}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
         {features.map(f => (
           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: 'var(--color-text)' }}>
@@ -1090,7 +1092,7 @@ function PricingSection() {
 
   return (
     <section id="pricing" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <h2 style={{
             fontFamily: 'var(--font-serif)',
@@ -1106,7 +1108,7 @@ function PricingSection() {
           </p>
 
           {/* Billing toggle */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'var(--color-bg)', borderRadius: 100, padding: 4, border: '1px solid var(--color-border)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 0, background: 'var(--color-bg)', borderRadius: 100, padding: 4, border: '1px solid var(--color-border)' }}>
             <button onClick={() => setAnnual(true)} style={{
               padding: '8px 20px', borderRadius: 100, border: 'none', cursor: 'pointer',
               fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
@@ -1127,96 +1129,85 @@ function PricingSection() {
         </div>
 
         <div className="pricing-grid" style={{
-          display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 14,
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16,
           alignItems: 'start',
         }}>
-          {/* Trial */}
+          {/* Vault */}
           <PricingCard
-            tier="Trial"
-            price="$0"
-            period="for 7 days"
-            description="Full access to everything"
-            features={[
-              '7 days free',
-              'Credit card required',
-              'All features unlocked',
-              'Cancel anytime',
-            ]}
-            cta="Start free trial"
-            ctaHref="https://app.aere.health/signup"
-          />
-
-          {/* AereVault */}
-          <PricingCard
-            tier="AereVault"
-            price={annual ? '$99' : '$99'}
-            period={annual ? '/year' : '/year'}
-            description="Individual record keeper"
+            tier="Vault"
+            price={annual ? '$8' : '$99'}
+            period={annual ? '/mo billed annually' : '/year'}
+            description="For individuals who want a secure, organized home for their health records."
             features={[
               'Unlimited health record uploads',
-              'AI parsing & biomarker extraction',
-              'Biomarker history & trend charts',
+              'AI parsing and biomarker extraction',
+              'Biomarker history and trend charts',
               'AereShare — secure provider sharing',
-              'Health timeline',
+              'AereTimeline — full health timeline',
+              '7-day free trial',
             ]}
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
-            note="No BAA included"
+            baa={false}
+            note={annual ? '$99/year' : 'Annual only'}
           />
 
-          {/* AereCore */}
+          {/* Core */}
           <PricingCard
-            tier="AereCore"
+            tier="Core"
             price={annual ? '$16' : '$25'}
             period={annual ? '/mo billed annually' : '/mo'}
-            description="Health optimizer"
+            description="For health optimizers who want AI intelligence across their full health picture."
             features={[
-              'Everything in AereVault',
+              'Everything in Vault',
               'AereInsight — personalized AI analysis',
               'AI Chat across your full health history',
-              'Wearable integration (coming soon)',
               'Dashboard intelligence',
+              'Wearable integration via AerePulse (coming soon)',
+              '7-day free trial',
             ]}
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
             highlighted
-            note={annual ? '$199/year · No BAA included' : 'No BAA included'}
+            baa={false}
+            note={annual ? '$199/year' : undefined}
           />
 
-          {/* AerePro */}
+          {/* Pro */}
           <PricingCard
-            tier="AerePro"
+            tier="Pro"
             price={annual ? '$125' : '$149'}
             period={annual ? '/mo billed annually' : '/mo'}
-            description="Solo practitioners, coaches, trainers"
+            description="For practitioners, coaches, and trainers who want to work with clients on Aere."
             features={[
               'Everything in Core for yourself',
-              'Link and manage client accounts',
+              'Link and manage client Aere accounts',
               'Client health visibility via AereShare',
-              'AI pre-visit briefs',
-              'BAA included',
+              'AI-generated pre-visit briefs',
+              '7-day free trial',
             ]}
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
+            baa
             note={annual ? '$1,500/year' : undefined}
           />
 
-          {/* AereClinic */}
+          {/* Clinic */}
           <PricingCard
-            tier="AereClinic"
+            tier="Clinic"
             price={annual ? '$416' : '$499'}
             period={annual ? '/mo billed annually' : '/mo'}
-            description="Multi-provider practices"
+            description="For multi-provider practices that want full white label control."
             features={[
               'Everything in Pro',
-              'Full white label — custom branding',
+              'Full white label — custom branding throughout',
               'Multi-provider management',
               'Custom domain',
-              'BAA included',
               'Priority support',
             ]}
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
+            baa
             note={annual ? '$4,990/year' : undefined}
           />
         </div>
