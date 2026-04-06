@@ -40,6 +40,7 @@ export interface BiomarkerReference {
   }
   why_it_matters: string
   why_range_differs: string
+  retest_interval_months: number | null
   citations: Citation[]
   last_updated: string
   version: number
@@ -50,9 +51,9 @@ export const CATEGORIES: Record<string, string> = {
   'metabolic':              'Metabolic & Glucose',
   'lipids':                 'Lipids & Cardiovascular',
   'inflammation':           'Inflammation & Immune',
+  'hormones-shared':        'Hormones (M & F)',
   'hormones-male':          'Hormones (Male)',
   'hormones-female':        'Hormones (Female)',
-  'hormones-shared':        'Hormones (Shared)',
   'thyroid':                'Thyroid',
   'liver':                  'Liver',
   'kidney':                 'Kidney',
@@ -90,6 +91,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 85,  high: 100 },
     why_it_matters: 'Fasting glucose is the primary measure of how well your body regulates blood sugar at rest. Chronically elevated glucose — even within "normal" lab ranges — independently predicts all-cause mortality, cardiovascular disease, and accelerated biological aging through glycation of proteins and tissues.',
     why_range_differs: 'Standard ranges define anything below 100 mg/dL as normal, but longitudinal cohort studies consistently show that cardiovascular and all-cause mortality risk begins rising above 85 mg/dL in non-diabetic adults. Longevity-focused physicians target 72–85 mg/dL as the range associated with optimal metabolic health, not merely the absence of diabetes.',
+    retest_interval_months: 6,
     citations: [
       { authors: 'DECODE Study Group', title: 'Glucose tolerance and cardiovascular mortality: comparison of fasting and 2-hour diagnostic criteria', journal: 'Archives of Internal Medicine', year: 2001, pmid: '11176766', url: 'https://pubmed.ncbi.nlm.nih.gov/11176766/' },
       { authors: 'Levitan EB, Song Y, Ford ES, Liu S', title: 'Is nondiabetic hyperglycemia a risk factor for cardiovascular disease? A meta-analysis of prospective studies', journal: 'Archives of Internal Medicine', year: 2004, pmid: '15477584', url: 'https://pubmed.ncbi.nlm.nih.gov/15477584/' },
@@ -114,6 +116,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 5.3, high: 5.7 },
     why_it_matters: 'HbA1c reflects average blood glucose over the prior 2–3 months by measuring how much glucose has bonded to hemoglobin. It is one of the most powerful predictors of cardiovascular disease, kidney disease, and all-cause mortality — including in people who have never been diagnosed with diabetes.',
     why_range_differs: 'The ADA defines normal as below 5.7%, but multiple large prospective studies show that cardiovascular risk increases linearly starting well below this threshold. An HbA1c of 5.5% carries meaningfully more risk than 5.0%. Longevity medicine targets the lower portion of normal — reflecting truly optimal glucose metabolism, not merely non-diabetic status.',
+    retest_interval_months: 6,
     citations: [
       { authors: 'Selvin E, Steffes MW, Zhu H, et al.', title: 'Glycated hemoglobin, diabetes, and cardiovascular risk in nondiabetic adults', journal: 'New England Journal of Medicine', year: 2010, pmid: '20200383', url: 'https://pubmed.ncbi.nlm.nih.gov/20200383/' },
       { authors: 'Khaw KT, Wareham N, Bingham S, et al.', title: 'Association of hemoglobin A1c with cardiovascular disease and mortality in adults: the European Prospective Investigation into Cancer in Norfolk', journal: 'Annals of Internal Medicine', year: 2004, pmid: '15096331', url: 'https://pubmed.ncbi.nlm.nih.gov/15096331/' },
@@ -137,6 +140,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 6, high: 12 },
     why_it_matters: 'Fasting insulin is the single best early-warning marker for insulin resistance — often becoming elevated a decade or more before glucose does. Hyperinsulinemia is an independent risk factor for cardiovascular disease, metabolic dysfunction, and several cancers, even when fasting glucose remains normal.',
     why_range_differs: 'A fasting insulin below 25 μIU/mL is considered normal by most labs, but this threshold was set to identify overt hyperinsulinemia — not optimal metabolic function. Research by Reaven and others demonstrates that insulin resistance becomes clinically relevant well below the upper limit. Longevity medicine targets <6 μIU/mL as the zone associated with genuine insulin sensitivity.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Desprès JP, Lamarche B, Mauriège P, et al.', title: 'Hyperinsulinemia as an independent risk factor for ischemic heart disease', journal: 'New England Journal of Medicine', year: 1996, pmid: '8600079', url: 'https://pubmed.ncbi.nlm.nih.gov/8600079/' },
       { authors: 'Reaven GM', title: 'Banting lecture 1988. Role of insulin resistance in human disease', journal: 'Diabetes', year: 1988, pmid: '3056758', url: 'https://pubmed.ncbi.nlm.nih.gov/3056758/' },
@@ -162,6 +166,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 70, high: 100 },
     why_it_matters: 'LDL cholesterol is a primary driver of atherosclerotic plaque formation. The relationship between LDL and cardiovascular risk is causal, dose-dependent, and lifelong — meaning cumulative exposure matters more than any single reading. Reducing LDL is one of the most well-validated interventions for extending healthspan.',
     why_range_differs: 'The standard threshold of <130 mg/dL was derived from population averages, not from the level associated with minimal cardiovascular risk. Mendelian randomization studies and outcome data from statin and PCSK9 inhibitor trials consistently show that lower is better, with cardiovascular event rates continuing to decline as LDL approaches 20–50 mg/dL. Longevity medicine targets <70 mg/dL for average-risk adults, with more aggressive targets for those with additional risk factors.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Silverman MG, Ference BA, Im K, et al.', title: 'Association between lowering LDL-C and cardiovascular risk reduction among different therapeutic interventions', journal: 'JAMA', year: 2016, pmid: '27218630', url: 'https://pubmed.ncbi.nlm.nih.gov/27218630/' },
       { authors: 'Cholesterol Treatment Trialists\' Collaboration', title: 'Efficacy and safety of statin therapy in older people: a meta-analysis of individual participant data from 28 randomised controlled trials', journal: 'The Lancet', year: 2019, pmid: '30712900', url: 'https://pubmed.ncbi.nlm.nih.gov/30712900/' },
@@ -193,6 +198,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'HDL particles participate in reverse cholesterol transport — removing cholesterol from arterial walls and returning it to the liver. Low HDL is strongly associated with increased cardiovascular risk, though HDL\'s role is more nuanced than its "good cholesterol" label suggests; HDL function matters as much as quantity.',
     why_range_differs: 'Standard thresholds define low HDL as <40 (men) or <50 (women) mg/dL, but epidemiological data consistently shows cardiovascular risk continues to decline at higher HDL levels. Longevity medicine targets >60 (men) and >70 (women) mg/dL. Importantly, pharmaceutical HDL elevation hasn\'t reliably reduced risk, suggesting that naturally high HDL from lifestyle is the ideal.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Gordon DJ, Probstfield JL, Garrison RJ, et al.', title: 'High-density lipoprotein cholesterol and cardiovascular disease: four prospective American studies', journal: 'Circulation', year: 1989, pmid: '2642759', url: 'https://pubmed.ncbi.nlm.nih.gov/2642759/' },
       { authors: 'Emerging Risk Factors Collaboration', title: 'Major lipids, apolipoproteins, and risk of vascular disease', journal: 'JAMA', year: 2009, pmid: '19903920', url: 'https://pubmed.ncbi.nlm.nih.gov/19903920/' },
@@ -216,6 +222,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 190, high: 240 },
     why_it_matters: 'Total cholesterol provides a rough overview of lipid status, but it is a blunt instrument — it combines HDL, LDL, VLDL, and other fractions that have very different effects on cardiovascular risk. It is most useful as a starting point that prompts deeper lipid panel analysis rather than as a standalone metric.',
     why_range_differs: 'The AHA defines <200 mg/dL as desirable, but total cholesterol alone poorly predicts cardiovascular risk without knowing the composition. Very low total cholesterol (<150 mg/dL) has been associated with hemorrhagic stroke risk. Aere\'s optimal range of 150–190 mg/dL reflects the zone where population-level cardiovascular risk is consistently low, while acknowledging total cholesterol\'s limited standalone utility.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Prospective Studies Collaboration', title: 'Blood cholesterol and vascular mortality by age, sex, and blood pressure', journal: 'The Lancet', year: 2007, pmid: '17981172', url: 'https://pubmed.ncbi.nlm.nih.gov/17981172/' },
       { authors: 'Emerging Risk Factors Collaboration', title: 'Major lipids, apolipoproteins, and risk of vascular disease', journal: 'JAMA', year: 2009, pmid: '19903920', url: 'https://pubmed.ncbi.nlm.nih.gov/19903920/' },
@@ -239,6 +246,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 80, high: 150 },
     why_it_matters: 'Triglycerides are fats circulating in the bloodstream after meals and during fasting. Elevated fasting triglycerides are a marker of insulin resistance, poor metabolic health, and increased cardiovascular risk. They also contribute to small dense LDL particle formation — a particularly atherogenic lipoprotein fraction.',
     why_range_differs: 'The standard threshold of <150 mg/dL was set to identify frank hypertriglyceridemia, not optimal metabolic health. Studies demonstrate that fasting triglycerides above 80–100 mg/dL are associated with progressively increasing insulin resistance and cardiovascular risk. Longevity medicine targets <80 mg/dL — a level achievable through diet, exercise, and metabolic optimization — as a marker of genuinely good metabolic function.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Miller M, Stone NJ, Ballantyne C, et al.', title: 'Triglycerides and cardiovascular disease: a scientific statement from the American Heart Association', journal: 'Circulation', year: 2011, pmid: '21502576', url: 'https://pubmed.ncbi.nlm.nih.gov/21502576/' },
       { authors: 'Nordestgaard BG, Varbo A', title: 'Triglycerides and cardiovascular disease', journal: 'The Lancet', year: 2014, pmid: '25262408', url: 'https://pubmed.ncbi.nlm.nih.gov/25262408/' },
@@ -262,6 +270,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 70, high: 90 },
     why_it_matters: 'ApoB is arguably the best single predictor of atherosclerotic cardiovascular disease. Each LDL, VLDL, IDL, and Lp(a) particle carries exactly one ApoB protein — making ApoB a direct count of all atherogenic particles in the blood. Studies consistently show ApoB outperforms LDL-C as a predictor of cardiovascular events.',
     why_range_differs: 'Standard guidelines define <100 mg/dL as acceptable, but this threshold was derived before the full superiority of ApoB over LDL-C was established. Mendelian randomization studies show that lower ApoB is causally associated with lower cardiovascular risk, with no apparent floor. Longevity medicine targets <70 mg/dL, and some clinicians target <60 mg/dL for high-risk individuals — reflecting the principle that cumulative atherogenic particle exposure determines plaque burden.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Emerging Risk Factors Collaboration', title: 'Major lipids, apolipoproteins, and risk of vascular disease', journal: 'JAMA', year: 2009, pmid: '19903920', url: 'https://pubmed.ncbi.nlm.nih.gov/19903920/' },
       { authors: 'Sniderman AD, Williams K, Contois JH, et al.', title: 'A meta-analysis of low-density lipoprotein cholesterol, non-high-density lipoprotein cholesterol, and apolipoprotein B as markers of cardiovascular risk', journal: 'Circulation: Cardiovascular Quality and Outcomes', year: 2011, pmid: '21487090', url: 'https://pubmed.ncbi.nlm.nih.gov/21487090/' },
@@ -288,6 +297,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 0.5, high: 2.0 },
     why_it_matters: 'hs-CRP is the most clinically validated blood marker of systemic inflammation. Chronic low-grade inflammation is central to atherosclerosis, cancer initiation, neurodegeneration, and the hallmarks of biological aging. hs-CRP predicts cardiovascular events independently of LDL cholesterol and is included in several validated cardiovascular risk calculators.',
     why_range_differs: 'The standard risk stratification (<1.0 = low, 1–3 = moderate, >3 = high risk) was designed for population-level cardiovascular risk stratification, not for tracking optimal inflammatory load. Research shows cardiovascular risk is lowest at hs-CRP levels well below 1.0 mg/L. Longevity medicine targets <0.5 mg/L as the level associated with minimal chronic inflammatory burden — achievable through sleep optimization, regular exercise, anti-inflammatory diet, and metabolic health.',
+    retest_interval_months: 6,
     citations: [
       { authors: 'Ridker PM, Hennekens CH, Buring JE, Rifai N', title: 'C-reactive protein and other markers of inflammation in the prediction of cardiovascular disease in women', journal: 'New England Journal of Medicine', year: 2000, pmid: '10733371', url: 'https://pubmed.ncbi.nlm.nih.gov/10733371/' },
       { authors: 'Ridker PM, Rifai N, Rose L, et al.', title: 'Comparison of C-reactive protein and low-density lipoprotein cholesterol levels in the prediction of first cardiovascular events', journal: 'New England Journal of Medicine', year: 2002, pmid: '11794147', url: 'https://pubmed.ncbi.nlm.nih.gov/11794147/' },
@@ -311,6 +321,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 8, high: 12 },
     why_it_matters: 'Homocysteine is an amino acid produced during methionine metabolism. Elevated levels damage arterial walls, promote oxidative stress, and impair DNA methylation. Hyperhomocysteinemia is independently associated with cardiovascular disease, stroke, cognitive decline, and all-cause mortality. It is also a sensitive marker of B vitamin status (B6, B12, folate).',
     why_range_differs: 'The standard upper limit of 15 μmol/L reflects the threshold for clinical hyperhomocysteinemia, but cardiovascular and cognitive risk increase continuously well below this level. Multiple studies show risk begins rising above 7–10 μmol/L. Elevated homocysteine is frequently correctable through B12, folate, and B6 supplementation — making it one of the most actionable longevity biomarkers.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Refsum H, Ueland PM, Nygård O, Vollset SE', title: 'Homocysteine and cardiovascular disease', journal: 'Annual Review of Medicine', year: 1998, pmid: '9509257', url: 'https://pubmed.ncbi.nlm.nih.gov/9509257/' },
       { authors: 'Seshadri S, Beiser A, Selhub J, et al.', title: 'Plasma homocysteine as a risk factor for dementia and Alzheimer\'s disease', journal: 'New England Journal of Medicine', year: 2002, pmid: '11832527', url: 'https://pubmed.ncbi.nlm.nih.gov/11832527/' },
@@ -334,6 +345,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 300, high: 400 },
     why_it_matters: 'Fibrinogen is both a clotting protein and an acute-phase inflammatory marker. Elevated fibrinogen increases blood viscosity, promotes clot formation, and is independently associated with cardiovascular disease, stroke, and all-cause mortality. It rises with systemic inflammation, smoking, obesity, and metabolic syndrome.',
     why_range_differs: 'While the standard range extends to 400 mg/dL, population studies show cardiovascular risk is lowest in the lower portion of this range. Fibrinogen above 300 mg/dL is associated with meaningfully elevated cardiovascular risk even in the absence of other traditional risk factors. Longevity medicine targets the lower half of the reference range as a marker of low inflammatory and thrombotic risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Fibrinogen Studies Collaboration', title: 'Plasma fibrinogen level and the risk of major cardiovascular diseases and nonvascular mortality', journal: 'JAMA', year: 2005, pmid: '16204666', url: 'https://pubmed.ncbi.nlm.nih.gov/16204666/' },
       { authors: 'Emerging Risk Factors Collaboration', title: 'C-reactive protein, fibrinogen, and cardiovascular disease prediction', journal: 'New England Journal of Medicine', year: 2012, pmid: '22992748', url: 'https://pubmed.ncbi.nlm.nih.gov/22992748/' },
@@ -358,6 +370,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 30, high: 50 },
     why_it_matters: 'Vitamin D is a steroid hormone precursor that acts on virtually every tissue in the body. It plays essential roles in immune function, bone metabolism, muscle function, cardiovascular health, and cancer prevention. Deficiency — defined as <20 ng/mL — is associated with increased all-cause mortality, autoimmune disease, cardiovascular disease, and impaired immunity.',
     why_range_differs: 'The Endocrine Society defines sufficiency as >20 ng/mL, which reflects the minimum needed to prevent rickets and osteomalacia. But the level associated with optimal immune function, reduced cancer risk, and cardiovascular benefit appears to be substantially higher. Epidemiological and intervention data consistently supports 50–80 ng/mL as the optimal range — the zone where toxicity risk is negligible and biological benefit is maximal.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Holick MF', title: 'Vitamin D deficiency', journal: 'New England Journal of Medicine', year: 2007, pmid: '17634462', url: 'https://pubmed.ncbi.nlm.nih.gov/17634462/' },
       { authors: 'Schöttker B, Jäger U, Adler G, et al.', title: 'Strong associations of 25-hydroxyvitamin D concentrations with all-cause, cardiovascular, cancer, and respiratory disease mortality in a large cohort study', journal: 'American Journal of Clinical Nutrition', year: 2013, pmid: '23256145', url: 'https://pubmed.ncbi.nlm.nih.gov/23256145/' },
@@ -381,6 +394,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 300, high: 500 },
     why_it_matters: 'Vitamin B12 is essential for DNA synthesis, red blood cell formation, neurological function, and homocysteine metabolism. Deficiency causes irreversible neurological damage, megaloblastic anemia, and elevated homocysteine. It is particularly common in older adults, vegetarians, vegans, and users of metformin or proton pump inhibitors.',
     why_range_differs: 'A serum B12 of 200 pg/mL is technically "normal" but is associated with accelerated brain atrophy and cognitive decline. Prospective studies show that B12 levels below 500 pg/mL correlate with greater brain volume loss over time, even in the absence of clinical deficiency. Aere targets >500 pg/mL because this threshold is associated with preserved brain volume, lower homocysteine, and better cognitive trajectories in aging populations.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Vogiatzoglou A, Refsum H, Johnston C, et al.', title: 'Vitamin B12 status and rate of brain volume loss in community-dwelling elderly', journal: 'Neurology', year: 2008, pmid: '18779510', url: 'https://pubmed.ncbi.nlm.nih.gov/18779510/' },
       { authors: 'Clarke R, Birks J, Nexo E, et al.', title: 'Low vitamin B-12 status and risk of cognitive decline in older adults', journal: 'American Journal of Clinical Nutrition', year: 2007, pmid: '17991637', url: 'https://pubmed.ncbi.nlm.nih.gov/17991637/' },
@@ -415,6 +429,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 150, high: 300 },
     why_it_matters: 'Ferritin is the body\'s primary iron storage protein. It is critical for oxygen transport, energy production, immune function, and thyroid metabolism. Both too low (iron deficiency, fatigue, cognitive impairment) and too high (iron overload, oxidative stress, cardiovascular risk) are problematic — ferritin has an optimal zone rather than a simple "higher is better" relationship.',
     why_range_differs: 'The standard upper limit of 300 ng/mL (men) captures most of the population without frank hemochromatosis, but iron overload effects begin well below this level. Elevated ferritin above 200 ng/mL is associated with increased cardiovascular risk, metabolic syndrome, and liver disease in multiple large studies. Ferritin also rises with inflammation, making it a less specific iron marker when CRP is elevated. Aere targets the mid-portion of the reference range — adequate iron stores without overload.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Mainous AG III, Gill JM, Carek PJ', title: 'Elevated serum transferrin saturation and mortality', journal: 'Annals of Family Medicine', year: 2004, pmid: '15531757', url: 'https://pubmed.ncbi.nlm.nih.gov/15531757/' },
       { authors: 'Orban E, Schwab S, Thorand B, et al.', title: 'Association of iron indices and type 2 diabetes: the KORA F4 study', journal: 'European Journal of Clinical Nutrition', year: 2014, pmid: '24064746', url: 'https://pubmed.ncbi.nlm.nih.gov/24064746/' },
@@ -439,6 +454,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 130, high: 170 },
     why_it_matters: 'Serum iron reflects iron currently in circulation, and while it fluctuates significantly throughout the day, it is used alongside ferritin and TIBC to assess iron status. It is essential for hemoglobin synthesis and oxygen delivery to every cell in the body.',
     why_range_differs: 'Both iron deficiency and iron excess increase mortality risk — the relationship is U-shaped. Mid-range serum iron (80–130 μg/dL) corresponds to the lowest all-cause and cancer-specific mortality in large population studies. High iron promotes oxidative stress, DNA damage, and accelerated aging, while low iron impairs oxygen delivery and immune function. Aere targets the mid-range sweet spot where iron is sufficient for function without driving oxidative damage.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ellervik C, Marott JL, Tybjaerg-Hansen A, et al.', title: 'Total and cause-specific mortality by moderately and markedly increased ferritin concentrations: general population study and metaanalysis', journal: 'Clinical Chemistry', year: 2014, pmid: '25390336', url: 'https://pubmed.ncbi.nlm.nih.gov/25390336/' },
       { authors: 'Zacharski LR, Chow BK, Howes PS, et al.', title: 'Decreased cancer risk after iron reduction in patients with peripheral arterial disease: results from a randomized trial', journal: 'Journal of the National Cancer Institute', year: 2008, pmid: '18612130', url: 'https://pubmed.ncbi.nlm.nih.gov/18612130/' },
@@ -464,6 +480,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 2.0, high: 4.0 },
     why_it_matters: 'TSH is the pituitary signal that drives thyroid hormone production. It is the primary screening test for thyroid dysfunction. Even "subclinical" hypothyroidism — elevated TSH within the standard range — is associated with increased cardiovascular risk, dyslipidemia, cognitive impairment, and fatigue.',
     why_range_differs: 'The upper limit of 4.0 mIU/L is derived from population distribution, but TSH in the range of 2–4 mIU/L is increasingly recognized as associated with cardiac risk, elevated LDL, and early thyroid dysfunction. Multiple longitudinal studies show the lowest cardiovascular risk and all-cause mortality at TSH values of 0.5–2.0 mIU/L. Functional medicine consensus recommends this tighter range as optimal.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Rodondi N, den Elzen WP, Bauer DC, et al.', title: 'Subclinical hypothyroidism and the risk of coronary heart disease and mortality', journal: 'JAMA', year: 2010, pmid: '20858880', url: 'https://pubmed.ncbi.nlm.nih.gov/20858880/' },
       { authors: 'Cappola AR, Fried LP, Arnold AM, et al.', title: 'Thyroid status, cardiovascular risk, and mortality in older adults', journal: 'JAMA', year: 2006, pmid: '16537739', url: 'https://pubmed.ncbi.nlm.nih.gov/16537739/' },
@@ -487,6 +504,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 2.3, high: 3.2 },
     why_it_matters: 'Free T3 is the biologically active form of thyroid hormone — the version that directly enters cells and drives metabolic rate, cardiac function, energy production, and cognitive performance. It is converted from T4 in peripheral tissues and its levels better reflect active thyroid hormone status than TSH alone.',
     why_range_differs: 'Many clinicians focus exclusively on TSH and T4, but Free T3 in the lower half of the reference range is often associated with symptomatic hypothyroidism despite a normal TSH. Functional medicine and longevity medicine prioritizes Free T3 in the upper half of the reference range (3.2–4.2 pg/mL) as optimal — associated with better energy, metabolism, and cardiovascular function.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Iervasi G, Molinaro S, Landi P, et al.', title: 'Association between increased mortality and mild thyroid dysfunction in cardiac patients', journal: 'Archives of Internal Medicine', year: 2007, pmid: '17387139', url: 'https://pubmed.ncbi.nlm.nih.gov/17387139/' },
       { authors: 'Gencer B, Collet TH, Virgini V, et al.', title: 'Subclinical thyroid dysfunction and the risk of heart failure events: an individual participant data analysis from six prospective cohorts', journal: 'Circulation', year: 2012, pmid: '22923848', url: 'https://pubmed.ncbi.nlm.nih.gov/22923848/' },
@@ -510,6 +528,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 0.82, high: 1.1 },
     why_it_matters: 'Free T4 is the primary thyroid hormone secreted by the thyroid gland. It is converted to the active Free T3 in peripheral tissues and is the main reservoir of thyroid hormone activity. Low Free T4 — even with a normal TSH — can indicate early thyroid insufficiency or poor peripheral conversion.',
     why_range_differs: 'Free T4 at the lower end of the standard range (0.82–1.0 ng/dL) is associated with fatigue, metabolic slowing, and adverse cardiovascular outcomes — even when TSH is normal. Prospective studies in older adults show that low-normal free T4 predicts increased mortality, while high-normal free T4 is associated with atrial fibrillation and bone loss. Aere targets 1.1–1.5 ng/dL — the mid-range sweet spot where thyroid hormone availability supports optimal metabolism without hyperthyroid risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cappola AR, Fried LP, Arnold AM, et al.', title: 'Thyroid status, cardiovascular risk, and mortality in older adults', journal: 'JAMA', year: 2006, pmid: '16537739', url: 'https://pubmed.ncbi.nlm.nih.gov/16537739/' },
       { authors: 'Gencer B, Collet TH, Virgini V, et al.', title: 'Subclinical thyroid dysfunction and the risk of heart failure events: an individual participant data analysis from 6 prospective cohorts', journal: 'Circulation', year: 2012, pmid: '23109514', url: 'https://pubmed.ncbi.nlm.nih.gov/23109514/' },
@@ -535,6 +554,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 25, high: 40 },
     why_it_matters: 'ALT is the primary marker of liver cell damage. When hepatocytes are stressed or injured, ALT leaks into the bloodstream. Elevated ALT indicates liver inflammation, which can stem from non-alcoholic fatty liver disease (NAFLD), alcohol, medications, or metabolic syndrome. NAFLD is increasingly recognized as a driver of systemic inflammation and cardiovascular risk.',
     why_range_differs: 'The standard upper limit of 56 U/L was historically set to capture frank hepatitis and liver disease. But research shows that ALT above 20–25 U/L begins to correlate with early NAFLD, insulin resistance, and increased all-cause mortality risk — long before values reach the standard upper limit. Longevity medicine targets <25 U/L as a marker of genuinely healthy liver function.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kim HC, Nam CM, Jee SH, et al.', title: 'Normal serum aminotransferase concentration and risk of mortality from liver diseases', journal: 'BMJ', year: 2004, pmid: '15028634', url: 'https://pubmed.ncbi.nlm.nih.gov/15028634/' },
       { authors: 'Ruhl CE, Everhart JE', title: 'Elevated serum alanine aminotransferase and gamma-glutamyltransferase and mortality in the United States population', journal: 'Gastroenterology', year: 2009, pmid: '19208341', url: 'https://pubmed.ncbi.nlm.nih.gov/19208341/' },
@@ -558,6 +578,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 25, high: 40 },
     why_it_matters: 'AST is an enzyme found in liver, heart, and muscle cells. It rises with liver damage, but also with muscle injury and cardiac stress. The AST:ALT ratio is used to distinguish liver from non-liver causes — an elevated AST with normal ALT may reflect muscle or cardiac injury rather than liver pathology.',
     why_range_differs: 'Like ALT, the standard upper limit for AST was set to identify overt liver disease rather than optimal liver health. Prospective studies demonstrate that even "normal-range" aminotransferase elevations predict increased liver-related and all-cause mortality. A large meta-analysis confirmed that liver enzymes in the upper-normal range are independently associated with death. Longevity medicine targets <25 U/L as the threshold associated with lowest mortality risk, interpreted alongside ALT — particularly in individuals who exercise heavily, where mild AST elevation from muscle may be normal.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kim HC, Nam CM, Jee SH, et al.', title: 'Normal serum aminotransferase concentration and risk of mortality from liver diseases', journal: 'BMJ', year: 2004, pmid: '15028634', url: 'https://pubmed.ncbi.nlm.nih.gov/15028634/' },
       { authors: 'Ruhl CE, Everhart JE', title: 'Elevated serum alanine aminotransferase and gamma-glutamyltransferase and mortality in the United States population', journal: 'Gastroenterology', year: 2009, pmid: '18996378', url: 'https://pubmed.ncbi.nlm.nih.gov/18996378/' },
@@ -588,6 +609,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'GGT is a sensitive marker of liver stress, alcohol exposure, and oxidative damage. It is one of the strongest predictors of all-cause mortality across large population studies — more predictive than ALT or AST in many analyses. GGT reflects glutathione depletion and oxidative stress, making it a sensitive indicator of overall metabolic and hepatic health.',
     why_range_differs: 'The standard upper limit captures overt hepatic disease, but GGT shows a continuous dose-response relationship with mortality risk across its entire range — including values within the "normal" zone. Studies show that GGT in the lowest quartile of the reference range is associated with the lowest all-cause mortality. Longevity medicine targets very low GGT as one of the best overall indicators of metabolic and oxidative health.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Lee DS, Evans JC, Robins SJ, et al.', title: 'Gamma glutamyl transferase and metabolic syndrome, cardiovascular disease, and mortality risk', journal: 'Arteriosclerosis, Thrombosis, and Vascular Biology', year: 2007, pmid: '17008592', url: 'https://pubmed.ncbi.nlm.nih.gov/17008592/' },
       { authors: 'Fraser A, Harris R, Sattar N, et al.', title: 'Gamma-glutamyltransferase is associated with incident vascular events independently of alcohol intake', journal: 'Arteriosclerosis, Thrombosis, and Vascular Biology', year: 2007, pmid: '17347487', url: 'https://pubmed.ncbi.nlm.nih.gov/17347487/' },
@@ -611,6 +633,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 3.5, high: 4.5 },
     why_it_matters: 'Albumin is the most abundant protein in blood, synthesized by the liver. It maintains osmotic pressure, transports hormones and nutrients, and is a sensitive marker of overall nutritional status and hepatic synthetic function. Low albumin is one of the strongest predictors of mortality across virtually all patient populations and age groups.',
     why_range_differs: 'The lower limit of 3.5 g/dL defines hypoalbuminemia — a clinical emergency in hospitalized patients. But in the general population, albumin levels even in the 3.5–4.4 g/dL range are associated with progressively increasing mortality risk compared to levels above 4.5 g/dL. Higher albumin reflects better protein nutrition, lower inflammation, and superior liver synthetic capacity — all longevity-relevant factors.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Goldwasser P, Feldman J', title: 'Association of serum albumin and mortality risk', journal: 'Journal of Clinical Epidemiology', year: 1997, pmid: '9186524', url: 'https://pubmed.ncbi.nlm.nih.gov/9186524/' },
       { authors: 'Phillips A et al.', title: 'Association of serum albumin and mortality from cardiovascular disease, cancer, and other causes', journal: 'The Lancet', year: 1989, pmid: '2571398', url: 'https://pubmed.ncbi.nlm.nih.gov/2571398/' },
@@ -633,7 +656,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['μmol/L'],
     standard_lab_range: { low: 0.59, high: 1.35, display: '0.59–1.35 mg/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 0.7, high: 1.1, display: '0.7–1.1 mg/dL', confidence: 'moderate' },
+    aere_optimal: { low: 0.7, high: 1.1, display: '0.8–1.1 mg/dL (M) / 0.6–0.9 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 0.74, high: 1.35, display: '0.74–1.35 mg/dL', source: 'LabCorp' },
       aere_optimal: { low: 0.8, high: 1.1, display: '0.8–1.1 mg/dL', confidence: 'moderate' },
@@ -644,6 +667,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Creatinine is a byproduct of creatine phosphate breakdown in muscle tissue, filtered freely by the kidneys. Elevated creatinine signals reduced glomerular filtration — the hallmark of kidney disease. Trending creatinine over time is often more informative than any single value, as a rapid rise even within "normal" range can indicate acute kidney injury.',
     why_range_differs: 'Creatinine must be interpreted in the context of muscle mass and eGFR. Mid-range creatinine reflects healthy muscle mass with preserved kidney filtration — the combination associated with lowest all-cause mortality in large meta-analyses. Very low creatinine may indicate sarcopenia (an independent mortality risk), while high-normal creatinine often precedes clinical kidney disease. Aere targets the mid-range to balance muscle health against kidney function preservation.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Matsushita K, van der Velde M, Astor BC, et al.', title: 'Association of estimated glomerular filtration rate and albuminuria with all-cause and cardiovascular mortality in general population cohorts: a collaborative meta-analysis', journal: 'Lancet', year: 2010, pmid: '20483451', url: 'https://pubmed.ncbi.nlm.nih.gov/20483451/' },
       { authors: 'Peralta CA, Shlipak MG, Judd S, et al.', title: 'Detection of chronic kidney disease with creatinine, cystatin C, and urine albumin-to-creatinine ratio and association with progression to end-stage renal disease and mortality', journal: 'JAMA', year: 2011, pmid: '21482744', url: 'https://pubmed.ncbi.nlm.nih.gov/21482744/' },
@@ -667,6 +691,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 60, high: 90, display: '60–90 (monitor closely)' },
     why_it_matters: 'eGFR is the gold-standard measure of kidney filtration capacity — how much blood the kidneys can fully clean per minute per unit body surface. It is calculated from creatinine, age, and sex using validated CKD-EPI equations. eGFR below 60 defines chronic kidney disease. Values above 90 indicate healthy kidneys. eGFR naturally declines with age, but the rate of decline matters: losing more than 5 mL/min/1.73m² per year is a red flag.',
     why_range_differs: 'The clinical cutoff of 60 is set to identify established kidney disease. Aere targets above 90 because functional decline from 120 to 90 represents a real loss of reserve capacity — relevant to drug clearance, toxin elimination, and long-term trajectory. Longevity research consistently shows higher eGFR correlates with lower all-cause mortality, independent of other risk factors.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Inker LA et al.', title: 'New creatinine- and cystatin C–based equations to estimate GFR without race', journal: 'NEJM', year: 2021, pmid: '34554658', url: 'https://pubmed.ncbi.nlm.nih.gov/34554658/' },
       { authors: 'Matsushita K et al.', title: 'Association of estimated GFR and albuminuria with all-cause and cardiovascular mortality', journal: 'Lancet', year: 2010, pmid: '20483451', url: 'https://pubmed.ncbi.nlm.nih.gov/20483451/' },
@@ -688,6 +713,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 10, high: 18, display: '10–18 mg/dL', confidence: 'moderate' },
     why_it_matters: 'BUN measures urea nitrogen in the blood, a waste product from protein metabolism processed by the liver and excreted by the kidneys. The BUN:creatinine ratio (ideally 10:1–20:1) helps distinguish kidney from non-kidney causes of elevated urea. Very high BUN can indicate kidney failure, dehydration, or excessive protein intake; very low BUN may signal liver disease or malnutrition.',
     why_range_differs: 'The wide reference range (7–25) accommodates significant variation in protein intake and hydration. But BUN is an independent predictor of mortality across multiple clinical populations. In community-dwelling adults and cardiac patients, BUN above 20 mg/dL is associated with significantly increased mortality risk even when creatinine and eGFR are normal. Aere targets 10–18 mg/dL — the range associated with adequate protein nutrition, good hydration, and lowest population mortality.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kirtane AJ, Leder DM, Waikar SS, et al.', title: 'Serum blood urea nitrogen as an independent marker of subsequent mortality among patients with acute coronary syndromes and normal to mildly reduced renal function', journal: 'Journal of the American College of Cardiology', year: 2005, pmid: '15837256', url: 'https://pubmed.ncbi.nlm.nih.gov/15837256/' },
       { authors: 'Aronson D, Mittleman MA, Burger AJ', title: 'Elevated blood urea nitrogen level as a predictor of mortality in patients admitted for decompensated heart failure', journal: 'American Journal of Medicine', year: 2004, pmid: '15276594', url: 'https://pubmed.ncbi.nlm.nih.gov/15276594/' },
@@ -710,6 +736,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 138, high: 142, display: '138–142 mEq/L', confidence: 'strong' },
     why_it_matters: 'Sodium is the primary extracellular electrolyte and the principal determinant of serum osmolality. It governs fluid balance, nerve impulse transmission, and muscle contraction. Hyponatremia (low sodium) causes neurological symptoms and is the most common electrolyte disorder in hospitalized patients. Hypernatremia (high sodium) indicates dehydration or water regulation failure.',
     why_range_differs: 'The clinical range is tight because sodium outside 130–150 is life-threatening. Aere optimal targets the center (138–142) where osmoregulation is optimal, kidney workload is minimized, and cardiovascular risk is lowest. Emerging data links even high-normal sodium (>142) to premature biological aging via chronic hyperosmolality stress.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Dmitrieva NI, Burg MB', title: 'High NaCl promotes cellular senescence', journal: 'Cell Physiology and Biochemistry', year: 2007, pmid: '17975311', url: 'https://pubmed.ncbi.nlm.nih.gov/17975311/' },
       { authors: 'Dmitrieva NI et al.', title: 'Middle-age high serum sodium as a risk factor for accelerated biological aging', journal: 'eBioMedicine', year: 2023, pmid: '36599270', url: 'https://pubmed.ncbi.nlm.nih.gov/36599270/' },
@@ -731,6 +758,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 4.0, high: 4.8, display: '4.0–4.8 mEq/L', confidence: 'strong' },
     why_it_matters: 'Potassium is the dominant intracellular cation and critical for cardiac rhythm, muscle function, and blood pressure regulation. Hypokalemia (low potassium) causes cardiac arrhythmias, muscle weakness, and cramps — common in people taking diuretics or eating ultra-processed food diets. Hyperkalemia (high potassium) can cause life-threatening cardiac arrest. Diet is the primary modifiable lever: leafy greens, avocados, and legumes are rich sources.',
     why_range_differs: 'The optimal center-of-range (4.0–4.8) reflects where cardiovascular risk is lowest in large population studies. Values below 4.0 are associated with increased arrhythmia risk even within the "normal" reference range. Higher dietary potassium also helps counter the vascular effects of sodium excess.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Alderman MH, Madhavan S', title: 'Serum potassium and mortality in patients with hypertension', journal: 'American Journal of Hypertension', year: 1998, pmid: '9684884', url: 'https://pubmed.ncbi.nlm.nih.gov/9684884/' },
       { authors: 'Lanham-New SA', title: 'Potassium and the treatment of hypertension', journal: 'British Medical Bulletin', year: 2001, pmid: '12176856' },
@@ -752,6 +780,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 9.0, high: 10.0, display: '9.0–10.0 mg/dL', confidence: 'moderate' },
     why_it_matters: 'Serum calcium reflects the balance between bone resorption, intestinal absorption, and renal excretion — regulated tightly by PTH and Vitamin D. High calcium (hypercalcemia) can indicate hyperparathyroidism, malignancy, or excessive supplementation. Low calcium (hypocalcemia) suggests vitamin D deficiency, hypoparathyroidism, or malabsorption. Importantly, serum calcium doesn\'t directly measure bone calcium stores.',
     why_range_differs: 'The body maintains serum calcium in a very narrow band, but even small persistent elevations within the normal range are associated with increased cardiovascular mortality. Population studies show that serum calcium in the upper quartile of normal independently predicts coronary events and all-cause mortality. Aere targets 9.0–10.0 mg/dL — the mid-range where PTH activity is minimal and vascular calcification risk is lowest.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Larsson SC, Burgess S, Michaelsson K', title: 'Association of genetic variants related to serum calcium levels with coronary artery disease and myocardial infarction', journal: 'JAMA', year: 2017, pmid: '28350899', url: 'https://pubmed.ncbi.nlm.nih.gov/28350899/' },
       { authors: 'Rohrmann S, Garmo H, Engholm G, et al.', title: 'Association between serum calcium concentration and risk of incident and fatal cardiovascular disease in the prospective AMORIS study', journal: 'Atherosclerosis', year: 2016, pmid: '27318883', url: 'https://pubmed.ncbi.nlm.nih.gov/27318883/' },
@@ -775,6 +804,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 1.7, high: 2.0 },
     why_it_matters: 'Magnesium is a cofactor in over 300 enzymatic reactions, including ATP synthesis, DNA repair, protein synthesis, and glucose metabolism. It plays a central role in insulin signaling, nerve transmission, and muscle relaxation. Low magnesium is strongly associated with hypertension, type 2 diabetes, cardiovascular disease, and poor sleep quality. An estimated 45–60% of Americans are subclinically deficient despite values within the lab reference range.',
     why_range_differs: 'Serum magnesium is a poor indicator of total body magnesium — only 1% of total body magnesium circulates in blood. The lab range (1.7–2.5) only detects frank deficiency. Prospective studies show that low serum magnesium (<2.0 mg/dL) independently predicts cardiovascular and all-cause mortality, and is associated with sudden cardiac death risk. Aere targets the upper half (2.0–2.5) where cardiovascular mortality risk is lowest, supported by large cohort data from the Rotterdam and ARIC studies.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Reffelmann T, Ittermann T, Dörr M, et al.', title: 'Low serum magnesium concentrations predict cardiovascular and all-cause mortality', journal: 'Atherosclerosis', year: 2011, pmid: '21737076', url: 'https://pubmed.ncbi.nlm.nih.gov/21737076/' },
       { authors: 'Kieboom BC, Niemeijer MN, Leening MJ, et al.', title: 'Serum magnesium and the risk of death from coronary heart disease and sudden cardiac death', journal: 'Journal of the American Heart Association', year: 2016, pmid: '26802105', url: 'https://pubmed.ncbi.nlm.nih.gov/26802105/' },
@@ -796,7 +826,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'million/μL',
     unit_aliases: ['10^6/μL', 'M/μL', '×10¹²/L'],
     standard_lab_range: { low: 4.2, high: 6.1, display: '4.2–6.1 million/μL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 4.5, high: 5.8, display: '4.5–5.8 million/μL', confidence: 'moderate' },
+    aere_optimal: { low: 4.5, high: 5.8, display: '4.8–5.8 million/μL (M) / 4.3–5.2 million/μL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 4.7, high: 6.1, display: '4.7–6.1 million/μL', source: 'LabCorp' },
       aere_optimal: { low: 4.8, high: 5.8, display: '4.8–5.8 million/μL', confidence: 'moderate' },
@@ -807,6 +837,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'The red blood cell count measures the total number of erythrocytes per microliter of blood. RBCs carry oxygen to tissues via hemoglobin. Low RBC (anemia) impairs oxygen delivery, causing fatigue, cognitive fog, and exercise intolerance. High RBC (polycythemia) increases blood viscosity and thrombosis risk. RBC count must be interpreted alongside hemoglobin and hematocrit for a complete picture.',
     why_range_differs: 'Men naturally have higher RBC counts due to testosterone stimulation of erythropoiesis. The sex difference averages 0.5–1.0 million/μL. Prospective cohort data show that both low RBC (anemia) and very high RBC (polycythemia) predict increased all-cause and cardiovascular mortality. Aere targets the mid-range for each sex — where oxygen-carrying capacity is optimized without the viscosity and thrombosis risk associated with erythrocytosis.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Patel KV', title: 'Epidemiology of anemia in older adults', journal: 'Seminars in Hematology', year: 2008, pmid: '18693073', url: 'https://pubmed.ncbi.nlm.nih.gov/18693073/' },
       { authors: 'Zakai NA, Katz R, Hirsch C, et al.', title: 'A prospective study of anemia status, hemoglobin concentration, and mortality in an elderly cohort: the Cardiovascular Health Study', journal: 'Archives of Internal Medicine', year: 2005, pmid: '16009858', url: 'https://pubmed.ncbi.nlm.nih.gov/16009858/' },
@@ -830,6 +861,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 7.0, high: 11.0 },
     why_it_matters: 'WBC count reflects the overall immune system burden. White blood cells include neutrophils, lymphocytes, monocytes, eosinophils, and basophils. Chronically elevated WBC — even within the "normal" range — is now recognized as a marker of chronic low-grade inflammation and is independently associated with increased cardiovascular disease and all-cause mortality. Very low WBC may indicate immune compromise.',
     why_range_differs: 'The clinical upper limit of 11.0 K/μL was designed to identify clear infection or hematologic disease. But epidemiological studies show that WBC above 7.0–8.0 K/μL is associated with graded increases in cardiovascular risk and mortality even in clinically healthy people. Aere targets the lower half of normal (4.5–7.0), which correlates with lower systemic inflammation and better longevity outcomes.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ruggiero C et al.', title: 'White blood cell count and mortality in the Baltimore Longitudinal Study of Aging', journal: 'Journal of the American College of Cardiology', year: 2007, pmid: '17346821', url: 'https://pubmed.ncbi.nlm.nih.gov/17346821/' },
       { authors: 'Shankar A, Mitchell P, Rochtchina E, Wang JJ', title: 'Association between circulating white blood cell count and long-term incidence of age-related macular degeneration', journal: 'American Journal of Epidemiology', year: 2007, pmid: '17567756', url: 'https://pubmed.ncbi.nlm.nih.gov/17567756/' },
@@ -849,7 +881,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'g/dL',
     unit_aliases: ['g/L'],
     standard_lab_range: { low: 12.0, high: 17.5, display: '12.0–17.5 g/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 13.5, high: 16.5, display: '13.5–16.5 g/dL', confidence: 'strong' },
+    aere_optimal: { low: 13.5, high: 16.5, display: '14.0–17.0 g/dL (M) / 13.0–15.5 g/dL (F)', confidence: 'strong' },
     male_ranges: {
       standard_lab_range: { low: 13.5, high: 17.5, display: '13.5–17.5 g/dL', source: 'LabCorp' },
       aere_optimal: { low: 14.0, high: 17.0, display: '14.0–17.0 g/dL', confidence: 'strong' },
@@ -860,6 +892,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Hemoglobin is the iron-containing protein in red blood cells that binds and transports oxygen. It is the single most important measure of anemia severity. Low hemoglobin causes fatigue, reduced VO2 max, cognitive impairment, and poor exercise recovery. Even mild anemia significantly reduces aerobic capacity and quality of life. Hemoglobin is directly influenced by iron status, B12, folate, erythropoietin, and inflammation.',
     why_range_differs: 'Men have higher hemoglobin due to testosterone\'s erythropoietic effects. Prospective mortality studies show a U-shaped relationship between hemoglobin and death: both low (<13 g/dL in men, <12 g/dL in women) and very high values increase all-cause mortality risk. Aere targets sex-specific mid-range values (14–17 g/dL male, 13–15.5 g/dL female) where mortality risk is lowest and oxygen-carrying capacity is optimized without excess viscosity.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Zakai NA, Katz R, Hirsch C, et al.', title: 'A prospective study of anemia status, hemoglobin concentration, and mortality in an elderly cohort: the Cardiovascular Health Study', journal: 'Archives of Internal Medicine', year: 2005, pmid: '16009858', url: 'https://pubmed.ncbi.nlm.nih.gov/16009858/' },
       { authors: 'Culleton BF, Manns BJ, Zhang J, et al.', title: 'Impact of anemia on hospitalization and mortality in older adults', journal: 'Blood', year: 2006, pmid: '16249381', url: 'https://pubmed.ncbi.nlm.nih.gov/16249381/' },
@@ -879,7 +912,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: '%',
     unit_aliases: ['L/L'],
     standard_lab_range: { low: 36.0, high: 53.0, display: '36–53% (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 40.0, high: 50.0, display: '40–50%', confidence: 'moderate' },
+    aere_optimal: { low: 40.0, high: 50.0, display: '42–50% (M) / 38–45% (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 41.0, high: 53.0, display: '41–53%', source: 'LabCorp' },
       aere_optimal: { low: 42.0, high: 50.0, display: '42–50%', confidence: 'moderate' },
@@ -890,6 +923,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Hematocrit measures the proportion of blood volume occupied by red blood cells. It parallels hemoglobin and is used to assess anemia and polycythemia. Very high hematocrit increases blood viscosity, raising stroke and thrombosis risk — a concern in endurance athletes who use altitude training or erythropoietin. Very low hematocrit (below 36% in women, below 41% in men) defines anemia.',
     why_range_differs: 'Hematocrit follows the same sex-differentiated pattern as hemoglobin. The Framingham Heart Study demonstrated that elevated hematocrit is an independent cardiovascular risk factor, with hematocrit above 50% in men significantly increasing coronary and stroke risk due to blood viscosity. Conversely, low hematocrit indicates anemia and impaired oxygen delivery. Aere targets 42–50% in men and 38–45% in women — the range where oxygen-carrying capacity is optimized without the viscosity-driven cardiovascular risk seen at higher values.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Gagnon DR, Zhang TJ, Brand FN, Kannel WB', title: 'Hematocrit and the risk of cardiovascular disease — the Framingham study: a 34-year follow-up', journal: 'American Heart Journal', year: 1994, pmid: '7942431', url: 'https://pubmed.ncbi.nlm.nih.gov/7942431/' },
       { authors: 'Kunnas T, Solakivi T, Huuskonen K, et al.', title: 'Hematocrit and the risk of coronary heart disease mortality in the TAMRISK study', journal: 'Research and Practice in Thrombosis and Haemostasis', year: 2020 },
@@ -912,6 +946,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 175, high: 350, display: '175–350 K/μL', confidence: 'moderate' },
     why_it_matters: 'Platelets are small cell fragments essential for blood clotting and wound healing. Low platelets (thrombocytopenia, <150 K/μL) increase bleeding risk and can indicate viral infection, autoimmune disease, or bone marrow dysfunction. Very high platelets (thrombocytosis, >450 K/μL) increase thrombosis risk and may signal infection, iron deficiency, inflammation, or myeloproliferative disorders. Platelet count also informs cardiovascular risk assessment.',
     why_range_differs: 'The broad lab range (150–400) reflects wide natural variation. The Tromso Study demonstrated that platelet count and platelet function are independently related to total and cardiovascular death in apparently healthy men, with higher counts conferring increased risk. Aere optimal targets a tighter center range (175–350 K/μL) where clotting function is preserved without the excess thrombosis and cardiovascular mortality risk associated with counts above 350 K/μL.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Thaulow E, Erikssen J, Sandvik L, et al.', title: 'Blood platelet count and function are related to total and cardiovascular death in apparently healthy men', journal: 'Circulation', year: 1991, pmid: '2060068', url: 'https://pubmed.ncbi.nlm.nih.gov/2060068/' },
       { authors: 'Tsai MT, Chen YT, Lin CH, et al.', title: 'Platelet count and risk of all-cause mortality and cardiovascular events', journal: 'Thrombosis and Haemostasis', year: 2015 },
@@ -933,6 +968,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 85, high: 95, display: '85–95 fL', confidence: 'moderate' },
     why_it_matters: 'MCV measures the average size of red blood cells and is the most important first-line tool for classifying anemia. Small red cells (microcytic MCV <80 fL) typically indicate iron deficiency anemia or thalassemia. Large red cells (macrocytic MCV >100 fL) suggest B12 or folate deficiency, liver disease, alcohol excess, or thyroid dysfunction. Normal MCV (normocytic anemia) points toward chronic disease, hemolysis, or blood loss.',
     why_range_differs: 'The lab reference range broadly defines macrocytosis and microcytosis. Abnormal MCV — both high and low — is associated with increased all-cause mortality and cognitive decline in older adults. Macrocytosis (MCV >100 fL) predicts mortality even in the absence of anemia, often reflecting occult B12 deficiency, liver disease, or alcohol use. Aere optimal (85–95 fL) targets the center of normal where red cell physiology is most efficient and mortality risk is lowest.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Patel KV, Semba RD, Ferrucci L, et al.', title: 'Red cell distribution width and mortality in older adults: a meta-analysis', journal: 'Archives of Internal Medicine', year: 2009, pmid: '19470554', url: 'https://pubmed.ncbi.nlm.nih.gov/19470554/' },
       { authors: 'Gamaldo AA, Ferrucci L, Rifkind JM, Zonderman AB', title: 'Relationship between mean corpuscular volume and cognitive performance in older adults', journal: 'Journal of the American Geriatrics Society', year: 2013 },
@@ -949,12 +985,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'testosterone_total',
     name: 'Testosterone (Total)',
     aliases: ['total testosterone', 'serum testosterone', 'T level'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'ng/dL',
     unit_aliases: ['nmol/L'],
     standard_lab_range: { low: 10, high: 916, display: '10–916 ng/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 400, high: 900, display: '400–900 ng/dL', confidence: 'moderate' },
+    aere_optimal: { low: 500, high: 900, display: '500–900 ng/dL (M) / 25–55 ng/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 264, high: 916, display: '264–916 ng/dL', source: 'LabCorp' },
       aere_optimal: { low: 500, high: 900, display: '500–900 ng/dL', confidence: 'moderate' },
@@ -965,6 +1001,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Testosterone is the primary anabolic hormone, critical for muscle mass, bone density, libido, energy, mood, and cognitive function in both sexes. In men, declining testosterone (andropause) accelerates muscle loss, fat gain, depression, and sexual dysfunction. In women, low testosterone causes fatigue, low libido, and reduced muscle tone. Total testosterone includes both bound (to SHBG and albumin) and free fractions — free testosterone is the biologically active form.',
     why_range_differs: 'Standard lab ranges are population-derived and include elderly, sedentary, and metabolically unhealthy individuals. A 70-year-old man\'s "normal" testosterone (264 ng/dL) is far from optimal for longevity. Multiple prospective studies in older men demonstrate that low serum testosterone independently predicts increased all-cause mortality, with the 500–900 ng/dL range associated with lowest mortality risk. Aere targets this upper-half range for men, where muscle-preserving, bone-protecting, and survival benefits are maximized.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Laughlin GA, Barrett-Connor E, Bergstrom J', title: 'Low serum testosterone and mortality in older men', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2008, pmid: '17911176', url: 'https://pubmed.ncbi.nlm.nih.gov/17911176/' },
       { authors: 'Shores MM, Matsumoto AM, Sloan KL, Kivlahan DR', title: 'Low serum testosterone and mortality in male veterans', journal: 'Archives of Internal Medicine', year: 2006, pmid: '16847388', url: 'https://pubmed.ncbi.nlm.nih.gov/16847388/' },
@@ -979,12 +1016,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'testosterone_free',
     name: 'Testosterone (Free)',
     aliases: ['free testosterone', 'bioavailable testosterone', 'unbound testosterone'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'pg/mL',
     unit_aliases: ['ng/dL', 'pmol/L'],
     standard_lab_range: { low: 0.3, high: 21.5, display: '0.3–21.5 pg/mL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 10, high: 20, display: '10–20 pg/mL (males)', confidence: 'moderate' },
+    aere_optimal: { low: 12, high: 20, display: '12–20 pg/mL (M) / 1.0–3.0 pg/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 6.8, high: 21.5, display: '6.8–21.5 pg/mL', source: 'LabCorp' },
       aere_optimal: { low: 12, high: 20, display: '12–20 pg/mL', confidence: 'moderate' },
@@ -995,6 +1032,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Free testosterone represents the fraction of total testosterone not bound to SHBG or albumin — it is the biologically active form that enters cells and drives androgen effects. Two men can have identical total testosterone but very different free testosterone depending on SHBG levels. High SHBG (common with aging, thyroid disorders, and liver disease) suppresses free testosterone and produces symptoms of deficiency even when total testosterone is "normal."',
     why_range_differs: 'Because SHBG rises with age, the ratio of free to total testosterone falls progressively after age 40. Men in the 60s may have total testosterone in range but free testosterone near the bottom — explaining why symptoms matter alongside numbers. Aere targets the upper portion of the reference range to ensure adequate androgenic signaling for muscle, bone, and brain function.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Yeap BB et al.', title: 'In older men, higher plasma testosterone or dihydrotestosterone is an independent predictor of lower mortality', journal: 'European Journal of Endocrinology', year: 2014, pmid: '24436397', url: 'https://pubmed.ncbi.nlm.nih.gov/24436397/' },
       { authors: 'Shores MM et al.', title: 'Low serum testosterone and mortality in male veterans', journal: 'Archives of Internal Medicine', year: 2006, pmid: '16847388', url: 'https://pubmed.ncbi.nlm.nih.gov/16847388/' },
@@ -1009,12 +1047,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'estradiol',
     name: 'Estradiol (E2)',
     aliases: ['E2', 'oestradiol', '17-beta estradiol', 'serum estradiol'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'pg/mL',
     unit_aliases: ['pmol/L'],
     standard_lab_range: { low: 7.6, high: 411, display: '7.6–411 pg/mL (highly cycle- and sex-dependent)', source: 'LabCorp' },
-    aere_optimal: { low: 20, high: 35, display: '20–35 pg/mL (males); cycle-dependent (females)', confidence: 'moderate' },
+    aere_optimal: { low: 20, high: 35, display: '20–35 pg/mL (M) / Cycle-dependent (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 7.6, high: 42.6, display: '7.6–42.6 pg/mL', source: 'LabCorp' },
       aere_optimal: { low: 20, high: 35, display: '20–35 pg/mL', confidence: 'moderate' },
@@ -1025,6 +1063,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Estradiol is the most potent estrogen and the primary sex hormone in women during reproductive years. In men, small amounts of estradiol (produced from testosterone via aromatization) are essential for bone density, libido, cardiovascular health, and cognitive function. Very low estradiol in men causes brittle bones and sexual dysfunction; very high estradiol (often from aromatization in obesity) suppresses testosterone and causes gynecomastia.',
     why_range_differs: 'In women, estradiol varies dramatically across the menstrual cycle (19–144 follicular; 49–411 luteal; <59 postmenopausal). For postmenopausal women on hormone replacement therapy, target ranges vary by formulation and individual symptom response. In men, the optimal window (20–35 pg/mL) reflects outcome data showing that this range provides bone protection and cardiovascular benefit without suppressing LH and testosterone — levels below 20 pg/mL in men are associated with increased fracture risk and cardiovascular mortality.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Finkelstein JS et al.', title: 'Gonadal steroids and body composition, strength, and sexual function in men', journal: 'NEJM', year: 2013, pmid: '24024838', url: 'https://pubmed.ncbi.nlm.nih.gov/24024838/' },
       { authors: 'Manson JE et al.', title: 'Menopausal hormone therapy and long-term all-cause and cause-specific mortality', journal: 'JAMA', year: 2017, pmid: '28898378', url: 'https://pubmed.ncbi.nlm.nih.gov/28898378/' },
@@ -1039,12 +1078,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'dhea_s',
     name: 'DHEA-S',
     aliases: ['DHEA sulfate', 'dehydroepiandrosterone sulfate', 'DHEAS'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'μg/dL',
     unit_aliases: ['mcg/dL', 'nmol/L'],
     standard_lab_range: { low: 35, high: 483, display: '35–483 μg/dL (age- and sex-dependent)', source: 'LabCorp' },
-    aere_optimal: { low: 150, high: 400, display: 'Upper third of age-adjusted range', confidence: 'moderate' },
+    aere_optimal: { low: 150, high: 400, display: '200–450 μg/dL (M) / 150–380 μg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 88, high: 483, display: '88–483 μg/dL (age 25–44)', source: 'LabCorp' },
       aere_optimal: { low: 200, high: 450, display: '200–450 μg/dL (age 25–44)', confidence: 'moderate' },
@@ -1055,6 +1094,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'DHEA-S is the sulfated form of DHEA, an adrenal androgen precursor and the most abundant circulating steroid hormone. It peaks in the mid-20s and declines by 80–90% by age 80 — one of the most dramatic age-related hormonal changes known. DHEA-S is a precursor to both testosterone and estrogen in peripheral tissues. Low levels are associated with increased all-cause mortality, cardiovascular disease, and accelerated cognitive decline in observational studies.',
     why_range_differs: 'Lab ranges incorporate all ages, so a 65-year-old\'s "normal" (35 μg/dL) represents significant depletion relative to youthful levels. Aere targets the upper third of age-adjusted ranges — not youthful peak levels (which may be harmful) but the upper portion of what is achievable for a given age, reflecting better adrenal reserve and slower biological aging.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ohlsson C et al.', title: 'Low serum levels of dehydroepiandrosterone sulfate predict all-cause and cardiovascular mortality in elderly Swedish men', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2010, pmid: '20089510', url: 'https://pubmed.ncbi.nlm.nih.gov/20089510/' },
       { authors: 'Enomoto M et al.', title: 'Serum dehydroepiandrosterone sulfate levels predict longevity in men: 27-year follow-up study in a community-based cohort (Tanushimaru study)', journal: 'Journal of the American Geriatrics Society', year: 2008, pmid: '18312316', url: 'https://pubmed.ncbi.nlm.nih.gov/18312316/' },
@@ -1069,7 +1109,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'cortisol_morning',
     name: 'Cortisol (Morning)',
     aliases: ['AM cortisol', 'morning cortisol', 'serum cortisol', 'fasting cortisol'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'μg/dL',
     unit_aliases: ['mcg/dL', 'nmol/L'],
@@ -1079,6 +1119,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 18, high: 23 },
     why_it_matters: 'Cortisol follows a circadian rhythm, peaking within 30–45 minutes of waking (the cortisol awakening response) and declining throughout the day. Morning cortisol is the standard clinical measurement. Chronically elevated cortisol indicates HPA axis dysregulation (from psychological stress, sleep deprivation, or metabolic dysfunction) and drives inflammation, insulin resistance, muscle catabolism, and immunosuppression. Chronically low cortisol may indicate adrenal insufficiency or burnout.',
     why_range_differs: 'The wide reference range captures both normal morning peaks and potential adrenal dysfunction. Longitudinal studies demonstrate a U-shaped relationship between cortisol and mortality: both high and low cortisol predict increased all-cause and cardiovascular death in older adults. Hypercortisolemic states also independently increase cardiovascular risk via metabolic syndrome pathways. Aere targets the middle (10–18 μg/dL) — the zone associated with lowest mortality risk and a healthy cortisol awakening response without HPA overactivation.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kumari M, Shipley M, Stafford M, Kivimaki M', title: 'Association of diurnal patterns in salivary cortisol with all-cause and cardiovascular mortality', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2011, pmid: '21159847', url: 'https://pubmed.ncbi.nlm.nih.gov/21159847/' },
       { authors: 'Vogelzangs N, Beekman AT, Milaneschi Y, et al.', title: 'Urinary cortisol and six-year risk of all-cause and cardiovascular mortality', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2010, pmid: '20688438', url: 'https://pubmed.ncbi.nlm.nih.gov/20688438/' },
@@ -1093,12 +1134,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'shbg',
     name: 'SHBG',
     aliases: ['sex hormone-binding globulin', 'sex hormone binding globulin', 'testosterone-binding globulin'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'nmol/L',
     unit_aliases: ['nM'],
     standard_lab_range: { low: 10, high: 144, display: '10–144 nmol/L (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 20, high: 60, display: '20–60 nmol/L', confidence: 'moderate' },
+    aere_optimal: { low: 20, high: 60, display: '20–40 nmol/L (M) / 30–80 nmol/L (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 10, high: 57, display: '10–57 nmol/L', source: 'LabCorp' },
       aere_optimal: { low: 20, high: 40, display: '20–40 nmol/L', confidence: 'moderate' },
@@ -1109,6 +1150,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'SHBG is a glycoprotein produced by the liver that binds sex hormones (primarily testosterone and estradiol), rendering them biologically inactive. SHBG determines how much of your total testosterone is actually "free" and available to cells. High SHBG (common in older age, thyroid disease, caloric restriction, and alcohol use) suppresses free testosterone. Low SHBG (associated with insulin resistance, obesity, and metabolic syndrome) raises free androgen and estrogen bioavailability and is an independent cardiovascular risk marker.',
     why_range_differs: 'SHBG is a key modulator of hormonal bioavailability. Rather than an absolute optimal, Aere targets a balanced range that preserves adequate free testosterone in men and prevents excess androgen exposure in women — while avoiding SHBG extremes in either direction. High SHBG in men (>57) often explains symptoms of low testosterone despite normal total T.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ding EL et al.', title: 'Sex hormone-binding globulin and risk of type 2 diabetes in women and men', journal: 'NEJM', year: 2009, pmid: '19940222', url: 'https://pubmed.ncbi.nlm.nih.gov/19940222/' },
       { authors: 'Yeap BB et al.', title: 'In older men an optimal plasma testosterone is associated with reduced all-cause mortality and higher dihydrotestosterone with reduced ischemic heart disease mortality, while estradiol, SHBG, and LH levels do not predict mortality', journal: 'Clinical Endocrinology', year: 2014, pmid: '23746264', url: 'https://pubmed.ncbi.nlm.nih.gov/23746264/' },
@@ -1132,6 +1174,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 3.0, high: 10.0 },
     why_it_matters: 'Folate (vitamin B9) is essential for DNA synthesis, methylation reactions, and the one-carbon metabolic cycle. It is critical for fetal neural tube development, which is why folate supplementation is universally recommended before and during pregnancy. Deficiency causes macrocytic anemia (elevated MCV), elevated homocysteine, and impaired DNA repair. Folate works synergistically with B12 and B6 to keep homocysteine in check.',
     why_range_differs: 'The lab lower limit (3.0 ng/mL) identifies frank deficiency. However, folate levels in the 3–10 ng/mL range are associated with elevated homocysteine, impaired methylation, and increased risk of cognitive decline and dementia — even without overt anemia. Aere targets >10 ng/mL where cognitive outcome data shows the lowest dementia risk, and folic acid supplementation trials demonstrate preserved cognitive function in older adults.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ravaglia G et al.', title: 'Homocysteine and folate as risk factors for dementia and Alzheimer disease', journal: 'American Journal of Clinical Nutrition', year: 2005, pmid: '16002791', url: 'https://pubmed.ncbi.nlm.nih.gov/16002791/' },
       { authors: 'Durga J et al.', title: 'Effect of 3-year folic acid supplementation on cognitive function in older adults in the FACIT trial: a randomised, double blind, controlled trial', journal: 'Lancet', year: 2007, pmid: '17258671', url: 'https://pubmed.ncbi.nlm.nih.gov/17258671/' },
@@ -1150,7 +1193,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['μmol/L'],
     standard_lab_range: { low: 2.5, high: 8.0, display: '2.5–8.0 mg/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 3.0, high: 5.5, display: '3.0–5.5 mg/dL', confidence: 'moderate' },
+    aere_optimal: { low: 3.0, high: 5.5, display: '3.5–5.5 mg/dL (M) / 2.5–4.5 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 4.0, high: 8.0, display: '4.0–8.0 mg/dL', source: 'LabCorp' },
       aere_optimal: { low: 3.5, high: 5.5, display: '3.5–5.5 mg/dL', confidence: 'moderate' },
@@ -1161,6 +1204,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Uric acid is the end product of purine metabolism. Elevated uric acid (hyperuricemia) causes gout, kidney stones, and is increasingly recognized as an independent risk factor for hypertension, cardiovascular disease, insulin resistance, and nonalcoholic fatty liver disease. High fructose intake, red meat, shellfish, alcohol, and dehydration raise uric acid. Women are partly protected by estrogen (which increases renal uric acid excretion) until menopause.',
     why_range_differs: 'Gout occurs above 6.8 mg/dL (the saturation point for urate crystal formation), but cardiovascular and metabolic risk rises progressively from levels above 5.0 mg/dL. Aere targets below 5.5 in men and below 4.5 in women — ranges associated with the lowest metabolic risk, well below the gout threshold. Fructose restriction is the most effective dietary intervention.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Feig DI, Kang DH, Johnson RJ', title: 'Uric acid and cardiovascular risk', journal: 'NEJM', year: 2008, pmid: '18784103', url: 'https://pubmed.ncbi.nlm.nih.gov/18784103/' },
       { authors: 'Johnson RJ et al.', title: 'Potential role of sugar (fructose) in the epidemic of hypertension, obesity and the metabolic syndrome, diabetes, kidney disease, and cardiovascular disease', journal: 'American Journal of Clinical Nutrition', year: 2007, pmid: '17921363', url: 'https://pubmed.ncbi.nlm.nih.gov/17921363/' },
@@ -1186,6 +1230,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 50, high: 125 },
     why_it_matters: 'Lipoprotein(a) [Lp(a)] is a modified LDL particle with an additional apolipoprotein(a) attached, conferring both atherogenic and prothrombotic properties. It is 80–90% genetically determined — diet and exercise have minimal impact. Elevated Lp(a) is one of the most common inherited cardiovascular risk factors, affecting approximately 1 in 5 people globally. It independently predicts myocardial infarction, stroke, and aortic valve disease at any LDL level. Lp(a) should be measured at least once in every adult.',
     why_range_differs: 'Unlike most biomarkers, Lp(a) has no clinical "normal range" in the traditional sense — it is a continuous risk factor. The EAS (European Atherosclerosis Society) defines elevated Lp(a) as >125 nmol/L as a threshold for intensifying other cardiovascular risk interventions. Aere targets <50 nmol/L because cardiovascular risk is lowest at this level. For those with high Lp(a), the treatment focus shifts to aggressively lowering all modifiable risk factors, particularly LDL and ApoB.',
+    retest_interval_months: null,
     citations: [
       { authors: 'Kronenberg F et al.', title: 'Lipoprotein(a) in atherosclerotic cardiovascular disease and aortic stenosis: a European Atherosclerosis Society consensus statement', journal: 'European Heart Journal', year: 2022, pmid: '35600029', url: 'https://pubmed.ncbi.nlm.nih.gov/35600029/' },
       { authors: 'Kamstrup PR, Tybjærg-Hansen A, Nordestgaard BG', title: 'Elevated lipoprotein(a) and risk of aortic valve stenosis in the general population', journal: 'JACC', year: 2014, pmid: '24355191', url: 'https://pubmed.ncbi.nlm.nih.gov/24355191/' },
@@ -1204,7 +1249,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'mg/dL',
     unit_aliases: ['g/L'],
     standard_lab_range: { low: 101, high: 202, display: '101–202 mg/dL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 150, high: 200, display: '150–200 mg/dL', confidence: 'moderate' },
+    aere_optimal: { low: 150, high: 200, display: '140–175 mg/dL (M) / 155–200 mg/dL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 101, high: 178, display: '101–178 mg/dL', source: 'LabCorp' },
       aere_optimal: { low: 140, high: 175, display: '140–175 mg/dL', confidence: 'moderate' },
@@ -1215,6 +1260,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'ApoA1 is the primary protein component of HDL cholesterol particles, enabling reverse cholesterol transport — the process of removing cholesterol from arterial walls and returning it to the liver. Higher ApoA1 indicates greater functional HDL capacity. It is considered a better measure of HDL\'s cardioprotective function than HDL-C alone, because HDL particle quality (reflected in ApoA1) matters as much as quantity. The ApoB:ApoA1 ratio is a powerful predictor of cardiovascular risk.',
     why_range_differs: 'Women naturally have higher ApoA1 than men, partly due to estrogen\'s positive effect on HDL metabolism. Aere targets the upper portion of the sex-adjusted range because higher ApoA1 correlates with better cardiovascular outcomes in large studies. Combined with ApoB, the ApoB:ApoA1 ratio provides the most comprehensive atherogenic risk assessment available.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Yusuf S et al.', title: 'Effect of potentially modifiable risk factors associated with myocardial infarction in 52 countries (INTERHEART study)', journal: 'Lancet', year: 2004, pmid: '15364185', url: 'https://pubmed.ncbi.nlm.nih.gov/15364185/' },
       { authors: 'Walldius G, Jungner I', title: 'The apoB/apoA-I ratio: a strong, new risk factor for cardiovascular disease and a target for lipid-lowering therapy', journal: 'Journal of Internal Medicine', year: 2006, pmid: '16476101', url: 'https://pubmed.ncbi.nlm.nih.gov/16476101/' },
@@ -1231,7 +1277,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'igf1',
     name: 'IGF-1',
     aliases: ['insulin-like growth factor 1', 'somatomedin C', 'IGF1', 'SM-C'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'ng/mL',
     unit_aliases: ['μg/L'],
@@ -1239,6 +1285,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 120, high: 200, display: '120–200 ng/mL (age 30–60)', confidence: 'moderate' },
     why_it_matters: 'IGF-1 is the primary mediator of growth hormone (GH) action, produced mainly by the liver in response to GH signaling. It promotes cell growth, protein synthesis, and muscle development. IGF-1 declines significantly with age (somatopause). While low IGF-1 is associated with sarcopenia, fatigue, and poor recovery, the relationship with longevity is complex: exceptionally high IGF-1 has been linked to increased cancer risk, while very low IGF-1 (as seen in Laron syndrome dwarfism) is paradoxically protective against cancer in some populations.',
     why_range_differs: 'The longevity-optimal IGF-1 zone is controversial and likely context-dependent. Peter Attia and other longevity researchers suggest targeting the mid-range for age (not the upper range) — high enough to preserve muscle mass, bone density, and cognitive function, but not so high as to maximally stimulate cell proliferation. Aere targets 120–200 ng/mL for adults 30–60 as a balanced zone, with the understanding that optimal levels shift downward with age.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Attia P', title: 'Outlive: The Science and Art of Longevity', journal: 'Harmony Books', year: 2023 },
       { authors: 'Levine ME et al.', title: 'Low protein intake is associated with a major reduction in IGF-1, cancer, and overall mortality in the 65 and younger but not older population', journal: 'Cell Metabolism', year: 2014, pmid: '24606898', url: 'https://pubmed.ncbi.nlm.nih.gov/24606898/' },
@@ -1255,7 +1302,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'psa_total',
     name: 'PSA (Total)',
     aliases: ['prostate-specific antigen', 'total PSA', 'serum PSA', 'prostate antigen'],
-    category: 'hormones',
+    category: 'hormones-male',
     sex_specific: 'male',
     unit: 'ng/mL',
     unit_aliases: ['μg/L'],
@@ -1263,6 +1310,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 1.5, display: '<1.5 ng/mL (<50); <2.0 ng/mL (50–59); <2.5 ng/mL (60–69)', confidence: 'moderate' },
     why_it_matters: 'PSA (prostate-specific antigen) is a protein produced by both normal and cancerous prostate cells. While not a perfect cancer marker (benign prostatic hyperplasia and prostatitis also raise PSA), it is the primary screening tool for prostate cancer. Prostate cancer is the second most common cancer in men globally. Serial PSA measurement (PSA velocity) and PSA density (PSA relative to prostate volume) add clinical context beyond a single value. The decision to screen should factor in age, family history, and individual risk tolerance.',
     why_range_differs: 'The traditional cutoff of 4.0 ng/mL was designed for sensitivity in an era when prostate cancer treatment was more aggressive regardless of stage. Modern guidelines emphasize age-adjusted PSA: younger men should have lower values, and any PSA above 1.5 in a man under 50 warrants closer surveillance. Aere uses age-stratified optimal thresholds because PSA naturally rises with age and prostate size — what is concerning at 40 may be less so at 70, in the right clinical context.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Catalona WJ et al.', title: 'Measurement of prostate-specific antigen in serum as a screening test for prostate cancer', journal: 'NEJM', year: 1991, pmid: '1707140', url: 'https://pubmed.ncbi.nlm.nih.gov/1707140/' },
       { authors: 'Schröder FH et al.', title: 'Prostate-cancer mortality at 11 years of follow-up (ERSPC trial)', journal: 'NEJM', year: 2012, pmid: '22417251', url: 'https://pubmed.ncbi.nlm.nih.gov/22417251/' },
@@ -1279,12 +1327,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'prolactin',
     name: 'Prolactin',
     aliases: ['PRL', 'serum prolactin', 'lactogenic hormone'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'ng/mL',
     unit_aliases: ['mIU/L', 'μg/L'],
     standard_lab_range: { low: 2, high: 29, display: '2–29 ng/mL (varies by sex)', source: 'LabCorp' },
-    aere_optimal: { low: 4, high: 15, display: '4–15 ng/mL', confidence: 'moderate' },
+    aere_optimal: { low: 4, high: 15, display: '4–12 ng/mL (M) / 4–20 ng/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 2, high: 18, display: '2–18 ng/mL', source: 'LabCorp' },
       aere_optimal: { low: 4, high: 12, display: '4–12 ng/mL', confidence: 'moderate' },
@@ -1295,6 +1343,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Prolactin is a pituitary hormone primarily known for stimulating milk production (lactation). In non-pregnant individuals, persistently elevated prolactin (hyperprolactinemia) suppresses GnRH, blunting LH and FSH release — which in turn lowers testosterone in men and causes menstrual irregularities in women. Common causes of high prolactin include pituitary adenoma (prolactinoma), medications (antipsychotics, metoclopramide), hypothyroidism, and chronic stress. Low prolactin is less clinically significant.',
     why_range_differs: 'Prolactin is highly sensitive to stress, meal timing, and exercise — a single elevated value may not be significant. Aere targets the middle of the reference range where prolactin\'s roles in immune modulation and stress response are functional, without the testosterone-suppressive effects of hyperprolactinemia. Consistently high values (above 20–25 ng/mL in men) warrant MRI evaluation of the pituitary.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Corona G et al.', title: 'Hyperprolactinemia, hypogonadism, and sexual dysfunction in men', journal: 'Nature Reviews Urology', year: 2011, pmid: '21403661', url: 'https://pubmed.ncbi.nlm.nih.gov/21403661/' },
       { authors: 'Krogh J et al.', title: 'Prolactin levels and the risk of future cardiovascular disease in men and women', journal: 'European Journal of Endocrinology', year: 2010, pmid: '20154047', url: 'https://pubmed.ncbi.nlm.nih.gov/20154047/' },
@@ -1308,12 +1357,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'lh',
     name: 'LH',
     aliases: ['luteinizing hormone', 'lutropin', 'interstitial cell-stimulating hormone'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'mIU/mL',
     unit_aliases: ['IU/L'],
     standard_lab_range: { low: 1.5, high: 134.8, display: '1.5–134.8 mIU/mL (phase/sex-dependent)', source: 'LabCorp' },
-    aere_optimal: { low: 2.0, high: 9.0, display: '2.0–9.0 mIU/mL (males)', confidence: 'moderate' },
+    aere_optimal: { low: 2.0, high: 9.0, display: '2.0–7.0 mIU/mL (M) / Cycle-dependent (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 1.7, high: 8.6, display: '1.7–8.6 mIU/mL', source: 'LabCorp' },
       aere_optimal: { low: 2.0, high: 7.0, display: '2.0–7.0 mIU/mL', confidence: 'moderate' },
@@ -1324,6 +1373,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'LH is a pituitary gonadotropin that drives testosterone production in men (via Leydig cells) and triggers ovulation in women. In men, high LH with low testosterone indicates primary hypogonadism (testes failing to respond). Low LH with low testosterone suggests secondary hypogonadism (pituitary or hypothalamic dysfunction). In women, the LH surge triggers ovulation; persistently elevated LH/FSH in perimenopausal women reflects declining ovarian reserve.',
     why_range_differs: 'In men, Aere targets mid-range LH (2–7 mIU/mL) reflecting healthy hypothalamic-pituitary-gonadal axis function. Very high LH in men signals compensation for failing testes. In women, interpretation requires menstrual cycle phase — LH ranges vary 10-fold across the cycle. The LH:FSH ratio is particularly useful in evaluating PCOS (typically >2:1).',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Haring R et al.', title: 'Association of sex steroids, gonadotrophins, and their trajectories with clinical cardiovascular disease and all-cause mortality in elderly men from the Framingham Heart Study', journal: 'Clinical Endocrinology', year: 2013, pmid: '22970699', url: 'https://pubmed.ncbi.nlm.nih.gov/22970699/' },
       { authors: 'Yeap BB et al.', title: 'Higher luteinizing hormone is associated with impaired memory recall: the Health in Men Study', journal: 'Journal of Alzheimers Disease', year: 2013, pmid: '23380993', url: 'https://pubmed.ncbi.nlm.nih.gov/23380993/' },
@@ -1337,12 +1387,12 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'fsh',
     name: 'FSH',
     aliases: ['follicle-stimulating hormone', 'follitropin'],
-    category: 'hormones',
+    category: 'hormones-shared',
     sex_specific: 'both',
     unit: 'mIU/mL',
     unit_aliases: ['IU/L'],
     standard_lab_range: { low: 1.5, high: 134.8, display: '1.5–134.8 mIU/mL (phase/sex-dependent)', source: 'LabCorp' },
-    aere_optimal: { low: 2.0, high: 12.0, display: '2.0–12.0 mIU/mL (males)', confidence: 'moderate' },
+    aere_optimal: { low: 2.0, high: 12.0, display: '2.0–9.0 mIU/mL (M) / Cycle-dependent (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 1.5, high: 12.4, display: '1.5–12.4 mIU/mL', source: 'LabCorp' },
       aere_optimal: { low: 2.0, high: 9.0, display: '2.0–9.0 mIU/mL', confidence: 'moderate' },
@@ -1353,6 +1403,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'FSH stimulates egg follicle development in women and sperm production (spermatogenesis) in men. In women, rising FSH is one of the earliest signs of diminishing ovarian reserve — a key marker of reproductive aging and perimenopause onset. An FSH above 10 mIU/mL on day 3 of the cycle suggests reduced ovarian reserve; above 25 indicates perimenopause; above 40 postmenopause. In men, high FSH indicates primary testicular failure (Sertoli cell dysfunction), distinguishing it from secondary hypogonadism.',
     why_range_differs: 'For men, Aere targets the lower-to-mid range of FSH (2–9 mIU/mL) where spermatogenesis is healthy and testicular function is intact. In women, day 3 FSH is the clinical standard for ovarian reserve; values should be interpreted with anti-Müllerian hormone (AMH) for a complete picture. Postmenopausal FSH elevation is expected and not clinically actionable without hormone therapy context.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Haring R et al.', title: 'Association of sex steroids, gonadotrophins, and their trajectories with clinical cardiovascular disease and all-cause mortality in elderly men from the Framingham Heart Study', journal: 'Clinical Endocrinology', year: 2013, pmid: '22970699', url: 'https://pubmed.ncbi.nlm.nih.gov/22970699/' },
       { authors: 'Kaplan SA, Meehan AG, Shah A', title: 'The age related decrease in testosterone is significantly exacerbated in obese men with the metabolic syndrome', journal: 'Journal of Urology', year: 2006, pmid: '16813895', url: 'https://pubmed.ncbi.nlm.nih.gov/16813895/' },
@@ -1378,6 +1429,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 100, high: 130 },
     why_it_matters: 'Non-HDL cholesterol captures all atherogenic lipoproteins (LDL, VLDL, IDL, Lp(a)) in a single value: Total Cholesterol minus HDL. It is considered a superior predictor of cardiovascular events compared to LDL-C alone because it includes triglyceride-rich remnant particles that LDL-C misses — particularly important in people with high triglycerides or diabetes.',
     why_range_differs: 'The ACC/AHA cutoff of 130 mg/dL aligns with LDL-C treatment targets plus VLDL. Aere targets <100 mg/dL reflecting the cardiovascular risk reduction seen in aggressive lipid-lowering trials, particularly in high-risk individuals. Non-HDL is more reliable than LDL-C in non-fasting samples.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Boekholdt SM et al.', title: 'Association of LDL cholesterol, non-HDL cholesterol, and apolipoprotein B levels with risk of cardiovascular events among patients treated with statins', journal: 'JAMA', year: 2012, pmid: '22319975', url: 'https://pubmed.ncbi.nlm.nih.gov/22319975/' },
       { authors: 'Robinson JG et al.', title: 'Achieving lipid targets to reduce cardiovascular risk: non-HDL cholesterol as a treatment target', journal: 'Journal of Clinical Lipidology', year: 2012, pmid: '22658145', url: 'https://pubmed.ncbi.nlm.nih.gov/22658145/' },
@@ -1401,6 +1453,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 3.5, high: 5.0 },
     why_it_matters: 'The total cholesterol to HDL ratio is a quick atherogenicity index. It captures both the harmful (total cholesterol) and protective (HDL) lipid fractions in a single number. A ratio above 5 doubles cardiovascular risk compared to a ratio below 3.5. Unlike LDL-C alone, this ratio adjusts for reverse cholesterol transport capacity.',
     why_range_differs: 'Average US adults have ratios around 4.5 — close to the clinical concern threshold. Longevity-oriented targets push well below 3.5, matching ratios observed in the lowest cardiovascular risk populations.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kinosian B et al.', title: 'Cholesterol and coronary heart disease: predicting risks by levels and ratios', journal: 'Annals of Internal Medicine', year: 1994, pmid: '8311984', url: 'https://pubmed.ncbi.nlm.nih.gov/8311984/' },
       { authors: 'Ridker PM et al.', title: 'Non–HDL cholesterol, apolipoproteins A-I and B100, standard lipid measures, lipid ratios, and CRP as risk factors for cardiovascular disease in women', journal: 'JAMA', year: 2005, pmid: '16291984', url: 'https://pubmed.ncbi.nlm.nih.gov/16291984/' },
@@ -1424,6 +1477,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 1000, high: 1300 },
     why_it_matters: 'LDL particle number (LDL-P) counts the actual number of LDL particles circulating in the blood — distinct from LDL cholesterol (LDL-C), which measures the amount of cholesterol carried inside those particles. Each LDL particle can lodge in arterial walls regardless of its cholesterol cargo. LDL-P is a superior predictor of cardiovascular events compared to LDL-C, especially in metabolic syndrome, insulin resistance, and diabetes, where particles are small and dense but cholesterol content per particle is low.',
     why_range_differs: 'LDL-C and LDL-P often diverge — a person can have "normal" LDL-C but dangerously high LDL-P if their particles are small and dense. The MESA trial and other studies show LDL-P predicts cardiovascular risk better than LDL-C after adjusting for metabolic status. Aere targets <1000 nmol/L, the level associated with lowest event rates in high-risk prevention trials.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Otvos JD et al.', title: 'Low-density lipoprotein and high-density lipoprotein particle subclasses predict coronary events and are favorably changed by gemfibrozil therapy in the Veterans Affairs High-Density Lipoprotein Intervention Trial', journal: 'Circulation', year: 2006, pmid: '16567569', url: 'https://pubmed.ncbi.nlm.nih.gov/16567569/' },
       { authors: 'Mora S et al.', title: 'LDL particle subclasses, LDL particle size, and carotid atherosclerosis', journal: 'Arteriosclerosis, Thrombosis, and Vascular Biology', year: 2007, pmid: '17008593', url: 'https://pubmed.ncbi.nlm.nih.gov/17008593/' },
@@ -1445,6 +1499,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 200, display: '<200 nmol/L', confidence: 'moderate' },
     why_it_matters: 'Small, dense LDL particles are the most atherogenic LDL subtype. They are more easily oxidized, bind more avidly to arterial proteoglycans, penetrate the arterial wall more readily, and are cleared more slowly from circulation. A high proportion of small LDL (Pattern B) markedly increases cardiovascular risk beyond what total LDL-C indicates. Pattern B is strongly driven by high triglycerides, insulin resistance, and refined carbohydrate intake.',
     why_range_differs: 'Standard labs often only report LDL-C without particle size. NMR spectroscopy (Lipoprofile) separates LDL into large, medium, and small subtypes. Aere targets small LDL well below the reference upper limit because even modest elevations in sdLDL drive disproportionate atherogenic risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Austin MA et al.', title: 'Low-density lipoprotein subclass patterns and risk of myocardial infarction', journal: 'JAMA', year: 1988, pmid: '3418874', url: 'https://pubmed.ncbi.nlm.nih.gov/3418874/' },
       { authors: 'Berneis KK, Krauss RM', title: 'Metabolic origins and clinical significance of LDL heterogeneity', journal: 'Journal of Lipid Research', year: 2002, pmid: '12235171', url: 'https://pubmed.ncbi.nlm.nih.gov/12235171/' },
@@ -1467,6 +1522,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 150, display: '<150 nmol/L', confidence: 'moderate' },
     why_it_matters: 'Medium LDL particles occupy the intermediate size range between large, buoyant LDL (less atherogenic) and small, dense LDL (most atherogenic). Elevated medium LDL contributes to overall LDL particle burden and atherogenic risk. Tracking it alongside small LDL provides a complete picture of particle size distribution and cardiovascular risk.',
     why_range_differs: 'Like small LDL, medium LDL contributes to total atherogenic particle burden. Prospective studies show that LDL subfraction concentrations independently predict ischemic heart disease risk. Aere targets below reference upper limits to minimize total atherogenic particle exposure.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'St-Pierre AC et al.', title: 'Low-density lipoprotein subfractions and the long-term risk of ischemic heart disease in men: 13-year follow-up data from the Québec Cardiovascular Study', journal: 'Journal of the American College of Cardiology', year: 2005, pmid: '16168294', url: 'https://pubmed.ncbi.nlm.nih.gov/16168294/' },
       { authors: 'Mora S et al.', title: 'LDL particle subclasses, LDL particle size, and carotid atherosclerosis in the Multi-Ethnic Study of Atherosclerosis (MESA)', journal: 'Arteriosclerosis, Thrombosis, and Vascular Biology', year: 2007, pmid: '17008593', url: 'https://pubmed.ncbi.nlm.nih.gov/17008593/' },
@@ -1488,6 +1544,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 21.0, display: '>21.0 nm', confidence: 'moderate' },
     why_it_matters: 'LDL peak size (diameter) determines the predominant LDL phenotype. Pattern A (large, buoyant, >20.5 nm) is associated with lower cardiovascular risk. Pattern B (small, dense, <20.5 nm) carries significantly higher risk — roughly 3-fold increased myocardial infarction risk compared to Pattern A. Diet drives pattern: low-fat, high-carbohydrate diets promote Pattern B; adequate dietary fat and reduced refined carbohydrates shift toward Pattern A.',
     why_range_differs: 'The 20.5 nm threshold separating Pattern A from Pattern B was established in the landmark Austin et al. (1988) case-control study and validated in prospective cohorts showing ~3-fold increased MI risk for Pattern B. Aere targets >21.0 nm to ensure a clear Pattern A phenotype, which is associated with substantially better cardiovascular outcomes.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'St-Pierre AC et al.', title: 'Low-density lipoprotein subfractions and the long-term risk of ischemic heart disease in men: 13-year follow-up data from the Québec Cardiovascular Study', journal: 'Journal of the American College of Cardiology', year: 2005, pmid: '16168294', url: 'https://pubmed.ncbi.nlm.nih.gov/16168294/' },
       { authors: 'Austin MA et al.', title: 'Low-density lipoprotein subclass patterns and risk of myocardial infarction', journal: 'JAMA', year: 1988, pmid: '3418874', url: 'https://pubmed.ncbi.nlm.nih.gov/3418874/' },
@@ -1509,6 +1566,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Pattern A', confidence: 'strong' },
     why_it_matters: 'LDL pattern (A or B) is a categorical classification of the predominant LDL particle size. Pattern B (small dense LDL predominant) confers 3× higher myocardial infarction risk than Pattern A, independent of total LDL-C levels. It is strongly associated with hypertriglyceridemia, metabolic syndrome, and insulin resistance. Pattern can shift with dietary changes — reducing refined carbohydrates and increasing healthy fats is the most effective intervention.',
     why_range_differs: 'Pattern is binary (A vs. B), not a continuous range. Aere targets Pattern A as the categorical optimal. People with Pattern B who have normal or even low LDL-C are often dramatically underestimated by standard lipid panels — making NMR particle testing critical in metabolic syndrome.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Austin MA et al.', title: 'Low-density lipoprotein subclass patterns and risk of myocardial infarction', journal: 'JAMA', year: 1988, pmid: '3418874', url: 'https://pubmed.ncbi.nlm.nih.gov/3418874/' },
       { authors: 'Lamarche B et al.', title: 'Small, dense low-density lipoprotein particles as a predictor of the risk of ischemic heart disease in men', journal: 'Circulation', year: 1997, pmid: '9337224', url: 'https://pubmed.ncbi.nlm.nih.gov/9337224/' },
@@ -1531,6 +1589,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 7.0, display: '>7.0 μmol/L', confidence: 'moderate' },
     why_it_matters: 'Not all HDL particles are equally protective. Large HDL particles are the most efficient at reverse cholesterol transport — removing cholesterol from arterial plaques and delivering it to the liver. Small HDL particles may actually be pro-inflammatory. HDL-C (the standard lab test) counts cholesterol mass in all HDL subtypes indiscriminately, which explains why HDL-raising drugs that increase total HDL-C but favor small particles failed to reduce cardiovascular events in clinical trials.',
     why_range_differs: 'Mendelian randomization studies showed that pharmacologically raising total HDL-C does not reduce cardiovascular events — but this does not apply to large HDL particles specifically. NMR-based studies demonstrate that large HDL particle concentration is independently protective against incident cardiovascular disease, even after adjusting for total HDL-C and LDL-P. The key distinction: large HDL particles perform effective reverse cholesterol transport, while small HDL particles may be dysfunctional. Aere targets >7.0 μmol/L of large HDL, achievable through exercise, dietary fat quality, and moderate alcohol intake.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Mora S, Otvos JD, Rifai N, et al.', title: 'Lipoprotein particle profiles by nuclear magnetic resonance compared with standard lipids and apolipoproteins in predicting incident cardiovascular disease in women', journal: 'Circulation', year: 2009, pmid: '19805654', url: 'https://pubmed.ncbi.nlm.nih.gov/19805654/' },
       { authors: 'Mackey RH, Greenland P, Goff DC Jr, et al.', title: 'High-density lipoprotein cholesterol and particle concentrations, carotid atherosclerosis, and coronary events: MESA', journal: 'Journal of the American College of Cardiology', year: 2012, pmid: '22321978', url: 'https://pubmed.ncbi.nlm.nih.gov/22321978/' },
@@ -1555,6 +1614,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 28, high: 32, display: '28–32 pg', confidence: 'moderate' },
     why_it_matters: 'MCH measures the average amount of hemoglobin per red blood cell. Low MCH (hypochromic cells) indicates iron deficiency or thalassemia. High MCH (hyperchromic) typically accompanies macrocytosis from B12 or folate deficiency. MCH moves in parallel with MCV and should be interpreted alongside hemoglobin and MCV to classify anemia type accurately.',
     why_range_differs: 'MCH tracks closely with MCV — both fall in iron deficiency and rise in megaloblastic anemia. Aere targets the center of the normal range (28–32 pg) as a signal of nutritional adequacy, optimal hemoglobin loading, and anemia avoidance — all associated with reduced mortality risk in population studies.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Patel KV', title: 'Variability and heritability of red blood cell indices in an aging population', journal: 'Blood', year: 2008, pmid: '18693073', url: 'https://pubmed.ncbi.nlm.nih.gov/18693073/' },
       { authors: 'Hsieh YP et al.', title: 'Mean corpuscular volume and mortality in patients with CKD', journal: 'Postgraduate Medical Journal', year: 2017, pmid: '27852956', url: 'https://pubmed.ncbi.nlm.nih.gov/27852956/' },
@@ -1576,6 +1636,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 33, high: 35, display: '33–35 g/dL', confidence: 'moderate' },
     why_it_matters: 'MCHC measures the concentration of hemoglobin within a given volume of red blood cells — essentially how saturated the cells are with hemoglobin. It is one of the most stable CBC indices. Low MCHC (hypochromia) is most specific for iron deficiency. High MCHC can indicate hereditary spherocytosis, a red cell membrane disorder. MCHC helps distinguish iron deficiency (low MCHC) from thalassemia (MCHC often normal).',
     why_range_differs: 'MCHC has the narrowest physiologic range of any CBC index, making deviations clinically meaningful. Aere targets 33–35 g/dL where hemoglobin saturation reflects optimal hematological health — deviations in either direction associate with anemia-related morbidity and increased mortality risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Patel KV', title: 'Variability and heritability of red blood cell indices in an aging population', journal: 'Blood', year: 2008, pmid: '18693073', url: 'https://pubmed.ncbi.nlm.nih.gov/18693073/' },
       { authors: 'Martinsson A et al.', title: 'Anemia is associated with worse long-term prognosis in patients with heart failure', journal: 'International Journal of Cardiology', year: 2014, pmid: '24680174', url: 'https://pubmed.ncbi.nlm.nih.gov/24680174/' },
@@ -1598,6 +1659,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 13.0, high: 14.5 },
     why_it_matters: 'RDW measures the variation in red blood cell size (anisocytosis). A high RDW means red cells vary widely in size — a sign of mixed nutritional deficiency (e.g., combined iron and B12 deficiency), early nutrient deficiency before anemia develops, or bone marrow dysfunction. High RDW is a powerful independent predictor of all-cause mortality, cardiovascular disease, and cancer — even in people without anemia — making it one of the most underutilized longevity biomarkers in the CBC.',
     why_range_differs: 'Standard labs flag RDW >14.5% as abnormal, but longevity research shows that RDW above 13% is associated with graded increases in mortality even within the clinical normal range. Aere targets <13.0% as an indicator of nutritional adequacy and healthy hematopoiesis.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Patel KV et al.', title: 'Red cell distribution width and mortality in older adults: a meta-analysis', journal: 'Archives of Internal Medicine', year: 2009, pmid: '19470554', url: 'https://pubmed.ncbi.nlm.nih.gov/19470554/' },
       { authors: 'Lippi G, Targher G, Montagnana M', title: 'Relation between red blood cell distribution width and inflammatory biomarkers', journal: 'Archives of Pathology & Laboratory Medicine', year: 2009, pmid: '19425716', url: 'https://pubmed.ncbi.nlm.nih.gov/19425716/' },
@@ -1619,6 +1681,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 8.0, high: 11.0, display: '8.0–11.0 fL', confidence: 'emerging' },
     why_it_matters: 'MPV measures the average size of platelets. Larger platelets are more metabolically active, produce more thromboxane A2, and aggregate more vigorously — increasing thrombosis risk. High MPV is associated with cardiovascular disease, myocardial infarction, and stroke, independent of platelet count. It also rises in conditions of increased platelet turnover (ITP, hyperthyroidism) and inflammatory states.',
     why_range_differs: 'MPV is an emerging cardiovascular risk marker. While the clinical reference range is broad, Aere targets the center (8–11 fL) because values persistently at the high end of normal (>11 fL) correlate with increased thrombotic risk in multiple meta-analyses.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Vizioli L et al.', title: 'Mean platelet volume and cardiovascular risk', journal: 'Internal and Emergency Medicine', year: 2009, pmid: '19468705', url: 'https://pubmed.ncbi.nlm.nih.gov/19468705/' },
       { authors: 'Chu SG et al.', title: 'Mean platelet volume as a predictor of cardiovascular risk: a systematic review and meta-analysis', journal: 'Journal of Thrombosis and Haemostasis', year: 2010, pmid: '19943882', url: 'https://pubmed.ncbi.nlm.nih.gov/19943882/' },
@@ -1641,6 +1704,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 2.0, high: 5.0, display: '2.0–5.0 K/μL', confidence: 'moderate' },
     why_it_matters: 'Neutrophils are the most abundant white blood cells and the first responders to bacterial infection and tissue injury. Low neutrophils (neutropenia, <1.8 K/μL) increase infection susceptibility and may indicate bone marrow suppression or autoimmune destruction. Chronically elevated neutrophils signal ongoing infection, inflammation, or stress and independently predict cardiovascular events and all-cause mortality. The neutrophil-to-lymphocyte ratio (NLR) is a powerful systemic inflammation index.',
     why_range_differs: 'Aere targets 2–5 K/μL reflecting low baseline inflammation. Large prospective studies show that neutrophil counts in the upper-normal range independently predict cardiovascular events and all-cause mortality, even after adjusting for traditional risk factors.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Shah AD et al.', title: 'Neutrophil counts and initial presentation of 12 cardiovascular diseases: a CALIBER cohort study', journal: 'Lancet Haematology', year: 2017, pmid: '28007643', url: 'https://pubmed.ncbi.nlm.nih.gov/28007643/' },
       { authors: 'Margolis KL et al.', title: 'Leukocyte count as a predictor of cardiovascular events and mortality in postmenopausal women: the Women\'s Health Initiative Observational Study', journal: 'Archives of Internal Medicine', year: 2005, pmid: '16043683', url: 'https://pubmed.ncbi.nlm.nih.gov/16043683/' },
@@ -1662,6 +1726,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 1.5, high: 3.5, display: '1.5–3.5 K/μL', confidence: 'moderate' },
     why_it_matters: 'Lymphocytes (T cells, B cells, NK cells) are the adaptive immune system. Low lymphocytes (lymphopenia, <1.0 K/μL) impair immune defense against viruses and cancer — a major predictor of COVID-19 severity and a marker of overtraining in athletes. Age-related lymphocyte decline (immunosenescence) accelerates biological aging. High lymphocytes typically indicate acute viral infection or, chronically, lymphoproliferative disorders. The neutrophil-to-lymphocyte ratio (NLR) and lymphocyte-to-monocyte ratio (LMR) are powerful prognostic indices.',
     why_range_differs: 'Aere targets a robust lymphocyte count (1.5–3.5 K/μL) reflecting healthy adaptive immune function without excess. Progressive lymphopenia in healthy adults signals accelerated immunosenescence and is associated with increased all-cause mortality independent of other risk factors.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Alpert A et al.', title: 'A clinically meaningful metric of immune age derived from high-dimensional longitudinal monitoring', journal: 'Nature Medicine', year: 2019, pmid: '31086327', url: 'https://pubmed.ncbi.nlm.nih.gov/31086327/' },
       { authors: 'Leng SX et al.', title: 'Total and differential white blood cell counts and their associations with circulating interleukin-6 levels in community-dwelling older women', journal: 'Journals of Gerontology Series A', year: 2005, pmid: '15983189', url: 'https://pubmed.ncbi.nlm.nih.gov/15983189/' },
@@ -1684,6 +1749,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0.2, high: 0.6, display: '0.2–0.6 K/μL', confidence: 'moderate' },
     why_it_matters: 'Monocytes are innate immune cells that differentiate into macrophages in tissues. Elevated monocytes indicate chronic inflammation, infection, or cardiovascular risk. The monocyte-to-HDL ratio (MHR) is an emerging cardiometabolic risk index. Persistent monocytosis is associated with atherosclerosis, metabolic syndrome, and poor prognosis in cancer and cardiovascular disease.',
     why_range_differs: 'The low end of normal monocyte counts (0.2–0.6 K/μL) represents minimal baseline inflammatory activity. Values above 0.6 K/μL in the absence of acute illness suggest chronic low-grade inflammation, particularly when combined with elevated CRP or neutrophils.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Horne BD et al.', title: 'Which white blood cell subtypes predict increased cardiovascular risk?', journal: 'Journal of the American College of Cardiology', year: 2005, pmid: '16168286', url: 'https://pubmed.ncbi.nlm.nih.gov/16168286/' },
       { authors: 'Berg KE et al.', title: 'Elevated CD14++CD16− monocytes predict cardiovascular events', journal: 'European Heart Journal', year: 2012, pmid: '22513778', url: 'https://pubmed.ncbi.nlm.nih.gov/22513778/' },
@@ -1705,6 +1771,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0.05, high: 0.3, display: '0.05–0.3 K/μL', confidence: 'moderate' },
     why_it_matters: 'Eosinophils mediate allergic responses and anti-parasitic immunity. Elevated eosinophils (eosinophilia) indicate allergic disease (asthma, eczema, food allergies), parasitic infection, drug reactions, or inflammatory bowel disease. Chronic mild eosinophilia is increasingly recognized as a systemic inflammatory signal linked to asthma, atopy, and — when pronounced — end-organ damage (heart, lung, skin). Low eosinophils are seen during acute infection and steroid therapy.',
     why_range_differs: 'While the lab upper limit is 0.5 K/μL, Aere targets <0.3 K/μL as an indicator of low allergic burden and systemic inflammation. Eosinophils >0.5 K/μL warrant evaluation for treatable allergic or parasitic causes.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Lippi G et al.', title: 'Relationship between eosinophil count and all-cause and cardiovascular mortality', journal: 'Medicine', year: 2018, pmid: '30412116', url: 'https://pubmed.ncbi.nlm.nih.gov/30412116/' },
       { authors: 'Horne BD et al.', title: 'Which white blood cell subtypes predict increased cardiovascular risk?', journal: 'Journal of the American College of Cardiology', year: 2005, pmid: '16168286', url: 'https://pubmed.ncbi.nlm.nih.gov/16168286/' },
@@ -1726,6 +1793,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0.08, display: '0–0.08 K/μL', confidence: 'moderate' },
     why_it_matters: 'Basophils are rare white blood cells involved in allergic and inflammatory responses, releasing histamine and other mediators. They are the rarest circulating leukocyte — elevated basophils (basophilia) are uncommon in benign conditions and warrant evaluation for myeloproliferative neoplasms (particularly chronic myeloid leukemia), allergic disease, or hypothyroidism. Basophils are most useful in the differential diagnosis context rather than as a standalone longevity biomarker.',
     why_range_differs: 'Basophil count is nearly always interpreted qualitatively (present vs. elevated) given its rarity. Aere flags persistent counts above 0.08 K/μL for further evaluation, particularly if other CBC abnormalities coexist.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Horne BD et al.', title: 'Which white blood cell subtypes predict increased cardiovascular risk?', journal: 'Journal of the American College of Cardiology', year: 2005, pmid: '16168286', url: 'https://pubmed.ncbi.nlm.nih.gov/16168286/' },
       { authors: 'Qi Q et al.', title: 'Basophil count and cardiovascular disease risk: a Mendelian randomization study', journal: 'Journal of Thrombosis and Haemostasis', year: 2021, pmid: '34051167', url: 'https://pubmed.ncbi.nlm.nih.gov/34051167/' },
@@ -1750,6 +1818,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 100, high: 147 },
     why_it_matters: 'ALP is an enzyme present in the liver, bone, kidneys, and intestine. Elevated ALP indicates liver disease (especially cholestatic/bile duct disorders), bone disease (Paget\'s, bone metastases, fractures), or — in children — normal growth. Isolated ALP elevation (with normal bilirubin, ALT, AST) most often indicates bone pathology or a normal variant. ALP is higher in the elderly and adolescents due to bone turnover. Very low ALP may indicate zinc or magnesium deficiency, hypothyroidism, or hypophosphatasia.',
     why_range_differs: 'Standard lab ranges allow ALP up to 147 U/L, but population studies show that ALP above 100 U/L is associated with significantly increased all-cause mortality, even after adjusting for liver and bone disease. Aere targets 50–100 U/L based on mortality association data from large prospective cohorts, where this range corresponds to the lowest risk. ALP also tracks with vascular calcification and phosphate metabolism, linking it to cardiovascular outcomes.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kunutsor SK, Apekey TA, Seddoh D, Walley J', title: 'Liver enzymes and risk of all-cause mortality in general populations: a systematic review and meta-analysis', journal: 'International Journal of Epidemiology', year: 2014, pmid: '24585730', url: 'https://pubmed.ncbi.nlm.nih.gov/24585730/' },
       { authors: 'Tonelli M, Sacks F, Pfeffer M, et al.', title: 'Relation between serum phosphate level and cardiovascular event rate in people with coronary disease', journal: 'Circulation', year: 2005, pmid: '16286586', url: 'https://pubmed.ncbi.nlm.nih.gov/16286586/' },
@@ -1772,6 +1841,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0.3, high: 0.9, display: '0.3–0.9 mg/dL', confidence: 'moderate' },
     why_it_matters: 'Bilirubin is a byproduct of red blood cell breakdown, processed by the liver and excreted in bile. Elevated bilirubin (jaundice) indicates liver disease, biliary obstruction, or hemolysis. Interestingly, mildly elevated bilirubin (in Gilbert\'s syndrome, a benign inherited variant) is associated with lower cardiovascular disease risk — bilirubin is a potent antioxidant. Very low bilirubin may paradoxically indicate lower antioxidant protection.',
     why_range_differs: 'Bilirubin is one of the few markers where the relationship with health is nonlinear — both very low and very high values have implications. Aere targets the low-to-mid normal range (0.3–0.9 mg/dL), which balances antioxidant effects against liver burden. Values persistently above 1.0 mg/dL warrant hepatic evaluation.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Vítek L, Jirsa M, Brodanová M', title: 'Gilbert syndrome and ischemic heart disease: a protective effect of elevated bilirubin levels', journal: 'Atherosclerosis', year: 2002, pmid: '11897479', url: 'https://pubmed.ncbi.nlm.nih.gov/11897479/' },
       { authors: 'Horsfall LJ et al.', title: 'Serum bilirubin and risk of respiratory disease and death in the Whitehall II cohort study', journal: 'JAMA', year: 2011 },
@@ -1794,6 +1864,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 6.8, high: 7.8, display: '6.8–7.8 g/dL', confidence: 'moderate' },
     why_it_matters: 'Total protein measures the combined concentration of albumin and globulins in blood. It reflects overall nutritional status, liver synthetic function, and immune system activity. Low total protein indicates malnutrition, liver disease, or protein-losing conditions (nephrotic syndrome, protein-losing enteropathy). High total protein may indicate dehydration or elevated immunoglobulins (infection, autoimmune disease, myeloma).',
     why_range_differs: 'Total protein is interpreted together with albumin and the albumin-to-globulin (A/G) ratio. Aere targets the center of the reference range — adequate for protein synthesis while not reflecting hyperimmunoglobulinemia. Most meaningful when elevated globulin is the driver of high total protein.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Corti MC et al.', title: 'Serum albumin level and physical disability as predictors of mortality in older persons', journal: 'JAMA', year: 1994, pmid: '7990241', url: 'https://pubmed.ncbi.nlm.nih.gov/7990241/' },
       { authors: 'Phillips A et al.', title: 'Total serum protein as a prognostic marker for all-cause mortality', journal: 'Journal of Epidemiology and Community Health', year: 1989, pmid: '2607306', url: 'https://pubmed.ncbi.nlm.nih.gov/2607306/' },
@@ -1815,6 +1886,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 2.0, high: 3.0, display: '2.0–3.0 g/dL', confidence: 'moderate' },
     why_it_matters: 'Globulin is calculated as Total Protein minus Albumin and represents immunoglobulins, transport proteins, and acute phase reactants. Elevated globulin indicates chronic inflammation, infection, autoimmune disease, or hematologic malignancy (particularly multiple myeloma, which causes a characteristic monoclonal spike on protein electrophoresis). Low globulin is uncommon and may suggest immunodeficiency.',
     why_range_differs: 'Chronically elevated globulin (>3.5 g/dL) is a red flag requiring protein electrophoresis to characterize. Aere targets the lower half of the normal range (2.0–3.0 g/dL) as a low-inflammation signal, consistent with optimal albumin-to-globulin ratios.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Suh B et al.', title: 'Low albumin-to-globulin ratio associated with cancer incidence and mortality in generally healthy adults', journal: 'British Journal of Cancer', year: 2014, pmid: '25009006', url: 'https://pubmed.ncbi.nlm.nih.gov/25009006/' },
       { authors: 'Dispenzieri A et al.', title: 'Serum immunoglobulin free light chains and risk of mortality in the general population', journal: 'Mayo Clinic Proceedings', year: 2012, pmid: '22560522', url: 'https://pubmed.ncbi.nlm.nih.gov/22560522/' },
@@ -1837,6 +1909,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 1.1, high: 1.5 },
     why_it_matters: 'The A/G ratio reflects the balance between albumin (nutritional/liver health marker) and globulins (immune activity marker). A low A/G ratio (<1.1) indicates either low albumin (poor nutrition, liver disease) or high globulins (chronic inflammation, autoimmune disease, hematologic malignancy). An inverted A/G ratio (<1.0) is particularly concerning for multiple myeloma or advanced liver disease. High A/G ratio (>2.5) is less clinically meaningful.',
     why_range_differs: 'Aere targets the upper portion of the normal A/G range (1.5–2.5), reflecting robust albumin synthesis relative to immune burden. Population-level studies show that a low A/G ratio independently predicts all-cause mortality, not just cancer-specific outcomes. A declining A/G ratio over time — even within the normal range — can be an early signal of increasing systemic inflammation, chronic disease, or liver function decline.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Azab B, Kedia S, Shah N, et al.', title: 'The value of the pretreatment albumin/globulin ratio in predicting the long-term survival following coronary artery bypass grafting', journal: 'International Journal of Surgery', year: 2013, pmid: '24060691', url: 'https://pubmed.ncbi.nlm.nih.gov/24060691/' },
       { authors: 'Suh B, Park S, Shin DW, et al.', title: 'Low albumin-to-globulin ratio associated with cancer incidence and mortality in generally healthy adults', journal: 'Annals of Oncology', year: 2014, pmid: '25009006', url: 'https://pubmed.ncbi.nlm.nih.gov/25009006/' },
@@ -1859,6 +1932,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 10, high: 16, display: '10–16', confidence: 'moderate' },
     why_it_matters: 'The BUN:Creatinine ratio differentiates between pre-renal causes of azotemia (dehydration, heart failure — ratio >20) versus intrinsic renal disease (ratio 10–20) versus low protein intake or liver disease (ratio <10). It is a rapid clinical tool to determine why kidney function markers are elevated. In healthy people, maintaining a BUN:Cr ratio of 10–16 reflects good hydration, adequate but not excessive protein intake, and normal renal perfusion.',
     why_range_differs: 'A ratio above 20 in a healthy person typically indicates inadequate hydration, excessive protein catabolism, or reduced renal perfusion — all associated with increased mortality risk. Aere targets 10–16 because this range reflects adequate hydration, balanced protein metabolism, and preserved renal perfusion, which large cohort studies link to lower cardiovascular and all-cause mortality.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Parrinello G et al.', title: 'The usefulness of blood urea nitrogen to serum creatinine ratio in the recognition of patients with acute decompensated heart failure', journal: 'Journal of Cardiac Failure', year: 2009, pmid: '19643368', url: 'https://pubmed.ncbi.nlm.nih.gov/19643368/' },
       { authors: 'Aronson D et al.', title: 'Elevated blood urea nitrogen level as a predictor of mortality in patients admitted for decompensated heart failure', journal: 'American Journal of Medicine', year: 2004, pmid: '15276594', url: 'https://pubmed.ncbi.nlm.nih.gov/15276594/' },
@@ -1880,6 +1954,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 24, high: 29, display: '24–29 mEq/L', confidence: 'moderate' },
     why_it_matters: 'The CO₂ on a basic or comprehensive metabolic panel actually measures bicarbonate — the body\'s primary blood buffer. Low bicarbonate (metabolic acidosis) occurs with kidney disease, diabetic ketoacidosis, and chronic low-grade acidosis from a high-acid diet (excess animal protein, insufficient fruits and vegetables). Chronic low-grade metabolic acidosis accelerates muscle protein breakdown, bone mineral loss, and kidney disease progression. High bicarbonate indicates metabolic alkalosis (often from vomiting or diuretic use).',
     why_range_differs: 'Aere targets the mid-to-upper normal range (24–29 mEq/L) because values at the low end of clinical normal (21–24 mEq/L) are associated with faster kidney function decline and higher all-cause mortality, particularly in people with existing CKD.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Raphael KL et al.', title: 'Dietary acid load and mortality among adults in the United States', journal: 'American Journal of Nephrology', year: 2018, pmid: '29791912', url: 'https://pubmed.ncbi.nlm.nih.gov/29791912/' },
       { authors: 'Menon V et al.', title: 'Serum bicarbonate and long-term outcomes in CKD', journal: 'American Journal of Kidney Diseases', year: 2010, pmid: '19932541', url: 'https://pubmed.ncbi.nlm.nih.gov/19932541/' },
@@ -1901,6 +1976,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 100, high: 106, display: '100–106 mEq/L', confidence: 'moderate' },
     why_it_matters: 'Chloride is the main extracellular anion, working with sodium to maintain fluid balance, osmotic pressure, and acid-base balance. It moves in tandem with sodium in most conditions. Low chloride (hypochloremia) occurs with vomiting, diuretic use, and metabolic alkalosis. High chloride (hyperchloremia) is seen with dehydration, kidney disease, and certain acidosis types. Chloride is rarely abnormal in isolation without sodium disturbances.',
     why_range_differs: 'While chloride is often overlooked as a standalone marker, ambulatory population data show that serum chloride is an independent predictor of all-cause and cardiovascular mortality in outpatient settings. Low serum chloride, in particular, is associated with worse outcomes in hypertensive patients. Aere targets 100–106 mEq/L — the mid-range where acid-base balance is optimal and mortality risk is lowest in community-dwelling adults.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'McCallum L, Jeemon P, Hastie CE, et al.', title: 'Serum chloride is an independent predictor of mortality in hypertensive patients', journal: 'Hypertension', year: 2013, pmid: '23876474', url: 'https://pubmed.ncbi.nlm.nih.gov/23876474/' },
       { authors: 'De Bacquer D, De Backer G, De Buyzere M, Kornitzer M', title: 'Is low serum chloride level a risk factor for cardiovascular mortality?', journal: 'Journal of Cardiovascular Risk', year: 1998, pmid: '9922095', url: 'https://pubmed.ncbi.nlm.nih.gov/9922095/' },
@@ -1924,6 +2000,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 1.0, display: 'Negative (<1.0 IU/mL)', confidence: 'strong' },
     why_it_matters: 'Thyroglobulin antibodies (TgAb) attack thyroglobulin, a precursor protein in thyroid hormone synthesis. Their presence indicates thyroid autoimmunity — most commonly Hashimoto\'s thyroiditis (the leading cause of hypothyroidism in developed countries) or Graves\' disease. TgAb can be present years before clinical thyroid dysfunction appears. TgAb also interferes with thyroglobulin tumor marker testing in thyroid cancer surveillance.',
     why_range_differs: 'TgAb is interpreted qualitatively — positive or negative — rather than as an optimizable continuous variable. Any detectable TgAb (>1.0 IU/mL) warrants monitoring thyroid function and considering an ultrasound, as autoimmunity is present even if TSH and thyroid hormones are currently normal. Managing TgAb through dietary intervention (selenium, gluten-free in susceptible individuals) is an area of active research.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Tomer Y, Davies TF', title: 'Searching for the autoimmune thyroid disease susceptibility genes: from gene mapping to gene function', journal: 'Endocrine Reviews', year: 2003, pmid: '14551359', url: 'https://pubmed.ncbi.nlm.nih.gov/14551359/' },
       { authors: 'Toulis KA et al.', title: 'Selenium supplementation in the treatment of Hashimoto\'s thyroiditis: a systematic review and a meta-analysis', journal: 'Thyroid', year: 2010, pmid: '20883174', url: 'https://pubmed.ncbi.nlm.nih.gov/20883174/' },
@@ -1949,6 +2026,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 45, high: 55 },
     why_it_matters: 'Iron saturation (transferrin saturation, TSAT) measures what percentage of available transferrin (iron transport protein) is bound to iron. Low TSAT (<20%) indicates functional iron deficiency — insufficient iron reaching the bone marrow for hemoglobin synthesis — even if serum ferritin is normal. High TSAT (>55%) can indicate iron overload (hemochromatosis), particularly when combined with high ferritin, and is associated with increased oxidative stress and risk of liver disease, diabetes, and heart disease.',
     why_range_differs: 'TSAT is most informative when interpreted with ferritin. Low ferritin + low TSAT = iron deficiency. High ferritin + high TSAT = iron overload. High ferritin + low TSAT = inflammatory ferritin elevation without true iron excess. Aere targets the middle range (25–45%) reflecting adequate but not excessive iron supply to tissues.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ellervik C et al.', title: 'Total and cause-specific mortality by moderately and markedly increased ferritin concentrations: a general population study', journal: 'PLoS One', year: 2014, pmid: '25390336', url: 'https://pubmed.ncbi.nlm.nih.gov/25390336/' },
       { authors: 'Mainous AG et al.', title: 'Transferrin saturation, dietary iron intake, and risk of future cancer', journal: 'Journal of the National Cancer Institute', year: 2005, pmid: '15572756', url: 'https://pubmed.ncbi.nlm.nih.gov/15572756/' },
@@ -1970,6 +2048,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 270, high: 340, display: '270–340 μg/dL', confidence: 'moderate' },
     why_it_matters: 'TIBC measures the blood\'s maximum capacity to bind iron — reflecting the amount of transferrin available. TIBC rises when iron stores are depleted (the body upregulates transferrin to capture more iron) and falls when iron is overloaded (less carrier protein needed) or with inflammation/malnutrition (which suppress transferrin production). TIBC is essential for interpreting iron status alongside serum iron, ferritin, and transferrin saturation.',
     why_range_differs: 'TIBC is a functional marker of iron transport capacity. High TIBC (>370 μg/dL) combined with low ferritin and low TSAT is the classic iron deficiency triad. Aere targets the center of the normal range, where iron transport capacity is balanced and neither depletion-driven upregulation nor inflammation-driven suppression is occurring.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cook JD', title: 'Diagnosis and management of iron-deficiency anaemia', journal: 'Best Practice & Research Clinical Haematology', year: 2005, pmid: '15694888', url: 'https://pubmed.ncbi.nlm.nih.gov/15694888/' },
       { authors: 'Peyrin-Biroulet L et al.', title: 'Guidelines on the diagnosis and management of iron deficiency and iron deficiency anaemia in inflammatory bowel diseases', journal: 'Gut', year: 2015, pmid: '25694585', url: 'https://pubmed.ncbi.nlm.nih.gov/25694585/' },
@@ -1995,6 +2074,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 60, high: 80 },
     why_it_matters: 'Zinc is an essential trace mineral that serves as a cofactor for over 300 enzymes and 2,000 transcription factors. It is critical for immune function (thymulin synthesis, T cell activation), DNA repair, antioxidant defense (component of Cu/Zn superoxide dismutase), wound healing, taste and smell, and testosterone production. Zinc deficiency is common globally and often subclinical — it presents as recurrent infections, poor wound healing, loss of taste/smell, skin issues, and low testosterone. Oysters are the richest dietary source; red meat, poultry, and legumes are other key sources.',
     why_range_differs: 'Serum zinc is a crude marker — it doesn\'t well reflect intracellular or tissue zinc status, and it fluctuates with meals, time of day, and acute illness. Aere targets the upper two-thirds of the reference range (80–120 μg/dL) to ensure functional zinc adequacy. Importantly, serum zinc should be measured fasting and in the morning for consistency.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Mocchegiani E et al.', title: 'Zinc: dietary intake and impact of supplementation on immune function in elderly', journal: 'Age', year: 2013, pmid: '22388931', url: 'https://pubmed.ncbi.nlm.nih.gov/22388931/' },
       { authors: 'Maywald M, Wessels I, Rink L', title: 'Zinc signals and immunity', journal: 'International Journal of Molecular Sciences', year: 2017, pmid: '28799776', url: 'https://pubmed.ncbi.nlm.nih.gov/28799776/' },
@@ -2018,6 +2098,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 1.0, high: 3.5 },
     why_it_matters: 'Lead is a neurotoxin and cardiovascular toxin with no safe exposure level. Even at blood levels previously considered "low" (1–5 μg/dL), lead is associated with cognitive decline, hypertension, atherosclerosis, kidney damage, and increased all-cause mortality. Lead stored in bone is released decades after exposure, particularly during pregnancy and osteoporosis, making historical lead exposure an ongoing threat. Sources include old paint, contaminated water pipes, some pottery, and occupational exposure.',
     why_range_differs: 'The CDC reference value of 3.5 μg/dL was revised downward in 2021 (from 5.0 μg/dL) because studies showed no threshold below which cognitive harm is absent. Aere targets <1.0 μg/dL — the level achievable in unexposed adults — as the true longevity-optimal threshold, consistent with current toxicological understanding that lead has no beneficial role in the body at any detectable concentration.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Lanphear BP et al.', title: 'Low-level environmental lead exposure and children\'s intellectual function: an international pooled analysis', journal: 'Environmental Health Perspectives', year: 2005, pmid: '16079079', url: 'https://pubmed.ncbi.nlm.nih.gov/16079079/' },
       { authors: 'Navas-Acien A et al.', title: 'Lead exposure and cardiovascular disease: a systematic review', journal: 'Environmental Health Perspectives', year: 2007, pmid: '17431487', url: 'https://pubmed.ncbi.nlm.nih.gov/17431487/' },
@@ -2040,6 +2121,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 5, high: 10 },
     why_it_matters: 'Mercury (particularly methylmercury from seafood) is a potent neurotoxin that crosses the blood-brain barrier, disrupts neurotransmitter systems, impairs mitochondrial function, and promotes oxidative stress and inflammation. High seafood intake — especially large predatory fish (tuna, swordfish, king mackerel) — is the primary source in developed countries. Concerns are heightened for pregnant women and developing children, but chronic low-level exposure in adults is linked to cardiovascular risk (particularly atrial fibrillation), cognitive decline, and immune dysregulation.',
     why_range_differs: 'The EPA reference dose (RfD) for methylmercury is designed to protect the most sensitive populations (developing fetuses). For longevity-optimized adults, Aere targets <5 μg/L — the level achievable with moderate, selective seafood consumption (prioritizing smaller, lower-mercury fish). Those eating large predatory fish multiple times weekly often exceed 10 μg/L.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Guallar E et al.', title: 'Mercury, fish oils, and the risk of myocardial infarction', journal: 'NEJM', year: 2002, pmid: '12477940', url: 'https://pubmed.ncbi.nlm.nih.gov/12477940/' },
       { authors: 'Virtanen JK et al.', title: 'Mercury as a risk factor for cardiovascular diseases', journal: 'Journal of Nutritional Biochemistry', year: 2007, pmid: '17618104', url: 'https://pubmed.ncbi.nlm.nih.gov/17618104/' },
@@ -2064,6 +2146,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 4.0, high: 8.0 },
     why_it_matters: 'The Omega-3 Index measures EPA and DHA as a percentage of total fatty acids in red blood cell membranes — a stable, accurate reflection of long-term omega-3 status. Low omega-3 index (<4%) is associated with doubled risk of sudden cardiac death, increased depression, cognitive decline, and higher systemic inflammation. An Omega-3 Index >8% correlates with the cardiovascular risk profile of Japanese populations (the world\'s longevity leaders in omega-3 intake). Unlike plasma omega-3 (which reflects recent intake), RBC omega-3 reflects 3–4 months of tissue levels.',
     why_range_differs: 'The average American has an Omega-3 Index of 4–5% — in the low-risk zone\'s bottom quartile. Peter Attia, Rhonda Patrick, and William Harris (the index\'s developer) all target >8%. Large epidemiological studies consistently show graded cardiovascular risk reduction as the Omega-3 Index rises from <4% to >8%. Achieving >8% typically requires 2+ grams/day of EPA+DHA from fish or high-quality supplements.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Harris WS, Von Schacky C', title: 'The Omega-3 Index: a new risk factor for death from coronary heart disease?', journal: 'Preventive Medicine', year: 2004, pmid: '15208005', url: 'https://pubmed.ncbi.nlm.nih.gov/15208005/' },
       { authors: 'Harris WS et al.', title: 'Omega-3 fatty acids and coronary heart disease risk: clinical and mechanistic perspectives', journal: 'Atherosclerosis', year: 2008, pmid: '17719579', url: 'https://pubmed.ncbi.nlm.nih.gov/17719579/' },
@@ -2086,6 +2169,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 1.0, display: '>1.0% of RBC fatty acids', confidence: 'moderate' },
     why_it_matters: 'EPA (eicosapentaenoic acid) is a marine-derived omega-3 with potent anti-inflammatory properties. It competes with arachidonic acid (AA) for enzyme binding, reducing production of pro-inflammatory eicosanoids. EPA is the precursor to resolvins and protectins — lipid mediators that actively resolve inflammation. High-dose EPA (icosapent ethyl, Vascepa) has demonstrated a 25% relative reduction in major cardiovascular events in the REDUCE-IT trial in high-risk patients with elevated triglycerides.',
     why_range_differs: 'EPA is most meaningfully reported as part of the Omega-3 Index (EPA+DHA%) and as the EPA:AA ratio. Aere targets >1.0% of RBC fatty acids as a standalone EPA threshold, though the combined Omega-3 Index is the primary metric. Dietary sources are fatty fish (salmon, mackerel, sardines, herring) and fish oil supplements.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Bhatt DL et al.', title: 'Cardiovascular risk reduction with icosapentaenoic acid for hypertriglyceridemia (REDUCE-IT)', journal: 'NEJM', year: 2019, pmid: '30415628', url: 'https://pubmed.ncbi.nlm.nih.gov/30415628/' },
       { authors: 'Calder PC', title: 'Marine omega-3 fatty acids and inflammatory processes: effects, mechanisms and clinical relevance', journal: 'Biochemical Society Transactions', year: 2017, pmid: '28487380', url: 'https://pubmed.ncbi.nlm.nih.gov/28487380/' },
@@ -2108,6 +2192,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 4.0, display: '>4.0% of RBC fatty acids', confidence: 'moderate' },
     why_it_matters: 'DHA (docosahexaenoic acid) is the most abundant omega-3 fatty acid in the brain (comprising ~15–20% of brain cortex fatty acids) and retina. It is essential for neuronal membrane fluidity, synaptic signaling, and cognitive function throughout life. DHA status is particularly critical during pregnancy and infancy for brain development, and in aging for prevention of cognitive decline and dementia. Higher DHA is consistently associated with reduced risk of Alzheimer\'s disease, depression, and visual decline.',
     why_range_differs: 'DHA is the dominant omega-3 in the brain and eyes, while EPA is dominant in cardiovascular protection. Both are needed and typically measured together. Aere targets >4.0% of RBC fatty acids for DHA, reflecting tissue levels associated with optimal cognitive and retinal function, distinct from the combined >8% Omega-3 Index target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Yurko-Mauro K et al.', title: 'Beneficial effects of docosahexaenoic acid on cognition in age-related cognitive decline', journal: 'Alzheimer\'s & Dementia', year: 2010, pmid: '20434951', url: 'https://pubmed.ncbi.nlm.nih.gov/20434951/' },
       { authors: 'Patrick RP', title: 'Role of phosphatidylcholine-DHA in preventing APOE4-associated Alzheimer\'s disease', journal: 'FASEB Journal', year: 2019, pmid: '30702952', url: 'https://pubmed.ncbi.nlm.nih.gov/30702952/' },
@@ -2130,6 +2215,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0.5, display: '>0.5% of RBC fatty acids', confidence: 'emerging' },
     why_it_matters: 'DPA (docosapentaenoic acid, n-3) is an intermediate omega-3 between EPA and DHA in the metabolic pathway. It is found in marine oils and meat, and can be produced from EPA within the body. DPA has anti-platelet, anti-inflammatory, and triglyceride-lowering properties, and may serve as a reservoir for both EPA and DHA production. It is included in comprehensive omega-3 panels to capture the full marine omega-3 picture beyond EPA+DHA alone.',
     why_range_differs: 'DPA is less studied than EPA and DHA, making optimal ranges less well-defined. However, the FORCE consortium pooled analysis of 17 prospective cohorts found that higher circulating DPA levels were independently associated with lower total mortality. Aere targets >0.5% as an emerging evidence threshold, reflecting DPA\'s contribution to the total marine omega-3 pool and its independent mortality associations.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kaur G et al.', title: 'Docosapentaenoic acid (22:5n-3): a review of its biological effects', journal: 'Progress in Lipid Research', year: 2011, pmid: '21435352', url: 'https://pubmed.ncbi.nlm.nih.gov/21435352/' },
       { authors: 'Harris WS et al.', title: 'Blood n-3 fatty acid levels and total and cause-specific mortality from 17 prospective studies', journal: 'Nature Communications', year: 2021, pmid: '34226532', url: 'https://pubmed.ncbi.nlm.nih.gov/34226532/' },
@@ -2152,6 +2238,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 9.0, display: '>9.0% of RBC fatty acids', confidence: 'moderate' },
     why_it_matters: 'Total omega-3 captures all n-3 fatty acids (EPA, DPA, DHA, ALA, and minor forms) as a percentage of all RBC fatty acids. It provides a holistic view of omega-3 tissue status beyond just the Omega-3 Index. Higher total omega-3 is associated with lower systemic inflammation, better cardiovascular outcomes, and lower all-cause mortality across multiple large cohorts.',
     why_range_differs: 'The Omega-3 Index (EPA+DHA) is the most validated metric, but total omega-3 adds context by including DPA and plant-derived ALA. Aere targets >9.0% total omega-3, which corresponds to Omega-3 Index >8% plus meaningful DPA contribution from a diet rich in marine and mixed omega-3 sources.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Harris WS et al.', title: 'Erythrocyte long-chain omega-3 fatty acid levels are inversely associated with mortality and with incident cardiovascular disease', journal: 'Journal of Clinical Lipidology', year: 2013, pmid: '23312053', url: 'https://pubmed.ncbi.nlm.nih.gov/23312053/' },
       { authors: 'Harris WS et al.', title: 'Blood n-3 fatty acid levels and total and cause-specific mortality from 17 prospective studies', journal: 'Nature Communications', year: 2021, pmid: '34226532', url: 'https://pubmed.ncbi.nlm.nih.gov/34226532/' },
@@ -2173,6 +2260,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 25, high: 35, display: '25–35% of RBC fatty acids', confidence: 'moderate' },
     why_it_matters: 'Total omega-6 fatty acids (linoleic acid, arachidonic acid, and derivatives) are essential but must be balanced with omega-3 intake. Omega-6 fatty acids are precursors to both pro-inflammatory and anti-inflammatory eicosanoids — the balance with omega-3 determines inflammatory signaling. The modern Western diet provides omega-6 at 15–20× the amount of omega-3, driven by ubiquitous vegetable oils (soybean, corn, sunflower). This imbalance drives chronic low-grade inflammation.',
     why_range_differs: 'The goal is not to eliminate omega-6 (which is essential) but to achieve a balanced ratio with omega-3. Aere targets total omega-6 at 25–35% of RBC fatty acids — the range achievable with a Mediterranean-style diet — which corresponds to an omega-6:omega-3 ratio of approximately 3:1 to 4:1 when omega-3 status is optimal.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simopoulos AP', title: 'The importance of the ratio of omega-6/omega-3 essential fatty acids', journal: 'Biomedicine & Pharmacotherapy', year: 2002, pmid: '12442909', url: 'https://pubmed.ncbi.nlm.nih.gov/12442909/' },
       { authors: 'Wu JH et al.', title: 'Circulating omega-6 polyunsaturated fatty acids and total and cause-specific mortality: the Cardiovascular Health Study', journal: 'Circulation', year: 2014, pmid: '25161045', url: 'https://pubmed.ncbi.nlm.nih.gov/25161045/' },
@@ -2195,6 +2283,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 4, high: 10 },
     why_it_matters: 'The omega-6 to omega-3 ratio is one of the most consequential nutritional biomarkers for systemic inflammation. Omega-6 and omega-3 compete for the same desaturase enzymes. At ratios of 15:1 or higher (typical Western diet), the overwhelmingly pro-inflammatory omega-6 metabolic pathway dominates. Ancestral hunter-gatherer diets maintained ratios closer to 1:1 to 4:1. At ratios below 4:1, cardiovascular mortality falls by 70% according to Simopoulos\'s analysis of the Lyon Diet Heart Study cohort.',
     why_range_differs: 'This is one of the strongest dietary biomarker signals in longevity research. The average American\'s ratio (15:1–20:1) is essentially pro-inflammatory by design. Achieving 2:1–4:1 requires simultaneous reduction in seed oil consumption (the primary omega-6 source in Western diets) AND increase in marine omega-3 intake — a dietary shift that has profound downstream effects on inflammation, cardiovascular risk, and metabolic health.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simopoulos AP', title: 'The importance of the ratio of omega-6/omega-3 essential fatty acids', journal: 'Biomedicine & Pharmacotherapy', year: 2002, pmid: '12442909', url: 'https://pubmed.ncbi.nlm.nih.gov/12442909/' },
       { authors: 'de Lorgeril M et al.', title: 'Mediterranean alpha-linolenic acid-rich diet in secondary prevention of coronary heart disease', journal: 'Lancet', year: 1994, pmid: '7907685', url: 'https://pubmed.ncbi.nlm.nih.gov/7907685/' },
@@ -2216,6 +2305,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 9.5, display: '>9.5% of RBC fatty acids', confidence: 'moderate' },
     why_it_matters: 'EPA+DPA+DHA combined captures the total contribution of all three long-chain marine omega-3 fatty acids in RBC membranes. While the standard Omega-3 Index (EPA+DHA only) is the most validated predictor of cardiovascular risk, adding DPA provides a more complete picture of marine omega-3 tissue status. DPA contributes to the anti-inflammatory pool, serves as a reserve for EPA and DHA synthesis, and has independent platelet-inhibitory and anti-atherogenic effects. Some labs report this combined value alongside the traditional Omega-3 Index.',
     why_range_differs: 'The combined EPA+DPA+DHA target of >9.5% is slightly higher than the EPA+DHA Omega-3 Index target of >8% because DPA adds a meaningful additional 1–2% in people with optimal marine omega-3 intake. This combined metric is increasingly used in research to capture total marine omega-3 tissue saturation beyond the two most studied fatty acids.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Harris WS et al.', title: 'Erythrocyte long-chain omega-3 fatty acid levels are inversely associated with mortality and with incident cardiovascular disease', journal: 'Journal of Clinical Lipidology', year: 2013, pmid: '23312053', url: 'https://pubmed.ncbi.nlm.nih.gov/23312053/' },
       { authors: 'Kaur G et al.', title: 'Docosapentaenoic acid (22:5n-3): a review of its biological effects', journal: 'Progress in Lipid Research', year: 2011, pmid: '21435352', url: 'https://pubmed.ncbi.nlm.nih.gov/21435352/' },
@@ -2239,6 +2329,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 14, high: 20 },
     why_it_matters: 'Arachidonic acid (AA) is the primary omega-6 fatty acid in cell membranes and the direct precursor to pro-inflammatory prostaglandins, thromboxanes, and leukotrienes. While some AA is essential for cellular signaling, membrane integrity, and muscle growth, chronically elevated AA — especially relative to EPA — drives systemic inflammation, platelet aggregation, and cardiovascular disease. AA competes with EPA for the same enzymes that produce eicosanoids.',
     why_range_differs: 'The critical parameter is not absolute AA but the AA:EPA ratio. Aere targets AA in the 8–14% range of RBC fatty acids, reflecting a balanced omega-6 status that allows essential cellular functions without driving excess inflammatory eicosanoid production. Values above 18–20% (common in the US) indicate omega-3 insufficiency and pro-inflammatory tissue composition.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Calder PC', title: 'Omega-3 fatty acids and inflammatory processes: from molecules to man', journal: 'Biochemical Society Transactions', year: 2017, pmid: '28487380', url: 'https://pubmed.ncbi.nlm.nih.gov/28487380/' },
       { authors: 'Harris WS et al.', title: 'Erythrocyte fatty acids and risk of coronary heart disease', journal: 'Atherosclerosis', year: 2007 },
@@ -2262,6 +2353,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 10, high: 18 },
     why_it_matters: 'The AA:EPA ratio directly measures the competitive balance between the most pro-inflammatory (AA) and most anti-inflammatory (EPA) fatty acids at the tissue level. A low ratio means EPA is adequately competing with AA for cyclooxygenase and lipoxygenase enzymes, shifting eicosanoid production toward anti-inflammatory resolvins and protectins. Japanese populations — with the world\'s lowest cardiovascular disease rates — have AA:EPA ratios around 1.5:1. The average American ratio is 18:1 or higher.',
     why_range_differs: 'A ratio below 10 represents meaningful anti-inflammatory tissue composition. Rhonda Patrick and Peter Attia both emphasize this ratio as more informative than individual AA or EPA values alone. Achieving a ratio below 10 typically requires >2g/day EPA from marine sources plus reduced seed oil consumption. Ratios below 6 correspond to Japanese-range tissue composition.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Lands WE', title: 'Comparing dietary arachidonic and eicosapentaenoic acids as precursors for oxygenated products', journal: 'Prostaglandins, Leukotrienes, and Essential Fatty Acids', year: 2012, pmid: '22051086', url: 'https://pubmed.ncbi.nlm.nih.gov/22051086/' },
       { authors: 'Patrick RP', title: 'Omega-3 fatty acid supplementation as a potential therapeutic agent for major depressive disorder associated with inflammation', journal: 'Nutritional Neuroscience', year: 2019, pmid: '29629801', url: 'https://pubmed.ncbi.nlm.nih.gov/29629801/' },
@@ -2284,6 +2376,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 18, high: 28, display: '18–28% of RBC fatty acids', confidence: 'emerging' },
     why_it_matters: 'Linoleic acid (LA) is the most abundant omega-6 fatty acid in the Western diet and the essential parent fatty acid from which arachidonic acid is synthesized. It is found primarily in seed oils (soybean, sunflower, corn) and nuts. LA is essential but has increased dramatically in Western diets since the 1960s (from ~3% to 9%+ of total calories), driving the omega-6/omega-3 imbalance. Very high RBC linoleic acid indicates excess seed oil consumption and correlates with high omega-6/omega-3 ratios.',
     why_range_differs: 'The relationship between LA and health is contested. Some studies suggest higher circulating LA is protective (it reduces de novo lipogenesis); others link the modern LA excess to metabolic dysfunction via its downstream conversion to arachidonic acid and pro-inflammatory eicosanoids. Aere targets a moderate range (18–28%) reflecting adequate but not excessive LA intake, consistent with Mediterranean dietary patterns.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Wu JH et al.', title: 'Circulating omega-6 polyunsaturated fatty acids and total and cause-specific mortality: the Cardiovascular Health Study', journal: 'Circulation', year: 2014, pmid: '25161045', url: 'https://pubmed.ncbi.nlm.nih.gov/25161045/' },
       { authors: 'Marklund M et al.', title: 'Biomarkers of dietary omega-6 fatty acids and incident cardiovascular disease and mortality', journal: 'Circulation', year: 2019, pmid: '31049549', url: 'https://pubmed.ncbi.nlm.nih.gov/31049549/' },
@@ -2308,6 +2401,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_high: { low: 0.27, high: 0.4 },
     why_it_matters: 'Methylmalonic acid (MMA) is a metabolic byproduct that accumulates when B12 is functionally deficient — making it a far more sensitive marker of functional B12 deficiency than serum B12 alone. Serum B12 can appear normal (or even high) while functional B12 deficiency exists at the cellular level, particularly in the elderly or those with pernicious anemia, gastric acid suppression (PPI use), or metformin therapy. Elevated MMA indicates that the B12-dependent enzyme methylmalonyl-CoA mutase is impaired, which disrupts myelin synthesis and causes the neurological damage of B12 deficiency before blood counts become abnormal.',
     why_range_differs: 'Standard labs flag MMA above 0.4 μmol/L as abnormal. However, Stabler and Allen\'s foundational work showed that neurological symptoms of B12 deficiency occur reliably when MMA exceeds 0.27 μmol/L, even with serum B12 in the "normal" range. Aere uses 0.27 μmol/L as the functional B12 sufficiency threshold — the most clinically meaningful cutoff for detecting early, reversible neurological risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Stabler SP et al.', title: 'Clinical spectrum and diagnosis of cobalamin deficiency', journal: 'Blood', year: 1990, pmid: '2375676', url: 'https://pubmed.ncbi.nlm.nih.gov/2375676/' },
       { authors: 'Allen RH, Stabler SP', title: 'Identification and quantitation of cobalamin and cobalamin analogues in human feces', journal: 'American Journal of Clinical Nutrition', year: 2008, pmid: '18175738', url: 'https://pubmed.ncbi.nlm.nih.gov/18175738/' },
@@ -2323,7 +2417,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'amh',
     name: 'AMH (Anti-Müllerian Hormone)',
     aliases: ['anti-Müllerian hormone', 'AMH level', 'ovarian reserve marker', 'Müllerian-inhibiting factor'],
-    category: 'hormones',
+    category: 'hormones-female',
     sex_specific: 'female',
     unit: 'ng/mL',
     unit_aliases: ['pmol/L'],
@@ -2331,6 +2425,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Upper quartile for age', confidence: 'moderate' },
     why_it_matters: 'AMH is produced by granulosa cells of developing ovarian follicles and is the most accurate blood marker of ovarian reserve — the quantity of remaining eggs. Unlike FSH (which only becomes elevated after significant reserve decline), AMH falls gradually and predictably with age, providing an earlier window into reproductive aging. Low AMH predicts poor response to fertility treatments but also correlates with the timing of menopause, which carries implications for cardiovascular health, bone density, and cognitive aging. AMH is also elevated in PCOS (due to many small follicles).',
     why_range_differs: 'AMH is always interpreted relative to age — a 25-year-old\'s AMH of 1.0 ng/mL is low; a 42-year-old\'s AMH of 0.8 ng/mL is expected. Aere targets the upper quartile for age as an indicator of robust ovarian reserve and, by extension, younger reproductive biological age. AMH does not fluctuate across the menstrual cycle, making it practical to measure at any time.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Broer SL et al.', title: 'Anti-Müllerian hormone predicts menopause: a long-term follow-up study in normoovulatory women', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2011, pmid: '21976724', url: 'https://pubmed.ncbi.nlm.nih.gov/21976724/' },
       { authors: 'de Kat AC et al.', title: 'Anti-Müllerian hormone trajectories are associated with cardiovascular disease in women: results from the Doetinchem Cohort Study', journal: 'Circulation', year: 2017, pmid: '28325776', url: 'https://pubmed.ncbi.nlm.nih.gov/28325776/' },
@@ -2344,7 +2439,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'psa_free',
     name: 'PSA (Free)',
     aliases: ['free PSA', 'fPSA', 'free prostate-specific antigen'],
-    category: 'hormones',
+    category: 'hormones-male',
     sex_specific: 'male',
     unit: 'ng/mL',
     unit_aliases: [],
@@ -2352,6 +2447,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Use PSA % Free for clinical interpretation', confidence: 'moderate' },
     why_it_matters: 'Free PSA is the fraction of total PSA not bound to serum proteins. It is used in combination with total PSA to calculate the % Free PSA ratio, which significantly improves prostate cancer detection specificity — reducing unnecessary biopsies in men with borderline total PSA (4–10 ng/mL). Prostate cancer produces relatively less free PSA than benign conditions; thus, a lower % Free PSA suggests higher cancer likelihood.',
     why_range_differs: 'Free PSA alone is not clinically interpreted — its value lies in calculating % Free PSA. It is typically ordered when total PSA falls in the 4–10 ng/mL "gray zone" where biopsy decision-making is most uncertain.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Catalona WJ et al.', title: 'Use of the percentage of free prostate-specific antigen to enhance differentiation of prostate cancer from benign prostatic disease', journal: 'JAMA', year: 1998, pmid: '9462180', url: 'https://pubmed.ncbi.nlm.nih.gov/9462180/' },
     ],
@@ -2364,7 +2460,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     id: 'psa_percent_free',
     name: 'PSA % Free',
     aliases: ['% free PSA', 'free PSA ratio', 'percent free PSA', 'free/total PSA ratio'],
-    category: 'hormones',
+    category: 'hormones-male',
     sex_specific: 'male',
     unit: '%',
     unit_aliases: [],
@@ -2373,6 +2469,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_borderline_low: { low: 10, high: 25 },
     why_it_matters: '% Free PSA = (Free PSA / Total PSA) × 100. This ratio substantially improves the specificity of PSA screening in the 4–10 ng/mL total PSA range. A % Free PSA above 25% in a man with PSA 4–10 ng/mL makes prostate cancer significantly less likely (risk ~8%); below 10% makes it considerably more likely (risk ~56%). Incorporating % Free PSA into clinical decisions reduces unnecessary biopsies by up to 20% while maintaining sensitivity for aggressive cancer detection.',
     why_range_differs: 'While the ratio is continuous, the 25% threshold is the most validated clinical decision point. Values above 25% combined with PSA trending slowly over time (low PSA velocity) indicate a very low short-term prostate cancer risk in the 4–10 ng/mL PSA zone. Values below 10% warrant biopsy consideration regardless of other factors.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Catalona WJ et al.', title: 'Use of the percentage of free prostate-specific antigen to enhance differentiation of prostate cancer from benign prostatic disease', journal: 'JAMA', year: 1998, pmid: '9462180', url: 'https://pubmed.ncbi.nlm.nih.gov/9462180/' },
       { authors: 'Vickers AJ et al.', title: 'Strategy for detection of prostate cancer based on relation between prostate specific antigen at age 40–55 and long term risk of metastasis: case-control study', journal: 'BMJ', year: 2013, pmid: '24170598', url: 'https://pubmed.ncbi.nlm.nih.gov/24170598/' },
@@ -2396,6 +2493,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 30, high: 90, display: '30–90 U/L', confidence: 'moderate' },
     why_it_matters: 'Amylase is an enzyme produced by the pancreas and salivary glands that breaks down carbohydrates. Elevated serum amylase is the classic marker of acute pancreatitis (often rises 4–8 hours after symptom onset, returns to normal in 3–5 days). Chronic mild elevations may indicate chronic pancreatitis, salivary gland disease, or impaired renal clearance. Pancreatic health is critical to longevity because chronic pancreatitis is a significant risk factor for pancreatic cancer, one of the deadliest malignancies.',
     why_range_differs: 'Amylase is primarily a clinical "alarm" marker rather than a longevity optimization target. The standard range applies — clinical context (symptoms, trends, lipase comparison) is essential. Aere targets the lower portion of normal (30–90 U/L) as a signal of pancreatic tranquility in the absence of symptoms. Persistent elevation in a healthy person warrants isoenzyme fractionation to distinguish pancreatic vs. salivary origin.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Papachristou GI, Whitcomb DC', title: 'Predictors of severity and necrosis in acute pancreatitis', journal: 'Gastroenterology Clinics of North America', year: 2004, pmid: '15177541', url: 'https://pubmed.ncbi.nlm.nih.gov/15177541/' },
     ],
@@ -2416,6 +2514,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 13, high: 50, display: '13–50 U/L', confidence: 'moderate' },
     why_it_matters: 'Lipase is produced almost exclusively by the pancreas (unlike amylase, which has salivary and other sources). It is a more specific marker of pancreatic injury than amylase and remains elevated longer in acute pancreatitis (3–14 days vs. 3–5 for amylase). Lipase is the preferred first-line test for suspected acute pancreatitis. Chronic alcohol use is the leading lifestyle cause of elevated lipase and pancreatitis. Gallstones and hypertriglyceridemia are other major triggers.',
     why_range_differs: 'Like amylase, lipase is primarily a clinical alarm marker rather than an optimization target. Aere targets the lower portion of normal (13–50 U/L) as a signal of healthy pancreatic function. Values above 3× the upper limit of normal (>180 U/L) with abdominal symptoms are diagnostic of acute pancreatitis. Moderate elevations in asymptomatic people warrant dietary review (alcohol, fat intake) and triglyceride testing.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Clave P et al.', title: 'Serum amylase and lipase in the assessment of acute pancreatitis', journal: 'HBP Surgery', year: 1995, pmid: '7727604', url: 'https://pubmed.ncbi.nlm.nih.gov/7727604/' },
     ],
@@ -2438,6 +2537,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'Glucose appears in urine (glucosuria) when blood glucose exceeds the renal threshold (~180 mg/dL), as the kidneys can no longer reabsorb all filtered glucose. This is a critical sign of uncontrolled diabetes or severely impaired glucose tolerance. Glucosuria can also occur with normal blood glucose in renal tubular disorders (renal glycosuria) or SGLT2 inhibitor medication use. Any glucose in urine warrants fasting blood glucose and HbA1c testing.',
     why_range_differs: 'Urine glucose is a binary marker (negative/positive) rather than an optimized continuous variable. The standard clinical negative result IS the appropriate target. Aere provides context: even trace glucosuria in a fasted morning sample should prompt blood glucose evaluation, as it indicates blood sugar excursions above 180 mg/dL at some point.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'American Diabetes Association', title: 'Standards of Medical Care in Diabetes', journal: 'Diabetes Care', year: 2024 },
     ],
@@ -2458,6 +2558,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'Protein in urine (proteinuria) signals glomerular damage — the kidneys are leaking protein that should be retained. Even microalbuminuria (trace to 1+ on dipstick, 30–300 mg/day on 24-hour collection) is a powerful early marker of kidney disease, endothelial dysfunction, and dramatically elevated cardiovascular risk in both diabetics and non-diabetics. Persistent proteinuria predicts progression to chronic kidney disease and end-stage renal failure. It is one of the earliest detectable signs of hypertension or diabetes damaging the kidneys.',
     why_range_differs: 'A negative result is the appropriate clinical and longevity target. Persistent trace or greater protein (1+, 2+, 3+) on dipstick — especially in the absence of fever, strenuous exercise, or orthostatic causes — requires quantitative urine protein testing (albumin:creatinine ratio or 24-hour urine protein) and evaluation for underlying kidney disease, hypertension, or diabetes.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Iseki K et al.', title: 'Proteinuria and the risk of developing end-stage renal disease', journal: 'Kidney International', year: 2003, pmid: '12943882', url: 'https://pubmed.ncbi.nlm.nih.gov/12943882/' },
     ],
@@ -2478,6 +2579,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 5.5, high: 7.5, display: '5.5–7.5', confidence: 'emerging' },
     why_it_matters: 'Urine pH reflects the kidneys\' role in acid-base balance. Persistently acidic urine (pH <5.5) promotes uric acid crystal formation (kidney stones, gout), may indicate metabolic acidosis, and is associated with high-meat, low-vegetable diets. Persistently alkaline urine (pH >7.5) raises risk of calcium-phosphate stones and may indicate urinary tract infection with urease-producing bacteria, renal tubular acidosis, or excessive alkali intake. First morning urine pH reflects overnight metabolic acid clearance.',
     why_range_differs: 'Urine pH is highly variable meal-to-meal, so a single dipstick measurement is limited. Aere targets the slightly acidic to neutral range (5.5–7.5) as a broad indicator of appropriate acid-base handling. A consistently acidic first morning pH (<5.5) combined with high uric acid or kidney stones warrants dietary alkalinization (more fruits and vegetables).',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Maalouf NM et al.', title: 'Low urine pH: a novel feature of the metabolic syndrome', journal: 'Clinical Journal of the American Society of Nephrology', year: 2007, pmid: '17699485', url: 'https://pubmed.ncbi.nlm.nih.gov/17699485/' },
     ],
@@ -2498,6 +2600,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 1.005, high: 1.020, display: '1.005–1.020', confidence: 'moderate' },
     why_it_matters: 'Specific gravity measures urine concentration — a proxy for hydration status and kidney concentrating ability. Persistently high specific gravity (>1.025) indicates chronic dehydration, which increases kidney stone risk, impairs cognitive performance, reduces physical performance, and may contribute to kidney disease progression. Very low specific gravity (<1.003) may indicate diabetes insipidus or excessive water intake. A morning first-void specific gravity of 1.010–1.020 indicates adequate hydration without excess.',
     why_range_differs: 'Aere targets the middle range (1.005–1.020) reflecting good hydration without overhydration. Values consistently above 1.025 suggest chronic underhydration — a modifiable and important longevity risk factor that receives too little clinical attention. Urine color (pale yellow) is a practical real-time proxy for specific gravity.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Perrier ET et al.', title: 'Urine colour change as an indicator of change in daily water intake: a quantitative analysis', journal: 'European Journal of Nutrition', year: 2016, pmid: '26022773', url: 'https://pubmed.ncbi.nlm.nih.gov/26022773/' },
     ],
@@ -2518,6 +2621,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Pale yellow (straw-colored)', confidence: 'moderate' },
     why_it_matters: 'Urine color is the most accessible daily hydration and health indicator — no lab required. Pale straw-yellow urine indicates good hydration. Dark amber to brown urine signals dehydration, concentrated waste products, or pathology (liver disease in very dark/tea-colored urine, myoglobinuria in red-brown after intense exercise). Pink or red urine may indicate hematuria (blood), beet consumption, or certain medications. Bright yellow urine after supplementation is typically harmless riboflavin (vitamin B2) excretion.',
     why_range_differs: 'Pale yellow is the hydration target because it corresponds to urine specific gravity of 1.005–1.012, the range associated with adequate fluid intake and optimal kidney function. Regular self-monitoring of urine color is one of the simplest evidence-based longevity practices — most adults are mildly chronically dehydrated, which impairs cognitive performance, physical capacity, and kidney health over time.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Armstrong LE et al.', title: 'Urinary indices of hydration status', journal: 'International Journal of Sport Nutrition', year: 1994, pmid: '7987361', url: 'https://pubmed.ncbi.nlm.nih.gov/7987361/' },
       { authors: 'Perrier ET et al.', title: 'Urine colour change as an indicator of change in daily water intake', journal: 'European Journal of Nutrition', year: 2016, pmid: '26022773', url: 'https://pubmed.ncbi.nlm.nih.gov/26022773/' },
@@ -2539,6 +2643,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative (unless intentionally fasting/ketogenic)', confidence: 'moderate' },
     why_it_matters: 'Urinary ketones indicate the body is using fat as its primary fuel source, producing ketone bodies (acetoacetate, beta-hydroxybutyrate, acetone) as byproducts. In the absence of deliberate fasting or a ketogenic diet, ketonuria signals either diabetic ketoacidosis (a medical emergency in type 1 diabetes or advanced type 2) or prolonged starvation. In the context of intentional intermittent fasting or low-carbohydrate eating, trace to moderate ketonuria indicates successful metabolic switching to fat oxidation.',
     why_range_differs: 'The standard result (negative) is appropriate for most contexts. Context is critical: in someone deliberately eating ketogenic or fasting, trace–moderate ketones (1+ to 2+) are expected and not concerning. Large ketones (3+) warrant blood glucose testing to rule out diabetic ketoacidosis, especially in someone with diabetes or unexplained symptoms.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cahill GF Jr', title: 'Fuel metabolism in starvation', journal: 'Annual Review of Nutrition', year: 2006, pmid: '16848700', url: 'https://pubmed.ncbi.nlm.nih.gov/16848700/' },
     ],
@@ -2559,6 +2664,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'Normal urine contains no bilirubin. Conjugated (direct) bilirubin appears in urine only when there is hepatocellular disease or biliary obstruction preventing normal excretion into bile. Bilirubinuria therefore specifically indicates liver disease or bile duct obstruction and appears even before clinical jaundice is visible. It is one of the earliest urinalysis signs of liver pathology.',
     why_range_differs: 'Negative is the appropriate clinical and longevity target — any detectable urine bilirubin (even 1+) warrants liver function panel evaluation. This is a categorical marker (present/absent) rather than a continuously optimizable variable.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2579,6 +2685,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'Urinary nitrites are produced when gram-negative bacteria (E. coli, Klebsiella, Proteus) convert dietary nitrates in urine. A positive nitrite test indicates bacterial infection in the urinary tract (UTI). Positive nitrite has ~94% specificity for UTI but lower sensitivity (~50%), so a negative nitrite does not rule out UTI — clinical symptoms and microscopy remain essential.',
     why_range_differs: 'Negative is the appropriate target. Positive nitrite on dipstick in a symptomatic patient is strong evidence for UTI requiring treatment. In an asymptomatic person, a single positive result may be a false positive (contamination, dietary factors) and should be confirmed with urine culture.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2599,6 +2706,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'Leukocyte esterase is an enzyme released by white blood cells (primarily neutrophils) in urine. A positive result indicates pyuria (white blood cells in urine), which signals urinary tract infection, urethritis, or — in some cases — kidney inflammation. Leukocyte esterase is more sensitive than nitrite for UTI detection (sensitivity ~75–96%) but less specific. Together, nitrite + leukocyte esterase form the urinalysis infection screen.',
     why_range_differs: 'Negative is the appropriate target. Positive LE with positive nitrite in a symptomatic patient strongly indicates UTI. Positive LE alone (without nitrite, without symptoms) may indicate inflammation from non-infectious causes (interstitial cystitis, kidney disease, sexually transmitted infections) and warrants clinical evaluation.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Devillé WL et al.', title: 'The urine dipstick test useful to rule out infections: a meta-analysis of the accuracy', journal: 'BMC Urology', year: 2004, pmid: '15084259', url: 'https://pubmed.ncbi.nlm.nih.gov/15084259/' },
     ],
@@ -2619,6 +2727,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 2, display: '0–2/hpf', confidence: 'strong' },
     why_it_matters: 'Red blood cells in urine (hematuria) indicate bleeding anywhere in the urinary tract — kidney, ureter, bladder, or urethra. Even microscopic hematuria (>2–3 RBC/hpf without symptoms) warrants evaluation because it can signal bladder cancer, kidney disease, kidney stones, or other pathology. Macroscopic hematuria (visible blood) requires urgent evaluation. Benign causes include vigorous exercise, menstrual contamination, and benign prostatic hyperplasia.',
     why_range_differs: 'Microscopic hematuria is one of the most common incidental urinalysis findings and one of the most clinically important to not dismiss. AUA guidelines recommend evaluation for malignancy in all adults >35 with unexplained microscopic hematuria (>3 RBC/hpf on repeated testing). This is a safety threshold, not an optimization variable — the standard clinical negative IS the longevity target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Grossfeld GD et al.', title: 'Asymptomatic microscopic hematuria in adults: summary of the AUA best practice policy recommendations', journal: 'American Family Physician', year: 2001, pmid: '11201651', url: 'https://pubmed.ncbi.nlm.nih.gov/11201651/' },
     ],
@@ -2639,6 +2748,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 2, display: '0–2/hpf', confidence: 'moderate' },
     why_it_matters: 'White blood cells in urine indicate urinary tract inflammation — most commonly from infection (UTI, pyelonephritis) but also from interstitial nephritis, urethritis, or kidney disease. Pyuria (>5 WBC/hpf) combined with symptoms and positive nitrite/leukocyte esterase is strong evidence for UTI. Sterile pyuria (WBCs without bacteria) may indicate tuberculosis, chlamydia, interstitial nephritis, or kidney disease.',
     why_range_differs: 'The clinical threshold of >5 WBC/hpf defines pyuria. Aere targets <2/hpf as the healthy longevity baseline — even lower counts in a well-hydrated morning sample suggest minimal urinary tract inflammation. Persistent low-grade pyuria (2–5/hpf) in the absence of symptoms and with a negative culture warrants evaluation for non-infectious causes.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2659,6 +2769,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Hyaline casts only (0–2/lpf), no cellular or granular casts', confidence: 'strong' },
     why_it_matters: 'Urinary casts are cylindrical structures formed in kidney tubules and can provide direct evidence of intrarenal pathology. Hyaline casts (clear protein cylinders) are normal in small numbers, especially after exercise or dehydration. Granular or waxy casts indicate chronic kidney disease. RBC casts are pathognomonic for glomerulonephritis. WBC casts indicate pyelonephritis or interstitial nephritis. Fatty casts suggest nephrotic syndrome. Cast type determines the anatomical site and nature of kidney injury with remarkable specificity.',
     why_range_differs: 'Hyaline casts in small numbers (0–2/lpf) are physiologically normal and not concerning. Any cellular cast (RBC, WBC, epithelial) or granular/waxy cast is pathological and warrants nephrology evaluation. Urine cast analysis requires freshly spun urine examined by a skilled microscopist — it is one of the most informative but underperformed components of urinalysis.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Fogazzi GB et al.', title: 'The urinary sediment: an integrated view', journal: 'Oxford University Press', year: 2010 },
     ],
@@ -2679,6 +2790,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 9.0, display: '<9.0 IU/mL (negative)', confidence: 'strong' },
     why_it_matters: 'Thyroid peroxidase antibodies target the enzyme responsible for iodine incorporation into thyroid hormones. Elevated TPO antibodies are the hallmark of autoimmune thyroiditis (Hashimoto\'s disease) and are present in ~95% of Hashimoto\'s cases and ~75% of Graves\' disease. Even modestly elevated TPO antibodies predict future thyroid dysfunction — euthyroid individuals with elevated TPO Ab develop hypothyroidism at ~2–4% per year. They also correlate with thyroid inflammation, postpartum thyroiditis risk, and pregnancy complications including miscarriage.',
     why_range_differs: 'The standard reference range defines "positive" at >9.0 IU/mL, which effectively identifies autoimmune thyroiditis. Aere uses the same threshold because TPO antibodies are a binary marker — any significant elevation above the assay cutoff indicates autoimmune targeting of the thyroid gland. The clinical goal is negative (undetectable), not an "optimal range."',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Hollowell JG, Staehling NW, Flanders WD, et al.', title: 'Serum TSH, T(4), and thyroid antibodies in the United States population (1988 to 1994): National Health and Nutrition Examination Survey (NHANES III)', journal: 'Journal of Clinical Endocrinology & Metabolism', year: 2002, pmid: '12364621', url: 'https://pubmed.ncbi.nlm.nih.gov/12364621/' },
     ],
@@ -2696,7 +2808,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     unit: 'ng/mL',
     unit_aliases: ['µg/L'],
     standard_lab_range: { display: 'Male: 0.5–13.8 ng/mL; Female: 1.1–27.5 ng/mL', source: 'LabCorp' },
-    aere_optimal: { display: 'Lower half of sex-adjusted reference range', confidence: 'moderate' },
+    aere_optimal: { display: '0.5–7.0 ng/mL (M) / 1.1–14.0 ng/mL (F)', confidence: 'moderate' },
     male_ranges: {
       standard_lab_range: { low: 0.5, high: 13.8, display: '0.5–13.8 ng/mL', source: 'LabCorp' },
       aere_optimal: { low: 0.5, high: 7.0, display: '0.5–7.0 ng/mL', confidence: 'moderate' },
@@ -2707,6 +2819,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     },
     why_it_matters: 'Leptin is an adipokine produced primarily by white adipose tissue that signals energy sufficiency to the hypothalamus, regulating appetite, metabolism, and reproductive function. Circulating leptin levels are proportional to fat mass — elevated leptin indicates leptin resistance (analogous to insulin resistance), where the brain fails to respond to satiety signals despite high levels. Leptin resistance drives continued overeating and weight gain. Low leptin signals starvation and suppresses thyroid, reproductive, and immune function.',
     why_range_differs: 'Standard lab ranges reflect the population distribution, which skews high due to widespread obesity and leptin resistance. Prospective studies show that elevated plasma leptin independently predicts cardiovascular events and is associated with metabolic syndrome, inflammatory markers, and haemostatic risk factors. Aere targets the lower half of the sex-adjusted range because lower leptin levels (in the context of healthy body composition) indicate preserved leptin sensitivity, lower inflammatory burden, and reduced CVD risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Wannamethee SG, Tchernova J, Whincup P, et al.', title: 'Plasma leptin: associations with metabolic, inflammatory and haemostatic risk factors for cardiovascular disease', journal: 'Atherosclerosis', year: 2007, pmid: '16945371', url: 'https://pubmed.ncbi.nlm.nih.gov/16945371/' },
       { authors: 'Wallace AM, McMahon AD, Packard CJ, et al.', title: 'Plasma leptin and the risk of cardiovascular disease in the West of Scotland Coronary Prevention Study (WOSCOPS)', journal: 'Circulation', year: 2001, pmid: '11511491', url: 'https://pubmed.ncbi.nlm.nih.gov/11511491/' },
@@ -2729,6 +2842,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 14, display: '<14 IU/mL (negative)', confidence: 'strong' },
     why_it_matters: 'Rheumatoid factor is an IgM autoantibody directed against the Fc portion of IgG. It is the classical serological marker of rheumatoid arthritis (RA), present in ~70–80% of RA patients (seropositive RA). However, RF is not specific to RA — it also occurs in Sjögren\'s syndrome, cryoglobulinemia, hepatitis C, endocarditis, and other chronic infections. Seropositive RA tends to be more aggressive with higher rates of joint erosion and extra-articular manifestations. RF can appear years before clinical RA onset, making it useful for risk stratification.',
     why_range_differs: 'The standard cutoff of <14 IU/mL defines seronegativity. Aere uses the same threshold because RF is a qualitative marker — any significant elevation indicates immune dysregulation and autoantibody production. Higher titers correlate with disease severity in RA. Low-positive results (14–40 IU/mL) in asymptomatic individuals may be incidental, especially in the elderly (~5% of healthy adults over 65 are RF-positive).',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Ingegnoli F, Castelli R, Gualtierotti R', title: 'Rheumatoid factors: clinical applications', journal: 'Disease Markers', year: 2013, url: 'https://doi.org/10.1155/2013/726598' },
     ],
@@ -2749,6 +2863,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'The ANA screen detects antinuclear antibodies — autoantibodies directed against components of the cell nucleus. A positive ANA is found in virtually all patients with systemic lupus erythematosus (SLE), most with mixed connective tissue disease, scleroderma, and Sjögren\'s syndrome, and a significant proportion with autoimmune hepatitis and other autoimmune conditions. ANA is the first-line screening test for systemic autoimmune disease. However, low-titer positive ANA is common in the healthy population (~20% at 1:40) and increases with age, making clinical context essential for interpretation.',
     why_range_differs: 'The standard reference is "Negative" and Aere agrees — ANA is a screening test where the goal is the absence of detectable autoantibodies. A positive result triggers reflex testing (titer, pattern, specific antibodies like anti-dsDNA, anti-Smith) to determine clinical significance. Isolated positive ANA without symptoms rarely requires treatment but warrants monitoring.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Tan EM, Cohen AS, Fries JF, et al.', title: 'The 1982 revised criteria for the classification of systemic lupus erythematosus', journal: 'Arthritis & Rheumatism', year: 1982, url: 'https://doi.org/10.1002/art.1780251101' },
     ],
@@ -2769,6 +2884,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: '<1:40 (negative)', confidence: 'strong' },
     why_it_matters: 'ANA titer quantifies the concentration of antinuclear antibodies by serial dilution. Higher titers indicate greater autoantibody concentration and stronger association with systemic autoimmune disease. A titer of 1:40 is the screening cutoff, but ~20% of healthy individuals are positive at this level. Titers of 1:160 or higher carry significant clinical weight — SLE patients typically have titers ≥1:160, and titers ≥1:640 are strongly suggestive of active autoimmune disease. The titer helps stratify the clinical significance of a positive ANA screen.',
     why_range_differs: 'The standard and Aere thresholds are identical at <1:40 because ANA titer is a diagnostic marker where the goal is absence of detectable autoantibodies. Higher titers (1:160, 1:320, 1:640+) progressively increase the likelihood of autoimmune disease. Low titers (1:40–1:80) in asymptomatic individuals are often clinically insignificant but should be documented and monitored longitudinally.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Tan EM, Cohen AS, Fries JF, et al.', title: 'The 1982 revised criteria for the classification of systemic lupus erythematosus', journal: 'Arthritis & Rheumatism', year: 1982, url: 'https://doi.org/10.1002/art.1780251101' },
     ],
@@ -2789,6 +2905,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None detected', confidence: 'strong' },
     why_it_matters: 'The ANA pattern identifies the immunofluorescence staining pattern of antinuclear antibodies on HEp-2 cells, which suggests which nuclear antigens are being targeted and helps direct differential diagnosis. Homogeneous pattern is associated with SLE and drug-induced lupus (anti-dsDNA, anti-histone). Speckled pattern is the most common and is associated with mixed connective tissue disease, SLE, and Sjögren\'s (anti-Smith, anti-RNP, anti-SSA/SSB). Nucleolar pattern suggests scleroderma (anti-RNA polymerase III, anti-Scl-70). Centromere pattern is characteristic of limited scleroderma (CREST syndrome). The pattern guides subsequent specific antibody testing.',
     why_range_differs: 'The standard and Aere interpretation are identical — "None detected" is the healthy result. When a pattern is detected, its clinical significance depends on the specific pattern type, titer, and clinical context. Pattern identification is essential for directing the autoimmune workup and should always be interpreted alongside titer and clinical presentation.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Agmon-Levin N, Damoiseaux J, Kallenberg CG, et al.', title: 'International recommendations for the assessment of autoantibodies to cellular antigens referred to as anti-nuclear antibodies', journal: 'Annals of the Rheumatic Diseases', year: 2014, pmid: '24431390', url: 'https://pubmed.ncbi.nlm.nih.gov/24431390/' },
     ],
@@ -2809,6 +2926,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Negative', confidence: 'strong' },
     why_it_matters: 'Urine occult blood detects hemoglobin or myoglobin via peroxidase activity on a dipstick. A positive result indicates hematuria (blood in urine) or myoglobinuria (muscle breakdown). Hematuria can originate from anywhere in the urinary tract — kidney stones, urinary tract infection, glomerulonephritis, bladder or renal cancer, trauma, or benign causes like vigorous exercise. Myoglobinuria from rhabdomyolysis produces a positive dipstick without RBCs on microscopy. Persistent microscopic hematuria in adults over 40 requires urological evaluation to exclude malignancy.',
     why_range_differs: 'The standard and Aere targets are identical — "Negative" is the only acceptable result. Any positive result warrants clinical investigation. The dipstick is highly sensitive but not specific; false positives occur with dehydration, menstrual contamination, vigorous exercise, and alkaline urine. Microscopic confirmation (RBC count) and clinical context determine the appropriate workup.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2829,6 +2947,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Clear', confidence: 'strong' },
     why_it_matters: 'Urine appearance is the visual assessment of clarity, ranging from clear to turbid. Clear urine indicates a normal specimen with minimal particulate matter. Cloudy or turbid urine suggests the presence of white blood cells (pyuria), bacteria (bacteriuria), crystals (phosphate, urate, calcium oxalate), red blood cells, mucus, lipids, or chyle. While cloudy urine often has benign causes (dietary phosphate, standing urine), it can be the first indicator of UTI, nephrolithiasis, or other urological pathology.',
     why_range_differs: 'The standard and Aere targets are identical — clear urine is the expected normal finding. Turbidity is a non-specific indicator that should be correlated with microscopic examination and chemical analysis. A properly collected first-morning void that is clear generally indicates a healthy urinary tract.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2849,6 +2968,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None seen', confidence: 'strong' },
     why_it_matters: 'Microscopic detection of bacteria in urine sediment indicates bacteriuria, which may represent urinary tract infection, asymptomatic bacteriuria, or specimen contamination. Significant bacteriuria (≥10⁵ CFU/mL on culture) in symptomatic patients defines UTI. Bacteria on microscopy correlate with urine culture results and, when combined with pyuria (WBCs), strongly suggest active infection. Asymptomatic bacteriuria is common in elderly women and catheterized patients and generally does not require treatment except in pregnancy or before urological procedures.',
     why_range_differs: 'The standard and Aere targets are identical — "None seen" in a clean-catch midstream specimen is the healthy finding. Any bacteria seen on microscopy should be correlated with symptoms, WBC count, nitrite/leukocyte esterase results, and culture when indicated. Contamination from skin flora is common and is suggested by the presence of squamous epithelial cells.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Wilson ML, Gaido L', title: 'Laboratory diagnosis of urinary tract infections in adult patients', journal: 'Clinical Infectious Diseases', year: 2004, url: 'https://doi.org/10.1086/382022' },
     ],
@@ -2869,6 +2989,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None seen', confidence: 'strong' },
     why_it_matters: 'Yeast in urine (most commonly Candida species) indicates candiduria, which can represent colonization, contamination, or true urinary tract fungal infection. Risk factors include diabetes mellitus, immunosuppression, broad-spectrum antibiotic use, indwelling urinary catheters, and structural urological abnormalities. Symptomatic candiduria (dysuria, frequency) may require antifungal treatment. In immunocompromised patients or those with renal involvement, candiduria can indicate disseminated candidiasis — a serious systemic infection requiring urgent treatment.',
     why_range_differs: 'The standard and Aere targets are identical — "None seen" is the healthy finding. Yeast in urine is always abnormal in a properly collected specimen and warrants clinical evaluation. The distinction between colonization and true infection depends on symptoms, host factors, and quantitative culture. In diabetic patients, candiduria should prompt assessment of glycemic control.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Kauffman CA, Vazquez JA, Sobel JD, et al.', title: 'Prospective multicenter surveillance study of funguria in hospitalized patients', journal: 'Clinical Infectious Diseases', year: 2000, pmid: '11049785', url: 'https://pubmed.ncbi.nlm.nih.gov/11049785/' },
     ],
@@ -2889,6 +3010,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 5, display: '<5/hpf', confidence: 'strong' },
     why_it_matters: 'Squamous epithelial cells in urine originate from the skin, distal urethra, and vaginal epithelium — not from the urinary tract itself. Their presence in urine is the primary indicator of specimen contamination from improper collection technique. When >5 squamous epithelial cells per high-power field are present, the specimen is considered contaminated and results (especially culture and microscopy) may be unreliable. A contaminated specimen can produce false-positive bacteria and WBC findings, leading to unnecessary antibiotic treatment. Proper clean-catch midstream technique minimizes contamination.',
     why_range_differs: 'The standard reference of "few or none" is intentionally vague. Aere specifies <5/hpf as the actionable threshold because >5/hpf is widely accepted as the cutoff indicating contamination that invalidates culture and microscopy results. Specimens with >5 squamous epithelial cells/hpf should be recollected with proper technique before clinical decisions are made.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2909,6 +3031,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None seen', confidence: 'strong' },
     why_it_matters: 'Renal epithelial cells originate from the kidney tubules and should not appear in urine under normal conditions. Their presence (>1–2/hpf) indicates intrarenal pathology such as acute tubular necrosis (ATN), pyelonephritis, nephrotoxic drug injury, viral nephritis, or transplant rejection. These cells are distinguished from transitional and squamous epithelial cells by their smaller size and round shape. In the setting of acute kidney injury, renal epithelial cells and granular casts together form the hallmark "muddy brown cast" sediment of ATN.',
     why_range_differs: 'The standard and Aere targets are identical — renal epithelial cells should not be present in urine from healthy kidneys. Any renal epithelial cells seen on microscopy are clinically significant and warrant further evaluation of renal function, imaging, and clinical context to identify the underlying cause of tubular injury.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Fogazzi GB, Verdesca S, Garigali G', title: 'Urinalysis: core curriculum 2008', journal: 'Nephrology Dialysis Transplantation', year: 2003, url: 'https://doi.org/10.1093/ndt/gfn612' },
     ],
@@ -2929,6 +3052,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { high: 5, display: '<5/hpf', confidence: 'moderate' },
     why_it_matters: 'Transitional (urothelial) epithelial cells line the renal pelvis, ureters, bladder, and proximal urethra. Small numbers in urine are normal due to routine cell turnover. Increased numbers suggest urinary tract infection, catheterization trauma, urolithiasis, or bladder pathology including transitional cell carcinoma. In the setting of recurrent hematuria with elevated transitional cells, cystoscopy and cytology should be considered to exclude malignancy. Clusters or sheets of transitional cells are more concerning than scattered individual cells.',
     why_range_differs: 'Standard references report "few" as normal, which is imprecise. Aere specifies <5/hpf as the threshold above which clinical evaluation is warranted. Higher counts should prompt assessment for infection, instrumentation-related injury, or urothelial pathology, particularly in patients with risk factors for bladder cancer (smoking, occupational chemical exposure, age >50).',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Simerville JA, Maxted WC, Pahira JJ', title: 'Urinalysis: a comprehensive review', journal: 'American Family Physician', year: 2005, pmid: '15724462', url: 'https://pubmed.ncbi.nlm.nih.gov/15724462/' },
     ],
@@ -2949,6 +3073,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None', confidence: 'moderate' },
     why_it_matters: 'Calcium oxalate crystals are the most common crystals found in urine and appear as characteristic envelope-shaped (dihydrate) or dumbbell/oval-shaped (monohydrate) structures. They can occur in normal urine but excessive amounts indicate increased kidney stone risk — calcium oxalate stones account for approximately 70–80% of all kidney stones. Crystal formation is promoted by high-oxalate foods (spinach, rhubarb, nuts, chocolate), dehydration, hyperoxaluria (primary or enteric), hypercalciuria, and low urine citrate. Ethylene glycol poisoning also produces massive calcium oxalate crystalluria and should be considered in the appropriate clinical context.',
     why_range_differs: 'Standard laboratories report "few or none" as normal because occasional calcium oxalate crystals are common and often clinically insignificant. Aere targets "None" because even modest crystalluria reflects supersaturation conditions that, over time, promote stone formation. For longevity-focused patients, minimizing crystalluria through adequate hydration (>2.5L/day), dietary oxalate moderation, and optimizing citrate intake reduces lifetime nephrolithiasis risk.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Daudon M, Jungers P, Bazin D', title: 'Peculiar morphology of stones in Chinese patients', journal: 'Kidney International', year: 2009, pmid: '19078968', url: 'https://pubmed.ncbi.nlm.nih.gov/19078968/' },
     ],
@@ -2969,6 +3094,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None', confidence: 'strong' },
     why_it_matters: 'Triple phosphate (struvite) crystals are composed of magnesium ammonium phosphate and form characteristic coffin-lid shaped structures on microscopy. They form exclusively in alkaline urine (pH >7.0) and are strongly associated with urease-producing bacterial infections — most commonly Proteus mirabilis, but also Klebsiella, Pseudomonas, and Staphylococcus saprophyticus. The urease enzyme splits urea into ammonia, raising urine pH and creating conditions for struvite precipitation. Struvite crystals are the precursors to struvite (infection) stones, which can rapidly grow into large staghorn calculi that fill the renal collecting system and cause significant morbidity.',
     why_range_differs: 'The standard and Aere targets are identical — triple phosphate crystals should not be present in healthy urine. Their detection should always prompt evaluation for urinary tract infection with urease-producing organisms, urine culture, and assessment for existing struvite stones via imaging. Eradication of the underlying infection is essential to prevent stone formation and recurrence.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Flannigan R, Choy WH, Chew B, Lange D', title: 'Renal struvite stones — pathogenesis, microbiology, and management strategies', journal: 'Nature Reviews Urology', year: 2014, url: 'https://doi.org/10.1038/nrurol.2014.32' },
     ],
@@ -2989,6 +3115,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None', confidence: 'moderate' },
     why_it_matters: 'Uric acid crystals appear as diamond, rhomboid, or rosette-shaped structures and form preferentially in acidic urine (pH <5.5). They are associated with hyperuricemia, gout, excessive purine intake, dehydration, and increased cell turnover states including tumor lysis syndrome and myeloproliferative disorders. Uric acid stones account for approximately 5–10% of all kidney stones and are unique in that they are radiolucent on plain radiography. Persistent uric acid crystalluria indicates ongoing supersaturation that increases the risk of stone formation, urate nephropathy, and gouty arthritis flares.',
     why_range_differs: 'Standard references accept "few or none" because occasional uric acid crystals can occur transiently with concentrated or acidic urine. Aere targets "None" because persistent crystalluria reflects metabolic conditions — hyperuricemia, chronic dehydration, persistently acidic urine — that are modifiable and associated with long-term renal and cardiovascular morbidity. Urine alkalinization (target pH 6.0–6.5), adequate hydration, and dietary purine moderation effectively reduce uric acid crystal formation.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Maalouf NM, Cameron MA, Moe OW, Sakhaee K', title: 'Novel insights into the pathogenesis of uric acid nephrolithiasis', journal: 'Clinical Journal of the American Society of Nephrology', year: 2007, pmid: '17699485', url: 'https://pubmed.ncbi.nlm.nih.gov/17699485/' },
     ],
@@ -3009,6 +3136,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'None', confidence: 'moderate' },
     why_it_matters: 'Urine crystal detection on microscopy is a general finding that encompasses multiple crystal types: calcium oxalate (most common), uric acid, triple phosphate (struvite), calcium phosphate, cystine, and others. Crystal identification is based on morphology and urine pH. While some crystals are clinically benign (amorphous urates, amorphous phosphates), others indicate metabolic disease or infection. Cystine crystals are pathognomonic for cystinuria. Drug crystals (sulfonamides, acyclovir, indinavir) indicate medication-related nephrotoxicity risk. Crystal type, quantity, and clinical context together determine significance.',
     why_range_differs: 'Standard laboratories report "none to few" as normal because transient low-level crystalluria is common and often diet- or hydration-related. Aere targets "None" because any crystalluria reflects urine supersaturation — the thermodynamic prerequisite for stone formation. In a longevity context, identifying and addressing the metabolic conditions that produce crystalluria (dehydration, dietary excess, metabolic disorders) prevents long-term nephrolithiasis and preserves renal function.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Daudon M, Jungers P, Bazin D', title: 'Peculiar morphology of stones in Chinese patients', journal: 'Kidney International', year: 2009, pmid: '19078968', url: 'https://pubmed.ncbi.nlm.nih.gov/19078968/' },
     ],
@@ -3029,6 +3157,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'Few or none', confidence: 'moderate' },
     why_it_matters: 'Amorphous sediment refers to shapeless granular material seen on urine microscopy that lacks the defined crystal structure needed for specific identification. In acidic urine (pH <5.5), amorphous urates (sodium, potassium, or ammonium urate salts) produce a characteristic pink-orange "brick dust" sediment. In alkaline urine (pH >7.0), amorphous phosphates (calcium and magnesium phosphate) produce a white, cloudy precipitate. Both are generally benign and diet-related — high-protein diets promote urate formation while plant-based diets promote phosphate formation. However, abundant amorphous sediment can obscure other clinically important microscopic elements such as casts, cells, and pathologic crystals.',
     why_range_differs: 'The standard and Aere targets are identical — "few or none" is the expected finding. Amorphous sediment is usually clinically insignificant and resolves with temperature changes (warming the specimen dissolves amorphous urates; acidifying dissolves amorphous phosphates). When abundant, it may warrant repeating the microscopic examination on a fresh, properly processed specimen to ensure no pathologic elements are hidden.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Fogazzi GB, Verdesca S, Garigali G', title: 'Urinalysis: core curriculum 2008', journal: 'Nephrology Dialysis Transplantation', year: 2003, url: 'https://doi.org/10.1093/ndt/gfn612' },
     ],
@@ -3049,6 +3178,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'N/A (genetic, not optimizable)', confidence: 'strong' },
     why_it_matters: 'ABO blood group is a fixed genetic trait determined by the presence or absence of A and B antigens on the red blood cell surface. It is not a biomarker with an "optimal" range — it is an immutable characteristic included for completeness in comprehensive panels. ABO type is critical for blood transfusion compatibility and organ transplantation matching. Epidemiologic studies have identified associations between ABO type and disease risk: Type O individuals have lower cardiovascular disease and venous thromboembolism (VTE) risk compared to non-O types. Non-O blood types (particularly Type A) are associated with 60–80% higher VTE risk, modestly increased coronary artery disease risk, and higher von Willebrand factor and Factor VIII levels.',
     why_range_differs: 'There is no standard vs. optimal range distinction for ABO type — it is a genetic classification, not a modifiable biomarker. Aere includes it because comprehensive blood panels report it, and patients benefit from knowing their blood type for emergency preparedness, family planning, and understanding their baseline cardiovascular risk profile associated with their ABO group.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Gill JC, Endres-Brooks J, Bauer PJ, Marks WJ, Montgomery RR', title: 'The effect of ABO blood group on the diagnosis of von Willebrand disease', journal: 'Blood Transfusion', year: 2017, url: 'https://doi.org/10.2450/2017.0169-17' },
     ],
@@ -3069,6 +3199,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { display: 'N/A (genetic, not optimizable)', confidence: 'strong' },
     why_it_matters: 'Rh type indicates the presence (Rh-positive, ~85% of population) or absence (Rh-negative, ~15%) of the D antigen on red blood cells. It is a fixed genetic trait, not a modifiable biomarker. Rh typing is critical for blood transfusion safety — Rh-negative patients transfused with Rh-positive blood develop anti-D antibodies that cause hemolytic transfusion reactions on subsequent exposure. In pregnancy, Rh-negative mothers carrying Rh-positive fetuses are at risk for hemolytic disease of the fetus and newborn (HDFN) due to maternal anti-D antibodies crossing the placenta. Rh immunoglobulin (RhoGAM) prophylaxis at 28 weeks and postpartum has dramatically reduced HDFN incidence.',
     why_range_differs: 'There is no standard vs. optimal range distinction for Rh type — it is a genetic classification, not a modifiable biomarker. Aere includes it because comprehensive panels report it, and Rh status has direct clinical implications for transfusion safety, pregnancy management, and emergency preparedness. All women of childbearing age should know their Rh status.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Moise KJ', title: 'Management of Rhesus alloimmunization in pregnancy', journal: 'Obstetrics & Gynecology', year: 2008, url: 'https://doi.org/10.1097/AOG.0b013e31816f7554' },
     ],
@@ -3089,6 +3220,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0 (none)', confidence: 'strong' },
     why_it_matters: 'Nucleated red blood cells (NRBCs) are immature erythrocyte precursors that retain their nucleus and are normally confined to the bone marrow. Their presence in peripheral blood of adults is always pathological and indicates severe bone marrow stress or disruption of the marrow-blood barrier. Causes include massive hemorrhage, severe hemolytic anemia, bone marrow infiltration (myelophthisis from metastatic cancer, myelofibrosis, leukemia), extramedullary hematopoiesis, severe sepsis, and asplenia or hyposplenism (the spleen normally filters NRBCs). NRBCs in peripheral blood are an independent predictor of ICU mortality. Automated hematology analyzers now routinely detect and flag NRBCs, correcting the WBC count which would otherwise be falsely elevated.',
     why_range_differs: 'The standard and Aere targets are identical — NRBCs should not be present in the peripheral blood of healthy adults. Any detection of NRBCs is clinically significant and warrants urgent evaluation including peripheral blood smear review, reticulocyte count, LDH, haptoglobin, and clinical assessment for the underlying cause of bone marrow stress.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Stachon A, Segbers E, Holland-Letz T, Kempf R, Hering S, Krieg M', title: 'Nucleated red blood cells in the blood of medical intensive care patients indicate increased mortality risk', journal: 'American Journal of Clinical Pathology', year: 2004, pmid: '15491966', url: 'https://pubmed.ncbi.nlm.nih.gov/15491966/' },
     ],
@@ -3109,6 +3241,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0%', confidence: 'strong' },
     why_it_matters: 'Reactive (atypical) lymphocytes are antigen-stimulated T lymphocytes that are morphologically distinct from normal lymphocytes — they are larger, with abundant basophilic cytoplasm, irregular nuclear shape, and cytoplasm that may indent around neighboring red blood cells. The classic association is with Epstein-Barr virus (EBV) infectious mononucleosis, where >10% reactive lymphocytes on the differential is a hallmark finding. Other causes include cytomegalovirus (CMV) infection, viral hepatitis, HIV seroconversion, toxoplasmosis, drug hypersensitivity reactions (phenytoin, carbamazepine), and post-vaccination responses. Distinguishing reactive lymphocytes from neoplastic lymphocytes (lymphoma, leukemia) is a critical diagnostic step that may require flow cytometry.',
     why_range_differs: 'The standard and Aere targets are identical — reactive lymphocytes should not be present on a peripheral smear from a healthy adult. Their presence indicates active immune stimulation, most commonly from viral infection. The percentage and clinical context guide further workup: >10% with pharyngitis and lymphadenopathy in a young adult strongly suggests EBV mono; lower percentages with other clinical features may prompt CMV, hepatitis, or HIV testing.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Stachon A, Segbers E, Holland-Letz T, Kempf R, Hering S, Krieg M', title: 'Nucleated red blood cells in the blood of medical intensive care patients indicate increased mortality risk', journal: 'American Journal of Clinical Pathology', year: 2004, pmid: '15491966', url: 'https://pubmed.ncbi.nlm.nih.gov/15491966/' },
     ],
@@ -3129,6 +3262,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0.3, display: '<0.3 K/μL', confidence: 'moderate' },
     why_it_matters: 'Band neutrophils are immature neutrophils — one maturation stage before fully segmented neutrophils. They are released from the bone marrow prematurely when demand for neutrophils exceeds the supply of mature cells, most commonly during acute bacterial infection. A "left shift" (>5% bands or >0.7 K/μL) on the CBC differential is one of the earliest and most reliable hematologic signs of active bacterial infection or severe systemic inflammation. The degree of left shift correlates with infection severity: mild elevations suggest localized infection, while markedly elevated bands with toxic granulation and Döhle bodies indicate severe sepsis. Bands can also increase with severe tissue necrosis, acute hemolysis, metabolic crises (diabetic ketoacidosis), and as a rebound phenomenon after chemotherapy-induced neutropenia.',
     why_range_differs: 'Band neutrophils occupy a middle ground between binary pathology markers and continuously optimizable biomarkers. While the clinical standard accepts up to 0.7 K/μL (5%) as normal, Aere sets a tighter optimal of <0.3 K/μL because even modest band elevations in the absence of overt infection may reflect subclinical inflammation, chronic stress-induced marrow stimulation, or early infection that warrants monitoring. However, the confidence is moderate because bands at low levels have limited specificity and can fluctuate with circadian rhythm, exercise, and stress.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cornbleet PJ', title: 'Clinical utility of the band count', journal: 'Clinics in Laboratory Medicine', year: 2002, pmid: '12489284', url: 'https://pubmed.ncbi.nlm.nih.gov/12489284/' },
     ],
@@ -3149,6 +3283,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 3, display: '<3%', confidence: 'moderate' },
     why_it_matters: 'Band neutrophil percentage represents the proportion of immature (band-form) neutrophils in the white blood cell differential. Greater than 5% bands defines a "left shift" — the hallmark hematologic finding of acute bacterial infection on the CBC. The band percentage is one of the SIRS (Systemic Inflammatory Response Syndrome) criteria and has been used for decades as a rapid bedside indicator of bacterial versus viral infection. In the context of fever workup, >10% bands significantly increases the likelihood of bacteremia. The band count is also useful for monitoring treatment response: a declining band percentage during antibiotic therapy suggests effective treatment, while a rising percentage may indicate treatment failure or a developing abscess.',
     why_range_differs: 'The Aere optimal of <3% is tighter than the clinical standard of 0–5% because even moderate band elevations (3–5%) in otherwise healthy individuals may reflect low-grade inflammation or early immune activation that warrants attention in a proactive health optimization framework. The confidence is moderate because band counting has inherent inter-observer variability among laboratory technologists, and mild elevations lack diagnostic specificity.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cornbleet PJ', title: 'Clinical utility of the band count', journal: 'Clinics in Laboratory Medicine', year: 2002, pmid: '12489284', url: 'https://pubmed.ncbi.nlm.nih.gov/12489284/' },
     ],
@@ -3169,6 +3304,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0 (none)', confidence: 'strong' },
     why_it_matters: 'Blasts are the most immature white blood cell precursors and should NEVER be present in the peripheral blood of healthy adults. They are normally confined to the bone marrow, where they comprise <5% of nucleated cells. The presence of blasts in peripheral blood constitutes a hematologic emergency and demands immediate evaluation. The most critical diagnoses include acute myeloid leukemia (AML), acute lymphoblastic leukemia (ALL), myelodysplastic syndrome (MDS) with excess blasts, and blast crisis of chronic myeloid leukemia (CML). Even a single blast identified on a peripheral smear triggers urgent hematology consultation, flow cytometry, and typically bone marrow biopsy. The blast morphology, immunophenotype, and cytogenetics determine the specific diagnosis and guide treatment.',
     why_range_differs: 'The standard and Aere targets are identical — blasts are a binary pathology marker (absent vs. present) and are not continuously optimizable. Any detection of peripheral blood blasts is pathological by definition. The clinical standard of zero IS the appropriate target for all populations. There is no "optimization" beyond absence.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Bain BJ', title: 'Diagnosis from the blood smear', journal: 'New England Journal of Medicine', year: 2005, pmid: '16120856', url: 'https://pubmed.ncbi.nlm.nih.gov/16120856/' },
     ],
@@ -3189,6 +3325,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0%', confidence: 'strong' },
     why_it_matters: 'Blast percentage represents the proportion of blast cells in the white blood cell differential. Greater than 5% blasts in peripheral blood is highly suggestive of acute leukemia and constitutes a hematologic emergency. In clinical practice, >20% blasts in the peripheral blood or bone marrow is the WHO diagnostic threshold for acute leukemia. Even 1–5% circulating blasts is abnormal and may indicate myelodysplastic syndrome, early leukemic transformation, or bone marrow infiltration by other malignancies. The blast percentage, combined with morphology and flow cytometry immunophenotyping, is essential for classifying the type of leukemia and determining prognosis and treatment approach.',
     why_range_differs: 'The standard and Aere targets are identical — blasts are a binary pathology marker (absent vs. present) and are not continuously optimizable. Any percentage of blasts in peripheral blood is pathological. The clinical standard of 0% IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Bain BJ', title: 'Diagnosis from the blood smear', journal: 'New England Journal of Medicine', year: 2005, pmid: '16120856', url: 'https://pubmed.ncbi.nlm.nih.gov/16120856/' },
     ],
@@ -3209,6 +3346,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0 (none)', confidence: 'strong' },
     why_it_matters: 'Metamyelocytes are immature granulocyte precursors at the maturation stage between myelocytes and band neutrophils. They should not appear in the peripheral blood of healthy adults and their presence indicates a severe left shift — the bone marrow is releasing progressively more immature cells because demand for neutrophils far exceeds the available supply of mature forms. Causes include sepsis, severe bacterial infection, leukemoid reaction (extreme reactive leukocytosis mimicking leukemia, often from severe infection, hemorrhage, or solid tumors), and chronic myeloid leukemia (CML). The presence of metamyelocytes alongside myelocytes and other immature forms in peripheral blood raises the differential diagnosis of CML and necessitates evaluation including peripheral smear review, BCR-ABL testing, and potential bone marrow biopsy.',
     why_range_differs: 'The standard and Aere targets are identical — metamyelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. Their presence in peripheral blood is always pathological, indicating severe bone marrow stress or primary hematologic disease. The clinical standard of zero IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cornbleet PJ', title: 'Clinical utility of the band count', journal: 'Clinics in Laboratory Medicine', year: 2002, pmid: '12489284', url: 'https://pubmed.ncbi.nlm.nih.gov/12489284/' },
     ],
@@ -3229,6 +3367,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0%', confidence: 'strong' },
     why_it_matters: 'Metamyelocyte percentage represents the proportion of metamyelocytes in the white blood cell differential. Any percentage above zero is abnormal and indicates a severe left shift with release of immature granulocyte precursors from the bone marrow. This finding warrants immediate clinical correlation and further hematologic workup to distinguish reactive causes (severe infection, sepsis, leukemoid reaction) from primary bone marrow disorders (CML, myelofibrosis, other myeloproliferative neoplasms).',
     why_range_differs: 'The standard and Aere targets are identical — metamyelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. The clinical standard of 0% IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Cornbleet PJ', title: 'Clinical utility of the band count', journal: 'Clinics in Laboratory Medicine', year: 2002, pmid: '12489284', url: 'https://pubmed.ncbi.nlm.nih.gov/12489284/' },
     ],
@@ -3249,6 +3388,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0 (none)', confidence: 'strong' },
     why_it_matters: 'Myelocytes are early granulocyte precursors, more immature than metamyelocytes, normally confined to the bone marrow. Their appearance in peripheral blood indicates significant bone marrow pathology or overwhelming marrow stress. The most important diagnostic consideration is chronic myeloid leukemia (CML), where the peripheral smear characteristically shows a "full spectrum" of granulocyte maturation including myelocytes, metamyelocytes, bands, and mature neutrophils. Other causes include myelofibrosis (where marrow fibrosis displaces hematopoiesis to extramedullary sites), severe sepsis with extreme left shift, leukemoid reaction, and bone marrow infiltration by metastatic cancer (leukoerythroblastic picture). The combination of myelocytes with nucleated red blood cells on the peripheral smear is called a leukoerythroblastic reaction and strongly suggests marrow infiltration.',
     why_range_differs: 'The standard and Aere targets are identical — myelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. Their presence in peripheral blood is always pathological. The clinical standard of zero IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Bain BJ', title: 'The peripheral blood smear', journal: 'Blood Cells, Molecules, and Diseases', year: 2007 },
     ],
@@ -3269,6 +3409,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0%', confidence: 'strong' },
     why_it_matters: 'Myelocyte percentage represents the proportion of myelocytes in the white blood cell differential. Any percentage above zero is abnormal and indicates the presence of early granulocyte precursors in the peripheral blood — a finding that demands evaluation for CML, myelofibrosis, severe sepsis, or bone marrow infiltration. In CML, myelocytes may constitute 5–15% or more of the differential and are accompanied by basophilia and the full spectrum of granulocyte maturation.',
     why_range_differs: 'The standard and Aere targets are identical — myelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. The clinical standard of 0% IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Bain BJ', title: 'The peripheral blood smear', journal: 'Blood Cells, Molecules, and Diseases', year: 2007 },
     ],
@@ -3289,6 +3430,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0 (none)', confidence: 'strong' },
     why_it_matters: 'Promyelocytes are very early granulocyte precursors, one maturation stage after the blast and normally found only in the bone marrow. Their presence in peripheral blood is always pathological and carries a specific, urgent diagnostic implication: acute promyelocytic leukemia (APL, also known as AML-M3). APL is a hematologic emergency because it is frequently complicated by disseminated intravascular coagulation (DIC) that can cause fatal hemorrhage within hours. However, APL is also one of the most curable forms of acute leukemia when treated promptly with all-trans retinoic acid (ATRA) and arsenic trioxide. The characteristic APL promyelocyte has abundant azurophilic granules, Auer rods (often in bundles called "faggot cells"), and bilobed or reniform nuclei. Immediate recognition of promyelocytes on the peripheral smear can be lifesaving.',
     why_range_differs: 'The standard and Aere targets are identical — promyelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. Their presence in peripheral blood is pathognomonic for serious hematologic disease, most critically APL. The clinical standard of zero IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Lo-Coco F, Avvisati G, Vignetti M, Thiede C, Orlando SM, Iacobelli S, et al.', title: 'Retinoic acid and arsenic trioxide for acute promyelocytic leukemia', journal: 'New England Journal of Medicine', year: 2013, pmid: '23841729', url: 'https://pubmed.ncbi.nlm.nih.gov/23841729/' },
     ],
@@ -3309,6 +3451,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0%', confidence: 'strong' },
     why_it_matters: 'Promyelocyte percentage represents the proportion of promyelocytes in the white blood cell differential. Any percentage above zero is abnormal and raises immediate concern for acute promyelocytic leukemia (APL/AML-M3), a hematologic emergency. APL requires emergent treatment with ATRA (all-trans retinoic acid) to prevent fatal DIC-related hemorrhage. Prompt identification of promyelocytes on the peripheral smear and immediate hematology consultation can be lifesaving.',
     why_range_differs: 'The standard and Aere targets are identical — promyelocytes are a binary pathology marker (absent vs. present) and are not continuously optimizable. The clinical standard of 0% IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Lo-Coco F, Avvisati G, Vignetti M, Thiede C, Orlando SM, Iacobelli S, et al.', title: 'Retinoic acid and arsenic trioxide for acute promyelocytic leukemia', journal: 'New England Journal of Medicine', year: 2013, pmid: '23841729', url: 'https://pubmed.ncbi.nlm.nih.gov/23841729/' },
     ],
@@ -3329,6 +3472,7 @@ export const BIOMARKERS: BiomarkerReference[] = [
     aere_optimal: { low: 0, high: 0, display: '0 (none)', confidence: 'strong' },
     why_it_matters: 'Absolute nucleated RBC count represents the absolute number of nucleated red blood cells per unit volume of blood. Unlike the traditional /100 WBC reporting format, the absolute count is not affected by the total white blood cell count and provides a more accurate assessment of the degree of erythropoietic stress. Peripheral blood nucleated RBCs indicate extreme erythropoietic stress — the bone marrow is releasing red cell precursors that have not yet completed maturation and nuclear extrusion. In adults, causes include massive hemorrhage, severe hemolysis, profound hypoxia, bone marrow infiltration by tumor or fibrosis (leukoerythroblastic picture), and extramedullary hematopoiesis. Nucleated RBCs in the peripheral blood of ICU patients are an independent predictor of mortality, with higher counts correlating with worse outcomes regardless of the underlying diagnosis.',
     why_range_differs: 'The standard and Aere targets are identical — nucleated RBCs are a binary pathology marker (absent vs. present) and are not continuously optimizable. Any detection of nucleated RBCs in the peripheral blood of adults is clinically significant and warrants urgent evaluation. The clinical standard of zero IS the appropriate target.',
+    retest_interval_months: 12,
     citations: [
       { authors: 'Stachon A, Segbers E, Holland-Letz T, Kempf R, Hering S, Krieg M', title: 'Nucleated red blood cells in the blood of medical intensive care patients indicate increased mortality risk', journal: 'American Journal of Clinical Pathology', year: 2004, pmid: '15491966', url: 'https://pubmed.ncbi.nlm.nih.gov/15491966/' },
     ],
