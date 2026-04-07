@@ -7,7 +7,7 @@ import {
   FlaskConical, Activity, Dna, TrendingUp, Apple, FileText,
   FolderX, Unlink, Clock, CheckCircle, ChevronRight,
   Shield, Lock, Eye, Share2, Ban, Menu, X,
-  Sparkles, Users, Zap, BarChart3,
+  Sparkles, Sparkle, Users, Zap, BarChart3,
 } from 'lucide-react'
 
 /* ── Dark palette ── */
@@ -329,9 +329,9 @@ export default function FullMarketingSite() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <ProblemCard icon={<FolderX size={20} color="#FFB347" />} title="Scattered records"
                 body="Health records across dozens of providers. No single source of truth. Every new specialist starts from scratch." />
-              <ProblemCard icon={<Unlink size={20} color="#c87cff" />} title="Siloed data"
+              <ProblemCard icon={<Unlink size={20} color="#4ECDC4" />} title="Siloed data"
                 body="Oura knows your sleep. Quest knows your labs. MyFitnessPal knows your macros. None of them talk to each other." />
-              <ProblemCard icon={<Clock size={20} color="#FF6B6B" />} title="Reactive medicine"
+              <ProblemCard icon={<Clock size={20} color="#c87cff" />} title="Reactive medicine"
                 body="Your provider sees you for 15 minutes, twice a year. The rest of the year, you're on your own." />
             </div>
           </div>
@@ -387,7 +387,7 @@ export default function FullMarketingSite() {
                     'The longer your history, the more valuable it becomes',
                   ].map(f => (
                     <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
-                      <CheckCircle size={16} color={D.success} strokeWidth={2} style={{ marginTop: 2, flexShrink: 0 }} />
+                      <Sparkle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 3, flexShrink: 0 }} />
                       {f}
                     </div>
                   ))}
@@ -545,7 +545,7 @@ export default function FullMarketingSite() {
                   'Revocable at any time',
                 ].map(f => (
                   <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
-                    <CheckCircle size={16} color={D.success} strokeWidth={2} style={{ marginTop: 2, flexShrink: 0 }} />
+                    <Sparkle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 3, flexShrink: 0 }} />
                     {f}
                   </div>
                 ))}
@@ -564,7 +564,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 8. BUILT FOR YOU ═══════════════════════ */}
       <SectionObserver>
-        <section style={{ background: 'rgba(200,124,255,0.06)', padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
+        <section style={{ background: 'rgba(200,124,255,0.12)', padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
           <div style={{ maxWidth: 640, margin: '0 auto' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
@@ -1007,7 +1007,7 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
         {features.map(f => (
           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: D.mutedLight }}>
-            <CheckCircle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 2, flexShrink: 0 }} /> {f}
+            <Sparkle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 3, flexShrink: 0 }} /> {f}
           </div>
         ))}
       </div>
@@ -1123,7 +1123,7 @@ function DashboardMockup() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, textAlign: 'left' }}>
       {/* Header row */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div style={{ textAlign: 'left' }}>
           <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Briana.</div>
           <div style={{ fontSize: 12, color: D.muted, marginTop: 2 }}>Your body is <span style={{ color: D.success, fontWeight: 500 }}>well-recovered</span> today.</div>
