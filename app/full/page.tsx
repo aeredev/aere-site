@@ -491,9 +491,8 @@ export default function FullMarketingSite() {
               <LayerCard icon={<FlaskConical size={20} />} iconColor="#FF4444" title="Blood & Biomarkers"
                 body="From comprehensive metabolic panels to ApoB, hs-CRP, and testosterone. Optimal longevity ranges — not just standard lab normals." />
               <LayerCard icon={<Activity size={20} />} iconColor="#4ECDC4" title="Wearables & Daily Vitals"
-                body="HRV, sleep, recovery, heart rate. Oura, Apple Watch, Whoop, 8 Sleep, Garmin, and 50+ more. Updated every morning."
-                badge="Coming soon" />
-              <LayerCard icon={<Dna size={20} />} iconColor="#FFD700" title="Genetic & Advanced Testing"
+                body="HRV, sleep, recovery, heart rate. Oura, Whoop, Garmin, Withings, and more. Updated every morning." />
+              <LayerCard icon={<Dna size={20} />} iconColor="#C9A84C" title="Genetic & Advanced Testing"
                 body="APOE, MTHFR, biological age clocks, cardiovascular genetic panels. Upload any report — Aere reads and contextualizes it." />
               <LayerCard icon={<TrendingUp size={20} />} iconColor="#39FF8F" title="Continuous Glucose"
                 body="CGM data from Dexcom, Libre, and Stelo — connected and interpreted alongside your labs, sleep, and activity."
@@ -963,7 +962,7 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
       {badge && (
         <div style={{
           position: 'absolute', top: 14, right: 14,
-          background: 'rgba(255,179,71,0.15)', color: D.amber,
+          background: 'rgba(240,234,248,0.08)', color: 'rgba(240,234,248,0.4)',
           fontSize: 10, fontWeight: 600, letterSpacing: '0.04em',
           padding: '2px 8px', borderRadius: 100,
         }}>{badge}</div>
@@ -975,13 +974,13 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
   )
 }
 
-function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, accentColor = D.accent }: {
+function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, accentColor = D.accent, tintBg }: {
   tier: string; price: string; period: string; description: string; features: string[]
-  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; accentColor?: string
+  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; accentColor?: string; tintBg?: string
 }) {
   return (
     <div style={{
-      background: D.bgCard, borderRadius: 'var(--radius-xl)',
+      background: tintBg || D.bgCard, borderRadius: 'var(--radius-xl)',
       border: `1px solid ${D.border}`,
       borderTop: `3px solid ${accentColor}`,
       boxShadow: highlighted ? `0 4px 24px ${accentColor}25` : 'none',
@@ -1290,8 +1289,8 @@ function PricingSection() {
           {/* Vault */}
           <PricingCard
             tier="Vault"
-            price={annual ? '$8' : '$99'}
-            period={annual ? '/mo billed annually' : '/year'}
+            price="$99"
+            period={annual ? '/yr' : '/yr · Annual only'}
             description="For individuals who want a secure, organized home for their health records."
             features={[
               'Unlimited health record uploads',
@@ -1305,6 +1304,7 @@ function PricingSection() {
             ctaHref="https://app.aere.health/signup"
             baa={false}
             accentColor="#4ECDC4"
+            tintBg="rgba(0,212,170,0.04)"
           />
 
           {/* Core */}
@@ -1318,7 +1318,7 @@ function PricingSection() {
               'AereInsight — personalized AI analysis',
               'AI Chat across your full health history',
               'Dashboard intelligence',
-              'Wearable integration via AerePulse (coming soon)',
+              'Wearable integration via AerePulse',
               '7-day free trial',
             ]}
             cta="Start free trial"
@@ -1326,6 +1326,7 @@ function PricingSection() {
             highlighted
             baa={false}
             accentColor="#c87cff"
+            tintBg="rgba(200,124,255,0.06)"
           />
 
           {/* Pro */}
@@ -1345,6 +1346,7 @@ function PricingSection() {
             ctaHref="https://app.aere.health/signup"
             baa
             accentColor="#FF6B2B"
+            tintBg="rgba(255,107,43,0.04)"
           />
 
           {/* Clinic */}
@@ -1364,6 +1366,7 @@ function PricingSection() {
             ctaHref="https://app.aere.health/signup"
             baa
             accentColor="#FFD700"
+            tintBg="rgba(201,168,76,0.04)"
           />
         </div>
       </div>
