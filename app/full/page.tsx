@@ -1123,9 +1123,9 @@ function DashboardMockup() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, textAlign: 'left' }}>
       {/* Header row */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         <div style={{ textAlign: 'left' }}>
-          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Siena.</div>
+          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Briana.</div>
           <div style={{ fontSize: 12, color: D.muted, marginTop: 2 }}>Your body is <span style={{ color: D.success, fontWeight: 500 }}>well-recovered</span> today.</div>
         </div>
         <div style={{ fontSize: 12, color: D.muted, textAlign: 'right' }}>Tuesday, April 1</div>
