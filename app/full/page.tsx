@@ -487,20 +487,20 @@ export default function FullMarketingSite() {
             <div className="layers-grid" style={{
               display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
             }}>
-              <LayerCard icon={<FlaskConical size={20} />} iconColor={D.accent} title="Blood & Biomarkers"
+              <LayerCard icon={<FlaskConical size={20} />} iconColor="#FF4444" title="Blood & Biomarkers"
                 body="From comprehensive metabolic panels to ApoB, hs-CRP, and testosterone. Optimal longevity ranges — not just standard lab normals." />
-              <LayerCard icon={<Activity size={20} />} iconColor={D.success} title="Wearables & Daily Vitals"
+              <LayerCard icon={<Activity size={20} />} iconColor="#FF6B2B" title="Wearables & Daily Vitals"
                 body="HRV, sleep, recovery, heart rate. Oura, Apple Watch, Whoop, 8 Sleep, Garmin, and 50+ more. Updated every morning."
                 badge="Coming soon" />
-              <LayerCard icon={<Dna size={20} />} iconColor={D.accent} title="Genetic & Advanced Testing"
+              <LayerCard icon={<Dna size={20} />} iconColor="#FFD700" title="Genetic & Advanced Testing"
                 body="APOE, MTHFR, biological age clocks, cardiovascular genetic panels. Upload any report — Aere reads and contextualizes it." />
-              <LayerCard icon={<TrendingUp size={20} />} iconColor={D.amber} title="Continuous Glucose"
+              <LayerCard icon={<TrendingUp size={20} />} iconColor="#39FF8F" title="Continuous Glucose"
                 body="CGM data from Dexcom, Libre, and Stelo — connected and interpreted alongside your labs, sleep, and activity."
                 badge="Coming soon" />
-              <LayerCard icon={<Apple size={20} />} iconColor={D.success} title="Nutrition & Exercise"
+              <LayerCard icon={<Apple size={20} />} iconColor="#4A9EFF" title="Nutrition & Exercise"
                 body="Macros, protein targets, micronutrients — connected to your biomarker trends. Understand what your diet is actually doing to your biology."
                 badge="Coming soon" />
-              <LayerCard icon={<FileText size={20} />} iconColor={D.muted} title="Imaging & Everything Else"
+              <LayerCard icon={<FileText size={20} />} iconColor="#c87cff" title="Imaging & Everything Else"
                 body="MRI, CT, DEXA, echocardiograms, handwritten notes, discharge summaries. If it's a health document, Aere reads it." />
             </div>
           </div>
@@ -968,15 +968,16 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
   )
 }
 
-function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, note }: {
+function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, accentColor = D.accent }: {
   tier: string; price: string; period: string; description: string; features: string[]
-  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; note?: string
+  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; accentColor?: string
 }) {
   return (
     <div style={{
       background: D.bgCard, borderRadius: 'var(--radius-xl)',
-      border: highlighted ? `2px solid ${D.accent}` : `1px solid ${D.border}`,
-      boxShadow: highlighted ? '0 4px 24px rgba(200,124,255,0.15)' : 'none',
+      border: `1px solid ${D.border}`,
+      borderTop: `3px solid ${accentColor}`,
+      boxShadow: highlighted ? `0 4px 24px ${accentColor}25` : 'none',
       padding: 'clamp(24px, 2.5vw, 32px)', position: 'relative',
       transition: 'transform 0.15s, box-shadow 0.15s',
       display: 'flex', flexDirection: 'column',
@@ -984,11 +985,11 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       {highlighted && (
         <div style={{
           position: 'absolute', top: 14, right: 14,
-          background: D.accentTint, color: D.accent,
+          background: `${accentColor}18`, color: accentColor,
           fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 100,
         }}>MOST POPULAR</div>
       )}
-      <div style={{ fontSize: 13, fontWeight: 600, color: D.text, marginBottom: 4 }}>{tier}</div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: accentColor, marginBottom: 4 }}>{tier}</div>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 4 }}>
         <span style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: D.text, letterSpacing: '-0.03em' }}>{price}</span>
         <span style={{ fontSize: 14, color: D.muted }}>{period}</span>
@@ -1006,18 +1007,17 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20, flex: 1 }}>
         {features.map(f => (
           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: D.mutedLight }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: D.success, marginTop: 6, flexShrink: 0 }} /> {f}
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: accentColor, marginTop: 6, flexShrink: 0 }} /> {f}
           </div>
         ))}
       </div>
       <Link href={ctaHref} style={{
         display: 'block', textAlign: 'center', padding: '10px 0',
-        background: highlighted ? D.accent : 'none',
-        color: highlighted ? 'white' : D.accent,
-        border: highlighted ? 'none' : `1px solid ${D.border}`,
+        background: highlighted ? accentColor : 'none',
+        color: highlighted ? 'white' : accentColor,
+        border: highlighted ? 'none' : `1px solid ${accentColor}40`,
         borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500, textDecoration: 'none',
       }}>{cta}</Link>
-      {note && <p style={{ fontSize: 11, color: D.muted, marginTop: 12, lineHeight: 1.5 }}>{note}</p>}
     </div>
   )
 }
@@ -1297,7 +1297,7 @@ function PricingSection() {
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
             baa={false}
-            note={annual ? '$99/year' : 'Annual only'}
+            accentColor="#4ECDC4"
           />
 
           {/* Core */}
@@ -1318,7 +1318,7 @@ function PricingSection() {
             ctaHref="https://app.aere.health/signup"
             highlighted
             baa={false}
-            note={annual ? '$199/year' : undefined}
+            accentColor="#c87cff"
           />
 
           {/* Pro */}
@@ -1337,7 +1337,7 @@ function PricingSection() {
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
             baa
-            note={annual ? '$1,500/year' : undefined}
+            accentColor="#FF6B2B"
           />
 
           {/* Clinic */}
@@ -1356,7 +1356,7 @@ function PricingSection() {
             cta="Start free trial"
             ctaHref="https://app.aere.health/signup"
             baa
-            note={annual ? '$4,990/year' : undefined}
+            accentColor="#FFD700"
           />
         </div>
       </div>
