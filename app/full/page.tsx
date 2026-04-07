@@ -190,8 +190,8 @@ export default function FullMarketingSite() {
             margin: '0 0 28px',
             whiteSpace: 'nowrap',
           }}>
-            <span style={{ display: 'block' }}>Your health data is scattered.</span>
-            <span style={{ display: 'block' }}>Your healthspan shouldn&apos;t be.</span>
+            <span style={{ display: 'block' }}>Your entire health history.</span>
+            <span style={{ display: 'block' }}>Intelligence that connects it all.</span>
           </h1>
 
           <p className="fade-up-3" style={{
@@ -1123,12 +1123,12 @@ function DashboardMockup() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       {/* Header row */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Matt.</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Sarah.</div>
           <div style={{ fontSize: 12, color: D.muted, marginTop: 2 }}>Your body is <span style={{ color: D.success, fontWeight: 500 }}>well-recovered</span> today.</div>
         </div>
-        <div style={{ fontSize: 12, color: D.muted }}>Tuesday, April 1</div>
+        <div style={{ fontSize: 12, color: D.muted, textAlign: 'right' }}>Tuesday, April 1</div>
       </div>
 
       <div className="dash-mock-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 14 }}>
