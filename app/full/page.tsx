@@ -135,6 +135,7 @@ function SiteNav() {
 
       <style>{`
         .hero-ghost-btn:hover { border-color: rgba(200,124,255,0.6) !important; }
+        .integration-item:hover { color: rgba(255,255,255,1) !important; }
         .hero-headline { white-space: nowrap; }
         @media (max-width: 820px) { .hero-headline { white-space: normal !important; } }
         @media (max-width: 768px) {
@@ -489,7 +490,7 @@ export default function FullMarketingSite() {
             }}>
               <LayerCard icon={<FlaskConical size={20} />} iconColor="#FF4444" title="Blood & Biomarkers"
                 body="From comprehensive metabolic panels to ApoB, hs-CRP, and testosterone. Optimal longevity ranges — not just standard lab normals." />
-              <LayerCard icon={<Activity size={20} />} iconColor="#FF6B2B" title="Wearables & Daily Vitals"
+              <LayerCard icon={<Activity size={20} />} iconColor="#4ECDC4" title="Wearables & Daily Vitals"
                 body="HRV, sleep, recovery, heart rate. Oura, Apple Watch, Whoop, 8 Sleep, Garmin, and 50+ more. Updated every morning."
                 badge="Coming soon" />
               <LayerCard icon={<Dna size={20} />} iconColor="#FFD700" title="Genetic & Advanced Testing"
@@ -497,7 +498,7 @@ export default function FullMarketingSite() {
               <LayerCard icon={<TrendingUp size={20} />} iconColor="#39FF8F" title="Continuous Glucose"
                 body="CGM data from Dexcom, Libre, and Stelo — connected and interpreted alongside your labs, sleep, and activity."
                 badge="Coming soon" />
-              <LayerCard icon={<Apple size={20} />} iconColor="#4A9EFF" title="Nutrition & Exercise"
+              <LayerCard icon={<Apple size={20} />} iconColor="#FF1493" title="Nutrition & Exercise"
                 body="Macros, protein targets, micronutrients — connected to your biomarker trends. Understand what your diet is actually doing to your biology."
                 badge="Coming soon" />
               <LayerCard icon={<FileText size={20} />} iconColor="#c87cff" title="Imaging & Everything Else"
@@ -658,24 +659,29 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 10. INTEGRATIONS ═══════════════════════ */}
       <SectionObserver>
-        <section id="integrations" style={{ background: D.bgPurple, padding: '48px 24px', textAlign: 'center' }}>
-          <p style={{ fontSize: 13, color: D.muted, marginBottom: 20 }}>
+        <section id="integrations" style={{ background: D.bgPurple, padding: 'clamp(56px, 7vw, 80px) 24px', textAlign: 'center' }}>
+          <p style={{ fontFamily: 'var(--font-serif)', fontSize: 28, color: D.text, letterSpacing: '-0.02em', marginBottom: 40 }}>
             Connects with the tools you already use
           </p>
-          <div style={{
+          <div className="integrations-grid" style={{
             maxWidth: 720, margin: '0 auto',
-            display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8,
+            display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0,
           }}>
             {['Function Health', 'Oura Ring', 'Apple Watch', '8 Sleep', 'Garmin', 'Whoop', 'Dexcom', 'Libre', 'Cronometer', 'Epic MyChart', 'Quest Diagnostics', 'LabCorp'].map(name => (
-              <span key={name} style={{
-                padding: '6px 14px', borderRadius: 100,
-                background: D.bgCard, border: `1px solid ${D.border}`,
-                fontSize: 12, color: D.muted, whiteSpace: 'nowrap',
-              }}>{name}</span>
+              <div key={name} className="integration-item" style={{
+                width: '100%', height: 40,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.5)',
+                whiteSpace: 'nowrap', transition: 'color 0.15s', cursor: 'default',
+                marginBottom: 16,
+              }}>{name}</div>
             ))}
           </div>
-          <p style={{ fontSize: 12, color: D.muted, marginTop: 16, maxWidth: 420, margin: '16px auto 0' }}>
+          <p style={{ fontSize: 18, color: 'rgba(240,234,248,0.7)', marginTop: 32, maxWidth: 600, margin: '32px auto 0', lineHeight: 1.6 }}>
             Upload any document. Connect any wearable. Import from any health system. Aere reads all of it.
+          </p>
+          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', marginTop: 16 }}>
+            All brand names and logos are property of their respective owners.
           </p>
         </section>
       </SectionObserver>
@@ -901,6 +907,7 @@ export default function FullMarketingSite() {
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
           .insight-examples-grid { grid-template-columns: 1fr !important; }
+          .integrations-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .testimonial-grid { grid-template-columns: 1fr !important; }
           .pricing-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
