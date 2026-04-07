@@ -151,15 +151,17 @@ export default function FullMarketingSite() {
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center', padding: 'clamp(120px, 15vh, 180px) 24px clamp(60px, 8vh, 100px)',
+        position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ maxWidth: 720, width: '100%' }}>
-          <p className="fade-up-1" style={{
-            fontSize: 10, fontWeight: 500, textTransform: 'uppercase',
-            letterSpacing: '0.1em', color: 'var(--color-muted)', marginBottom: 20,
-          }}>
-            The Healthspan Intelligence Platform
-          </p>
+        {/* Subtle violet radial glow */}
+        <div style={{
+          position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)',
+          width: 800, height: 500, borderRadius: '50%',
+          background: 'radial-gradient(ellipse 800px 500px at 50% 40%, rgba(200,124,255,0.07) 0%, transparent 70%)',
+          pointerEvents: 'none', zIndex: 0,
+        }} />
 
+        <div style={{ maxWidth: 720, width: '100%', position: 'relative', zIndex: 1 }}>
           <h1 className="fade-up-2" style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(36px, 5.5vw, 72px)',
@@ -172,9 +174,9 @@ export default function FullMarketingSite() {
           </h1>
 
           <p className="fade-up-3" style={{
-            fontFamily: 'var(--font-sans)', fontSize: 'clamp(16px, 1.4vw, 20px)',
-            color: 'var(--color-muted)', lineHeight: 1.7,
-            maxWidth: 560, margin: '0 auto 36px',
+            fontFamily: 'var(--font-sans)', fontSize: 18,
+            color: 'var(--color-muted)', lineHeight: 1.6,
+            maxWidth: 520, margin: '0 auto 36px',
           }}>
             Your labs are at Quest. Your sleep is in Oura. Your records are spread across 18 providers.
             Your doctor has 15 minutes. Nobody is connecting all of this to tell you what it means
@@ -207,42 +209,82 @@ export default function FullMarketingSite() {
           </div>
 
           <p className="fade-up-4" style={{
-            fontSize: 11, color: 'var(--color-muted)', letterSpacing: '0.02em',
+            fontSize: 11, color: 'var(--color-muted)', letterSpacing: '0.08em',
+            textTransform: 'uppercase',
           }}>
-            HIPAA Compliant · End-to-end encrypted · You own your data · No ads, ever
+            HIPAA Compliant · End-to-end encrypted · You own your data
           </p>
         </div>
 
-        {/* Hero product mockup */}
+        {/* Hero product mockup — browser chrome */}
         <div className="fade-up-5" style={{
           maxWidth: 900, width: '100%', marginTop: 56,
-          background: 'var(--color-surface)', borderRadius: 'var(--radius-2xl)',
-          border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)',
-          padding: 'clamp(20px, 3vw, 32px)', overflow: 'hidden',
+          position: 'relative', zIndex: 1,
+          boxShadow: '0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
+          borderRadius: 12, overflow: 'hidden',
         }}>
-          <DashboardMockup />
+          {/* Browser chrome bar */}
+          <div style={{
+            background: '#1A1917', padding: '10px 16px',
+            display: 'flex', alignItems: 'center', gap: 8,
+          }}>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FF5F57' }} />
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FEBC2E' }} />
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28C840' }} />
+            </div>
+            <div style={{
+              flex: 1, textAlign: 'center', fontSize: 12,
+              color: '#8A8580', fontFamily: 'var(--font-sans)',
+            }}>
+              app.aere.health
+            </div>
+            <div style={{ width: 52 }} />
+          </div>
+          {/* Mockup content */}
+          <div style={{
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)', borderTop: 'none',
+            padding: 'clamp(20px, 3vw, 32px)',
+          }}>
+            <DashboardMockup />
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════ 2. SOCIAL PROOF ═══════════════════════ */}
+      {/* ═══════════════════════ 2. STATS BAR ═══════════════════════ */}
       <section style={{
-        background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)',
-        borderBottom: '1px solid var(--color-border)', padding: '28px 24px',
+        background: 'var(--color-text)', padding: '32px 24px',
       }}>
         <div style={{
-          maxWidth: 960, margin: '0 auto',
-          display: 'flex', justifyContent: 'center', gap: 'clamp(24px, 4vw, 56px)',
-          flexWrap: 'wrap', alignItems: 'center',
+          maxWidth: 900, margin: '0 auto',
+          display: 'flex', justifyContent: 'center', alignItems: 'center',
+          gap: 0, flexWrap: 'wrap',
         }}>
-          {['120+ biomarkers tracked', 'HIPAA compliant', 'AI-powered healthspan insights', 'Your data. Always.'].map(t => (
-            <span key={t} style={{ fontSize: 12.5, color: 'var(--color-muted)', whiteSpace: 'nowrap' }}>{t}</span>
+          {[
+            { value: '120+', label: 'Biomarkers tracked' },
+            { value: 'HIPAA', label: 'Compliant architecture' },
+            { value: '6+', label: 'Data sources connected' },
+            { value: 'Your data.', label: 'Never sold.' },
+          ].map((stat, i) => (
+            <div key={stat.value} style={{
+              display: 'flex', alignItems: 'center',
+            }}>
+              {i > 0 && (
+                <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.1)', margin: '0 clamp(20px, 3vw, 40px)' }} />
+              )}
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 32, color: '#c87cff', letterSpacing: '-0.02em', lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#FFFFFF', marginTop: 4 }}>{stat.label}</div>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ═══════════════════════ 3. THE PROBLEM ═══════════════════════ */}
       <SectionObserver>
-        <section id="problem" style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="problem" style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' /* ecru */ }}>
           <div className="problem-grid" style={{
             maxWidth: 1080, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center',
@@ -273,7 +315,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 4. AEREVAULT ═══════════════════════ */}
       <SectionObserver>
-        <section id="vault" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="vault" style={{ background: '#FFFFFF', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             <div className="vault-grid" style={{
               display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
@@ -403,7 +445,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 6. THE LAYERS ═══════════════════════ */}
       <SectionObserver>
-        <section id="features" style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="features" style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' /* ecru */ }}>
           <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 52 }}>
               <h2 style={{
@@ -442,7 +484,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 7. AERESHARE ═══════════════════════ */}
       <SectionObserver>
-        <section id="share" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="share" style={{ background: '#FFFFFF', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div className="share-grid" style={{
             maxWidth: 1080, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
@@ -551,7 +593,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
-        <section id="philosophy" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="philosophy" style={{ background: '#FFFFFF', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div className="phil-grid" style={{
             maxWidth: 1080, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
@@ -654,23 +696,23 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 13. FOR PRACTITIONERS ═══════════════════════ */}
       <SectionObserver>
-        <section id="practitioners" style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="practitioners" style={{ background: '#1A1917', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div className="prac-grid" style={{
             maxWidth: 1080, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
           }}>
             <div>
-              <SectionLabel>For Practitioners</SectionLabel>
+              <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8A8580', marginBottom: 14 }}>For Practitioners</div>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(28px, 3.5vw, 40px)',
-                fontWeight: 400, color: 'var(--color-text)',
+                fontWeight: 400, color: '#FFFFFF',
                 letterSpacing: '-0.02em', lineHeight: 1.12,
                 margin: '0 0 20px',
               }}>
                 Make every 15 minutes count.
               </h2>
-              <p style={{ fontSize: 15, color: 'var(--color-muted)', lineHeight: 1.8, margin: '0 0 28px' }}>
+              <p style={{ fontSize: 15, color: '#8A8580', lineHeight: 1.8, margin: '0 0 28px' }}>
                 Your patients arrive with years of context — labs, wearable data, trends,
                 AI-generated pre-visit briefs. No more starting from scratch.
               </p>
@@ -682,8 +724,8 @@ export default function FullMarketingSite() {
                   { icon: <Lock size={18} />, text: 'HIPAA-compliant with full audit trail' },
                   { icon: <Share2 size={18} />, text: 'Patients share exactly what they choose' },
                 ].map(({ icon, text }) => (
-                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: 'var(--color-text)' }}>
-                    <div style={{ color: 'var(--color-accent)', flexShrink: 0 }}>{icon}</div>
+                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: '#F0EEE9' }}>
+                    <div style={{ color: '#c87cff', flexShrink: 0 }}>{icon}</div>
                     {text}
                   </div>
                 ))}
@@ -701,30 +743,30 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 14. FINAL CTA ═══════════════════════ */}
       <section id="cta" style={{
-        background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)',
+        background: '#1A1917',
         padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center',
       }}>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <h2 style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(28px, 4vw, 44px)',
-            fontWeight: 400, color: 'var(--color-text)',
+            fontWeight: 400, color: '#FFFFFF',
             letterSpacing: '-0.02em', lineHeight: 1.12,
             margin: '0 0 20px',
           }}>
             Start building your health legacy today.
           </h2>
-          <p style={{ fontSize: 16, color: 'var(--color-muted)', lineHeight: 1.8, margin: '0 0 16px' }}>
+          <p style={{ fontSize: 16, color: '#8A8580', lineHeight: 1.8, margin: '0 0 16px' }}>
             Every lab you upload. Every wearable you connect. Every year that passes. Your health
             picture in Aere gets richer, more complete, more valuable — and more irreplaceable.
           </p>
-          <p style={{ fontSize: 16, color: 'var(--color-text)', lineHeight: 1.8, fontWeight: 500, margin: '0 0 36px' }}>
+          <p style={{ fontSize: 16, color: '#F0EEE9', lineHeight: 1.8, fontWeight: 500, margin: '0 0 36px' }}>
             The best time to start was five years ago.<br />The second best time is today.
           </p>
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="https://app.aere.health/signup" style={{
-              padding: '14px 32px', background: 'var(--color-accent)', color: 'white',
+              padding: '14px 32px', background: '#c87cff', color: 'white',
               borderRadius: 'var(--radius-md)', fontSize: 16, fontWeight: 500,
               textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
               transition: 'transform 0.15s, box-shadow 0.15s',
@@ -735,8 +777,8 @@ export default function FullMarketingSite() {
               Start your free trial <ChevronRight size={16} />
             </Link>
             <Link href="/full#pricing" style={{
-              padding: '14px 32px', background: 'none', color: 'var(--color-muted)',
-              border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)',
+              padding: '14px 32px', background: 'none', color: '#8A8580',
+              border: '1px solid #2E2B27', borderRadius: 'var(--radius-md)',
               fontSize: 16, fontWeight: 500, textDecoration: 'none',
             }}>See pricing</Link>
           </div>
@@ -940,17 +982,17 @@ function TestimonialCard({ quote, name, placeholder }: { quote: string; name: st
 function PracBriefCard({ label, text }: { label: string; text: string }) {
   return (
     <div style={{
-      background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)',
-      border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-card)',
+      background: '#21201E', borderRadius: 'var(--radius-xl)',
+      border: '1px solid #2E2B27',
       padding: '20px 24px',
     }}>
       <div style={{
         display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10,
       }}>
-        <Sparkles size={12} strokeWidth={1.75} color="var(--color-accent)" />
-        <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-accent)' }}>{label}</span>
+        <Sparkles size={12} strokeWidth={1.75} color="#c87cff" />
+        <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#c87cff' }}>{label}</span>
       </div>
-      <p style={{ fontSize: 13, color: 'var(--color-text)', lineHeight: 1.65, margin: 0 }}>{text}</p>
+      <p style={{ fontSize: 13, color: '#F0EEE9', lineHeight: 1.65, margin: 0 }}>{text}</p>
     </div>
   )
 }
@@ -1091,7 +1133,7 @@ function PricingSection() {
   const [annual, setAnnual] = useState(true)
 
   return (
-    <section id="pricing" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+    <section id="pricing" style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <h2 style={{
