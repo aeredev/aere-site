@@ -657,25 +657,75 @@ export default function FullMarketingSite() {
         </section>
       </SectionObserver>
 
-      {/* ═══════════════════════ 11. PRICING ═══════════════════════ */}
+      {/* ═══════════════════════ 11. WHAT AERE SEES ═══════════════════════ */}
+      <SectionObserver>
+        <section style={{ background: 'var(--color-bg)', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                <Sparkles size={14} strokeWidth={1.75} color="var(--color-accent)" />
+                <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-accent)' }}>AereInsight</span>
+              </div>
+              <h2 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(28px, 4vw, 44px)',
+                fontWeight: 400, color: 'var(--color-text)',
+                letterSpacing: '-0.02em', lineHeight: 1.12,
+                margin: '0 0 16px',
+              }}>
+                Connections no one else can make.
+              </h2>
+              <p style={{ fontSize: 16, color: 'var(--color-muted)', maxWidth: 560, margin: '0 auto' }}>
+                AereInsight sees your labs, wearables, and history simultaneously — finding patterns a 15-minute appointment never could.
+              </p>
+            </div>
+
+            <div className="insight-examples-grid" style={{
+              display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
+            }}>
+              <InsightExampleCard
+                label="METABOLIC"
+                headline="Not prediabetic. Context changes everything."
+                body="Fasting glucose flagged at 106 mg/dL. But HbA1c at 5.3% — reflecting 3-month average glucose — tells a different story. CGM data shows the 106 reading captures the dawn phenomenon: a natural cortisol-driven rise, not metabolic dysfunction. Overnight readings: 82–91 mg/dL."
+              />
+              <InsightExampleCard
+                label="CARDIOVASCULAR"
+                headline="LDL elevated. The full picture is different."
+                body="LDL at 105 mg/dL reads as high. But hs-CRP at 0.4 mg/L indicates very low vascular inflammation. Lp(a) at 10 nmol/L removes a major hereditary risk factor. Triglycerides at 97 mg/dL signal healthy insulin sensitivity. The cardiovascular risk profile is more favorable than LDL alone suggests."
+              />
+              <InsightExampleCard
+                label="CROSS-SOURCE"
+                headline="Your data connected across every source."
+                body="Testosterone trending down 18% over 6 months. In the same period, deep sleep declined from 1h 42m to 58 minutes per night. Dietary zinc consistently below threshold. This pattern is consistent with sleep-mediated testosterone suppression — your labs and sleep data are telling the same story."
+              />
+            </div>
+
+            <p style={{ fontSize: 12, color: 'var(--color-muted)', textAlign: 'center', fontStyle: 'italic', marginTop: 24 }}>
+              These are illustrative examples of the types of connections AereInsight makes. Results are based on your personal confirmed health data.
+            </p>
+          </div>
+        </section>
+      </SectionObserver>
+
+      {/* ═══════════════════════ 12. PRICING ═══════════════════════ */}
       <SectionObserver>
         <PricingSection />
       </SectionObserver>
 
-      {/* ═══════════════════════ 12. TRUST (dark) ═══════════════════════ */}
+      {/* ═══════════════════════ 12. TRUST (white) ═══════════════════════ */}
       <SectionObserver>
-        <section id="security" style={{ background: '#1A1917', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+        <section id="security" style={{ background: '#FFFFFF', padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
               fontSize: 'clamp(28px, 4vw, 42px)',
-              fontWeight: 400, color: '#FFFFFF',
+              fontWeight: 400, color: 'var(--color-text)',
               letterSpacing: '-0.02em', lineHeight: 1.12,
               margin: '0 0 8px',
             }}>
               HIPAA-compliant from day one.
             </h2>
-            <p style={{ fontSize: 16, color: '#8A8580', margin: '0 0 48px' }}>
+            <p style={{ fontSize: 16, color: 'var(--color-muted)', margin: '0 0 48px' }}>
               Your data is yours. Full stop.
             </p>
 
@@ -683,12 +733,12 @@ export default function FullMarketingSite() {
               display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
               textAlign: 'left',
             }}>
-              <TrustItem icon={<Shield size={20} />} text="End-to-end encrypted. TLS 1.3 in transit, AES-256 at rest." />
-              <TrustItem icon={<Lock size={20} />} text="HIPAA-compliant with signed BAAs on all infrastructure." />
-              <TrustItem icon={<Eye size={20} />} text="Row-level security. Your data is never accessible to other users." />
-              <TrustItem icon={<FileText size={20} />} text="Complete audit trail. Every access, every share, logged." />
-              <TrustItem icon={<Share2 size={20} />} text="You control every share. Time-limited, revocable, audited." />
-              <TrustItem icon={<Ban size={20} />} text="We never sell your data. We never show ads. Ever." />
+              <TrustItemLight icon={<Shield size={20} />} text="End-to-end encrypted. TLS 1.3 in transit, AES-256 at rest." />
+              <TrustItemLight icon={<Lock size={20} />} text="HIPAA-compliant with signed BAAs on all infrastructure." />
+              <TrustItemLight icon={<Eye size={20} />} text="Row-level security. Your data is never accessible to other users." />
+              <TrustItemLight icon={<FileText size={20} />} text="Complete audit trail. Every access, every share, logged." />
+              <TrustItemLight icon={<Share2 size={20} />} text="You control every share. Time-limited, revocable, audited." />
+              <TrustItemLight icon={<Ban size={20} />} text="We never sell your data. Your health information is never used to train AI models." />
             </div>
           </div>
         </section>
@@ -743,30 +793,30 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 14. FINAL CTA ═══════════════════════ */}
       <section id="cta" style={{
-        background: '#1A1917',
+        background: 'var(--color-bg)',
         padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center',
       }}>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <h2 style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(28px, 4vw, 44px)',
-            fontWeight: 400, color: '#FFFFFF',
+            fontWeight: 400, color: 'var(--color-text)',
             letterSpacing: '-0.02em', lineHeight: 1.12,
             margin: '0 0 20px',
           }}>
             Start building your health legacy today.
           </h2>
-          <p style={{ fontSize: 16, color: '#8A8580', lineHeight: 1.8, margin: '0 0 16px' }}>
+          <p style={{ fontSize: 16, color: 'var(--color-muted)', lineHeight: 1.8, margin: '0 0 16px' }}>
             Every lab you upload. Every wearable you connect. Every year that passes. Your health
             picture in Aere gets richer, more complete, more valuable — and more irreplaceable.
           </p>
-          <p style={{ fontSize: 16, color: '#F0EEE9', lineHeight: 1.8, fontWeight: 500, margin: '0 0 36px' }}>
+          <p style={{ fontSize: 16, color: 'var(--color-text)', lineHeight: 1.8, fontWeight: 500, margin: '0 0 36px' }}>
             The best time to start was five years ago.<br />The second best time is today.
           </p>
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="https://app.aere.health/signup" style={{
-              padding: '14px 32px', background: '#c87cff', color: 'white',
+              padding: '14px 32px', background: 'var(--color-accent)', color: 'white',
               borderRadius: 'var(--radius-md)', fontSize: 16, fontWeight: 500,
               textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
               transition: 'transform 0.15s, box-shadow 0.15s',
@@ -777,8 +827,8 @@ export default function FullMarketingSite() {
               Start your free trial <ChevronRight size={16} />
             </Link>
             <Link href="/full#pricing" style={{
-              padding: '14px 32px', background: 'none', color: '#8A8580',
-              border: '1px solid #2E2B27', borderRadius: 'var(--radius-md)',
+              padding: '14px 32px', background: 'none', color: 'var(--color-muted)',
+              border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)',
               fontSize: 16, fontWeight: 500, textDecoration: 'none',
             }}>See pricing</Link>
           </div>
@@ -827,6 +877,7 @@ export default function FullMarketingSite() {
           .layers-grid { grid-template-columns: 1fr 1fr !important; }
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
+          .insight-examples-grid { grid-template-columns: 1fr !important; }
           .testimonial-grid { grid-template-columns: 1fr !important; }
           .pricing-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
@@ -947,6 +998,32 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
   )
 }
 
+function TrustItemLight({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div style={{
+      background: 'var(--color-surface-2)', borderRadius: 'var(--radius-lg)',
+      border: '1px solid var(--color-border)', padding: '20px',
+      display: 'flex', flexDirection: 'column', gap: 10,
+    }}>
+      <div style={{ color: 'var(--color-accent)' }}>{icon}</div>
+      <p style={{ fontSize: 13, color: 'var(--color-muted)', lineHeight: 1.7, margin: 0 }}>{text}</p>
+    </div>
+  )
+}
+
+function InsightExampleCard({ label, headline, body }: { label: string; headline: string; body: string }) {
+  return (
+    <div style={{
+      background: 'var(--color-accent-tint)', borderRadius: 'var(--radius-lg)',
+      border: '1px solid rgba(200,124,255,0.2)', padding: 24,
+    }}>
+      <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-accent)', marginBottom: 10 }}>{label}</div>
+      <div style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, color: 'var(--color-text)', marginBottom: 10, letterSpacing: '-0.01em' }}>{headline}</div>
+      <p style={{ fontSize: 13, color: 'var(--color-text)', lineHeight: 1.7, margin: 0, opacity: 0.85 }}>{body}</p>
+    </div>
+  )
+}
+
 function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
     <div style={{
@@ -984,8 +1061,13 @@ function PracBriefCard({ label, text }: { label: string; text: string }) {
     <div style={{
       background: '#21201E', borderRadius: 'var(--radius-xl)',
       border: '1px solid #2E2B27',
-      padding: '20px 24px',
+      padding: '20px 24px', position: 'relative',
     }}>
+      <div style={{
+        position: 'absolute', top: 12, right: 12,
+        background: 'rgba(200,124,255,0.1)', color: '#c87cff',
+        fontSize: 10, padding: '2px 6px', borderRadius: 4,
+      }}>EXAMPLE</div>
       <div style={{
         display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10,
       }}>
