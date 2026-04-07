@@ -135,6 +135,8 @@ function SiteNav() {
 
       <style>{`
         .hero-ghost-btn:hover { border-color: rgba(200,124,255,0.6) !important; }
+        .hero-headline { white-space: nowrap; }
+        @media (max-width: 820px) { .hero-headline { white-space: normal !important; } }
         @media (max-width: 768px) {
           .nav-center, .nav-right { display: none !important; }
           .hamburger { display: flex !important; }
@@ -179,16 +181,17 @@ export default function FullMarketingSite() {
         textAlign: 'center', padding: 'clamp(120px, 15vh, 180px) 24px clamp(60px, 8vh, 100px)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ maxWidth: 720, width: '100%', position: 'relative', zIndex: 1 }}>
-          <h1 className="fade-up-2" style={{
+        <div style={{ maxWidth: 820, width: '100%', position: 'relative', zIndex: 1 }}>
+          <h1 className="fade-up-2 hero-headline" style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(36px, 5.5vw, 72px)',
+            fontSize: 'clamp(32px, 5vw, 68px)',
             fontWeight: 400, color: D.text,
             letterSpacing: '-0.03em', lineHeight: 1.08,
             margin: '0 0 28px',
+            whiteSpace: 'nowrap',
           }}>
-            Your health data is scattered.<br />
-            Your healthspan shouldn&apos;t be.
+            <span style={{ display: 'block' }}>Your health data is scattered.</span>
+            <span style={{ display: 'block' }}>Your healthspan shouldn&apos;t be.</span>
           </h1>
 
           <p className="fade-up-3" style={{
