@@ -1121,11 +1121,11 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
 
 function DashboardMockup() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, textAlign: 'left' }}>
       {/* Header row */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div style={{ textAlign: 'left' }}>
-          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Sarah.</div>
+          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, letterSpacing: '-0.02em', color: D.text }}>Good morning, Siena.</div>
           <div style={{ fontSize: 12, color: D.muted, marginTop: 2 }}>Your body is <span style={{ color: D.success, fontWeight: 500 }}>well-recovered</span> today.</div>
         </div>
         <div style={{ fontSize: 12, color: D.muted, textAlign: 'right' }}>Tuesday, April 1</div>
@@ -1134,7 +1134,7 @@ function DashboardMockup() {
       <div className="dash-mock-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 14 }}>
         {/* Biomarker grid */}
         <div style={{ background: D.bgCard2, borderRadius: 'var(--radius-lg)', border: `1px solid ${D.border}`, padding: 16, overflow: 'hidden' }}>
-          <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 12 }}>Key Biomarkers</div>
+          <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 12, textAlign: 'left' }}>Key Biomarkers</div>
           {[
             { name: 'ApoB', value: '72', unit: 'mg/dL', status: 'optimal' },
             { name: 'hs-CRP', value: '0.4', unit: 'mg/L', status: 'optimal' },
