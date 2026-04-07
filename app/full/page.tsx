@@ -563,7 +563,6 @@ export default function FullMarketingSite() {
       </SectionObserver>
 
       {/* ═══════════════════════ 8. BUILT FOR YOU ═══════════════════════ */}
-      <SectionObserver>
         <section style={{ background: 'rgba(200,124,255,0.12)', padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
           <div style={{ maxWidth: 640, margin: '0 auto' }}>
             <h2 style={{
@@ -614,7 +613,6 @@ export default function FullMarketingSite() {
             />
           </div>
         </section>
-      </SectionObserver>
 
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
