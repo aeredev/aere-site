@@ -170,7 +170,7 @@ export default function FullMarketingSite() {
   const ctaForm = useSignupForm()
 
   return (
-    <>
+    <div style={{ background: D.bgDeep, minHeight: '100vh' }}>
       <SiteNav />
 
       {/* ═══════════════════════ 1. HERO (dark) ═══════════════════════ */}
@@ -563,7 +563,7 @@ export default function FullMarketingSite() {
       </SectionObserver>
 
       {/* ═══════════════════════ 8. BUILT FOR YOU ═══════════════════════ */}
-        <section style={{ background: 'rgba(200,124,255,0.12)', padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
+        <section style={{ background: '#231540', padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
           <div style={{ maxWidth: 640, margin: '0 auto' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
@@ -912,7 +912,7 @@ export default function FullMarketingSite() {
           .footer-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
-    </>
+    </div>
   )
 }
 
@@ -979,6 +979,7 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       boxShadow: highlighted ? '0 4px 24px rgba(200,124,255,0.15)' : 'none',
       padding: 'clamp(24px, 2.5vw, 32px)', position: 'relative',
       transition: 'transform 0.15s, box-shadow 0.15s',
+      display: 'flex', flexDirection: 'column',
     }}>
       {highlighted && (
         <div style={{
@@ -1002,10 +1003,10 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
         <p style={{ fontSize: 11, color: D.muted, margin: '0 0 14px' }}>No BAA included</p>
       )}
       {baa === undefined && <div style={{ marginBottom: 14 }} />}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20, flex: 1 }}>
         {features.map(f => (
           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: D.mutedLight }}>
-            <Sparkle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 3, flexShrink: 0 }} /> {f}
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: D.success, marginTop: 6, flexShrink: 0 }} /> {f}
           </div>
         ))}
       </div>
@@ -1277,7 +1278,7 @@ function PricingSection() {
 
         <div className="pricing-grid" style={{
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16,
-          alignItems: 'start',
+          alignItems: 'stretch',
         }}>
           {/* Vault */}
           <PricingCard
