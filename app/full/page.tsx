@@ -24,20 +24,27 @@ function SiteNav() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 8)
+    const handler = () => setScrolled(window.scrollY > 80)
     window.addEventListener('scroll', handler, { passive: true })
     handler()
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  const navBg = scrolled ? 'rgba(245,244,240,0.95)' : 'rgba(26,25,23,0.92)'
+  const navBorder = scrolled ? '1px solid var(--color-border)' : '1px solid transparent'
+  const linkColor = scrolled ? 'var(--color-muted)' : 'rgba(255,255,255,0.7)'
+  const linkHoverColor = scrolled ? 'var(--color-text)' : '#FFFFFF'
+  const linkHoverBg = scrolled ? 'var(--color-surface-2)' : 'rgba(255,255,255,0.1)'
+  const hamburgerColor = scrolled ? 'var(--color-text)' : '#FFFFFF'
+
   return (
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: 'var(--color-nav-bg)',
+        background: navBg,
         backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-        borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
-        transition: 'border-color 0.2s',
+        borderBottom: navBorder,
+        transition: 'all 0.3s ease',
         height: 56, display: 'flex', alignItems: 'center', padding: '0 32px',
       }}>
         <Link href="/full#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
@@ -48,12 +55,12 @@ function SiteNav() {
           {NAV_LINKS.map(link => (
             <Link key={link.href} href={link.href} style={{
               padding: '6px 16px', borderRadius: 'var(--radius-sm)',
-              fontSize: 13.5, color: 'var(--color-muted)',
+              fontSize: 13.5, color: linkColor,
               textDecoration: 'none', whiteSpace: 'nowrap',
               transition: 'color 0.15s, background 0.15s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-text)'; e.currentTarget.style.background = 'var(--color-surface-2)' }}
-              onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-muted)'; e.currentTarget.style.background = 'none' }}
+              onMouseEnter={e => { e.currentTarget.style.color = linkHoverColor; e.currentTarget.style.background = linkHoverBg }}
+              onMouseLeave={e => { e.currentTarget.style.color = linkColor; e.currentTarget.style.background = 'none' }}
             >
               {link.label}
             </Link>
@@ -62,10 +69,10 @@ function SiteNav() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="nav-right">
           <Link href="https://app.aere.health/login" style={{
-            fontSize: 13.5, color: 'var(--color-muted)', textDecoration: 'none', transition: 'color 0.15s',
+            fontSize: 13.5, color: linkColor, textDecoration: 'none', transition: 'color 0.15s',
           }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
+            onMouseEnter={e => e.currentTarget.style.color = linkHoverColor}
+            onMouseLeave={e => e.currentTarget.style.color = linkColor}
           >Sign in</Link>
           <Link href="https://app.aere.health/signup" style={{
             padding: '8px 18px', background: 'var(--color-accent)', color: 'white',
@@ -80,7 +87,8 @@ function SiteNav() {
 
         <button onClick={() => setMobileOpen(o => !o)} className="hamburger" style={{
           display: 'none', background: 'none', border: 'none',
-          cursor: 'pointer', padding: 4, color: 'var(--color-text)',
+          cursor: 'pointer', padding: 4, color: hamburgerColor,
+          transition: 'color 0.3s',
         }} aria-label="Toggle menu">
           {mobileOpen ? <X size={20} strokeWidth={1.75} /> : <Menu size={20} strokeWidth={1.75} />}
         </button>
@@ -109,6 +117,7 @@ function SiteNav() {
       )}
 
       <style>{`
+        .hero-ghost-btn:hover { border-color: rgba(255,255,255,0.6) !important; }
         @media (max-width: 768px) {
           .nav-center, .nav-right { display: none !important; }
           .hamburger { display: flex !important; }
@@ -145,27 +154,19 @@ export default function FullMarketingSite() {
     <>
       <SiteNav />
 
-      {/* ═══════════════════════ 1. HERO ═══════════════════════ */}
+      {/* ═══════════════════════ 1. HERO (dark) ═══════════════════════ */}
       <section id="hero" style={{
-        background: 'var(--color-bg)', paddingTop: 56,
+        background: '#1A1917', paddingTop: 56,
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center', padding: 'clamp(120px, 15vh, 180px) 24px clamp(60px, 8vh, 100px)',
         position: 'relative', overflow: 'hidden',
       }}>
-        {/* Subtle violet radial glow */}
-        <div style={{
-          position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)',
-          width: 800, height: 500, borderRadius: '50%',
-          background: 'radial-gradient(ellipse 800px 500px at 50% 40%, rgba(200,124,255,0.07) 0%, transparent 70%)',
-          pointerEvents: 'none', zIndex: 0,
-        }} />
-
         <div style={{ maxWidth: 720, width: '100%', position: 'relative', zIndex: 1 }}>
           <h1 className="fade-up-2" style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(36px, 5.5vw, 72px)',
-            fontWeight: 400, color: 'var(--color-text)',
+            fontWeight: 400, color: '#FFFFFF',
             letterSpacing: '-0.03em', lineHeight: 1.08,
             margin: '0 0 28px',
           }}>
@@ -175,7 +176,7 @@ export default function FullMarketingSite() {
 
           <p className="fade-up-3" style={{
             fontFamily: 'var(--font-sans)', fontSize: 18,
-            color: 'var(--color-muted)', lineHeight: 1.6,
+            color: 'rgba(255,255,255,0.6)', lineHeight: 1.6,
             maxWidth: 520, margin: '0 auto 36px',
           }}>
             Your labs are at Quest. Your sleep is in Oura. Your records are spread across 18 providers.
@@ -195,24 +196,21 @@ export default function FullMarketingSite() {
             >
               Start free trial <ChevronRight size={16} />
             </Link>
-            <Link href="/full#vault" style={{
-              padding: '12px 28px', background: 'none', color: 'var(--color-muted)',
-              border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)',
+            <Link href="/full#vault" className="hero-ghost-btn" style={{
+              padding: '12px 28px', background: 'transparent', color: '#FFFFFF',
+              border: '1px solid rgba(255,255,255,0.3)', borderRadius: 'var(--radius-md)',
               fontSize: 15, fontWeight: 500, textDecoration: 'none',
-              transition: 'border-color 0.15s, color 0.15s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-accent)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border)'; e.currentTarget.style.color = 'var(--color-muted)' }}
-            >
+              transition: 'border-color 0.15s',
+            }}>
               See how it works
             </Link>
           </div>
 
           <p className="fade-up-4" style={{
-            fontSize: 11, color: 'var(--color-muted)', letterSpacing: '0.08em',
+            fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em',
             textTransform: 'uppercase',
           }}>
-            HIPAA Compliant · End-to-end encrypted · You own your data
+            HIPAA Compliant <span style={{ color: 'rgba(255,255,255,0.2)' }}>·</span> End-to-end encrypted <span style={{ color: 'rgba(255,255,255,0.2)' }}>·</span> You own your data
           </p>
         </div>
 
@@ -220,7 +218,7 @@ export default function FullMarketingSite() {
         <div className="fade-up-5" style={{
           maxWidth: 900, width: '100%', marginTop: 56,
           position: 'relative', zIndex: 1,
-          boxShadow: '0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
+          boxShadow: '0 40px 120px rgba(200,124,255,0.15), 0 20px 40px rgba(0,0,0,0.4)',
           borderRadius: 12, overflow: 'hidden',
         }}>
           {/* Browser chrome bar */}
@@ -250,6 +248,13 @@ export default function FullMarketingSite() {
             <DashboardMockup />
           </div>
         </div>
+
+        {/* Bottom gradient for seamless transition to stats bar */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: 80,
+          background: 'linear-gradient(to bottom, transparent 0%, #1A1917 100%)',
+          pointerEvents: 'none', zIndex: 0,
+        }} />
       </section>
 
       {/* ═══════════════════════ 2. STATS BAR ═══════════════════════ */}
