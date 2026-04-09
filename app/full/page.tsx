@@ -62,10 +62,10 @@ function SiteNav() {
         backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
         borderBottom: navBorder,
         transition: 'all 0.3s ease',
-        height: 72, display: 'flex', alignItems: 'center', padding: '0 32px',
+        height: 56, display: 'flex', alignItems: 'center', padding: '0 32px',
       }}>
         <Link href="/full#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 60, display: 'block' }} />
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 46, display: 'block' }} />
         </Link>
 
         <div style={{ display: 'flex', gap: 2, flex: 1 }} className="nav-center">
@@ -113,7 +113,7 @@ function SiteNav() {
 
       {mobileOpen && (
         <div style={{
-          position: 'fixed', top: 72, left: 0, right: 0, zIndex: 99,
+          position: 'fixed', top: 56, left: 0, right: 0, zIndex: 99,
           background: D.bgCard, borderBottom: `1px solid ${D.border}`,
           padding: '16px 24px 20px', display: 'flex', flexDirection: 'column', gap: 4,
           boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
@@ -176,7 +176,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 1. HERO (dark) ═══════════════════════ */}
       <section id="hero" style={{
-        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)', paddingTop: 72,
+        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)', paddingTop: 56,
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center', padding: 'clamp(120px, 15vh, 180px) 24px clamp(60px, 8vh, 100px)',
