@@ -5,7 +5,15 @@
 **Aere** (aere.health, pronounced "air") — The Healthspan Intelligence Platform.
 **Tagline:** Own Your Health *(never change this — ever)*
 **Descriptor:** The Healthspan Intelligence Platform
-**Founder:** Solo, non-technical. Has Oura Ring, Apple Watch, 8 Sleep, Function Health.
+**Founder:** Solo, non-technical. Has Oura Ring, Apple Watch, 8 Sleep.
+
+---
+
+## Core Product Vision (April 7, 2026)
+Aere is a personal health AI coach — not a vault with AI bolted on. 
+The vault, wearables, and labs are inputs to the AI. The AI is the product.
+Marketing copy should reflect this. Lead with intelligence and coaching. 
+The data aggregation is the enabler, not the headline.
 
 ---
 
@@ -46,7 +54,7 @@ Be incredible.
 - Use "health records" not "medical records"
 - Keep as-is: "longevity-optimal ranges", "longevity physician", "longevity lens", "longevity medicine"
 
-**The brand line:** "Normal means you won't die tomorrow. Optimal means you're on the right trajectory for a longer, healthier life."
+**The brand line:** "Normal means status quo. Optimal means all systems go."
 
 ---
 

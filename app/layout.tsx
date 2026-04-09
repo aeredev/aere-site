@@ -20,25 +20,20 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://aere.health'),
   openGraph: {
     title: 'Aere — Own Your Health',
-    description: 'The healthspan intelligence platform. A secure home for your health records, wearables, and labs — with AI that tells you what it all means for how long and how well you live.',
+    description: 'The Healthspan Intelligence Platform. Request early access.',
     url: 'https://aere.health',
-    siteName: 'Aere',
-    locale: 'en_US',
     type: 'website',
     images: [
       {
         url: 'https://aere.health/brand/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Aere — Own Your Health — The Healthspan Intelligence Platform',
+        alt: 'Aere — Own Your Health',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aere — Own Your Health',
-    description: 'The healthspan intelligence platform. A secure home for your health records, wearables, and labs — with AI that tells you what it all means for how long and how well you live.',
-    creator: '@aerehealth',
     images: ['https://aere.health/brand/og-image.png'],
   },
   robots: {

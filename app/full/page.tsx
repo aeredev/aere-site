@@ -27,7 +27,7 @@ const D = {
   accent: '#c87cff',
   accentTint: 'rgba(200,124,255,0.12)',
   accentTintStrong: 'rgba(200,124,255,0.08)',
-  success: '#39FF8F',
+  success: '#9CDB7B',
   amber: '#FFB347',
   error: '#FF6B6B',
 }
@@ -62,10 +62,10 @@ function SiteNav() {
         backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
         borderBottom: navBorder,
         transition: 'all 0.3s ease',
-        height: 56, display: 'flex', alignItems: 'center', padding: '0 32px',
+        height: 72, display: 'flex', alignItems: 'center', padding: '0 32px',
       }}>
         <Link href="/full#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 34, display: 'block' }} />
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 60, display: 'block' }} />
         </Link>
 
         <div style={{ display: 'flex', gap: 2, flex: 1 }} className="nav-center">
@@ -113,7 +113,7 @@ function SiteNav() {
 
       {mobileOpen && (
         <div style={{
-          position: 'fixed', top: 56, left: 0, right: 0, zIndex: 99,
+          position: 'fixed', top: 72, left: 0, right: 0, zIndex: 99,
           background: D.bgCard, borderBottom: `1px solid ${D.border}`,
           padding: '16px 24px 20px', display: 'flex', flexDirection: 'column', gap: 4,
           boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
@@ -176,7 +176,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 1. HERO (dark) ═══════════════════════ */}
       <section id="hero" style={{
-        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)', paddingTop: 56,
+        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)', paddingTop: 72,
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center', padding: 'clamp(120px, 15vh, 180px) 24px clamp(60px, 8vh, 100px)',
@@ -347,11 +347,18 @@ export default function FullMarketingSite() {
               display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
             }}>
               {/* Visual — vault mockup */}
-              <div style={{
-                background: D.bgCard, borderRadius: 'var(--radius-xl)',
-                border: `1px solid ${D.border}`, padding: 24,
-              }}>
-                <VaultMockup />
+              <div style={{ position: 'relative' }}>
+                <div style={{
+                  position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
+                  background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.12) 0%, transparent 70%)',
+                }} />
+                <div style={{
+                  position: 'relative', zIndex: 1,
+                  background: D.bgCard, borderRadius: 'var(--radius-xl)',
+                  border: `1px solid ${D.border}`, padding: 24,
+                }}>
+                  <VaultMockup />
+                </div>
               </div>
 
               <div>
@@ -363,13 +370,13 @@ export default function FullMarketingSite() {
                   letterSpacing: '-0.02em', lineHeight: 1.12,
                   margin: '0 0 20px',
                 }}>
-                  Every health record you&apos;ve ever had.<br />In one place. Owned by you.
+                  Every health record you&apos;ve ever had.<br />In one place. <span style={{ color: '#c87cff' }}>Owned by you.</span>
                 </h2>
                 <p style={{
                   fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 28px',
                 }}>
                   Upload anything — lab reports, imaging, physician notes, discharge summaries,
-                  genetic panels, handwritten prescriptions, CGM data, EOBs. Aere&apos;s AI reads every
+                  genetic panels, handwritten prescriptions, CGM data, EOBs. Aere reads every
                   document and extracts the data that matters.
                 </p>
                 <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 8px' }}>
@@ -381,14 +388,14 @@ export default function FullMarketingSite() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {[
-                    'AI-powered parsing — values extracted automatically',
+                    'Intelligent parsing — values extracted automatically',
                     'Every document type supported',
                     'Biomarker history with trend charts',
                     'Searchable across your entire history',
                     'The longer your history, the more valuable it becomes',
                   ].map(f => (
                     <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
-                      <Sparkle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 3, flexShrink: 0 }} />
+                      <div style={{ width: 6, height: 6, background: '#9CDB7B', transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} />
                       {f}
                     </div>
                   ))}
@@ -409,7 +416,7 @@ export default function FullMarketingSite() {
               display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20,
             }}>
               <Sparkles size={14} strokeWidth={1.75} color={D.accent} />
-              <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>AereInsight</span>
+              <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
             </div>
 
             <h2 style={{
@@ -419,43 +426,43 @@ export default function FullMarketingSite() {
               letterSpacing: '-0.02em', lineHeight: 1.12,
               margin: '0 0 48px',
             }}>
-              This isn&apos;t storage.<br />This is intelligence.
+              This isn&apos;t storage.<br /><span style={{ color: '#c87cff' }}>This is intelligence.</span>
             </h2>
 
             <div className="compare-grid" style={{
               display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20,
               textAlign: 'left', marginBottom: 40,
             }}>
-              {/* Standard */}
-              <div style={{
-                background: D.bgCard, borderRadius: 14,
-                border: `1px solid ${D.border}`, padding: '24px 28px',
-              }}>
-                <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Standard health app</div>
-                <p style={{ fontSize: 14, color: D.muted, lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
-                  &ldquo;Your LDL is 138 — flagged high.&rdquo;
-                </p>
-              </div>
-
-              {/* Aere — violet signals personalized AI */}
-              <div style={{
-                background: D.accentTint, borderRadius: 14,
-                border: `1px solid ${D.borderStrong}`, padding: '24px 28px',
-              }}>
+                {/* Standard */}
                 <div style={{
-                  display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14,
+                  background: D.bgCard, borderRadius: 14,
+                  border: `1px solid ${D.border}`, padding: '24px 28px',
                 }}>
-                  <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
-                  <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>AereInsight</span>
+                  <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Standard health app</div>
+                  <p style={{ fontSize: 14, color: D.muted, lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+                    &ldquo;Your LDL is 138 — flagged high.&rdquo;
+                  </p>
                 </div>
-                <p style={{ fontSize: 14, color: D.text, lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
-                  &ldquo;Your LDL peaked at 158 in 2022 and has trended down to 138.
-                  You&apos;re approaching the &lt;100 mg/dL threshold associated with optimal
-                  cardiovascular longevity. Whatever you changed in the last 18 months is
-                  working — and here&apos;s what your other markers suggest about why.&rdquo;
-                </p>
+
+                {/* Aere — violet signals personalized AI */}
+                <div style={{
+                  background: D.accentTint, borderRadius: 14,
+                  border: `1px solid ${D.borderStrong}`, padding: '24px 28px',
+                }}>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14,
+                  }}>
+                    <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
+                    <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
+                  </div>
+                  <p style={{ fontSize: 14, color: D.text, lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+                    &ldquo;Your LDL peaked at 158 in 2022 and has trended down to 138.
+                    You&apos;re approaching the &lt;100 mg/dL threshold associated with optimal
+                    cardiovascular longevity. Whatever you changed in the last 18 months is
+                    working — and here&apos;s what your other markers suggest about why.&rdquo;
+                  </p>
+                </div>
               </div>
-            </div>
 
             <p style={{
               fontSize: 16, color: D.mutedBody, lineHeight: 1.8,
@@ -530,7 +537,7 @@ export default function FullMarketingSite() {
               </p>
               <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 16px' }}>
                 Stop starting from scratch. AereShare generates a secure, time-limited link to your
-                complete health summary — biomarkers, trends, AI-generated pre-visit brief, and original
+                complete health summary — biomarkers, trends, pre-visit brief, and original
                 documents. One tap. Everything your provider needs to actually understand you.
               </p>
               <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
@@ -539,80 +546,37 @@ export default function FullMarketingSite() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {[
                   'Time-limited and passcode-protected',
-                  'AI-generated pre-visit brief included',
+                  'Pre-visit brief included',
                   'Original documents accessible',
                   'Full audit trail — see who viewed, when',
                   'Revocable at any time',
                 ].map(f => (
                   <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
-                    <Sparkle size={14} color={D.success} strokeWidth={2} style={{ marginTop: 3, flexShrink: 0 }} />
+                    <div style={{ width: 6, height: 6, background: '#9CDB7B', transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} />
                     {f}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div style={{
-              background: D.bgCard, borderRadius: 'var(--radius-xl)',
-              border: `1px solid ${D.border}`, padding: 24,
-            }}>
-              <ShareMockup />
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.12) 0%, transparent 70%)',
+              }} />
+              <div style={{
+                position: 'relative', zIndex: 1,
+                background: D.bgCard, borderRadius: 'var(--radius-xl)',
+                border: `1px solid ${D.border}`, padding: 24,
+              }}>
+                <ShareMockup />
+              </div>
             </div>
           </div>
         </section>
       </SectionObserver>
 
-      {/* ═══════════════════════ 8. BUILT FOR YOU ═══════════════════════ */}
-        <section style={{ background: '#231540', padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
-          <div style={{ maxWidth: 640, margin: '0 auto' }}>
-            <h2 style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(28px, 4vw, 44px)',
-              fontWeight: 400, color: D.text,
-              letterSpacing: '-0.02em', lineHeight: 1.12,
-              margin: '0 0 24px',
-            }}>
-              Built for the people who already know.
-            </h2>
-            <p style={{ fontSize: 16, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 16px' }}>
-              If you know what ApoB is. If you track your HRV. If you&apos;ve done a Function Health
-              panel or worn an Oura Ring. If you listen to the podcasts, read the books, and take
-              your healthspan seriously —
-            </p>
-            <p style={{ fontSize: 16, color: D.text, lineHeight: 1.8, fontWeight: 500, margin: '0 0 16px' }}>
-              Aere was built for you.
-            </p>
-            <p style={{ fontSize: 16, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 16px' }}>
-              You already have the data. You&apos;re already doing the work. Aere is the missing
-              layer — the platform that connects everything you&apos;re tracking and tells you what
-              it means together, not in isolation.
-            </p>
-            <p style={{ fontSize: 15, color: D.muted, lineHeight: 1.8, fontStyle: 'italic', margin: 0 }}>
-              The longevity community has the science. Aere gives you the intelligence to act on it.
-            </p>
-          </div>
-
-          <div className="testimonial-grid" style={{
-            maxWidth: 1000, margin: '48px auto 0',
-            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
-          }}>
-            <TestimonialCard
-              quote="[ TESTIMONIAL NEEDED ]"
-              name="Functional Medicine Practitioner"
-              placeholder
-            />
-            <TestimonialCard
-              quote="[ TESTIMONIAL NEEDED ]"
-              name="Health optimizer / Oura + Function Health user"
-              placeholder
-            />
-            <TestimonialCard
-              quote="[ TESTIMONIAL NEEDED ]"
-              name="Healthspan-focused professional"
-              placeholder
-            />
-          </div>
-        </section>
+      {/* Section removed — will rebuild later */}
 
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
@@ -628,8 +592,8 @@ export default function FullMarketingSite() {
                 fontWeight: 400, color: D.text,
                 letterSpacing: '-0.03em', lineHeight: 1.12,
               }}>
-                Normal means you won&apos;t die tomorrow.<br /><br />
-                <span style={{ color: D.accent }}>Optimal means you&apos;re on the right trajectory.</span>
+                Normal means status quo.<br /><br />
+                <span style={{ color: D.accent }}>Optimal means all systems go.</span>
               </p>
             </div>
             <div>
@@ -658,30 +622,52 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 10. INTEGRATIONS ═══════════════════════ */}
       <SectionObserver>
-        <section id="integrations" style={{ background: D.bgPurple, padding: 'clamp(56px, 7vw, 80px) 24px', textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-serif)', fontSize: 28, color: D.text, letterSpacing: '-0.02em', marginBottom: 40 }}>
-            Connects with the tools you already use
-          </p>
-          <div className="integrations-grid" style={{
-            maxWidth: 720, margin: '0 auto',
-            display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0,
+        <section id="integrations" style={{ background: D.bgPurple, padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
+          <h2 style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(28px, 3.5vw, 42px)',
+            fontWeight: 400, color: D.text,
+            letterSpacing: '-0.02em', lineHeight: 1.12,
+            margin: '0 0 16px',
           }}>
-            {['Function Health', 'Oura Ring', 'Apple Watch', '8 Sleep', 'Garmin', 'Whoop', 'Dexcom', 'Libre', 'Cronometer', 'Epic MyChart', 'Quest Diagnostics', 'LabCorp'].map(name => (
-              <div key={name} className="integration-item" style={{
-                width: '100%', height: 40,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.5)',
-                whiteSpace: 'nowrap', transition: 'color 0.15s', cursor: 'default',
-                marginBottom: 16,
-              }}>{name}</div>
-            ))}
+            Works with everything you already use
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-sans)', fontSize: 18,
+            color: D.mutedLight, lineHeight: 1.6,
+            maxWidth: 600, margin: '0 auto 48px',
+          }}>
+            Connect directly or upload your data — Aere works with the devices, labs, and apps you already use.
+          </p>
+
+          {/* Row 1 — Direct connections */}
+          <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
+            Connect Directly
           </div>
-          <p style={{ fontSize: 18, color: 'rgba(240,234,248,0.7)', marginTop: 32, maxWidth: 600, margin: '32px auto 0', lineHeight: 1.6 }}>
-            Upload any document. Connect any wearable. Import from any health system. Aere reads all of it.
-          </p>
-          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', marginTop: 16 }}>
-            All brand names and logos are property of their respective owners.
-          </p>
+          <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
+            <IntegrationLogo name="Oura" color="#F0EAF8" />
+            <IntegrationLogo name="Withings" color="#F0EAF8" />
+            <IntegrationLogo name="Fitbit" color="#F0EAF8" />
+            <IntegrationLogo name="Dexcom" color="#F0EAF8" />
+          </div>
+
+          {/* Divider */}
+          <div style={{ height: 0, borderTop: '0.5px solid rgba(240,234,248,0.1)', maxWidth: 600, margin: '40px auto' }} />
+
+          {/* Row 2 — Upload your data */}
+          <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
+            Upload Your Data
+          </div>
+          <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
+            <IntegrationLogo name="Epic MyChart" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="Quest Diagnostics" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="LabCorp" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="Apple Health" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="Garmin" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="8 Sleep" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="Whoop" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="Cronometer" color="rgba(240,234,248,0.45)" />
+          </div>
         </section>
       </SectionObserver>
 
@@ -692,7 +678,7 @@ export default function FullMarketingSite() {
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
                 <Sparkles size={14} strokeWidth={1.75} color={D.accent} />
-                <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>AereInsight</span>
+                <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
               </div>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
@@ -734,6 +720,53 @@ export default function FullMarketingSite() {
           </div>
         </section>
       </SectionObserver>
+
+      {/* ═══════════════════════ WHY AERE EXISTS ═══════════════════════ */}
+      <section style={{ background: D.bgPurple, padding: '100px 40px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto' }}>
+          <div style={{
+            fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
+            letterSpacing: '0.1em', color: D.accent,
+            fontFamily: 'var(--font-sans)',
+          }}>
+            Why Aere Exists
+          </div>
+          <p style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 20, lineHeight: 1.8, color: D.mutedLight,
+            margin: '24px 0 0',
+          }}>
+            Astronauts have it. Elite athletes have it. Critical
+            care patients have it — complete, continuous monitoring
+            of every system in their body, with experts who help
+            them act on it.
+          </p>
+          <p style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 20, lineHeight: 1.8, color: D.mutedLight,
+            margin: '20px 0 0',
+          }}>
+            Every person deserves this. That&apos;s why Aere exists.
+          </p>
+          <p style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 20, lineHeight: 1.8, color: D.mutedLight,
+            margin: '20px 0 0',
+          }}>
+            You wear a ring, a watch, get your labs done, track
+            your sleep. That data is yours. Aere is the intelligence
+            that connects it all and makes sense of it — so you can
+            live better, longer.
+          </p>
+          <p style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 22, color: D.accent,
+            margin: '40px 0 0',
+          }}>
+            Own Your Health.
+          </p>
+        </div>
+      </section>
 
       {/* ═══════════════════════ 12. PRICING ═══════════════════════ */}
       <SectionObserver>
@@ -780,7 +813,7 @@ export default function FullMarketingSite() {
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
           }}>
             <div>
-              <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent, marginBottom: 14 }}>For Practitioners</div>
+              <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 14 }}>For Practitioners</div>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(28px, 3.5vw, 40px)',
@@ -792,12 +825,12 @@ export default function FullMarketingSite() {
               </h2>
               <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 28px' }}>
                 Your patients arrive with years of context — labs, wearable data, trends,
-                AI-generated pre-visit briefs. No more starting from scratch.
+                pre-visit briefs generated by Aere. No more starting from scratch.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {[
                   { icon: <Users size={18} />, text: 'Client roster with health scores and flags' },
-                  { icon: <Zap size={18} />, text: 'AI pre-visit briefs — complete context in 60 seconds' },
+                  { icon: <Zap size={18} />, text: 'Aere pre-visit briefs — complete context in 60 seconds' },
                   { icon: <BarChart3 size={18} />, text: 'Full biomarker history with longitudinal trends' },
                   { icon: <Lock size={18} />, text: 'HIPAA-compliant with full audit trail' },
                   { icon: <Share2 size={18} />, text: 'Patients share exactly what they choose' },
@@ -906,7 +939,7 @@ export default function FullMarketingSite() {
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
           .insight-examples-grid { grid-template-columns: 1fr !important; }
-          .integrations-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .integrations-row { gap: 32px !important; }
           .testimonial-grid { grid-template-columns: 1fr !important; }
           .pricing-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
@@ -929,9 +962,85 @@ export default function FullMarketingSite() {
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      fontSize: 10, fontWeight: 500, textTransform: 'uppercase',
-      letterSpacing: '0.06em', color: D.accent, marginBottom: 14,
+      fontSize: 14, fontWeight: 600, textTransform: 'uppercase',
+      letterSpacing: '0.1em', color: D.accent, marginBottom: 16,
     }}>{children}</div>
+  )
+}
+
+/* ── Inline SVG integration logos ── */
+const INTEGRATION_SVGS: Record<string, (color: string) => React.ReactNode> = {
+  Oura: (c) => (
+    <svg height="28" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 3C7.925 3 3 7.925 3 14s4.925 11 11 11 11-4.925 11-11S20.075 3 14 3Zm0 17.6c-3.64 0-6.6-2.96-6.6-6.6s2.96-6.6 6.6-6.6 6.6 2.96 6.6 6.6-2.96 6.6-6.6 6.6Z" fill={c}/>
+      <path d="M40.5 22.5c-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11h2.4v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11H46v11.3h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5ZM50.6 22.3V11h2.3v1.7c.4-.6.8-1.1 1.4-1.4.6-.3 1.2-.5 1.9-.5v2.5h-.6c-.8 0-1.5.2-2 .7-.5.5-.7 1.2-.7 2.3v6h-2.4ZM64.1 22.3c-.5-.6-.7-1.4-.7-2.5v-.2c-.4.9-1 1.6-1.8 2.1-.8.5-1.6.8-2.6.8-1.2 0-2.2-.4-3-1.1-.8-.7-1.2-1.7-1.2-2.9 0-1.3.5-2.3 1.5-3 1-.7 2.4-1 4.2-1h2.6v-.4c0-.8-.2-1.4-.7-1.8-.5-.4-1.2-.6-2-.6-.7 0-1.3.2-1.8.5-.5.3-.8.8-.9 1.3h-2.4c.1-1.1.6-2 1.5-2.7.9-.7 2.1-1 3.6-1 1.5 0 2.7.4 3.5 1.1.8.7 1.3 1.8 1.3 3.1v5.2c0 .7.1 1.3.3 1.6v.2h-2.3Zm-4.2-1.8c.8 0 1.5-.3 2.1-.8.6-.5.9-1.1 1.1-1.9v-1.2h-2.3c-1.1 0-1.9.2-2.5.6-.6.4-.8.9-.8 1.6s.2 1.2.7 1.5c.4.3 1 .5 1.7.5Z" fill={c}/>
+    </svg>
+  ),
+  Withings: (c) => (
+    <svg height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10.8 8l3.7 10.5L18 8h2.6l3.5 10.5L27.8 8h2.6l-5 14h-2.6L19.4 11.7 15.9 22h-2.6L8.2 8h2.6Zm23.7-1.2c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5ZM33.3 22V8.7h2.3V22h-2.3Zm7.7-11.1v-3h2.4v3h2.2v1.9H43.4v6.8c0 .4.1.7.3.9.2.2.5.3.9.3h1.1V22h-1.5c-1 0-1.8-.3-2.3-.8-.5-.5-.8-1.3-.8-2.3V12.8h-1.8v-1.9h1.8Zm7.2 0v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V10.9h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V10.9h2.4Zm10 0v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V10.9h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V10.9h2.4Zm12.5 4.6h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3Zm6.1 3.7c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1Zm3.4.3c.5 0 1-.2 1.4-.5.4-.3.6-.7.7-1.3h2.2c0 .7-.2 1.3-.6 1.9-.4.6-.9 1.1-1.6 1.4-.7.3-1.4.5-2.1.5-1.6 0-2.8-.5-3.7-1.6-.9-1.1-1.4-2.5-1.4-4.3v-.2c0-1.7.5-3.1 1.4-4.2.9-1.1 2.2-1.6 3.7-1.6 1.2 0 2.2.4 3 1.1.8.7 1.3 1.7 1.3 3h-2.2c-.1-.7-.3-1.2-.7-1.6-.4-.4-.9-.6-1.5-.6-.8 0-1.5.3-1.9 1-.5.7-.7 1.6-.7 2.9v.2c0 1.3.2 2.3.7 3 .4.7 1.1 1 1.9 1Zm8.3 1.3c-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.7-.5 1.1-.5s.8.2 1.1.5c.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5Z" fill={c}/>
+    </svg>
+  ),
+  Fitbit: (c) => (
+    <svg height="28" viewBox="0 0 70 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.5h8.5v2H7.4v3.2h5.5v2H7.4V22H5V8.5Zm11.5-1.7c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5Zm-1.2 4.2h2.4V22h-2.4V11Zm6.8 0v-3h2.4v3h2.2v1.9h-2.2v6.8c0 .4.1.7.3.9.2.2.5.3.9.3H27V22h-1.5c-1 0-1.8-.3-2.3-.8-.5-.5-.8-1.3-.8-2.3V12.9h-1.8V11h1.8Zm7.8 0h.5c.7 0 1.3-.1 1.8-.4V8.5h2.3V22H32v-1.5c-.4.6-.8 1-1.4 1.3-.6.3-1.2.4-1.9.4-1.4 0-2.5-.6-3.3-1.7-.8-1.1-1.2-2.5-1.2-4.2v-.2c0-1.7.4-3.1 1.2-4.2.8-1.1 1.9-1.7 3.3-1.7.7 0 1.3.2 1.8.5.5.3 1 .7 1.3 1.3V11Zm.5 9.2c.8 0 1.4-.3 1.8-.8V13.6c-.4-.6-1.1-.9-1.8-.9-.9 0-1.6.4-2 1.1-.5.7-.7 1.6-.7 2.7v.2c0 1.1.2 2 .7 2.7.4.7 1.1 1 2 1Zm8.2-13.4c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5ZM37.4 22V11h2.4v11h-2.4Zm6.8 0V11h2.4v11h-2.4Zm1.2-15c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5Z" fill={c}/>
+    </svg>
+  ),
+  Dexcom: (c) => (
+    <svg height="28" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.5 8.5h4.7c2 0 3.6.6 4.8 1.8 1.2 1.2 1.8 2.8 1.8 4.8v.2c0 2-.6 3.6-1.8 4.8-1.2 1.2-2.8 1.8-4.8 1.8H5.5V8.5ZM8 10.4v9.5h2.1c1.3 0 2.3-.4 3.1-1.3.8-.9 1.1-2 1.1-3.4v-.2c0-1.4-.4-2.5-1.1-3.4-.8-.8-1.8-1.3-3.1-1.3H8Zm16.8 3.2h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3Zm6 3.7c-.3.8-1 1.5-1.7 2-.8.5-1.7.8-2.8.8-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1ZM36 22l-3.9-5.3L35.9 11h2.7l-2.8 3.8L37 16.5 40.3 22h-2.6l-1.3-3.3Zm4.8-5.6v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 3.9-1.7 1 0 1.8.2 2.5.6.7.4 1.3 1 1.7 1.8l-1.8 1.1c-.3-.5-.6-.8-1-1.1-.4-.3-.9-.4-1.4-.4-.9 0-1.7.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.5 0 1-.1 1.4-.4.4-.3.8-.6 1-1.1l1.8 1.1c-.4.8-1 1.4-1.7 1.8-.7.4-1.6.6-2.5.6-1.6 0-2.9-.6-3.9-1.7-1-1.1-1.5-2.6-1.5-4.3Zm16.2-.2c0-1.2-.3-2.2-.8-2.9-.5-.7-1.3-1.1-2.2-1.1-.9 0-1.7.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.9 0 1.7-.4 2.2-1.1.5-.7.8-1.7.8-2.9v-.2Zm-8.3.2v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.4-1.7 4-1.7s3 .6 4 1.7c1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.4 1.7-4 1.7s-3-.6-4-1.7c-1-1.1-1.5-2.5-1.5-4.3Zm18.3-.1v.2c0 1.1.2 2 .7 2.7.5.7 1.2 1.1 2.1 1.1.8 0 1.4-.3 1.8-.8.5-.5.7-1.2.7-2v-.1c0-.9-.2-1.6-.7-2.1-.5-.5-1.1-.8-1.8-.8-.9 0-1.6.3-2.1 1-.5.7-.7 1.6-.7 2.7Zm-2.3.1V11h2.3v1.5c.4-.6.8-1 1.4-1.3.6-.3 1.2-.5 1.9-.5 1.3 0 2.4.6 3.2 1.7.8 1.1 1.2 2.5 1.2 4.2v.2c0 1.7-.4 3.1-1.2 4.2-.8 1.1-2 1.7-3.3 1.7-.7 0-1.3-.2-1.8-.5-.5-.3-1-.7-1.3-1.3v5.1h-2.3V16.4Zm12.3-.5v-.2c0-1.2.3-2.2.8-2.9.5-.7 1.2-1 2.1-1 .9 0 1.6.4 2.1 1.1v-5h2.3V22H86v-1.5c-.4.6-.8 1-1.3 1.3-.5.3-1.1.5-1.8.5-1.3 0-2.4-.6-3.2-1.7-.8-1.1-1.2-2.5-1.2-4.2Zm2.3.2c0 1.1.2 2 .7 2.7.5.7 1.1 1 2 1 .8 0 1.4-.3 1.8-.9v-5.5c-.5-.6-1.1-.9-1.8-.9-.9 0-1.5.4-2 1.1-.5.7-.7 1.6-.7 2.7v.2Z" fill={c}/>
+    </svg>
+  ),
+  'Epic MyChart': (c) => (
+    <svg height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.5h9v2H7.4v3h6v2h-6v3.3H14V22H5V8.5Zm12.7 2.6h2.3v1.5c.4-.6.8-1 1.4-1.3.6-.3 1.2-.5 1.9-.5 1.4 0 2.5.6 3.3 1.7.8 1.1 1.2 2.5 1.2 4.2v.2c0 1.7-.4 3.1-1.2 4.2-.8 1.1-1.9 1.7-3.3 1.7-.7 0-1.3-.2-1.8-.5-.5-.3-1-.7-1.3-1.3V27h-2.3V11.1Zm2.3 5.4c0 1.1.2 2 .7 2.7.5.7 1.1 1 2 1 .8 0 1.4-.3 1.8-.8v-5.8c-.4-.6-1.1-.9-1.8-.9-.9 0-1.6.4-2 1.1-.5.7-.7 1.6-.7 2.7Zm10-9.7c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5Zm-1.2 4.2h2.4V22h-2.4V11Zm5.1 5.2v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 3.9-1.7 1 0 1.8.2 2.5.6.7.4 1.3 1 1.7 1.8l-1.8 1.1c-.3-.5-.6-.8-1-1.1-.4-.3-.9-.4-1.4-.4-.9 0-1.7.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.5 0 1-.1 1.4-.4.4-.3.8-.6 1-1.1l1.8 1.1c-.4.8-1 1.4-1.7 1.8-.7.4-1.6.6-2.5.6-1.6 0-2.9-.6-3.9-1.7-1-1.1-1.5-2.6-1.5-4.3Zm23.2-5.1h2.5L55.3 22h-2.5l-2.1-6.2-2.2 6.2H46l-4.2-10.8h2.5l3 7.4 2.2-7.4h1.8l2.2 7.4 3-7.4ZM60 11.1v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11h2.4Zm17 6c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1H69c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1ZM69 13.7h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3Zm14.2-2.6v-3h2.4v3H88v1.9h-2.2v6.8c0 .4.1.7.3.9.2.2.5.3.9.3h1.1V22h-1.5c-1 0-1.8-.3-2.3-.8-.5-.5-.8-1.3-.8-2.3V12.9H81.8V11h1.4Zm-3.5 1.8c-.3-.5-.6-.8-1-1.1-.4-.3-.9-.4-1.4-.4-.9 0-1.7.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.5 0 1-.1 1.4-.4.4-.3.8-.6 1-1.1" fill={c}/>
+    </svg>
+  ),
+  'Quest Diagnostics': (c) => (
+    <svg height="28" viewBox="0 0 160 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.6 5.5c-4.6 0-8.3 3.7-8.3 8.3 0 4.6 3.7 8.3 8.3 8.3 1.6 0 3.1-.5 4.4-1.3l2 2 1.6-1.6-2-2c.8-1.2 1.3-2.7 1.3-4.4 0-4.6-3.7-8.3-8.3-8.3Zm0 14.3c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6Zm13.3-8.6v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11.2h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11.2h2.4Zm13.9 3.2h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3Zm6.1 3.7c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1Zm3.8.3c.5 0 1-.1 1.3-.4.4-.3.6-.7.6-1.2h2.2c0 .6-.2 1.2-.5 1.8-.4.5-.9 1-1.5 1.3-.7.3-1.4.5-2.1.5-1.5 0-2.7-.5-3.6-1.6-.9-1-1.3-2.5-1.3-4.3v-.3c0-1.7.4-3.1 1.3-4.2.9-1.1 2.1-1.7 3.6-1.7 1.2 0 2.1.3 2.9 1 .7.7 1.1 1.6 1.2 2.8h-2.2c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-.8 0-1.5.3-1.9 1-.4.7-.7 1.7-.7 3v.3c0 1.3.2 2.3.7 3 .4.7 1.1 1 1.9 1Zm8.9-7v-3h2.4v3h2.1v1.9h-2.1v6.8c0 .4.1.7.3.9.2.2.5.3.9.3h1.1V22h-1.5c-1 0-1.8-.3-2.3-.8-.5-.5-.8-1.3-.8-2.3V13h-1.8V11h1.8ZM88 8.5h4.7c2 0 3.6.6 4.8 1.8 1.2 1.2 1.8 2.8 1.8 4.8v.2c0 2-.6 3.6-1.8 4.8-1.2 1.2-2.8 1.8-4.8 1.8H88V8.5Zm2.4 2v9.5h2.1c1.3 0 2.3-.4 3.1-1.3.8-.9 1.1-2 1.1-3.4v-.2c0-1.4-.4-2.5-1.1-3.4-.8-.8-1.8-1.3-3.1-1.3h-2.1Zm12.3-3.7c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5Zm-1.2 4.2h2.4V22h-2.4V11Zm10.6 3.3c-.5-.6-1.1-.9-1.8-.9-.9 0-1.6.3-2.1 1-.5.7-.7 1.6-.7 2.8v.2c0 1.2.2 2.1.7 2.8.5.7 1.2 1 2.1 1 .7 0 1.3-.3 1.8-.9v-6Zm2.3-3.3V22h-2.3v-1.5c-.8 1.1-1.8 1.7-3.2 1.7-1.3 0-2.3-.6-3.1-1.7-.8-1.1-1.2-2.5-1.2-4.2v-.2c0-1.7.4-3.1 1.2-4.2.8-1.2 1.9-1.7 3.2-1.7 1.3 0 2.3.5 3.1 1.6V11h2.3Zm9.4 4.6c0-1.2-.2-2.1-.7-2.8-.5-.7-1.2-1.1-2-1.1-.8 0-1.5.3-2 .8v5.7c.5.5 1.2.8 2 .8.8 0 1.5-.4 2-1.1.5-.7.7-1.6.7-2.8v-.4Zm2.3-.2v.3c0 1.8-.4 3.2-1.3 4.3-.9 1.1-2.1 1.7-3.5 1.7-1.3 0-2.4-.6-3.1-1.7v1.4c0 1.1-.2 2-.7 2.6-.5.6-1.1 1-2 1h-.6v-1.9h.3c.5 0 .8-.2 1-.5.2-.3.3-.8.3-1.4V11h2.4v1.5c.7-1.1 1.8-1.7 3.1-1.7 1.5 0 2.6.6 3.5 1.7.9 1.1 1.3 2.5 1.3 4.3v-.2Zm3.2-1.8c.5-.7 1.2-1 2.1-1 1.3 0 2.3.4 3 1.3.7.9 1 2 1 3.5V22h-2.4v-6.4c0-1-.2-1.7-.5-2.2-.4-.5-.9-.7-1.6-.7-.8 0-1.4.3-1.9.9-.5.6-.7 1.4-.7 2.5V22h-2.3V11h2.3v1.7c.4-.6.8-1 1.4-1.3-.1 0 .1-.1.5-.2Zm10.5-2c1.6 0 2.8.5 3.8 1.6 1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.3 1.7-3.8 1.7s-2.9-.6-3.8-1.7c-1-1.1-1.5-2.5-1.5-4.3v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6Zm0 1.9c-.9 0-1.6.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.9 0 1.6-.4 2.2-1.1.5-.7.8-1.7.8-2.9v-.2c0-1.2-.3-2.2-.8-2.9-.6-.7-1.3-1.1-2.2-1.1Zm7.6 1.3c.5 0 1-.1 1.3-.4.4-.3.6-.7.6-1.2h2.2c0 .6-.2 1.2-.5 1.8-.4.5-.9 1-1.5 1.3-.7.3-1.4.5-2.1.5-1.5 0-2.7-.5-3.6-1.6-.9-1-1.3-2.5-1.3-4.3v-.3c0-1.7.4-3.1 1.3-4.2.9-1.1 2.1-1.7 3.6-1.7 1.2 0 2.1.3 2.9 1 .7.7 1.1 1.6 1.2 2.8H148c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-.8 0-1.5.3-1.9 1-.4.7-.7 1.7-.7 3v.3c0 1.3.2 2.3.7 3 .4.7 1.1 1 1.9 1Zm6.7 1.1c.5.5 1.2.8 2 .8.5 0 1-.1 1.4-.4.4-.3.6-.7.7-1.2h2.1c-.1 1-.5 1.8-1.3 2.5-.8.6-1.8 1-2.9 1-1.6 0-2.9-.5-3.8-1.6-1-1.1-1.5-2.5-1.5-4.3v-.2c0-1.8.5-3.2 1.4-4.3 1-1.1 2.2-1.6 3.8-1.6 1.2 0 2.2.3 3 1 .8.7 1.2 1.6 1.3 2.8h-2.1c-.1-.6-.3-1.1-.7-1.5-.4-.4-.9-.6-1.5-.6-.9 0-1.6.4-2.1 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.1.8 2.8Z" fill={c}/>
+    </svg>
+  ),
+  LabCorp: (c) => (
+    <svg height="28" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.5h2.4v11.3H14V22H5V8.5Zm17.6 5.9c-.5-.6-1.1-.9-1.8-.9-.9 0-1.5.3-2 1-.5.7-.7 1.6-.7 2.7v.2c0 1.1.2 2 .7 2.7.5.7 1.1 1 2 1 .7 0 1.3-.3 1.8-.8V14.4Zm2.3-3.3V22h-2.3v-1.5c-.4.5-.8 1-1.4 1.3-.6.3-1.2.5-1.9.5-1.4 0-2.5-.6-3.2-1.7-.8-1.1-1.2-2.5-1.2-4.2v-.2c0-1.7.4-3.1 1.2-4.2.8-1.1 1.9-1.7 3.3-1.7.7 0 1.3.2 1.8.5.5.3 1 .7 1.3 1.3V11.1h2.3Zm4.6 0h.5c.7 0 1.3-.1 1.8-.4V8.5h2.3V22H31.8v-1.5c-.4.6-.8 1-1.4 1.3-.6.3-1.2.4-1.9.4-1.4 0-2.5-.6-3.3-1.7-.8-1.1-1.2-2.5-1.2-4.2v-.2c0-1.7.4-3.1 1.2-4.2.8-1.1 1.9-1.7 3.3-1.7.7 0 1.3.2 1.8.5.5.3 1 .7 1.3 1.3v-1.6Zm.5 9.2c.8 0 1.4-.3 1.8-.8v-5.8c-.4-.6-1.1-.9-1.8-.9-.9 0-1.6.4-2 1.1-.5.7-.7 1.6-.7 2.7v.2c0 1.1.2 2 .7 2.7.4.7 1.1 1 2 1Zm11.8-2.7c-.5.7-1.2 1.2-2 1.6-.8.4-1.7.5-2.7.5-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.9-1.6 1 0 1.8.2 2.5.6.7.4 1.3 1 1.7 1.8l-1.8 1.1c-.3-.5-.6-.8-1-1.1-.4-.3-.9-.4-1.4-.4-.9 0-1.7.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.5 0 1-.1 1.4-.4.4-.3.8-.6 1-1.1l1.8 1.1Zm3.5-5.3c0-1.2.3-2.2.8-2.9.5-.7 1.3-1.1 2.2-1.1.9 0 1.6.4 2.2 1.1.5.7.8 1.7.8 2.9v.2c0 1.2-.3 2.2-.8 2.9-.5.7-1.3 1.1-2.2 1.1-.9 0-1.6-.4-2.2-1.1-.5-.7-.8-1.7-.8-2.9v-.2Zm-2.3.2v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 4-1.7 1.6 0 3 .6 4 1.7 1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.4 1.7-4 1.7-1.6 0-3-.6-4-1.7-1-1.1-1.5-2.5-1.5-4.3Zm14.2-3.3v1.7c.4-.6.8-1.1 1.4-1.4.6-.3 1.2-.5 1.9-.5v2.5h-.6c-.8 0-1.5.2-2 .7-.5.5-.7 1.2-.7 2.3v6h-2.4V11.1h2.3Zm6.3 2.6h2.3v1.5c.4-.6.8-1 1.4-1.3.6-.3 1.2-.5 1.9-.5 1.4 0 2.5.6 3.3 1.7.8 1.1 1.2 2.5 1.2 4.2v.2c0 1.7-.4 3.1-1.2 4.2-.8 1.1-2 1.7-3.3 1.7-.7 0-1.3-.2-1.8-.5-.5-.3-1-.7-1.3-1.3V27h-2.3V13.7Zm2.3 2.8c0 1.1.2 2 .7 2.7.5.7 1.1 1 2 1 .8 0 1.4-.3 1.8-.8v-5.8c-.4-.6-1.1-.9-1.8-.9-.9 0-1.6.4-2 1.1-.5.7-.7 1.6-.7 2.7Z" fill={c}/>
+    </svg>
+  ),
+  'Apple Health': (c) => (
+    <svg height="28" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.3 8.8c-.5-.6-1.3-1-2.2-1-.4 0-.8.1-1.2.2.8.5 1.4 1.2 1.7 2.1.2-.5.6-.9 1.1-1.1.2-.1.4-.1.6-.2ZM9.7 8c-1.5 0-2.8.7-3.6 1.8C5.3 11 5 12.5 5 14.2c0 2.2.6 4.2 1.6 5.7 1 1.4 2 2.3 3 2.3.5 0 1-.2 1.6-.4.5-.2 1-.4 1.5-.4.5 0 1 .1 1.4.4.5.2 1 .4 1.5.4 1.2 0 2.3-1.2 3.2-2.9-1.3-.7-2.2-2-2.2-3.6 0-1.5.8-2.8 2-3.5-.8-1-2-1.7-3.3-1.7-.6 0-1.1.2-1.6.4-.5.2-1 .4-1.5.4-.4 0-.8-.1-1.3-.4C10.5 8.2 10.1 8 9.7 8Z" fill={c}/>
+      <path d="M26.4 22V8.5h2.4v5.2h5.5V8.5h2.4V22h-2.4v-6.3h-5.5V22h-2.4Zm19 .2c-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8Zm-.2-10.2c-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8Zm12.8 2c-.5-.6-1.1-.9-1.8-.9-.9 0-1.6.3-2.1 1-.5.7-.7 1.6-.7 2.7v.2c0 1.1.2 2 .7 2.7.5.7 1.2 1.1 2.1 1.1.7 0 1.3-.3 1.8-.9V14Zm2.3-3V22h-2.3v-1.5c-.4.6-.8 1-1.4 1.3-.6.3-1.2.5-1.9.5-1.4 0-2.5-.6-3.3-1.7-.8-1.1-1.2-2.5-1.2-4.2v-.2c0-1.7.4-3.1 1.2-4.2.8-1.1 2-1.7 3.3-1.7.7 0 1.3.2 1.8.4.5.3.9.7 1.3 1.2V11h2.3Zm3.6 11V6.8h2.4V22h-2.4Zm6.8 0V11h2.4v11h-2.4Zm1.2-15c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5ZM79.5 22V11h2.4v11h-2.4Zm1.2-15c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5ZM85.5 11v-3h2.4v3h2.2v1.9h-2.2v6.8c0 .4.1.7.3.9.2.2.5.3.9.3h1.1V22h-1.5c-1 0-1.8-.3-2.3-.8-.5-.5-.8-1.3-.8-2.3V12.9h-1.8V11h1.8Zm7.2 0v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11h2.3v11h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11h2.4Z" fill={c}/>
+    </svg>
+  ),
+  Garmin: (c) => (
+    <svg height="28" viewBox="0 0 90 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.3 7.2c-4.4 0-8 3.2-8 7.2 0 2.7 1.7 5.1 4.2 6.3l.3-2.3c-1.5-.9-2.5-2.4-2.5-4.1 0-2.7 2.7-5 6-5 3.3 0 6 2.2 6 5 0 2.7-2.7 5-6 5h-.8l-.4 2.4h1.2c4.4 0 8-3.2 8-7.2 0-4-3.6-7.3-8-7.3ZM30.4 22.3c-.5-.6-.7-1.4-.7-2.5v-.2c-.4.9-1 1.6-1.8 2.1-.8.5-1.6.8-2.6.8-1.2 0-2.2-.4-3-1.1-.8-.7-1.2-1.7-1.2-2.9 0-1.3.5-2.3 1.5-3 1-.7 2.4-1 4.2-1h2.6v-.4c0-.8-.2-1.4-.7-1.8-.5-.4-1.2-.6-2-.6-.7 0-1.3.2-1.8.5-.5.3-.8.8-.9 1.3h-2.4c.1-1.1.6-2 1.5-2.7.9-.7 2.1-1 3.6-1 1.5 0 2.7.4 3.5 1.1.8.7 1.3 1.8 1.3 3.1v5.2c0 .7.1 1.3.3 1.6v.2h-2.3Zm-4.2-1.8c.8 0 1.5-.3 2.1-.8.6-.5.9-1.1 1.1-1.9v-1.2h-2.3c-1.1 0-1.9.2-2.5.6-.6.4-.8.9-.8 1.6s.2 1.2.7 1.5c.4.3 1 .5 1.7.5ZM35.5 22V11.1h2.3v1.7c.4-.6.8-1.1 1.4-1.4.6-.3 1.2-.5 1.9-.5v2.5h-.6c-.8 0-1.5.2-2 .7-.5.5-.7 1.2-.7 2.3v6h-2.4ZM44.7 22V11.1h2.3v1.6c.4-.6.9-1 1.4-1.3.6-.3 1.2-.5 1.8-.5.8 0 1.5.2 2 .6.5.4.9 1 1.1 1.7.4-.7.9-1.2 1.5-1.6.6-.4 1.3-.6 2.1-.6 1.2 0 2.1.4 2.8 1.3.7.9 1 2 1 3.5V22h-2.4v-6.4c0-1-.2-1.7-.5-2.2-.4-.5-.9-.7-1.5-.7-.7 0-1.3.3-1.7.8-.5.6-.7 1.3-.7 2.3V22h-2.4v-6.4c0-1-.2-1.7-.5-2.2-.4-.5-.9-.7-1.5-.7-.7 0-1.3.3-1.7.9-.4.5-.7 1.3-.7 2.4V22h-2.4Zm19.2-15.2c.5 0 .8.2 1.1.5.3.3.5.7.5 1.1 0 .5-.2.8-.5 1.1-.3.3-.7.5-1.1.5-.5 0-.8-.2-1.1-.5-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.6-.5 1.1-.5Zm-1.2 4.3h2.4V22h-2.4V11.1Zm7 0v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11.1h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11.1h2.4Z" fill={c}/>
+    </svg>
+  ),
+  '8 Sleep': (c) => (
+    <svg height="28" viewBox="0 0 90 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.8 13.2c.8-.6 1.2-1.4 1.2-2.3 0-.9-.3-1.7-1-2.2-.7-.6-1.5-.9-2.6-.9s-1.9.3-2.6.9c-.7.6-1 1.3-1 2.2 0 .9.4 1.7 1.2 2.3-.9.7-1.4 1.5-1.4 2.6 0 1 .4 1.9 1.1 2.5.7.6 1.6.9 2.7.9s2-.3 2.7-.9c.7-.6 1.1-1.5 1.1-2.5 0-1.1-.5-1.9-1.4-2.6ZM9.4 10c.5 0 .9.1 1.2.4.3.3.5.6.5 1.1 0 .4-.2.8-.5 1.1-.3.3-.7.4-1.2.4s-.9-.1-1.2-.4c-.3-.3-.5-.7-.5-1.1 0-.5.2-.8.5-1.1.3-.3.7-.4 1.2-.4Zm0 9c-.6 0-1.1-.2-1.4-.5-.4-.3-.5-.8-.5-1.3 0-.6.2-1 .5-1.4.4-.3.8-.5 1.4-.5s1.1.2 1.4.5c.4.4.5.8.5 1.4 0 .5-.2 1-.5 1.3-.4.3-.8.5-1.4.5Zm13.5 0c.5 0 1-.1 1.3-.4.4-.3.6-.7.6-1.2h2.2c0 .6-.2 1.2-.5 1.8-.4.5-.9 1-1.5 1.3-.7.3-1.4.5-2.1.5-1.5 0-2.7-.5-3.6-1.6-.9-1-1.3-2.5-1.3-4.3v-.3c0-1.7.4-3.1 1.3-4.2.9-1.1 2.1-1.7 3.6-1.7 1.2 0 2.1.3 2.9 1 .7.7 1.1 1.6 1.2 2.8h-2.2c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-.8 0-1.5.3-1.9 1-.4.7-.7 1.7-.7 3v.3c0 1.3.2 2.3.7 3 .4.7 1.1 1 1.9 1ZM29 22V6.8h2.4V22H29Zm10 .2c-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8Zm-.2-10.2c-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8Zm13.8 3.2h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3Zm6 3.7c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1Zm5.7-1.3h2.3v1.5c.4-.6.8-1 1.4-1.3.6-.3 1.2-.5 1.9-.5 1.4 0 2.5.6 3.3 1.7.8 1.1 1.2 2.5 1.2 4.2v.2c0 1.7-.4 3.1-1.2 4.2-.8 1.1-2 1.7-3.3 1.7-.7 0-1.3-.2-1.8-.5-.5-.3-1-.7-1.3-1.3V27h-2.3V17.6Zm2.3 2.8c0 1.1.2 2 .7 2.7.5.7 1.1 1 2 1 .8 0 1.4-.3 1.8-.8v-5.8c-.4-.6-1.1-.9-1.8-.9-.9 0-1.6.4-2 1.1-.5.7-.7 1.6-.7 2.7Z" fill={c}/>
+    </svg>
+  ),
+  Whoop: (c) => (
+    <svg height="28" viewBox="0 0 90 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.5h2.6l3.5 10.5L14.6 8.5h2.6l3.5 10.5L24.2 8.5h2.6l-5 14h-2.6l-3.5-10.3L12.2 22.5H9.6L5 8.5Zm24.5 0h2.4v5.2h5.5V8.5h2.4V22h-2.4v-6.3h-5.5V22h-2.4V8.5Zm19.8 2.8c-.9 0-1.6.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.9 0 1.6-.4 2.2-1.1.5-.7.8-1.7.8-2.9v-.2c0-1.2-.3-2.2-.8-2.9-.6-.7-1.3-1.1-2.2-1.1Zm0-2c1.6 0 2.9.6 3.8 1.7 1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.3 1.7-3.8 1.7s-2.9-.6-3.8-1.7c-1-1.1-1.5-2.5-1.5-4.3v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 3.8-1.7Zm10 2c-.9 0-1.6.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.9 0 1.6-.4 2.2-1.1.5-.7.8-1.7.8-2.9v-.2c0-1.2-.3-2.2-.8-2.9-.6-.7-1.3-1.1-2.2-1.1Zm0-2c1.6 0 2.9.6 3.8 1.7 1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.3 1.7-3.8 1.7s-2.9-.6-3.8-1.7c-1-1.1-1.5-2.5-1.5-4.3v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 3.8-1.7Zm8.6 2.2h2.3v1.5c.4-.6.8-1 1.4-1.3.6-.3 1.2-.5 1.9-.5 1.4 0 2.5.6 3.3 1.7.8 1.1 1.2 2.5 1.2 4.2v.2c0 1.7-.4 3.1-1.2 4.2-.8 1.1-2 1.7-3.3 1.7-.7 0-1.3-.2-1.8-.5-.5-.3-1-.7-1.3-1.3V27h-2.3V11.5Zm2.3 5c0 1.1.2 2 .7 2.7.5.7 1.1 1 2 1 .8 0 1.4-.3 1.8-.8v-5.8c-.4-.6-1.1-.9-1.8-.9-.9 0-1.6.4-2 1.1-.5.7-.7 1.6-.7 2.7Z" fill={c}/>
+    </svg>
+  ),
+  Cronometer: (c) => (
+    <svg height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.9 19c.5 0 1-.1 1.3-.4.4-.3.6-.7.6-1.2h2.2c0 .6-.2 1.2-.5 1.8-.4.5-.9 1-1.5 1.3-.7.3-1.4.5-2.1.5-1.5 0-2.7-.5-3.6-1.6-.9-1-1.3-2.5-1.3-4.3v-.3c0-1.7.4-3.1 1.3-4.2.9-1.1 2.1-1.7 3.6-1.7 1.2 0 2.1.3 2.9 1 .7.7 1.1 1.6 1.2 2.8h-2.2c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-.8 0-1.5.3-1.9 1-.4.7-.7 1.7-.7 3v.3c0 1.3.2 2.3.7 3 .4.7 1.1 1 1.9 1Zm7.4-7.9v1.7c.4-.6.8-1.1 1.4-1.4.6-.3 1.2-.5 1.9-.5v2.5h-.6c-.8 0-1.5.2-2 .7-.5.5-.7 1.2-.7 2.3v6h-2.4V11.1h2.3Zm8.7-.3c1.6 0 2.9.6 3.8 1.7 1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.3 1.7-3.8 1.7s-2.9-.6-3.8-1.7c-1-1.1-1.5-2.5-1.5-4.3v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 3.8-1.7Zm0 2c-.9 0-1.6.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.9 0 1.6-.4 2.2-1.1.5-.7.8-1.7.8-2.9v-.2c0-1.2-.3-2.2-.8-2.9-.6-.7-1.3-1.1-2.2-1.1Zm10.2-.2v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11h2.4Zm10.2-.6c1.6 0 2.9.6 3.8 1.7 1 1.1 1.5 2.5 1.5 4.3v.2c0 1.8-.5 3.2-1.5 4.3-1 1.1-2.3 1.7-3.8 1.7s-2.9-.6-3.8-1.7c-1-1.1-1.5-2.5-1.5-4.3v-.2c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.7 3.8-1.7Zm0 2c-.9 0-1.6.4-2.2 1.1-.5.7-.8 1.7-.8 2.9v.2c0 1.2.3 2.2.8 2.9.5.7 1.3 1.1 2.2 1.1.9 0 1.6-.4 2.2-1.1.5-.7.8-1.7.8-2.9v-.2c0-1.2-.3-2.2-.8-2.9-.6-.7-1.3-1.1-2.2-1.1Zm8.6.5v6.4c0 1 .2 1.7.5 2.2.4.5.9.7 1.6.7.8 0 1.4-.3 1.9-.9.5-.6.7-1.4.7-2.5V11h2.3V22h-2.3v-1.6c-.4.6-.9 1-1.4 1.3-.6.3-1.2.5-1.8.5-1.3 0-2.3-.4-3-1.3-.7-.9-1-2-1-3.5V11h2.4Zm16.5 2.9h6c-.1-1-.5-1.7-1-2.3-.6-.5-1.3-.8-2.1-.8-.8 0-1.5.3-2.1.8-.5.5-.8 1.3-.9 2.3Zm6 3.7c-.4.8-1 1.5-1.8 2-.8.5-1.7.8-2.8.8-1.7 0-3-.5-4-1.6-1-1.1-1.5-2.5-1.5-4.3v-.3c0-1.8.5-3.2 1.5-4.3 1-1.1 2.3-1.6 3.8-1.6 1.6 0 2.8.5 3.7 1.5.9 1 1.4 2.3 1.4 3.9v1.1h-8.1c.1 1.1.4 1.9 1 2.5.6.6 1.4.9 2.4.9.8 0 1.4-.1 1.9-.4.5-.3.9-.7 1.2-1.1l1.4 1Zm5.8-5.4v1.7c.4-.6.8-1.1 1.4-1.4.6-.3 1.2-.5 1.9-.5v2.5h-.6c-.8 0-1.5.2-2 .7-.5.5-.7 1.2-.7 2.3v6h-2.4V11.1h2.3Z" fill={c}/>
+    </svg>
+  ),
+}
+
+function IntegrationLogo({ name, color }: { name: string; color: string }) {
+  const svg = INTEGRATION_SVGS[name]
+  if (!svg) return null
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', height: 28, width: 'auto' }}>
+      {svg(color)}
+    </span>
   )
 }
 
@@ -1013,7 +1122,7 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20, flex: 1 }}>
         {features.map(f => (
           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: D.mutedLight }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: accentColor, marginTop: 6, flexShrink: 0 }} /> {f}
+            <div style={{ width: 6, height: 6, background: accentColor, transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} /> {f}
           </div>
         ))}
       </div>
@@ -1047,7 +1156,7 @@ function InsightExampleCard({ label, headline, body }: { label: string; headline
       background: D.accentTintStrong, borderRadius: 'var(--radius-lg)',
       border: '1px solid rgba(200,124,255,0.25)', padding: 24,
     }}>
-      <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent, marginBottom: 10 }}>{label}</div>
+      <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 10 }}>{label}</div>
       <div style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, color: D.text, marginBottom: 10, letterSpacing: '-0.01em' }}>{headline}</div>
       <p style={{ fontSize: 13, color: 'rgba(240,234,248,0.8)', lineHeight: 1.7, margin: 0 }}>{body}</p>
     </div>
@@ -1067,24 +1176,6 @@ function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   )
 }
 
-function TestimonialCard({ quote, name, placeholder }: { quote: string; name: string; placeholder?: boolean }) {
-  return (
-    <div style={{
-      background: D.bgCard, borderRadius: 'var(--radius-xl)',
-      border: `1px solid ${D.border}`,
-      padding: '24px', textAlign: 'left',
-    }}>
-      <p style={{
-        fontSize: 13.5, lineHeight: 1.7, margin: '0 0 16px',
-        color: placeholder ? '#ff0000' : D.text,
-        fontStyle: 'italic',
-      }}>
-        {placeholder ? quote : <>&ldquo;{quote}&rdquo;</>}
-      </p>
-      <p style={{ fontSize: 12, color: D.muted, margin: 0 }}>— {name}</p>
-    </div>
-  )
-}
 
 function PracBriefCard({ label, text }: { label: string; text: string }) {
   return (
@@ -1102,7 +1193,7 @@ function PracBriefCard({ label, text }: { label: string; text: string }) {
         display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10,
       }}>
         <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
-        <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>{label}</span>
+        <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>{label}</span>
       </div>
       <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: 0 }}>{text}</p>
     </div>
@@ -1170,7 +1261,7 @@ function DashboardMockup() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
             <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
-            <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>AereInsight</span>
+            <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
           </div>
           <p style={{ fontSize: 12.5, color: D.text, lineHeight: 1.65, margin: 0 }}>
             Your ApoB at 72 mg/dL is approaching the &lt;70 threshold longevity physicians consider optimal.
@@ -1187,7 +1278,7 @@ function VaultMockup() {
     <div>
       <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Recent Records</div>
       {[
-        { type: 'Lab Report', source: 'Function Health', date: 'Mar 18, 2026', icon: <FlaskConical size={14} color={D.accent} /> },
+        { type: 'Lab Report', source: 'Quest Diagnostics', date: 'Mar 18, 2026', icon: <FlaskConical size={14} color={D.accent} /> },
         { type: 'Imaging', source: 'RadNet', date: 'Feb 4, 2026', icon: <Eye size={14} color={D.accent} /> },
         { type: 'Lab Report', source: 'Quest Diagnostics', date: 'Dec 12, 2025', icon: <FlaskConical size={14} color={D.accent} /> },
       ].map(r => (
@@ -1221,7 +1312,7 @@ function ShareMockup() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
           <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
-          <span style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>Pre-visit Brief</span>
+          <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>Pre-visit Brief</span>
         </div>
         <p style={{ fontSize: 12, color: D.text, lineHeight: 1.6, margin: 0 }}>
           38M, health-optimized. 5 years of longitudinal data. ApoB optimal. Glucose trending up.
@@ -1232,7 +1323,7 @@ function ShareMockup() {
         {['Time-limited', 'Passcode', 'Audit trail'].map(tag => (
           <span key={tag} style={{
             padding: '4px 10px', borderRadius: 100, fontSize: 11,
-            background: 'rgba(57,255,143,0.1)', color: D.success,
+            background: 'rgba(156,219,123,0.1)', color: D.success,
             fontWeight: 500,
           }}>{tag}</span>
         ))}
@@ -1294,7 +1385,7 @@ function PricingSection() {
             description="For individuals who want a secure, organized home for their health records."
             features={[
               'Unlimited health record uploads',
-              'AI parsing and biomarker extraction',
+              'Intelligent parsing and biomarker extraction',
               'Biomarker history and trend charts',
               'AereShare — secure provider sharing',
               'AereTimeline — full health timeline',
@@ -1312,11 +1403,11 @@ function PricingSection() {
             tier="Core"
             price={annual ? '$16' : '$25'}
             period={annual ? '/mo billed annually' : '/mo'}
-            description="For health optimizers who want AI intelligence across their full health picture."
+            description="For health optimizers who want intelligence across their full health picture."
             features={[
               'Everything in Vault',
-              'AereInsight — personalized AI analysis',
-              'AI Chat across your full health history',
+              'AereInsight — personalized analysis',
+              'Aere Chat across your full health history',
               'Dashboard intelligence',
               'Wearable integration via AerePulse',
               '7-day free trial',
@@ -1339,7 +1430,7 @@ function PricingSection() {
               'Everything in Core for yourself',
               'Link and manage client Aere accounts',
               'Client health visibility via AereShare',
-              'AI-generated pre-visit briefs',
+              'pre-visit briefs generated by Aere',
               '7-day free trial',
             ]}
             cta="Start free trial"

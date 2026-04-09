@@ -338,7 +338,7 @@ export default function MarketingSite() {
                 fontFamily: 'var(--font-sans)', fontSize: 16,
                 color: '#7A7770', lineHeight: 1.6, maxWidth: 600, margin: '0 auto',
               }}>
-                Function Health tests your blood. Oura tracks your sleep. Apple Health stores your steps.
+                Oura tracks your sleep. Apple Health stores your steps.
                 Aere is the only platform that connects all of it — and applies AI across every source simultaneously
                 through a longevity lens.
               </p>
