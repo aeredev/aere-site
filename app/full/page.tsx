@@ -20,7 +20,7 @@ const D = {
   border: 'rgba(200,124,255,0.15)',
   borderStrong: 'rgba(200,124,255,0.3)',
   text: '#F0EAF8',
-  muted: 'rgba(240,234,248,0.5)',
+  muted: 'rgba(240,234,248,0.7)',
   mutedBody: 'rgba(240,234,248,0.6)',
   mutedLight: 'rgba(240,234,248,0.7)',
   mutedDim: 'rgba(240,234,248,0.4)',
@@ -57,7 +57,7 @@ function SiteNav() {
   return (
     <>
       <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        position: 'fixed', top: 4, left: 0, right: 0, zIndex: 100,
         background: 'rgba(15,13,26,0.92)',
         backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
         borderBottom: navBorder,
@@ -113,7 +113,7 @@ function SiteNav() {
 
       {mobileOpen && (
         <div style={{
-          position: 'fixed', top: 56, left: 0, right: 0, zIndex: 99,
+          position: 'fixed', top: 60, left: 0, right: 0, zIndex: 99,
           background: D.bgCard, borderBottom: `1px solid ${D.border}`,
           padding: '16px 24px 20px', display: 'flex', flexDirection: 'column', gap: 4,
           boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
@@ -176,10 +176,10 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 1. HERO (dark) ═══════════════════════ */}
       <section id="hero" style={{
-        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)', paddingTop: 56,
+        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)',
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        textAlign: 'center', padding: 'clamp(120px, 15vh, 180px) 24px clamp(60px, 8vh, 100px)',
+        textAlign: 'center', padding: 'clamp(160px, calc(17vh + 20px), 220px) 24px clamp(60px, 8vh, 100px)',
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{ maxWidth: 820, width: '100%', position: 'relative', zIndex: 1 }}>
@@ -188,7 +188,7 @@ export default function FullMarketingSite() {
             fontSize: 'clamp(32px, 5vw, 68px)',
             fontWeight: 400, color: D.text,
             letterSpacing: '-0.03em', lineHeight: 1.08,
-            margin: '0 0 28px',
+            margin: '20px 0 28px',
             whiteSpace: 'nowrap',
           }}>
             <span style={{ display: 'block' }}>Your entire health history.</span>
@@ -416,7 +416,7 @@ export default function FullMarketingSite() {
               display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20,
             }}>
               <Sparkles size={14} strokeWidth={1.75} color={D.accent} />
-              <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
+              <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>Intelligence</span>
             </div>
 
             <h2 style={{
@@ -623,6 +623,7 @@ export default function FullMarketingSite() {
       {/* ═══════════════════════ 10. INTEGRATIONS ═══════════════════════ */}
       <SectionObserver>
         <section id="integrations" style={{ background: D.bgPurple, padding: 'clamp(64px, 8vw, 100px) 24px', textAlign: 'center' }}>
+          <SectionLabel>Integrations</SectionLabel>
           <h2 style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(28px, 3.5vw, 42px)',
@@ -722,19 +723,19 @@ export default function FullMarketingSite() {
       </SectionObserver>
 
       {/* ═══════════════════════ WHY AERE EXISTS ═══════════════════════ */}
-      <section style={{ background: D.bgPurple, padding: '100px 40px', textAlign: 'center' }}>
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
+      <section style={{ background: D.bgPurple, padding: '140px 40px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 760, margin: '0 auto' }}>
           <div style={{
-            fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
-            letterSpacing: '0.1em', color: D.accent,
+            fontSize: 13, fontWeight: 600, textTransform: 'uppercase',
+            letterSpacing: '0.08em', color: D.accent,
             fontFamily: 'var(--font-sans)',
           }}>
             Why Aere Exists
           </div>
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 20, lineHeight: 1.8, color: D.mutedLight,
-            margin: '24px 0 0',
+            fontSize: 24, lineHeight: 1.7, color: D.mutedLight,
+            margin: '32px 0 0',
           }}>
             Astronauts have it. Elite athletes have it. Critical
             care patients have it — complete, continuous monitoring
@@ -742,16 +743,17 @@ export default function FullMarketingSite() {
             them act on it.
           </p>
           <p style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 20, lineHeight: 1.8, color: D.mutedLight,
-            margin: '20px 0 0',
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(32px, 4vw, 44px)', lineHeight: 1.25, color: D.text,
+            letterSpacing: '-0.02em',
+            margin: '40px 0 0',
           }}>
-            Every person deserves this. That&apos;s why Aere exists.
+            Every person deserves this.<br />That&apos;s why Aere exists.
           </p>
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 20, lineHeight: 1.8, color: D.mutedLight,
-            margin: '20px 0 0',
+            fontSize: 24, lineHeight: 1.7, color: D.mutedLight,
+            margin: '24px 0 0',
           }}>
             You wear a ring, a watch, get your labs done, track
             your sleep. That data is yours. Aere is the intelligence
@@ -760,8 +762,9 @@ export default function FullMarketingSite() {
           </p>
           <p style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 22, color: D.accent,
-            margin: '40px 0 0',
+            fontSize: 'clamp(40px, 6vw, 56px)', color: '#00E5FF',
+            letterSpacing: '-0.02em', lineHeight: 1.1,
+            margin: '56px 0 0',
           }}>
             Own Your Health.
           </p>
@@ -962,8 +965,8 @@ export default function FullMarketingSite() {
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      fontSize: 14, fontWeight: 600, textTransform: 'uppercase',
-      letterSpacing: '0.1em', color: D.accent, marginBottom: 16,
+      fontSize: 13, fontWeight: 600, textTransform: 'uppercase',
+      letterSpacing: '0.08em', color: D.accent, marginBottom: 16,
     }}>{children}</div>
   )
 }
