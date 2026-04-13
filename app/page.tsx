@@ -35,21 +35,13 @@ export default function Teaser() {
 
   return (
     <>
-      {/* Grain overlay */}
-      <div style={{
-        position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.15,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '128px 128px',
-      }} />
-
       <main style={{
         position: 'relative', zIndex: 1,
         minHeight: '100vh',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         padding: '40px 24px',
-        backgroundColor: '#1A1917',
+        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)',
       }}>
         {/* Content */}
         <div style={{
@@ -75,7 +67,7 @@ export default function Teaser() {
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(24px, 5vw, 68px)',
             fontWeight: 400,
-            color: '#FFFFFF',
+            color: '#F0EAF8',
             letterSpacing: '-0.03em',
             lineHeight: 1.15,
             textAlign: 'center',
@@ -93,7 +85,7 @@ export default function Teaser() {
             fontFamily: 'var(--font-sans)',
             fontSize: 'clamp(10px, 0.8vw, 12px)',
             fontWeight: 500,
-            color: '#7A7770',
+            color: 'rgba(240,234,248,0.4)',
             letterSpacing: '0.1em',
             textTransform: 'uppercase' as const,
             margin: '0 0 20px',
@@ -119,7 +111,7 @@ export default function Teaser() {
                   alignItems: 'stretch',
                   borderRadius: 12,
                   overflow: 'hidden',
-                  border: '1px solid #3A3835',
+                  border: '1px solid rgba(200,124,255,0.15)',
                   maxWidth: 480,
                   width: '100%',
                 }}>
@@ -132,12 +124,12 @@ export default function Teaser() {
                     className="email-input"
                     style={{
                       flex: 1,
-                      background: '#242220',
+                      background: 'rgba(255,255,255,0.04)',
                       border: 'none',
                       outline: 'none',
                       padding: '0 20px',
                       fontSize: 'clamp(13px, 1vw, 15px)',
-                      color: '#FFFFFF',
+                      color: '#F0EAF8',
                       fontFamily: 'var(--font-sans)',
                       minHeight: 52,
                     }}
@@ -167,7 +159,7 @@ export default function Teaser() {
                   <p style={{
                     fontFamily: 'var(--font-sans)',
                     fontSize: 13,
-                    color: '#E87C6C',
+                    color: '#FF6B6B',
                     marginTop: 12,
                   }}>
                     {errorMsg}
@@ -188,14 +180,14 @@ export default function Teaser() {
           <div style={{
             display: 'flex', gap: 8, alignItems: 'center',
           }}>
-            <span style={{ width: 3, height: 3, borderRadius: '50%', background: '#3A3A37' }} />
-            <span style={{ width: 3, height: 3, borderRadius: '50%', background: '#3A3A37' }} />
-            <span style={{ width: 3, height: 3, borderRadius: '50%', background: '#3A3A37' }} />
+            <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(200,124,255,0.2)' }} />
+            <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(200,124,255,0.2)' }} />
+            <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(200,124,255,0.2)' }} />
           </div>
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 11,
-            color: '#4A4845',
+            color: 'rgba(240,234,248,0.25)',
             margin: 0,
           }}>
             aere.health &middot; &copy; 2026 Aere Health Inc
@@ -205,7 +197,7 @@ export default function Teaser() {
 
       <style>{`
         .email-input::placeholder {
-          color: #5A5855;
+          color: rgba(240,234,248,0.3);
         }
         @media (max-width: 560px) {
           .headline {
@@ -223,7 +215,7 @@ export default function Teaser() {
           }
           .form-bar .email-input {
             border-radius: 10px !important;
-            border: 1px solid #3A3835 !important;
+            border: 1px solid rgba(200,124,255,0.15) !important;
             width: 100% !important;
             height: 52px !important;
             min-height: 52px !important;

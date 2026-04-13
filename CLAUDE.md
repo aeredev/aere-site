@@ -83,10 +83,13 @@ Be incredible.
 
 ## CRITICAL — Marketing Site Page Rules
 
-- **`app/page.tsx`** — the waitlist teaser. NEVER modify this file. It is live production. Sacred.
-- **`app/marketing/page.tsx`** — the full marketing site. Hidden until launch. Build here only.
+- **`app/page.tsx`** — the waitlist teaser. Live at aere.health. Can be updated freely.
+- **`app/full/page.tsx`** — the full marketing site. NEVER overwrite or replace this file with teaser content. This is a large, complex page with extensive work. Treat it as the most valuable file in the project.
+- **`app/marketing/page.tsx`** — legacy marketing page (light theme). Hidden until launch.
 - **`app/science/page.tsx`** — science reference page. Live at aere.health/science.
 - **`app/insight/page.tsx`** — AereInsight philosophy page. Live at aere.health/insight.
+
+**CRITICAL:** `app/page.tsx` (teaser) and `app/full/page.tsx` (full site) are separate pages that must never be confused. The teaser is a simple waitlist page. The full site is the complete marketing experience. Never copy one over the other.
 
 ---
 
@@ -103,14 +106,29 @@ Be incredible.
 
 ### Theme
 The marketing site uses **two themes**:
-- **Dark** — homepage teaser only (`app/page.tsx`). Background #1A1917, white text, violet accents.
-- **Light** — all other pages (science, insight, marketing, pricing). Background #F5F4F0, dark text.
-
-Never apply dark theme to new pages. All new pages use the light theme.
+- **Dark** — homepage teaser (`app/page.tsx`) and full site (`app/full/page.tsx`). Purple gradient background, light text, violet accents.
+- **Light** — editorial pages (science, insight) and legacy marketing. Background #F5F4F0, dark text.
 
 ### Colors
 ```
-Light theme:
+Dark theme (primary — teaser, full site):
+  Background gradient: linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)
+  Background deep:   #0F0D1A
+  Background mid:    #150E26
+  Background purple: #1C1033
+  Surface (cards):   #1E1535
+  Surface 2:         #261940
+  Border:            rgba(200,124,255,0.15)
+  Border strong:     rgba(200,124,255,0.3)
+  Text:              #F0EAF8
+  Text muted:        rgba(240,234,248,0.7)
+  Text body:         rgba(240,234,248,0.6)
+  Text dim:          rgba(240,234,248,0.4)
+  Accent:            #c87cff  (violet)
+  Accent tint:       rgba(200,124,255,0.12)
+  Cyan (tagline):    #00E5FF
+
+Light theme (editorial pages):
   Background:      #F5F4F0
   Surface (cards): #FFFFFF
   Border:          #E2E0D8
@@ -118,11 +136,6 @@ Light theme:
   Text muted:      #7A7770
   Accent:          #c87cff  (violet)
   Accent tint:     #F5EAFF
-
-Dark theme (homepage only):
-  Background:      #1A1917
-  Text:            #FFFFFF
-  Accent:          #c87cff
 ```
 
 ### Typography
@@ -132,14 +145,14 @@ Display:  DM Serif Display (var(--font-serif))
 NEVER use hardcoded font family strings
 ```
 
-### Section Design Pattern
+### Section Design Pattern (dark theme)
 ```
 Sections alternate between:
-- White (#FFFFFF) — content sections
-- Page background (#F5F4F0) — separator sections
-- Dark (#1A1917) — CTA sections at bottom
+- Deep (#0F0D1A) — primary sections
+- Dark (#150E26) — content sections
+- Purple (#1C1033) — accent/feature sections
 
-AVOID: multiple adjacent tan/beige sections. Use white for contrast.
+Section labels: 13px, uppercase, letter-spacing 0.08em, D.accent (#c87cff)
 ```
 
 ### Editorial Pages (science, insight)
@@ -149,7 +162,7 @@ Line-height: 1.8 for body text
 Section breaks: thin horizontal rules
 Pull quotes: left border 2px solid var(--color-accent), padding 16px 24px, italic
 Three-card rows: white bg, border-radius 16px, border 1px solid #E2E0D8
-CTA sections: dark background #1A1917
+CTA sections: dark background #0F0D1A
 ```
 
 ---
@@ -175,10 +188,11 @@ RESEND_API_KEY must be in Vercel environment variables for aere-site project.
 
 | Page | URL | Status | Notes |
 |------|-----|--------|-------|
-| Waitlist teaser | aere.health | Live — DO NOT TOUCH | app/page.tsx |
+| Waitlist teaser | aere.health | Live | app/page.tsx, dark purple gradient |
+| Full marketing site | aere.health/full | Live | app/full/page.tsx, dark theme |
 | Science reference | aere.health/science | Live | Light theme, disclaimer banners |
 | How It Works | aere.health/insight | Live | AereInsight philosophy, light theme |
-| Full marketing site | aere.health/marketing | Hidden until launch | app/marketing/page.tsx |
+| Legacy marketing | aere.health/marketing | Hidden | app/marketing/page.tsx, light theme |
 
 ---
 
