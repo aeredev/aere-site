@@ -179,7 +179,7 @@ export default function FullMarketingSite() {
         background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)',
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        textAlign: 'center', padding: 'clamp(176px, calc(17vh + 36px), 236px) 24px clamp(60px, 8vh, 100px)',
+        textAlign: 'center', padding: 'clamp(116px, calc(17vh - 24px), 176px) 24px clamp(60px, 8vh, 100px)',
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{ maxWidth: 820, width: '100%', position: 'relative', zIndex: 1 }}>
@@ -237,7 +237,7 @@ export default function FullMarketingSite() {
 
         {/* Hero product mockup — browser chrome */}
         <div className="fade-up-5" style={{
-          maxWidth: 900, width: '100%', marginTop: 56,
+          maxWidth: 900, width: '100%', marginTop: 116,
           position: 'relative', zIndex: 1,
           boxShadow: `0 40px 120px rgba(200,124,255,0.12), 0 20px 40px rgba(0,0,0,0.5)`,
           borderRadius: 12, overflow: 'hidden',
