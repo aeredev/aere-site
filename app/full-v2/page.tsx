@@ -217,7 +217,7 @@ export default function FullMarketingSite() {
             >
               Request early access <ChevronRight size={16} />
             </Link>
-            <Link href="/full#vault" className="hero-ghost-btn" style={{
+            <Link href="/full-v2#vault" className="hero-ghost-btn" style={{
               padding: '12px 28px', background: 'transparent', color: D.accent,
               border: '1px solid rgba(200,124,255,0.35)', borderRadius: 'var(--radius-md)',
               fontSize: 15, fontWeight: 500, textDecoration: 'none',
@@ -502,8 +502,7 @@ export default function FullMarketingSite() {
               <LayerCard icon={<Dna size={20} />} iconColor="#C9A84C" title="Genetic & Advanced Testing"
                 body="APOE, MTHFR, biological age clocks, cardiovascular genetic panels. Upload any report — Aere reads and contextualizes it." />
               <LayerCard icon={<TrendingUp size={20} />} iconColor="#39FF8F" title="Continuous Glucose"
-                body="CGM data from Dexcom, Libre, and Stelo — connected and interpreted alongside your labs, sleep, and activity."
-                badge="Coming soon" />
+                body="CGM data from Dexcom, Libre, and Stelo — connected and interpreted alongside your labs, sleep, and activity." />
               <LayerCard icon={<Apple size={20} />} iconColor="#FF1493" title="Nutrition & Exercise"
                 body="Macros, protein targets, micronutrients — connected to your biomarker trends. Understand what your diet is actually doing to your biology."
                 badge="Coming soon" />
@@ -922,7 +921,7 @@ export default function FullMarketingSite() {
             >
               Start your free trial <ChevronRight size={16} />
             </Link>
-            <Link href="/full#pricing" style={{
+            <Link href="/full-v2#pricing" style={{
               padding: '14px 32px', background: 'none', color: D.accent,
               border: `1px solid ${D.border}`, borderRadius: 'var(--radius-md)',
               fontSize: 16, fontWeight: 500, textDecoration: 'none',
@@ -944,8 +943,8 @@ export default function FullMarketingSite() {
             <p style={{ fontSize: 12, color: D.mutedDim, lineHeight: 1.6 }}>Own Your Health.<br />The Healthspan Intelligence Platform.</p>
           </div>
           <FooterCol title="Product" links={[
-            { label: 'Features', href: '/full#features' }, { label: 'Pricing', href: '/full#pricing' },
-            { label: 'AereVault', href: '/full#vault' }, { label: 'AereShare', href: '/full#share' },
+            { label: 'Features', href: '/full-v2#features' }, { label: 'Pricing', href: '/full-v2#pricing' },
+            { label: 'AereVault', href: '/full-v2#vault' }, { label: 'AereShare', href: '/full-v2#share' },
             { label: 'Science', href: '/science' },
           ]} />
           <FooterCol title="Company" links={[
@@ -954,7 +953,7 @@ export default function FullMarketingSite() {
           ]} />
           <FooterCol title="Legal" links={[
             { label: 'Privacy Policy', href: '#' }, { label: 'Terms of Service', href: '#' },
-            { label: 'HIPAA Notice', href: '#' }, { label: 'Security', href: '/full#security' },
+            { label: 'HIPAA Notice', href: '#' }, { label: 'Security', href: '/full-v2#security' },
           ]} />
         </div>
         <div style={{
@@ -1339,25 +1338,96 @@ function VaultMockup() {
 
 function ShareMockup() {
   return (
-    <div>
-      <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Share Preview</div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'left' }}>
+      {/* Header — mimics the real shared page header */}
+      <div>
+        <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 8 }}>Shared Health Summary</div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 600, color: D.text }}>Briana Chen</div>
+            <div style={{ fontSize: 11, color: D.muted, marginTop: 2 }}>38F &middot; 5&apos;6&quot; &middot; 132 lb &middot; Health-optimized</div>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ fontSize: 10, color: D.muted }}>Prepared for</div>
+            <div style={{ fontSize: 12, color: D.text, fontWeight: 500 }}>Dr. Sarah Lin, MD</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+          {[
+            { label: 'Records', value: '12' },
+            { label: 'Biomarkers', value: '47' },
+            { label: 'Date range', value: '2021–2026' },
+          ].map(s => (
+            <div key={s.label} style={{ fontSize: 10, color: D.muted }}>
+              <span style={{ color: D.mutedLight, fontWeight: 500 }}>{s.value}</span> {s.label}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* AI-Generated Clinical Summary — matches real app */}
+      <div style={{
+        background: D.accentTintStrong, borderRadius: 'var(--radius-lg)',
+        border: `1px solid ${D.borderStrong}`, padding: 14,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+          <Sparkles size={11} strokeWidth={1.75} color={D.accent} />
+          <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>AI-Generated Clinical Summary</span>
+        </div>
+        <div style={{ fontSize: 11, color: D.text, lineHeight: 1.65 }}>
+          <p style={{ margin: '0 0 8px' }}>
+            Cardiovascular profile is strong. ApoB at 72 mg/dL is approaching the &lt;70 threshold
+            longevity research considers optimal. LDL has trended down steadily over 18 months.
+            hs-CRP at 0.4 mg/L indicates very low vascular inflammation.
+          </p>
+          <p style={{ margin: '0 0 8px' }}>
+            Metabolic trend warrants attention. Fasting glucose has risen from 94 to 101 mg/dL
+            across four panels. HbA1c at 5.3% suggests the fasting readings may reflect a dawn
+            phenomenon rather than insulin resistance. CGM data shows overnight readings of 82–91.
+          </p>
+          <p style={{ margin: 0 }}>
+            Free testosterone is declining 12% year-over-year, concurrent with a drop in deep
+            sleep from 1h 42m to 58 minutes per night. Dietary zinc is consistently below threshold.
+            This pattern is consistent with sleep-mediated hormonal suppression.
+          </p>
+        </div>
+      </div>
+
+      {/* Biomarker snapshot table — mimics real shared page */}
       <div style={{
         background: D.bgCard2, borderRadius: 'var(--radius-lg)',
-        border: `1px solid ${D.border}`, padding: 16, marginBottom: 12,
+        border: `1px solid ${D.border}`, padding: 14,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-          <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
-          <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>Pre-visit Brief</span>
+        <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 10 }}>Key Biomarkers</div>
+        {[
+          { name: 'ApoB', value: '72', unit: 'mg/dL', ref: '<70', status: 'optimal', color: D.accent },
+          { name: 'hs-CRP', value: '0.4', unit: 'mg/L', ref: '<1.0', status: 'optimal', color: D.accent },
+          { name: 'Fasting Glucose', value: '101', unit: 'mg/dL', ref: '70–100', status: 'borderline', color: D.amber },
+          { name: 'HbA1c', value: '5.3', unit: '%', ref: '<5.7', status: 'optimal', color: D.accent },
+          { name: 'Free Testosterone', value: '9.2', unit: 'ng/dL', ref: '9–26', status: 'borderline', color: D.amber },
+        ].map(bm => (
+          <div key={bm.name} style={{
+            display: 'flex', alignItems: 'center', gap: 8, padding: '5px 0',
+            borderBottom: `1px solid ${D.border}`, fontSize: 11,
+          }}>
+            <div style={{ width: 5, height: 5, borderRadius: '50%', background: bm.color, flexShrink: 0 }} />
+            <div style={{ flex: 1, color: D.mutedLight }}>{bm.name}</div>
+            <div style={{ color: D.text, fontWeight: 500, minWidth: 40, textAlign: 'right' }}>
+              {bm.value} <span style={{ color: D.muted, fontWeight: 400 }}>{bm.unit}</span>
+            </div>
+            <div style={{ fontSize: 9, color: D.muted, minWidth: 50, textAlign: 'right' }}>ref: {bm.ref}</div>
+          </div>
+        ))}
+        <div style={{ fontSize: 10, color: D.muted, marginTop: 8, fontStyle: 'italic' }}>
+          + 42 more biomarkers across 12 records
         </div>
-        <p style={{ fontSize: 12, color: D.text, lineHeight: 1.6, margin: 0 }}>
-          38M, health-optimized. 5 years of longitudinal data. ApoB optimal. Glucose trending up.
-          3 items flagged for discussion.
-        </p>
       </div>
-      <div style={{ display: 'flex', gap: 8 }}>
-        {['Time-limited', 'Passcode', 'Audit trail'].map(tag => (
+
+      {/* Security tags */}
+      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        {['Time-limited', 'Passcode', 'Audit trail', 'Revocable', 'HIPAA-compliant'].map(tag => (
           <span key={tag} style={{
-            padding: '4px 10px', borderRadius: 100, fontSize: 11,
+            padding: '3px 8px', borderRadius: 100, fontSize: 10,
             background: 'rgba(156,219,123,0.1)', color: D.success,
             fontWeight: 500,
           }}>{tag}</span>
