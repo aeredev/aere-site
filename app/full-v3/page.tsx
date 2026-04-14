@@ -10,35 +10,35 @@ import {
   Sparkles, Sparkle, Users, Zap, BarChart3,
 } from 'lucide-react'
 
-/* ── Dark palette ── */
+/* ── Light palette ── */
 const D = {
-  bgDeep: '#0F0D1A',
-  bgDark: '#150E26',
-  bgPurple: '#1C1033',
-  bgCard: '#1E1535',
-  bgCard2: '#261940',
-  border: 'rgba(200,124,255,0.15)',
+  bgDeep: '#F5F4F0',
+  bgDark: '#FFFFFF',
+  bgPurple: '#F0EEE9',
+  bgCard: '#FFFFFF',
+  bgCard2: '#FAFAF8',
+  border: '#E2E0D8',
   borderStrong: 'rgba(200,124,255,0.3)',
-  text: '#F0EAF8',
-  muted: 'rgba(240,234,248,0.7)',
-  mutedBody: 'rgba(240,234,248,0.6)',
-  mutedLight: 'rgba(240,234,248,0.7)',
-  mutedDim: 'rgba(240,234,248,0.4)',
+  text: '#1A1917',
+  muted: '#7A7770',
+  mutedBody: '#8A8780',
+  mutedLight: '#5A5750',
+  mutedDim: '#B0ADA5',
   accent: '#c87cff',
-  accentTint: 'rgba(200,124,255,0.12)',
-  accentTintStrong: 'rgba(200,124,255,0.08)',
-  success: '#9CDB7B',
-  amber: '#FFB347',
-  error: '#FF6B6B',
+  accentTint: '#F5EAFF',
+  accentTintStrong: '#FAF5FF',
+  success: '#2E9E5E',
+  amber: '#C4813A',
+  error: '#C44A3A',
 }
 
 /* ── Nav ── */
 
 const NAV_LINKS = [
-  { label: 'Features',          href: '/full-v2#features'      },
-  { label: 'How It Works',      href: '/full-v2#vault'         },
-  { label: 'Pricing',           href: '/full-v2#pricing'       },
-  { label: 'For Providers', href: '/full-v2#practitioners' },
+  { label: 'Features',          href: '/full-v3#features'      },
+  { label: 'How It Works',      href: '/full-v3#vault'         },
+  { label: 'Pricing',           href: '/full-v3#pricing'       },
+  { label: 'For Providers', href: '/full-v3#practitioners' },
 ]
 
 function SiteNav() {
@@ -58,13 +58,13 @@ function SiteNav() {
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: 'rgba(15,13,26,0.92)',
+        background: 'rgba(245,244,240,0.95)',
         backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
         borderBottom: navBorder,
         transition: 'all 0.3s ease',
         height: 72, display: 'flex', alignItems: 'center', padding: '0 32px 2px',
       }}>
-        <Link href="/full-v2#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+        <Link href="/full-v3#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
           <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 46, display: 'block' }} />
         </Link>
 
@@ -76,7 +76,7 @@ function SiteNav() {
               textDecoration: 'none', whiteSpace: 'nowrap',
               transition: 'color 0.15s, background 0.15s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.color = D.text; e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = D.text; e.currentTarget.style.background = 'rgba(0,0,0,0.04)' }}
               onMouseLeave={e => { e.currentTarget.style.color = D.muted; e.currentTarget.style.background = 'none' }}
             >
               {link.label}
@@ -116,7 +116,7 @@ function SiteNav() {
           position: 'fixed', top: 72, left: 0, right: 0, zIndex: 99,
           background: D.bgCard, borderBottom: `1px solid ${D.border}`,
           padding: '16px 24px 20px', display: 'flex', flexDirection: 'column', gap: 4,
-          boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
         }}>
           {NAV_LINKS.map(link => (
             <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)} style={{
@@ -176,7 +176,7 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 1. HERO (dark) ═══════════════════════ */}
       <section id="hero" style={{
-        background: 'linear-gradient(135deg, #150E26 0%, #1C1033 60%, #0F0D1A 100%)',
+        background: 'linear-gradient(135deg, #F5F4F0 0%, #FFFFFF 60%, #F0EEE9 100%)',
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center', padding: 'clamp(176px, calc(17vh + 36px), 236px) 24px clamp(60px, 8vh, 100px)',
@@ -217,7 +217,7 @@ export default function FullMarketingSite() {
             >
               Request early access <ChevronRight size={16} />
             </Link>
-            <Link href="/full-v2#vault" className="hero-ghost-btn" style={{
+            <Link href="/full-v3#vault" className="hero-ghost-btn" style={{
               padding: '12px 28px', background: 'transparent', color: D.accent,
               border: '1px solid rgba(200,124,255,0.35)', borderRadius: 'var(--radius-md)',
               fontSize: 15, fontWeight: 500, textDecoration: 'none',
@@ -239,7 +239,7 @@ export default function FullMarketingSite() {
         <div className="fade-up-5" style={{
           maxWidth: 900, width: '100%', marginTop: 56,
           position: 'relative', zIndex: 1,
-          boxShadow: `0 40px 120px rgba(200,124,255,0.12), 0 20px 40px rgba(0,0,0,0.5)`,
+          boxShadow: `0 40px 120px rgba(200,124,255,0.08), 0 20px 40px rgba(0,0,0,0.06)`,
           borderRadius: 12, overflow: 'hidden',
         }}>
           {/* Browser chrome bar */}
@@ -350,7 +350,7 @@ export default function FullMarketingSite() {
               <div style={{ position: 'relative' }}>
                 <div style={{
                   position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
-                  background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.12) 0%, transparent 70%)',
+                  background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.08) 0%, transparent 70%)',
                 }} />
                 <div style={{
                   position: 'relative', zIndex: 1,
@@ -561,7 +561,7 @@ export default function FullMarketingSite() {
             <div style={{ position: 'relative' }}>
               <div style={{
                 position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
-                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.12) 0%, transparent 70%)',
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.08) 0%, transparent 70%)',
               }} />
               <div style={{
                 position: 'relative', zIndex: 1,
@@ -645,28 +645,28 @@ export default function FullMarketingSite() {
             Connect Directly
           </div>
           <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
-            <IntegrationLogo name="Oura" color="#F0EAF8" />
-            <IntegrationLogo name="Withings" color="#F0EAF8" />
-            <IntegrationLogo name="Fitbit" color="#F0EAF8" />
-            <IntegrationLogo name="Dexcom" color="#F0EAF8" />
+            <IntegrationLogo name="Oura" color="#1A1917" />
+            <IntegrationLogo name="Withings" color="#1A1917" />
+            <IntegrationLogo name="Fitbit" color="#1A1917" />
+            <IntegrationLogo name="Dexcom" color="#1A1917" />
           </div>
 
           {/* Divider */}
-          <div style={{ height: 0, borderTop: '0.5px solid rgba(240,234,248,0.1)', maxWidth: 600, margin: '40px auto' }} />
+          <div style={{ height: 0, borderTop: '0.5px solid rgba(26,25,23,0.1)', maxWidth: 600, margin: '40px auto' }} />
 
           {/* Row 2 — Upload your data */}
           <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
             Upload Your Data
           </div>
           <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
-            <IntegrationLogo name="Epic MyChart" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="Quest Diagnostics" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="LabCorp" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="Apple Health" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="Garmin" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="8 Sleep" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="Whoop" color="rgba(240,234,248,0.45)" />
-            <IntegrationLogo name="Cronometer" color="rgba(240,234,248,0.45)" />
+            <IntegrationLogo name="Epic MyChart" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="Quest Diagnostics" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="LabCorp" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="Apple Health" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="Garmin" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="8 Sleep" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="Whoop" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="Cronometer" color="rgba(26,25,23,0.4)" />
           </div>
         </section>
       </SectionObserver>
@@ -761,7 +761,7 @@ export default function FullMarketingSite() {
           </p>
           <p style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(40px, 6vw, 56px)', color: '#00E5FF',
+            fontSize: 'clamp(40px, 6vw, 56px)', color: D.accent,
             letterSpacing: '-0.02em', lineHeight: 1.1,
             margin: '56px 0 0',
           }}>
@@ -921,7 +921,7 @@ export default function FullMarketingSite() {
             >
               Start your free trial <ChevronRight size={16} />
             </Link>
-            <Link href="/full-v2#pricing" style={{
+            <Link href="/full-v3#pricing" style={{
               padding: '14px 32px', background: 'none', color: D.accent,
               border: `1px solid ${D.border}`, borderRadius: 'var(--radius-md)',
               fontSize: 16, fontWeight: 500, textDecoration: 'none',
@@ -943,8 +943,8 @@ export default function FullMarketingSite() {
             <p style={{ fontSize: 12, color: D.mutedDim, lineHeight: 1.6 }}>Own Your Health.<br />The Healthspan Intelligence Platform.</p>
           </div>
           <FooterCol title="Product" links={[
-            { label: 'Features', href: '/full-v2#features' }, { label: 'Pricing', href: '/full-v2#pricing' },
-            { label: 'AereVault', href: '/full-v2#vault' }, { label: 'AereShare', href: '/full-v2#share' },
+            { label: 'Features', href: '/full-v3#features' }, { label: 'Pricing', href: '/full-v3#pricing' },
+            { label: 'AereVault', href: '/full-v3#vault' }, { label: 'AereShare', href: '/full-v3#share' },
             { label: 'Science', href: '/science' },
           ]} />
           <FooterCol title="Company" links={[
@@ -953,7 +953,7 @@ export default function FullMarketingSite() {
           ]} />
           <FooterCol title="Legal" links={[
             { label: 'Privacy Policy', href: '#' }, { label: 'Terms of Service', href: '#' },
-            { label: 'HIPAA Notice', href: '#' }, { label: 'Security', href: '/full-v2#security' },
+            { label: 'HIPAA Notice', href: '#' }, { label: 'Security', href: '/full-v3#security' },
           ]} />
         </div>
         <div style={{
@@ -1105,7 +1105,7 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
       {badge && (
         <div style={{
           position: 'absolute', top: 14, right: 14,
-          background: 'rgba(240,234,248,0.08)', color: 'rgba(240,234,248,0.4)',
+          background: 'rgba(200,124,255,0.08)', color: D.muted,
           fontSize: 10, fontWeight: 600, letterSpacing: '0.04em',
           padding: '2px 8px', borderRadius: 100,
         }}>{badge}</div>
@@ -1192,7 +1192,7 @@ function InsightExampleCard({ label, headline, body }: { label: string; headline
     }}>
       <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 10 }}>{label}</div>
       <div style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, color: D.text, marginBottom: 10, letterSpacing: '-0.01em' }}>{headline}</div>
-      <p style={{ fontSize: 13, color: 'rgba(240,234,248,0.8)', lineHeight: 1.7, margin: 0 }}>{body}</p>
+      <p style={{ fontSize: 13, color: D.mutedLight, lineHeight: 1.7, margin: 0 }}>{body}</p>
     </div>
   )
 }
@@ -1428,7 +1428,7 @@ function ShareMockup() {
         {['Time-limited', 'Passcode', 'Audit trail', 'Revocable', 'HIPAA-compliant'].map(tag => (
           <span key={tag} style={{
             padding: '3px 8px', borderRadius: 100, fontSize: 10,
-            background: 'rgba(156,219,123,0.1)', color: D.success,
+            background: 'rgba(46,158,94,0.08)', color: D.success,
             fontWeight: 500,
           }}>{tag}</span>
         ))}
@@ -1464,7 +1464,7 @@ function PricingSection() {
               fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
               background: annual ? D.bgCard : 'transparent',
               color: annual ? D.text : D.muted,
-              boxShadow: annual ? '0 1px 3px rgba(0,0,0,0.3)' : 'none',
+              boxShadow: annual ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
               transition: 'all 0.15s',
             }}>Annual <span style={{ fontSize: 11, color: D.accent, fontWeight: 600, marginLeft: 4 }}>Save 20%+</span></button>
             <button onClick={() => setAnnual(false)} style={{
@@ -1472,7 +1472,7 @@ function PricingSection() {
               fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
               background: !annual ? D.bgCard : 'transparent',
               color: !annual ? D.text : D.muted,
-              boxShadow: !annual ? '0 1px 3px rgba(0,0,0,0.3)' : 'none',
+              boxShadow: !annual ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
               transition: 'all 0.15s',
             }}>Monthly</button>
           </div>
