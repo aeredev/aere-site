@@ -767,9 +767,9 @@ export default function FullMarketingSite() {
           </p>
           <p style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(40px, 6vw, 56px)', color: '#00E5FF',
+            fontSize: 'clamp(28px, 4vw, 38px)', color: D.accent,
             letterSpacing: '-0.02em', lineHeight: 1.1,
-            margin: '56px 0 0',
+            margin: '32px 0 0',
           }}>
             Own Your Health.
           </p>
