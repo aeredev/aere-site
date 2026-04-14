@@ -323,12 +323,12 @@ export default function FullMarketingSite() {
                 letterSpacing: '-0.03em', lineHeight: 1.12,
               }}>
                 The average person&apos;s health history lives in 18 different places.<br /><br />
-                The information exists.<br /><span style={{ color: '#FF6B2B' }}>The intelligence doesn&apos;t.</span>
+                The information exists.<br /><span style={{ color: D.accent }}>The intelligence doesn&apos;t.</span>
               </p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <ProblemCard icon={<FolderX size={20} color="#FFB347" />} title="Scattered records"
+              <ProblemCard icon={<FolderX size={20} color="#5BA8D4" />} title="Scattered records"
                 body="Health data across dozens of providers. No single source of truth. Every new specialist starts from scratch." />
               <ProblemCard icon={<Unlink size={20} color="#4ECDC4" />} title="Siloed data"
                 body="Oura knows your sleep. Quest knows your labs. MyFitnessPal knows your macros. None of them talk to each other." />
