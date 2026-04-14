@@ -36,7 +36,7 @@ export async function POST(request: Request) {
       to: 'admin@aere.health',
       subject: 'New Aere waitlist signup',
       text: `New waitlist signup: ${email}\nTime: ${new Date().toISOString()}\nSource: marketing_teaser`,
-    }).catch(() => {})
+    }).catch((err) => { console.error('Waitlist notification failed:', err) })
 
     return NextResponse.json({ success: true })
   } catch (err) {
