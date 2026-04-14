@@ -1299,7 +1299,7 @@ function DashboardMockup() {
             <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
           </div>
           <p style={{ fontSize: 12.5, color: D.text, lineHeight: 1.65, margin: 0 }}>
-            Your ApoB at 72 mg/dL is approaching the &lt;70 threshold longevity physicians consider optimal.
+            Your ApoB at 72 mg/dL is approaching the &lt;70 threshold longevity research considers optimal.
             Your fasting glucose at 94 has risen over 4 panels — worth discussing with your provider.
           </p>
         </div>
