@@ -379,10 +379,10 @@ export default function FullMarketingSite() {
                   genetic panels, handwritten prescriptions, CGM data, EOBs. Aere reads every
                   document and extracts the data that matters.
                 </p>
-                <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 8px' }}>
+                <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 20px' }}>
                   Not a filing cabinet. A living health history that gets richer every time you add to it.
                 </p>
-                <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
+                <p style={{ fontSize: 18, color: D.accent, fontWeight: 500, lineHeight: 1.6, margin: '0 0 28px' }}>
                   Five years of labs tells a story one panel never could.
                 </p>
 
@@ -1255,30 +1255,55 @@ function DashboardMockup() {
 }
 
 function VaultMockup() {
+  const records = [
+    { source: 'Wellness Medical Group', provider: 'Dr. Augustus Pye, MD', date: 'Mar 18, 2026', biomarkers: 42, flag: '2 flagged', flagColor: D.amber, icon: <FlaskConical size={16} color={D.accent} />,
+      summary: 'Comprehensive metabolic and lipid panel. ApoB trending toward optimal. Fasting glucose borderline at 101...' },
+    { source: 'SimonMed Imaging', provider: 'Dr. Miriam Strout, DO', date: 'Feb 4, 2026', biomarkers: 0, flag: 'All normal', flagColor: D.success, icon: <Eye size={16} color={D.accent} />,
+      summary: 'Whole-body MRI scan is stable compared to prior year with no concerning masses or evidence of acute findings...' },
+    { source: 'Quest Diagnostics', provider: 'Dr. Dilys Derwent, MD', date: 'Jan 22, 2026', biomarkers: 88, flag: '5 flagged', flagColor: D.amber, icon: <FlaskConical size={16} color={D.accent} />,
+      summary: 'Annual longevity panel shows mostly favorable results. LDL particle profile shows elevated small dense LDL...' },
+    { source: 'Ancestry Health+', provider: null, date: 'Nov 8, 2025', biomarkers: 14, flag: null, flagColor: null, icon: <Dna size={16} color={D.accent} />,
+      summary: 'Cardiovascular genetic panel shows favorable results for most markers. APOE 3/3 genotype. No MTHFR variants...' },
+    { source: 'Quest Diagnostics', provider: 'Dr. Helbert Spleen, MD', date: 'Sep 15, 2025', biomarkers: 36, flag: '3 flagged', flagColor: D.amber, icon: <FlaskConical size={16} color={D.accent} />,
+      summary: 'Follow-up metabolic panel. Fasting glucose improved from 106 to 98. HbA1c stable at 5.3%. Vitamin D now optimal...' },
+  ]
   return (
     <div>
-      <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Recent Records</div>
-      {[
-        { type: 'Lab Report', source: 'Quest Diagnostics', date: 'Mar 18, 2026', icon: <FlaskConical size={14} color={D.accent} /> },
-        { type: 'Imaging', source: 'RadNet', date: 'Feb 4, 2026', icon: <Eye size={14} color={D.accent} /> },
-        { type: 'Lab Report', source: 'Quest Diagnostics', date: 'Dec 12, 2025', icon: <FlaskConical size={14} color={D.accent} /> },
-      ].map(r => (
-        <div key={r.date} style={{
-          display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0',
-          borderBottom: `1px solid ${D.border}`,
-        }}>
-          <div style={{
-            width: 32, height: 32, borderRadius: 'var(--radius-sm)', flexShrink: 0,
-            background: D.bgCard2, border: `1px solid ${D.border}`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>{r.icon}</div>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, color: D.text }}>{r.type}</div>
-            <div style={{ fontSize: 11, color: D.muted }}>{r.source}</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
+        <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted }}>Recent Records</div>
+        <div style={{ fontSize: 10, color: D.muted }}>{records.length} records</div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {records.map(r => (
+          <div key={r.date + r.source} style={{
+            background: D.bgCard2, borderRadius: 'var(--radius-lg)',
+            border: `1px solid ${D.border}`, padding: '12px 14px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+              <div style={{
+                width: 32, height: 32, borderRadius: 'var(--radius-sm)', flexShrink: 0,
+                background: D.bgCard, border: `1px solid ${D.border}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>{r.icon}</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: D.text }}>{r.source}</div>
+                  {r.flag && (
+                    <span style={{ fontSize: 9, fontWeight: 600, color: r.flagColor, background: `${r.flagColor}18`, padding: '1px 6px', borderRadius: 100 }}>{r.flag}</span>
+                  )}
+                </div>
+                <div style={{ fontSize: 10, color: D.muted, marginTop: 1 }}>
+                  {r.date}{r.provider ? ` · ${r.provider}` : ''}{r.biomarkers > 0 ? ` · ${r.biomarkers} biomarkers` : ''}
+                </div>
+              </div>
+              <ChevronRight size={14} color={D.muted} style={{ flexShrink: 0 }} />
+            </div>
+            <div style={{ fontSize: 11, color: D.mutedBody, lineHeight: 1.5, marginLeft: 42 }}>
+              {r.summary}
+            </div>
           </div>
-          <div style={{ fontSize: 11, color: D.muted }}>{r.date}</div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
