@@ -641,6 +641,64 @@ export default function FullMarketingSite() {
         </section>
       </SectionObserver>
 
+      {/* ═══════════════════════ AEREPULSE ═══════════════════════ */}
+      <SectionObserver>
+        <section id="pulse" style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+          <div className="pulse-grid" style={{
+            maxWidth: 1080, margin: '0 auto',
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
+          }}>
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.12) 0%, transparent 70%)',
+              }} />
+              <div style={{
+                position: 'relative', zIndex: 1,
+                background: D.bgCard, borderRadius: 'var(--radius-xl)',
+                border: `1px solid ${D.border}`, padding: 24,
+              }}>
+                <PulseMockup />
+              </div>
+            </div>
+
+            <div>
+              <SectionLabel>AerePulse</SectionLabel>
+              <h2 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(28px, 3.5vw, 42px)',
+                fontWeight: 400, color: D.text,
+                letterSpacing: '-0.02em', lineHeight: 1.12,
+                margin: '0 0 20px',
+              }}>
+                Your wearables, finally connected to the full picture.
+              </h2>
+              <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 16px' }}>
+                Oura, Withings, Fitbit, Dexcom — AerePulse syncs your daily vitals
+                automatically and connects them to your lab data. HRV alongside hs-CRP.
+                Sleep alongside testosterone. Recovery alongside training load.
+              </p>
+              <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
+                The only readiness score that includes your bloodwork.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {[
+                  'Daily HRV, sleep, recovery, and SpO\u2082',
+                  'Glucose trends from Dexcom and Stelo CGM',
+                  'Body composition from Withings',
+                  'All wearable data connected to your biomarker history',
+                ].map(f => (
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
+                    <div style={{ width: 6, height: 6, background: '#9CDB7B', transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} />
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </SectionObserver>
+
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
         <section id="philosophy" style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
@@ -1058,7 +1116,7 @@ export default function FullMarketingSite() {
 
       <style>{`
         @media (max-width: 768px) {
-          .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid, .chat-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid, .chat-grid, .pulse-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .layers-grid { grid-template-columns: 1fr 1fr !important; }
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
@@ -1487,6 +1545,73 @@ function ShareMockup() {
             background: 'rgba(156,219,123,0.1)', color: D.success,
             fontWeight: 500,
           }}>{tag}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function PulseMockup() {
+  const metrics = [
+    { label: 'HRV', type: 'simple', value: '68', unit: 'ms' },
+    { label: 'TOTAL SLEEP', type: 'time', h: '7', m: '42' },
+    { label: 'DEEP SLEEP', type: 'time', h: '1', m: '22' },
+    { label: 'READINESS', type: 'simple', value: '82', unit: '' },
+    { label: 'SPO2 AVG', type: 'simple', value: '97', unit: '%' },
+    { label: 'VO2 MAX', type: 'vo2', value: '52' },
+  ] as const
+
+  return (
+    <div>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: D.success }} />
+          <span style={{ fontSize: 14, fontWeight: 500, color: D.text }}>Oura Ring</span>
+        </div>
+        <span style={{ fontSize: 11, color: D.muted }}>Synced 4 min ago · 1,663 days</span>
+      </div>
+
+      {/* Metric cards */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        {metrics.map(m => (
+          <div key={m.label} style={{
+            width: 160, height: 110, position: 'relative',
+            background: D.bgCard2, border: `1px solid ${D.border}`,
+            borderRadius: 12, overflow: 'hidden',
+            display: 'flex', flexDirection: 'column',
+          }}>
+            {/* Accent bar */}
+            <div style={{ position: 'absolute', top: 0, left: '33%', width: '34%', height: 3, background: D.accent, borderRadius: '0 0 3px 3px' }} />
+
+            {/* Label */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 10px 0 10px' }}>
+              <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: D.muted }}>{m.label}</span>
+            </div>
+
+            {/* Value */}
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: -22 }}>
+              {m.type === 'time' ? (
+                <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.h}</span>
+                  <span style={{ fontSize: 15, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 2 }}>h</span>
+                  <div style={{ width: 4 }} />
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.m}</span>
+                  <span style={{ fontSize: 15, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 2 }}>m</span>
+                </div>
+              ) : m.type === 'vo2' ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.value}</span>
+                  <div style={{ fontSize: 10, color: D.muted, marginTop: 2, textAlign: 'center' }}>ml/min/kg</div>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.value}</span>
+                  {m.unit && <span style={{ fontSize: 15, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 2 }}>{m.unit}</span>}
+                </div>
+              )}
+            </div>
+          </div>
         ))}
       </div>
     </div>
