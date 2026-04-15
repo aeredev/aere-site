@@ -1206,9 +1206,9 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
   )
 }
 
-function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, accentColor = D.accent, tintBg }: {
+function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, comingSoon, accentColor = D.accent, tintBg }: {
   tier: string; price: string; period: string; description: string; features: string[]
-  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; accentColor?: string; tintBg?: string
+  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; comingSoon?: boolean; accentColor?: string; tintBg?: string
 }) {
   return (
     <div style={{
@@ -1220,7 +1220,13 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       transition: 'transform 0.15s, box-shadow 0.15s',
       display: 'flex', flexDirection: 'column',
     }}>
-      {highlighted && (
+      {comingSoon ? (
+        <div style={{
+          position: 'absolute', top: 14, right: 14,
+          background: 'rgba(240,234,248,0.08)', color: 'rgba(240,234,248,0.4)',
+          fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 100,
+        }}>COMING SOON</div>
+      ) : highlighted && (
         <div style={{
           position: 'absolute', top: 14, right: 14,
           background: `${accentColor}18`, color: accentColor,
@@ -1228,9 +1234,12 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
         }}>MOST POPULAR</div>
       )}
       <div style={{ fontSize: 13, fontWeight: 600, color: accentColor, marginBottom: 4 }}>{tier}</div>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 4 }}>
+      <div style={{ marginBottom: 4 }}>
         <span style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: D.text, letterSpacing: '-0.03em' }}>{price}</span>
-        <span style={{ fontSize: 14, color: D.muted }}>{period}</span>
+        <span style={{ fontSize: 14, color: D.muted }}>{period.split(' ')[0]}</span>
+        {period.includes(' ') && (
+          <div style={{ fontSize: 11, color: D.mutedDim, marginTop: 0, marginBottom: 6 }}>{period.split(' ').slice(1).join(' ')}</div>
+        )}
       </div>
       <p style={{ fontSize: 13, color: D.mutedBody, margin: '0 0 6px' }}>{description}</p>
       {baa && (
@@ -1249,13 +1258,22 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
           </div>
         ))}
       </div>
-      <Link href={ctaHref} style={{
-        display: 'block', textAlign: 'center', padding: '10px 0',
-        background: highlighted ? accentColor : 'none',
-        color: highlighted ? 'white' : accentColor,
-        border: highlighted ? 'none' : `1px solid ${accentColor}40`,
-        borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500, textDecoration: 'none',
-      }}>{cta}</Link>
+      {comingSoon ? (
+        <div style={{
+          display: 'block', textAlign: 'center', padding: '10px 0',
+          background: D.bgCard2, color: D.muted, cursor: 'default',
+          border: `1px solid ${D.border}`,
+          borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500,
+        }}>Coming soon</div>
+      ) : (
+        <Link href={ctaHref} style={{
+          display: 'block', textAlign: 'center', padding: '10px 0',
+          background: highlighted ? accentColor : 'none',
+          color: highlighted ? 'white' : accentColor,
+          border: highlighted ? 'none' : `1px solid ${accentColor}40`,
+          borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500, textDecoration: 'none',
+        }}>{cta}</Link>
+      )}
     </div>
   )
 }
@@ -1836,6 +1854,7 @@ function PricingSection() {
             cta="Request early access"
             ctaHref="https://app.aere.health/signup"
             baa
+            comingSoon
             accentColor="#FF6B2B"
             tintBg="rgba(255,107,43,0.04)"
           />
@@ -1856,8 +1875,9 @@ function PricingSection() {
             cta="Request early access"
             ctaHref="https://app.aere.health/signup"
             baa
-            accentColor="#FFD700"
-            tintBg="rgba(201,168,76,0.04)"
+            comingSoon
+            accentColor="#4B9CD3"
+            tintBg="rgba(75,156,211,0.04)"
           />
         </div>
       </div>
