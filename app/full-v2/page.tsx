@@ -1067,7 +1067,7 @@ export default function FullMarketingSite() {
               onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              Start your free trial <ChevronRight size={16} />
+              Request early access <ChevronRight size={16} />
             </Link>
             <Link href="/full-v2#pricing" style={{
               padding: '14px 32px', background: 'none', color: D.accent,
