@@ -1206,10 +1206,11 @@ function LayerCard({ icon, iconColor, title, body, badge }: {
   )
 }
 
-function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, comingSoon, accentColor = D.accent, tintBg }: {
+function PricingCard({ tier, price, period, description, features, cta, ctaHref, highlighted, baa, comingSoon, annualOnly, accentColor = D.accent, tintBg }: {
   tier: string; price: string; period: string; description: string; features: string[]
-  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; comingSoon?: boolean; accentColor?: string; tintBg?: string
+  cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; comingSoon?: boolean; annualOnly?: boolean; accentColor?: string; tintBg?: string
 }) {
+  const annualMuted = annualOnly && period === 'Annual billing only'
   return (
     <div style={{
       background: tintBg || D.bgCard, borderRadius: 'var(--radius-xl)',
@@ -1217,8 +1218,9 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       borderTop: `3px solid ${accentColor}`,
       boxShadow: highlighted ? `0 4px 24px ${accentColor}25` : 'none',
       padding: 'clamp(24px, 2.5vw, 32px)', position: 'relative',
-      transition: 'transform 0.15s, box-shadow 0.15s',
+      transition: 'transform 0.15s, box-shadow 0.15s, opacity 0.15s',
       display: 'flex', flexDirection: 'column',
+      opacity: annualMuted ? 0.6 : 1,
     }}>
       {comingSoon ? (
         <div style={{
@@ -1235,10 +1237,16 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       )}
       <div style={{ fontSize: 13, fontWeight: 600, color: accentColor, marginBottom: 4 }}>{tier}</div>
       <div style={{ marginBottom: 4 }}>
-        <span style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: D.text, letterSpacing: '-0.03em' }}>{price}</span>
-        <span style={{ fontSize: 14, color: D.muted }}>{period.split(' ')[0]}</span>
-        {period.includes(' ') && (
-          <div style={{ fontSize: 11, color: D.mutedDim, marginTop: 0, marginBottom: 6 }}>{period.split(' ').slice(1).join(' ')}</div>
+        {annualMuted ? (
+          <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: D.muted, lineHeight: 1, padding: '8px 0' }}>Annual billing only</div>
+        ) : (
+          <>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
+              <span style={{ fontFamily: 'var(--font-serif)', fontSize: 36, color: D.text, letterSpacing: '-0.03em' }}>{price}</span>
+              <span style={{ fontSize: 14, color: D.muted }}>/mo</span>
+            </div>
+            <div style={{ fontSize: 11, color: D.mutedDim, marginTop: 0, marginBottom: 6 }}>{period}</div>
+          </>
         )}
       </div>
       <p style={{ fontSize: 13, color: D.mutedBody, margin: '0 0 6px' }}>{description}</p>
@@ -1258,13 +1266,13 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
           </div>
         ))}
       </div>
-      {comingSoon ? (
+      {comingSoon || annualMuted ? (
         <div style={{
           display: 'block', textAlign: 'center', padding: '10px 0',
           background: D.bgCard2, color: D.muted, cursor: 'default',
           border: `1px solid ${D.border}`,
           borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500,
-        }}>Coming soon</div>
+        }}>{annualMuted ? 'Annual only' : 'Coming soon'}</div>
       ) : (
         <Link href={ctaHref} style={{
           display: 'block', textAlign: 'center', padding: '10px 0',
@@ -1800,8 +1808,9 @@ function PricingSection() {
           {/* Vault */}
           <PricingCard
             tier="Vault"
-            price="$99"
-            period={annual ? '/yr' : '/yr · Annual only'}
+            price="$8"
+            period={annual ? 'billed $96/yr' : 'Annual billing only'}
+            annualOnly
             description="For individuals who want a secure home for their health records."
             features={[
               'Unlimited health record uploads',
@@ -1820,8 +1829,8 @@ function PricingSection() {
           {/* Core */}
           <PricingCard
             tier="Core"
-            price={annual ? '$16' : '$25'}
-            period={annual ? '/mo billed annually' : '/mo'}
+            price={annual ? '$25' : '$34'}
+            period={annual ? 'billed $300/yr' : 'billed monthly'}
             description="For health optimizers who want intelligence across their complete history."
             features={[
               'Everything in Vault',
@@ -1842,7 +1851,7 @@ function PricingSection() {
           <PricingCard
             tier="Pro"
             price={annual ? '$125' : '$149'}
-            period={annual ? '/mo billed annually' : '/mo'}
+            period={annual ? 'billed $1,500/yr' : 'billed monthly'}
             description="For providers who want their people&apos;s full health picture."
             features={[
               'Everything in Core for yourself',
@@ -1863,7 +1872,7 @@ function PricingSection() {
           <PricingCard
             tier="Practice"
             price={annual ? '$416' : '$499'}
-            period={annual ? '/mo billed annually' : '/mo'}
+            period={annual ? 'billed $4,992/yr' : 'billed monthly'}
             description="For multi-provider practices that want to run their own health intelligence platform."
             features={[
               'Everything in Pro',
