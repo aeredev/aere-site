@@ -890,9 +890,26 @@ export default function FullMarketingSite() {
                 ))}
               </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, paddingTop: 40 }}>
-              <PracBriefCard label="PRE-VISIT BRIEF"
-                text="Sirius B., 36M — annual longevity panel. ApoB trending down (97 → 72 mg/dL), fasting glucose elevated at 94. HRV improved 12% over 90 days. Two items for discussion: glucose trajectory and Vitamin D optimization." />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 20, paddingTop: 40 }}>
+              <PracBriefCard label="PRE-VISIT BRIEF">
+                <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: '0 0 10px', fontWeight: 500 }}>
+                  Sirius B., 36M — Annual longevity panel follow-up
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {[
+                    { cat: 'Cardiovascular', detail: 'ApoB trending down (97 → 72 mg/dL over 18 mo). hs-CRP stable at 0.4. Lp(a) low risk.' },
+                    { cat: 'Metabolic', detail: 'Fasting glucose elevated at 94, up from 82 over 4 panels. HbA1c 5.3%. CGM shows dawn phenomenon — overnight readings 82–91.' },
+                    { cat: 'Recovery', detail: 'HRV improved 12% over 90 days. Deep sleep declining (1h 42m → 58m). Correlates with free T drop.' },
+                  ].map(item => (
+                    <div key={item.cat} style={{ fontSize: 12, color: D.mutedLight, lineHeight: 1.55 }}>
+                      <span style={{ color: D.accent, fontWeight: 600 }}>{item.cat}:</span>{' '}{item.detail}
+                    </div>
+                  ))}
+                </div>
+                <p style={{ fontSize: 11, color: D.muted, margin: '10px 0 0', fontStyle: 'italic' }}>
+                  3 items flagged for discussion · 47 biomarkers tracked · 5 yrs longitudinal data
+                </p>
+              </PracBriefCard>
               <PracBriefCard label="FLAG"
                 text="Fasting glucose has risen across 4 consecutive panels (82 → 88 → 91 → 94 mg/dL). 8 Sleep data shows late-night body temperature elevations correlated with late eating. Pattern consistent with developing insulin resistance." />
             </div>
@@ -1166,7 +1183,7 @@ function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
 }
 
 
-function PracBriefCard({ label, text }: { label: string; text: string }) {
+function PracBriefCard({ label, text, children }: { label: string; text?: string; children?: React.ReactNode }) {
   return (
     <div style={{
       background: D.bgCard, borderRadius: 'var(--radius-xl)',
@@ -1184,7 +1201,7 @@ function PracBriefCard({ label, text }: { label: string; text: string }) {
         <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
         <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>{label}</span>
       </div>
-      <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: 0 }}>{text}</p>
+      {children || <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: 0 }}>{text}</p>}
     </div>
   )
 }

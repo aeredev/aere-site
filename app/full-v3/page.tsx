@@ -6,7 +6,7 @@ import SectionObserver from '@/components/SectionObserver'
 import {
   FlaskConical, Activity, Dna, TrendingUp, Apple, FileText,
   FolderX, Unlink, Clock, CheckCircle, ChevronRight,
-  Shield, Lock, Eye, Share2, Ban, Menu, X,
+  Shield, Lock, Eye, Share2, Ban, Menu, X, Key,
   Sparkles, Sparkle, Users, Zap, BarChart3,
 } from 'lucide-react'
 
@@ -179,7 +179,7 @@ export default function FullMarketingSite() {
         background: 'linear-gradient(135deg, #F5F4F0 0%, #FFFFFF 60%, #F0EEE9 100%)',
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        textAlign: 'center', padding: 'clamp(176px, calc(17vh + 36px), 236px) 24px clamp(60px, 8vh, 100px)',
+        textAlign: 'center', padding: 'clamp(116px, calc(17vh - 24px), 176px) 24px clamp(60px, 8vh, 100px)',
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{ maxWidth: 820, width: '100%', position: 'relative', zIndex: 1 }}>
@@ -200,9 +200,9 @@ export default function FullMarketingSite() {
             color: D.muted, lineHeight: 1.6,
             maxWidth: 520, margin: '0 auto 36px',
           }}>
-            Your labs are at Quest. Your sleep is in Oura. Your records are spread across 18 providers.
-            Your provider has 15 minutes. Nobody is connecting all of this to tell you what it means
-            for how long — and how well — you&apos;ll live. Until now.
+            Your labs are at Quest. Your sleep is in Oura. Your records are scattered across 18 different
+            systems. Most providers have 15 minutes. An accessible solution to connect all of this and tell you what
+            it means for your healthspan didn&apos;t exist. Until now.
           </p>
 
           <div className="fade-up-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
@@ -227,17 +227,25 @@ export default function FullMarketingSite() {
             </Link>
           </div>
 
-          <p className="fade-up-4" style={{
-            fontSize: 11, color: D.mutedDim, letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-          }}>
-            HIPAA Compliant <span style={{ color: 'rgba(200,124,255,0.3)' }}>·</span> End-to-end encrypted <span style={{ color: 'rgba(200,124,255,0.3)' }}>·</span> You own your data
-          </p>
+          <div className="fade-up-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(16px, 3vw, 36px)', flexWrap: 'wrap' }}>
+            {[
+              { icon: <Shield size={13} strokeWidth={2} />, label: 'HIPAA Compliant' },
+              { icon: <Lock size={13} strokeWidth={2} />, label: 'End-to-end encrypted' },
+              { icon: <FileText size={13} strokeWidth={2} />, label: 'BAAs signed' },
+              { icon: <Eye size={13} strokeWidth={2} />, label: 'Row-level security' },
+              { icon: <Key size={13} strokeWidth={2} />, label: 'You own your data' },
+            ].map(({ icon, label }) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ color: D.accent, display: 'flex' }}>{icon}</span>
+                <span style={{ fontSize: 13, fontWeight: 500, color: D.mutedDim, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Hero product mockup — browser chrome */}
         <div className="fade-up-5" style={{
-          maxWidth: 900, width: '100%', marginTop: 56,
+          maxWidth: 900, width: '100%', marginTop: 116,
           position: 'relative', zIndex: 1,
           boxShadow: `0 40px 120px rgba(200,124,255,0.08), 0 20px 40px rgba(0,0,0,0.06)`,
           borderRadius: 12, overflow: 'hidden',
@@ -323,12 +331,12 @@ export default function FullMarketingSite() {
                 letterSpacing: '-0.03em', lineHeight: 1.12,
               }}>
                 The average person&apos;s health history lives in 18 different places.<br /><br />
-                The information exists.<br /><span style={{ color: '#FF6B2B' }}>The intelligence doesn&apos;t.</span>
+                The information exists.<br /><span style={{ color: D.accent }}>The intelligence doesn&apos;t.</span>
               </p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <ProblemCard icon={<FolderX size={20} color="#FFB347" />} title="Scattered records"
+              <ProblemCard icon={<FolderX size={20} color="#5BA8D4" />} title="Scattered records"
                 body="Health data across dozens of providers. No single source of truth. Every new specialist starts from scratch." />
               <ProblemCard icon={<Unlink size={20} color="#4ECDC4" />} title="Siloed data"
                 body="Oura knows your sleep. Quest knows your labs. MyFitnessPal knows your macros. None of them talk to each other." />
@@ -379,10 +387,10 @@ export default function FullMarketingSite() {
                   genetic panels, handwritten prescriptions, CGM data, EOBs. Aere reads every
                   document and extracts the data that matters.
                 </p>
-                <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 8px' }}>
+                <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 20px' }}>
                   Not a filing cabinet. A living health history that gets richer every time you add to it.
                 </p>
-                <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
+                <p style={{ fontSize: 18, color: D.accent, fontWeight: 500, lineHeight: 1.6, margin: '0 0 28px' }}>
                   Five years of labs tells a story one panel never could.
                 </p>
 
@@ -415,8 +423,8 @@ export default function FullMarketingSite() {
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20,
             }}>
-              <Sparkles size={14} strokeWidth={1.75} color={D.accent} />
-              <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>Intelligence</span>
+              <Sparkles size={20} strokeWidth={1.75} color={D.accent} />
+              <span style={{ fontSize: 22, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>Intelligence</span>
             </div>
 
             <h2 style={{
@@ -630,19 +638,22 @@ export default function FullMarketingSite() {
             letterSpacing: '-0.02em', lineHeight: 1.12,
             margin: '0 0 16px',
           }}>
-            Works with everything you already use
+            Built for how you already track your health
           </h2>
           <p style={{
             fontFamily: 'var(--font-sans)', fontSize: 18,
             color: D.mutedLight, lineHeight: 1.6,
             maxWidth: 600, margin: '0 auto 48px',
           }}>
-            Connect directly or upload your data — Aere works with the devices, labs, and apps you already use.
+            Direct connections to your wearables and devices. Upload anything else — Aere reads and extracts the data from any health document.
           </p>
 
           {/* Row 1 — Direct connections */}
           <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
-            Connect Directly
+            Live connections
+          </div>
+          <div style={{ fontSize: 12, color: D.muted, marginBottom: 20, marginTop: -16 }}>
+            Real-time sync. OAuth connection. Data updated automatically.
           </div>
           <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
             <IntegrationLogo name="Oura" color="#1A1917" />
@@ -656,7 +667,10 @@ export default function FullMarketingSite() {
 
           {/* Row 2 — Upload your data */}
           <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
-            Upload Your Data
+            Upload and parse
+          </div>
+          <div style={{ fontSize: 12, color: D.muted, marginBottom: 20, marginTop: -16 }}>
+            Lab reports, imaging, clinical notes, genetics — any PDF from any source.
           </div>
           <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
             <IntegrationLogo name="Epic MyChart" color="rgba(26,25,23,0.4)" />
@@ -677,8 +691,8 @@ export default function FullMarketingSite() {
           <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                <Sparkles size={14} strokeWidth={1.75} color={D.accent} />
-                <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
+                <Sparkles size={20} strokeWidth={1.75} color={D.accent} />
+                <span style={{ fontSize: 22, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
               </div>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
@@ -725,7 +739,7 @@ export default function FullMarketingSite() {
       <section style={{ background: D.bgPurple, padding: '140px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: 760, margin: '0 auto' }}>
           <div style={{
-            fontSize: 13, fontWeight: 600, textTransform: 'uppercase',
+            fontSize: 22, fontWeight: 600, textTransform: 'uppercase',
             letterSpacing: '0.08em', color: D.accent,
             fontFamily: 'var(--font-sans)',
           }}>
@@ -757,13 +771,13 @@ export default function FullMarketingSite() {
             You wear a ring, a watch, get your labs done, track
             your sleep. That data is yours. Aere is the intelligence
             that connects it all and makes sense of it — so you can
-            live better, longer.
+            make smarter decisions about your health.
           </p>
           <p style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(40px, 6vw, 56px)', color: D.accent,
+            fontSize: 'clamp(28px, 4vw, 38px)', color: D.accent,
             letterSpacing: '-0.02em', lineHeight: 1.1,
-            margin: '56px 0 0',
+            margin: '32px 0 0',
           }}>
             Own Your Health.
           </p>
@@ -774,7 +788,7 @@ export default function FullMarketingSite() {
       <SectionObserver>
         <section style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-            <SectionLabel>What Aere Is — And Isn&apos;t</SectionLabel>
+            <div style={{ fontSize: 22, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 16 }}>What Aere Is — And Isn&apos;t</div>
             <p style={{
               fontFamily: 'var(--font-sans)', fontSize: 18,
               color: D.mutedLight, lineHeight: 1.8,
@@ -787,7 +801,7 @@ export default function FullMarketingSite() {
               color: D.mutedLight, lineHeight: 1.8,
               margin: '0 0 28px',
             }}>
-              We do something your provider can&apos;t — connect every data source in your
+              We do something most providers don&apos;t have time for — connect every data source in your
               health story and surface the intelligence hidden across all of it.
             </p>
             <p style={{
@@ -847,7 +861,7 @@ export default function FullMarketingSite() {
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start',
           }}>
             <div>
-              <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 14 }}>For Providers</div>
+              <div style={{ fontSize: 22, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 14 }}>For Providers</div>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(28px, 3.5vw, 40px)',
@@ -876,9 +890,26 @@ export default function FullMarketingSite() {
                 ))}
               </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, paddingTop: 40 }}>
-              <PracBriefCard label="PRE-VISIT BRIEF"
-                text="Sirius B., 36M — annual longevity panel. ApoB trending down (97 → 72 mg/dL), fasting glucose elevated at 94. HRV improved 12% over 90 days. Two items for discussion: glucose trajectory and Vitamin D optimization." />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 20, paddingTop: 40 }}>
+              <PracBriefCard label="PRE-VISIT BRIEF">
+                <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: '0 0 10px', fontWeight: 500 }}>
+                  Sirius B., 36M — Annual longevity panel follow-up
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {[
+                    { cat: 'Cardiovascular', detail: 'ApoB trending down (97 → 72 mg/dL over 18 mo). hs-CRP stable at 0.4. Lp(a) low risk.' },
+                    { cat: 'Metabolic', detail: 'Fasting glucose elevated at 94, up from 82 over 4 panels. HbA1c 5.3%. CGM shows dawn phenomenon — overnight readings 82–91.' },
+                    { cat: 'Recovery', detail: 'HRV improved 12% over 90 days. Deep sleep declining (1h 42m → 58m). Correlates with free T drop.' },
+                  ].map(item => (
+                    <div key={item.cat} style={{ fontSize: 12, color: D.mutedLight, lineHeight: 1.55 }}>
+                      <span style={{ color: D.accent, fontWeight: 600 }}>{item.cat}:</span>{' '}{item.detail}
+                    </div>
+                  ))}
+                </div>
+                <p style={{ fontSize: 11, color: D.muted, margin: '10px 0 0', fontStyle: 'italic' }}>
+                  3 items flagged for discussion · 47 biomarkers tracked · 5 yrs longitudinal data
+                </p>
+              </PracBriefCard>
               <PracBriefCard label="FLAG"
                 text="Fasting glucose has risen across 4 consecutive panels (82 → 88 → 91 → 94 mg/dL). 8 Sleep data shows late-night body temperature elevations correlated with late eating. Pattern consistent with developing insulin resistance." />
             </div>
@@ -996,7 +1027,7 @@ export default function FullMarketingSite() {
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      fontSize: 13, fontWeight: 600, textTransform: 'uppercase',
+      fontSize: 22, fontWeight: 600, textTransform: 'uppercase',
       letterSpacing: '0.08em', color: D.accent, marginBottom: 16,
     }}>{children}</div>
   )
@@ -1152,7 +1183,7 @@ function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
 }
 
 
-function PracBriefCard({ label, text }: { label: string; text: string }) {
+function PracBriefCard({ label, text, children }: { label: string; text?: string; children?: React.ReactNode }) {
   return (
     <div style={{
       background: D.bgCard, borderRadius: 'var(--radius-xl)',
@@ -1170,7 +1201,7 @@ function PracBriefCard({ label, text }: { label: string; text: string }) {
         <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
         <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>{label}</span>
       </div>
-      <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: 0 }}>{text}</p>
+      {children || <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: 0 }}>{text}</p>}
     </div>
   )
 }
@@ -1249,30 +1280,55 @@ function DashboardMockup() {
 }
 
 function VaultMockup() {
+  const records = [
+    { source: 'Wellness Medical Group', provider: 'Dr. Augustus Pye, MD', date: 'Mar 18, 2026', biomarkers: 42, flag: '2 flagged', flagColor: D.amber, icon: <FlaskConical size={16} color={D.accent} />,
+      summary: 'Comprehensive metabolic and lipid panel. ApoB trending toward optimal. Fasting glucose borderline at 101...' },
+    { source: 'SimonMed Imaging', provider: 'Dr. Miriam Strout, DO', date: 'Feb 4, 2026', biomarkers: 0, flag: 'All normal', flagColor: D.success, icon: <Eye size={16} color={D.accent} />,
+      summary: 'Whole-body MRI scan is stable compared to prior year with no concerning masses or evidence of acute findings...' },
+    { source: 'Quest Diagnostics', provider: 'Dr. Dilys Derwent, MD', date: 'Jan 22, 2026', biomarkers: 88, flag: '5 flagged', flagColor: D.amber, icon: <FlaskConical size={16} color={D.accent} />,
+      summary: 'Annual longevity panel shows mostly favorable results. LDL particle profile shows elevated small dense LDL...' },
+    { source: 'Ancestry Health+', provider: null, date: 'Nov 8, 2025', biomarkers: 14, flag: null, flagColor: null, icon: <Dna size={16} color={D.accent} />,
+      summary: 'Cardiovascular genetic panel shows favorable results for most markers. APOE 3/3 genotype. No MTHFR variants...' },
+    { source: 'Quest Diagnostics', provider: 'Dr. Helbert Spleen, MD', date: 'Sep 15, 2025', biomarkers: 36, flag: '3 flagged', flagColor: D.amber, icon: <FlaskConical size={16} color={D.accent} />,
+      summary: 'Follow-up metabolic panel. Fasting glucose improved from 106 to 98. HbA1c stable at 5.3%. Vitamin D now optimal...' },
+  ]
   return (
     <div>
-      <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Recent Records</div>
-      {[
-        { type: 'Lab Report', source: 'Quest Diagnostics', date: 'Mar 18, 2026', icon: <FlaskConical size={14} color={D.accent} /> },
-        { type: 'Imaging', source: 'RadNet', date: 'Feb 4, 2026', icon: <Eye size={14} color={D.accent} /> },
-        { type: 'Lab Report', source: 'Quest Diagnostics', date: 'Dec 12, 2025', icon: <FlaskConical size={14} color={D.accent} /> },
-      ].map(r => (
-        <div key={r.date} style={{
-          display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0',
-          borderBottom: `1px solid ${D.border}`,
-        }}>
-          <div style={{
-            width: 32, height: 32, borderRadius: 'var(--radius-sm)', flexShrink: 0,
-            background: D.bgCard2, border: `1px solid ${D.border}`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>{r.icon}</div>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, color: D.text }}>{r.type}</div>
-            <div style={{ fontSize: 11, color: D.muted }}>{r.source}</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
+        <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted }}>Recent Records</div>
+        <div style={{ fontSize: 10, color: D.muted }}>{records.length} records</div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {records.map(r => (
+          <div key={r.date + r.source} style={{
+            background: D.bgCard2, borderRadius: 'var(--radius-lg)',
+            border: `1px solid ${D.border}`, padding: '12px 14px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+              <div style={{
+                width: 32, height: 32, borderRadius: 'var(--radius-sm)', flexShrink: 0,
+                background: D.bgCard, border: `1px solid ${D.border}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>{r.icon}</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: D.text }}>{r.source}</div>
+                  {r.flag && (
+                    <span style={{ fontSize: 9, fontWeight: 600, color: r.flagColor, background: `${r.flagColor}18`, padding: '1px 6px', borderRadius: 100 }}>{r.flag}</span>
+                  )}
+                </div>
+                <div style={{ fontSize: 10, color: D.muted, marginTop: 1 }}>
+                  {r.date}{r.provider ? ` · ${r.provider}` : ''}{r.biomarkers > 0 ? ` · ${r.biomarkers} biomarkers` : ''}
+                </div>
+              </div>
+              <ChevronRight size={14} color={D.muted} style={{ flexShrink: 0 }} />
+            </div>
+            <div style={{ fontSize: 11, color: D.mutedBody, lineHeight: 1.5, marginLeft: 42 }}>
+              {r.summary}
+            </div>
           </div>
-          <div style={{ fontSize: 11, color: D.muted }}>{r.date}</div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
