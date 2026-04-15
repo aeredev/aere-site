@@ -227,17 +227,17 @@ export default function FullMarketingSite() {
             </Link>
           </div>
 
-          <div className="fade-up-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(16px, 3vw, 36px)', flexWrap: 'wrap' }}>
+          <div className="fade-up-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(12px, 2.5vw, 28px)', flexWrap: 'wrap' }}>
             {[
               { icon: <Shield size={13} strokeWidth={2} />, label: 'HIPAA Compliant' },
               { icon: <Lock size={13} strokeWidth={2} />, label: 'End-to-end encrypted' },
-              { icon: <FileText size={13} strokeWidth={2} />, label: 'BAAs signed' },
+              { icon: <FileText size={13} strokeWidth={2} />, label: 'BAA-ready architecture' },
               { icon: <Eye size={13} strokeWidth={2} />, label: 'Row-level security' },
               { icon: <Key size={13} strokeWidth={2} />, label: 'You own your data' },
             ].map(({ icon, label }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ color: D.accent, display: 'flex' }}>{icon}</span>
-                <span style={{ fontSize: 13, fontWeight: 500, color: D.mutedDim, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>{label}</span>
+                <span style={{ fontSize: 12, fontWeight: 500, color: D.mutedDim, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>{label}</span>
               </div>
             ))}
           </div>
@@ -298,8 +298,8 @@ export default function FullMarketingSite() {
           {[
             { value: '120+', label: 'Biomarkers tracked' },
             { value: 'HIPAA', label: 'Compliant architecture' },
-            { value: '6+', label: 'Data sources connected' },
-            { value: 'Your data.', label: 'Never sold.' },
+            { value: 'Any source', label: 'PDF, image, or direct sync' },
+            { value: 'Your data', label: 'Never sold or shared.' },
           ].map((stat, i) => (
             <div key={stat.value} style={{
               display: 'flex', alignItems: 'center',
@@ -994,11 +994,11 @@ export default function FullMarketingSite() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {[
-                  { icon: <Users size={18} />, text: 'Client roster with health scores and flags' },
+                  { icon: <Users size={18} />, text: 'Roster with health scores and flags for everyone you work with' },
                   { icon: <Zap size={18} />, text: 'Aere pre-visit briefs — complete context in 60 seconds' },
                   { icon: <BarChart3 size={18} />, text: 'Full biomarker history with longitudinal trends' },
                   { icon: <Lock size={18} />, text: 'HIPAA-compliant with full audit trail' },
-                  { icon: <Share2 size={18} />, text: 'Clients share exactly what they choose' },
+                  { icon: <Share2 size={18} />, text: 'People share exactly what they choose — nothing more' },
                 ].map(({ icon, text }) => (
                   <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: D.text }}>
                     <div style={{ color: D.accent, flexShrink: 0 }}>{icon}</div>
@@ -1095,13 +1095,15 @@ export default function FullMarketingSite() {
             { label: 'AereVault', href: '/full-v2#vault' }, { label: 'AereShare', href: '/full-v2#share' },
             { label: 'Science', href: '/science' },
           ]} />
-          <FooterCol title="Company" links={[
-            { label: 'About', href: '#' }, { label: 'Blog', href: '#' },
-            { label: 'Careers', href: '#' }, { label: 'Contact', href: '#' },
+          <FooterCol title="Contact" links={[
+            { label: 'Send a message', href: '/contact' },
+            { label: 'hello@aere.health', href: 'mailto:admin@aere.health' },
           ]} />
           <FooterCol title="Legal" links={[
-            { label: 'Privacy Policy', href: '#' }, { label: 'Terms of Service', href: '#' },
-            { label: 'HIPAA Notice', href: '#' }, { label: 'Security', href: '/full-v2#security' },
+            { label: 'Privacy Policy', href: 'https://app.aere.health/privacy' },
+            { label: 'Terms of Service', href: 'https://app.aere.health/terms' },
+            { label: 'HIPAA Notice', href: 'https://app.aere.health/hipaa' },
+            { label: 'Security', href: '/full-v2#security' },
           ]} />
         </div>
         <div style={{
