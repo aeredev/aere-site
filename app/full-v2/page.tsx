@@ -6,7 +6,7 @@ import SectionObserver from '@/components/SectionObserver'
 import {
   FlaskConical, Activity, Dna, TrendingUp, Apple, FileText,
   FolderX, Unlink, Clock, CheckCircle, ChevronRight,
-  Shield, Lock, Eye, Share2, Ban, Menu, X,
+  Shield, Lock, Eye, Share2, Ban, Menu, X, Key,
   Sparkles, Sparkle, Users, Zap, BarChart3,
 } from 'lucide-react'
 
@@ -200,9 +200,9 @@ export default function FullMarketingSite() {
             color: D.muted, lineHeight: 1.6,
             maxWidth: 520, margin: '0 auto 36px',
           }}>
-            Your labs are at Quest. Your sleep is in Oura. Your records are spread across 18 providers.
-            Your provider has 15 minutes. Nobody is connecting all of this to tell you what it means
-            for your healthspan. Until now.
+            Your labs are at Quest. Your sleep is in Oura. Your records are scattered across 18 different
+            systems. Most providers have 15 minutes. An accessible solution to connect all of this and tell you what
+            it means for your healthspan didn&apos;t exist. Until now.
           </p>
 
           <div className="fade-up-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
@@ -227,12 +227,20 @@ export default function FullMarketingSite() {
             </Link>
           </div>
 
-          <p className="fade-up-4" style={{
-            fontSize: 11, color: D.mutedDim, letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-          }}>
-            HIPAA Compliant <span style={{ color: 'rgba(200,124,255,0.3)' }}>·</span> End-to-end encrypted <span style={{ color: 'rgba(200,124,255,0.3)' }}>·</span> You own your data
-          </p>
+          <div className="fade-up-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(16px, 3vw, 36px)', flexWrap: 'wrap' }}>
+            {[
+              { icon: <Shield size={13} strokeWidth={2} />, label: 'HIPAA Compliant' },
+              { icon: <Lock size={13} strokeWidth={2} />, label: 'End-to-end encrypted' },
+              { icon: <FileText size={13} strokeWidth={2} />, label: 'BAAs signed' },
+              { icon: <Eye size={13} strokeWidth={2} />, label: 'Row-level security' },
+              { icon: <Key size={13} strokeWidth={2} />, label: 'You own your data' },
+            ].map(({ icon, label }) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ color: D.accent, display: 'flex' }}>{icon}</span>
+                <span style={{ fontSize: 13, fontWeight: 500, color: D.mutedDim, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Hero product mockup — browser chrome */}
@@ -780,7 +788,7 @@ export default function FullMarketingSite() {
       <SectionObserver>
         <section style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
           <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-            <SectionLabel>What Aere Is — And Isn&apos;t</SectionLabel>
+            <div style={{ fontSize: 22, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 16 }}>What Aere Is — And Isn&apos;t</div>
             <p style={{
               fontFamily: 'var(--font-sans)', fontSize: 18,
               color: D.mutedLight, lineHeight: 1.8,
@@ -793,7 +801,7 @@ export default function FullMarketingSite() {
               color: D.mutedLight, lineHeight: 1.8,
               margin: '0 0 28px',
             }}>
-              We do something your provider can&apos;t — connect every data source in your
+              We do something most providers don&apos;t have time for — connect every data source in your
               health story and surface the intelligence hidden across all of it.
             </p>
             <p style={{
