@@ -23,6 +23,12 @@
   --color-accent-active:     #a855d4;
   --color-surface-subtle:    #FAFAF8;
 
+  --color-text-body:     #8A8780;
+  --color-text-dim:      #B0ADA5;
+  --color-border-strong: rgba(200,124,255,0.3);
+  --color-bg-deep:       #F5F4F0;
+  --color-bg-purple:     #F0EEE9;
+
   /* Radii */
   --radius-sm:  8px;
   --radius-md:  10px;
@@ -33,6 +39,37 @@
   /* Shadows */
   --shadow-card:  0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
   --shadow-modal: 0 4px 32px rgba(0,0,0,0.18);
+}
+
+[data-theme="dark"] {
+  --color-bg:            #0F0D1A;
+  --color-bg-deep:       #0F0D1A;
+  --color-bg-purple:     #1C1033;
+  --color-surface:       #1E1535;
+  --color-surface-2:     #261940;
+  --color-surface-subtle: #1A1230;
+  --color-border:        rgba(200,124,255,0.15);
+  --color-border-strong: rgba(200,124,255,0.3);
+  --color-text:          #F0EAF8;
+  --color-text-body:     rgba(240,234,248,0.6);
+  --color-text-dim:      rgba(240,234,248,0.4);
+  --color-muted:         rgba(240,234,248,0.7);
+  --color-accent:        #c87cff;
+  --color-accent-tint:   rgba(200,124,255,0.12);
+  --color-accent-tint-hover: rgba(200,124,255,0.2);
+  --color-accent-active: #a855d4;
+  --color-success:       #9CDB7B;
+  --color-success-tint:  rgba(156,219,123,0.1);
+  --color-amber:         #FFB347;
+  --color-amber-tint:    rgba(255,179,71,0.1);
+  --color-error:         #FF6B2B;
+  --color-error-tint:    rgba(255,107,43,0.1);
+  --color-blue:          #4A9EFF;
+  --color-blue-tint:     rgba(74,158,255,0.1);
+  --color-nav-bg:        rgba(15,13,26,0.92);
+
+  --shadow-card:  0 1px 3px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-modal: 0 4px 32px rgba(0,0,0,0.4);
 }
 
 html {
@@ -74,13 +111,4 @@ a {
 .fade-up-4 { opacity: 0; animation: fadeUp 0.55s 0.35s ease both; }
 .fade-up-5 { opacity: 0; animation: fadeUp 0.55s 0.45s ease both; }
 
-.section-animate {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
 
-.section-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}

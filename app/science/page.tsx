@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Nav from '@/components/Nav'
+import Link from 'next/link'
 import ScienceClient from './ScienceClient'
 import { BIOMARKERS, CATEGORIES } from '@/lib/biomarker-reference'
 
@@ -61,22 +61,41 @@ export default function SciencePage() {
   const citationCount = BIOMARKERS.reduce((sum, b) => sum + b.citations.length, 0)
 
   return (
-    <>
-      <Nav />
-      <main style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
+    <div data-theme="dark">
+      {/* ── Minimal dark nav ── */}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        background: 'var(--color-nav-bg)',
+        backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid var(--color-border)',
+        height: 64, display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between', padding: '0 32px',
+      }}>
+        <Link href="/full-v2" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 40, display: 'block' }} />
+        </Link>
+        <Link href="https://app.aere.health/signup" style={{
+          padding: '8px 18px', background: 'var(--color-accent)', color: 'white',
+          borderRadius: '10px', fontSize: 13.5, fontWeight: 500,
+          textDecoration: 'none', whiteSpace: 'nowrap',
+        }}>
+          Request early access
+        </Link>
+      </nav>
+
+      <main style={{ background: 'var(--color-bg)', minHeight: '100vh', paddingTop: 64, color: 'var(--color-text)' }}>
 
         {/* ── Disclaimer banner ── */}
         <div style={{
-          background: '#F5EAFF',
-          borderBottom: '1px solid #E2E0D8',
+          background: 'var(--color-accent-tint)',
+          borderBottom: '1px solid var(--color-border)',
           padding: '10px 24px',
           textAlign: 'center',
-          marginTop: 60,
         }}>
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 12,
-            color: '#7A7770',
+            color: 'var(--color-muted)',
             lineHeight: 1.5,
             margin: 0,
           }}>
@@ -85,7 +104,7 @@ export default function SciencePage() {
         </div>
 
         {/* ── Hero ── */}
-        <section style={{ background: '#FFFFFF' }}>
+        <section style={{ background: 'var(--color-surface)' }}>
         <div style={{ maxWidth: 860, margin: '0 auto', padding: '60px 24px 80px', textAlign: 'center' }}>
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -120,7 +139,7 @@ export default function SciencePage() {
               <div key={label} style={{ textAlign: 'center' }}>
                 <div style={{
                   fontSize: 44, fontFamily: 'var(--font-serif)',
-                  color: 'var(--color-text)', lineHeight: 1,
+                  color: 'var(--color-accent)', lineHeight: 1,
                 }}>
                   {value}
                 </div>
@@ -135,8 +154,8 @@ export default function SciencePage() {
 
         {/* ── Philosophy ── */}
         <section style={{
-          borderTop: '1px solid #E2E0D8',
-          borderBottom: '1px solid #E2E0D8',
+          borderTop: '1px solid var(--color-border)',
+          borderBottom: '1px solid var(--color-border)',
         }}>
           <div style={{
             maxWidth: 1100, margin: '0 auto', padding: '88px 24px',
@@ -173,9 +192,9 @@ export default function SciencePage() {
               {PHILOSOPHY.map(({ title, body }) => (
                 <div key={title} style={{
                   padding: '22px 24px',
-                  background: '#FFFFFF',
+                  background: 'var(--color-surface)',
                   borderRadius: 'var(--radius-lg)',
-                  border: '1px solid #E2E0D8',
+                  border: '1px solid var(--color-border)',
                 }}>
                   <div style={{ fontWeight: 600, color: 'var(--color-text)', marginBottom: 8, fontSize: 15 }}>
                     {title}
@@ -188,7 +207,7 @@ export default function SciencePage() {
         </section>
 
         {/* ── Methodology ── */}
-        <section style={{ background: '#FFFFFF', borderTop: '1px solid #E2E0D8', borderBottom: '1px solid #E2E0D8' }}>
+        <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '88px 24px' }}>
           <div style={{ textAlign: 'center', marginBottom: 52 }}>
             <p style={{
@@ -236,11 +255,11 @@ export default function SciencePage() {
 
         {/* ── Disclaimer + Footer (dark) ── */}
         <section style={{
-          background: '#1A1917',
+          background: 'var(--color-bg-deep)',
         }}>
           <div style={{ maxWidth: 780, margin: '0 auto', padding: '56px 24px 24px', textAlign: 'center' }}>
-            <p style={{ fontSize: 13, color: '#7A7770', lineHeight: 1.85, margin: 0 }}>
-              <strong style={{ color: '#A8A49C' }}>Medical disclaimer:</strong>{' '}
+            <p style={{ fontSize: 13, color: 'var(--color-muted)', lineHeight: 1.85, margin: 0 }}>
+              <strong style={{ color: 'var(--color-muted)' }}>Medical disclaimer:</strong>{' '}
               This reference is for educational purposes only and does not constitute medical advice.
               Optimal ranges are intended to inform conversations with your healthcare provider, not replace clinical
               judgment. Individual variation, medications, and health conditions significantly affect biomarker
@@ -248,14 +267,14 @@ export default function SciencePage() {
             </p>
           </div>
           <footer style={{
-            borderTop: '1px solid #2A2926',
+            borderTop: '1px solid var(--color-border)',
             marginTop: 32,
             padding: '24px 24px', textAlign: 'center',
           }}>
-            <p style={{ fontSize: 13, color: '#5A5855', margin: 0 }}>
+            <p style={{ fontSize: 13, color: 'var(--color-text-dim)', margin: 0 }}>
               © {new Date().getFullYear()} Aere Health, Inc.{' '}
               ·{' '}
-              <a href="/" style={{ color: '#5A5855', textDecoration: 'none' }}>aere.health</a>
+              <a href="/" style={{ color: 'var(--color-text-dim)', textDecoration: 'none' }}>aere.health</a>
             </p>
           </footer>
         </section>
@@ -267,6 +286,6 @@ export default function SciencePage() {
           .method-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
-    </>
+    </div>
   )
 }

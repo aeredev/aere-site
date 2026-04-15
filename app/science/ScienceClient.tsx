@@ -10,13 +10,13 @@ interface Props {
 }
 
 const CONFIDENCE_CONFIG = {
-  strong:   { label: 'Strong evidence',   color: 'var(--color-success)', bg: '#edfaf3' },
-  moderate: { label: 'Moderate evidence', color: 'var(--color-amber)',   bg: '#fdf5ec' },
-  emerging: { label: 'Emerging evidence', color: 'var(--color-blue)',    bg: '#eef1fc' },
+  strong:   { label: 'Strong evidence',   color: 'var(--color-success)', bg: 'var(--color-success-tint)' },
+  moderate: { label: 'Moderate evidence', color: 'var(--color-amber)',   bg: 'var(--color-amber-tint)' },
+  emerging: { label: 'Emerging evidence', color: 'var(--color-blue)',    bg: 'var(--color-blue-tint)' },
 } as const
 
 const SEX_CONFIG = {
-  male:   { label: 'Male',   color: 'var(--color-blue)', bg: '#eef1fc' },
+  male:   { label: 'Male',   color: 'var(--color-blue)', bg: 'var(--color-blue-tint)' },
   female: { label: 'Female', color: 'var(--color-accent)', bg: 'var(--color-accent-tint)' },
   both:   { label: 'All',    color: 'var(--color-muted)', bg: 'var(--color-surface-2)' },
 } as const
@@ -168,7 +168,7 @@ function BiomarkerCard({
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }} className="sex-range-grid">
                 {biomarker.male_ranges && (
-                  <div style={{ padding: '14px 16px', background: '#eef1fc', borderRadius: 'var(--radius-md)', border: '1px solid rgba(58,95,196,0.15)' }}>
+                  <div style={{ padding: '14px 16px', background: 'var(--color-blue-tint)', borderRadius: 'var(--radius-md)', border: '1px solid rgba(58,95,196,0.15)' }}>
                     <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-blue)', marginBottom: 6 }}>Male</div>
                     {biomarker.male_ranges.standard_lab_range && (
                       <div style={{ fontSize: 12, color: 'var(--color-muted)', marginBottom: 4 }}>
@@ -205,7 +205,7 @@ function BiomarkerCard({
           {(biomarker.aere_borderline_low || biomarker.aere_borderline_high) && (
             <div style={{ marginBottom: 24, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               {biomarker.aere_borderline_low && (
-                <div style={{ padding: '8px 16px', background: '#fdf5ec', border: '1px solid rgba(196,129,58,0.2)', borderRadius: 'var(--radius-md)', fontSize: 12 }}>
+                <div style={{ padding: '8px 16px', background: 'var(--color-amber-tint)', border: '1px solid rgba(196,129,58,0.2)', borderRadius: 'var(--radius-md)', fontSize: 12 }}>
                   <span style={{ color: 'var(--color-amber)', fontWeight: 600 }}>Borderline low: </span>
                   <span style={{ color: 'var(--color-text)' }}>
                     {biomarker.aere_borderline_low.display || `${biomarker.aere_borderline_low.low ?? ''}–${biomarker.aere_borderline_low.high ?? ''} ${biomarker.unit}`}
@@ -213,7 +213,7 @@ function BiomarkerCard({
                 </div>
               )}
               {biomarker.aere_borderline_high && (
-                <div style={{ padding: '8px 16px', background: '#fdf5ec', border: '1px solid rgba(196,129,58,0.2)', borderRadius: 'var(--radius-md)', fontSize: 12 }}>
+                <div style={{ padding: '8px 16px', background: 'var(--color-amber-tint)', border: '1px solid rgba(196,129,58,0.2)', borderRadius: 'var(--radius-md)', fontSize: 12 }}>
                   <span style={{ color: 'var(--color-amber)', fontWeight: 600 }}>Borderline high: </span>
                   <span style={{ color: 'var(--color-text)' }}>
                     {biomarker.aere_borderline_high.display || `${biomarker.aere_borderline_high.low ?? ''}–${biomarker.aere_borderline_high.high ?? ''} ${biomarker.unit}`}
