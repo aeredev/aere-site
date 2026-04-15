@@ -1211,11 +1211,12 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
   cta: string; ctaHref: string; highlighted?: boolean; baa?: boolean; comingSoon?: boolean; annualOnly?: boolean; accentColor?: string; tintBg?: string
 }) {
   const annualMuted = annualOnly && period === 'Annual billing only'
+  const effectiveAccent = annualMuted ? D.muted : accentColor
   return (
     <div style={{
-      background: tintBg || D.bgCard, borderRadius: 'var(--radius-xl)',
+      background: annualMuted ? D.bgCard : (tintBg || D.bgCard), borderRadius: 'var(--radius-xl)',
       border: `1px solid ${D.border}`,
-      borderTop: `3px solid ${accentColor}`,
+      borderTop: `3px solid ${effectiveAccent}`,
       boxShadow: highlighted ? `0 4px 24px ${accentColor}25` : 'none',
       padding: 'clamp(24px, 2.5vw, 32px)', position: 'relative',
       transition: 'transform 0.15s, box-shadow 0.15s, opacity 0.15s',
@@ -1235,7 +1236,7 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
           fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 100,
         }}>MOST POPULAR</div>
       )}
-      <div style={{ fontSize: 13, fontWeight: 600, color: accentColor, marginBottom: 4 }}>{tier}</div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: effectiveAccent, marginBottom: 4 }}>{tier}</div>
       <div style={{ marginBottom: 4 }}>
         {annualMuted ? (
           <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: D.muted, lineHeight: 1, padding: '8px 0' }}>Annual billing only</div>
@@ -1262,7 +1263,7 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20, flex: 1 }}>
         {features.map(f => (
           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: D.mutedLight }}>
-            <div style={{ width: 6, height: 6, background: accentColor, transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} /> {f}
+            <div style={{ width: 6, height: 6, background: effectiveAccent, transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} /> {f}
           </div>
         ))}
       </div>
@@ -1276,9 +1277,9 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
       ) : (
         <Link href={ctaHref} style={{
           display: 'block', textAlign: 'center', padding: '10px 0',
-          background: highlighted ? accentColor : 'none',
-          color: highlighted ? 'white' : accentColor,
-          border: highlighted ? 'none' : `1px solid ${accentColor}40`,
+          background: highlighted ? effectiveAccent : 'none',
+          color: highlighted ? 'white' : effectiveAccent,
+          border: highlighted ? 'none' : `1px solid ${effectiveAccent}40`,
           borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500, textDecoration: 'none',
         }}>{cta}</Link>
       )}
@@ -1785,17 +1786,17 @@ function PricingSection() {
             <button onClick={() => setAnnual(true)} style={{
               padding: '8px 20px', borderRadius: 100, border: 'none', cursor: 'pointer',
               fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
-              background: annual ? D.bgCard : 'transparent',
-              color: annual ? D.text : D.muted,
-              boxShadow: annual ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+              background: annual ? D.accent : 'transparent',
+              color: annual ? 'white' : D.muted,
+              boxShadow: annual ? '0 2px 8px rgba(200,124,255,0.3)' : 'none',
               transition: 'all 0.15s',
-            }}>Annual <span style={{ fontSize: 11, color: D.accent, fontWeight: 600, marginLeft: 4 }}>Save 20%+</span></button>
+            }}>Annual <span style={{ fontSize: 11, color: annual ? 'rgba(255,255,255,0.8)' : D.accent, fontWeight: 600, marginLeft: 4 }}>Save 20%+</span></button>
             <button onClick={() => setAnnual(false)} style={{
               padding: '8px 20px', borderRadius: 100, border: 'none', cursor: 'pointer',
               fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-sans)',
-              background: !annual ? D.bgCard : 'transparent',
-              color: !annual ? D.text : D.muted,
-              boxShadow: !annual ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+              background: !annual ? D.accent : 'transparent',
+              color: !annual ? 'white' : D.muted,
+              boxShadow: !annual ? '0 2px 8px rgba(200,124,255,0.3)' : 'none',
               transition: 'all 0.15s',
             }}>Monthly</button>
           </div>
@@ -1879,7 +1880,6 @@ function PricingSection() {
               'Full white label — your brand throughout',
               'Multi-provider management',
               'Custom domain',
-              'Priority support',
             ]}
             cta="Request early access"
             ctaHref="https://app.aere.health/signup"
