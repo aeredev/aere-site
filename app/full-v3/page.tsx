@@ -7,7 +7,7 @@ import {
   FlaskConical, Activity, Dna, TrendingUp, Apple, FileText,
   FolderX, Unlink, Clock, CheckCircle, ChevronRight,
   Shield, Lock, Eye, Share2, Ban, Menu, X, Key,
-  Sparkles, Sparkle, Users, Zap, BarChart3,
+  Sparkles, Sparkle, Users, Zap, BarChart3, MessageSquare, Plus,
 } from 'lucide-react'
 
 /* ── Light palette ── */
@@ -583,7 +583,63 @@ export default function FullMarketingSite() {
         </section>
       </SectionObserver>
 
-      {/* Section removed — will rebuild later */}
+      {/* ═══════════════════════ AERECHAT ═══════════════════════ */}
+      <SectionObserver>
+        <section id="chat" style={{ background: D.bgDeep, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+          <div className="chat-grid" style={{
+            maxWidth: 1080, margin: '0 auto',
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start',
+          }}>
+            <div>
+              <SectionLabel>AereChat</SectionLabel>
+              <h2 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(28px, 3.5vw, 42px)',
+                fontWeight: 400, color: D.text,
+                letterSpacing: '-0.02em', lineHeight: 1.12,
+                margin: '0 0 20px',
+              }}>
+                Your health intelligence layer. Ask anything.
+              </h2>
+              <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 16px' }}>
+                AereChat connects your labs, wearables, records, and history to surface the intelligence
+                hidden across all of it. Not a chatbot with generic advice — a health intelligence layer
+                grounded in your complete picture.
+              </p>
+              <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 28px' }}>
+                Ask about trends. Understand your results. Generate a pre-visit brief before your next appointment.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {[
+                  'Cross-source intelligence — labs, wearables, and records simultaneously',
+                  'Longevity-framed responses, not standard sick-care advice',
+                  'Pre-visit briefs generated on demand',
+                  'Persistent memory — Aere remembers your history and goals',
+                ].map(f => (
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
+                    <div style={{ width: 6, height: 6, background: '#9CDB7B', transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} />
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.08) 0%, transparent 70%)',
+              }} />
+              <div style={{
+                position: 'relative', zIndex: 1,
+                background: D.bgCard, borderRadius: 'var(--radius-xl)',
+                border: `1px solid ${D.border}`, padding: 24,
+              }}>
+                <ChatMockup />
+              </div>
+            </div>
+          </div>
+        </section>
+      </SectionObserver>
 
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
@@ -649,38 +705,41 @@ export default function FullMarketingSite() {
           </p>
 
           {/* Row 1 — Direct connections */}
-          <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
-            Live connections
-          </div>
-          <div style={{ fontSize: 12, color: D.muted, marginBottom: 20, marginTop: -16 }}>
-            Real-time sync. OAuth connection. Data updated automatically.
-          </div>
-          <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
-            <IntegrationLogo name="Oura" color="#1A1917" />
-            <IntegrationLogo name="Withings" color="#1A1917" />
-            <IntegrationLogo name="Fitbit" color="#1A1917" />
-            <IntegrationLogo name="Dexcom" color="#1A1917" />
+          <div style={{ background: D.accentTintStrong, borderRadius: 'var(--radius-xl)', border: `1px solid ${D.border}`, padding: '28px 32px', maxWidth: 700, margin: '0 auto 24px' }}>
+            <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 8 }}>
+              Live connections
+            </div>
+            <div style={{ fontSize: 14, color: D.muted, marginBottom: 20 }}>
+              Real-time sync. OAuth connection. Data updated automatically.
+            </div>
+            <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
+              <IntegrationLogo name="Oura" color={D.success} />
+              <IntegrationLogo name="Withings" color={D.success} />
+              <IntegrationLogo name="Fitbit" color={D.success} />
+              <IntegrationLogo name="Dexcom" color={D.success} />
+            </div>
+            <div style={{ fontSize: 13, color: D.mutedDim, marginTop: 16 }}>+ more coming soon</div>
           </div>
 
           {/* Divider */}
           <div style={{ height: 0, borderTop: '0.5px solid rgba(26,25,23,0.1)', maxWidth: 600, margin: '40px auto' }} />
 
           {/* Row 2 — Upload your data */}
-          <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 24 }}>
+          <div style={{ fontSize: 15, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.text, marginBottom: 24 }}>
             Upload and parse
           </div>
-          <div style={{ fontSize: 12, color: D.muted, marginBottom: 20, marginTop: -16 }}>
+          <div style={{ fontSize: 14, color: D.muted, marginBottom: 20, marginTop: -16 }}>
             Lab reports, imaging, clinical notes, genetics — any PDF from any source.
           </div>
           <div className="integrations-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
-            <IntegrationLogo name="Epic MyChart" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="Quest Diagnostics" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="LabCorp" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="Apple Health" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="Garmin" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="8 Sleep" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="Whoop" color="rgba(26,25,23,0.4)" />
-            <IntegrationLogo name="Cronometer" color="rgba(26,25,23,0.4)" />
+            <IntegrationLogo name="Epic MyChart" color={D.accent} />
+            <IntegrationLogo name="Quest Diagnostics" color={D.accent} />
+            <IntegrationLogo name="LabCorp" color={D.accent} />
+            <IntegrationLogo name="Apple Health" color={D.accent} />
+            <IntegrationLogo name="Garmin" color={D.accent} />
+            <IntegrationLogo name="8 Sleep" color={D.accent} />
+            <IntegrationLogo name="Whoop" color={D.accent} />
+            <IntegrationLogo name="Cronometer" color={D.accent} />
           </div>
         </section>
       </SectionObserver>
@@ -999,7 +1058,7 @@ export default function FullMarketingSite() {
 
       <style>{`
         @media (max-width: 768px) {
-          .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid, .chat-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .layers-grid { grid-template-columns: 1fr 1fr !important; }
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
@@ -1038,7 +1097,7 @@ function IntegrationLogo({ name, color }: { name: string; color: string }) {
   return (
     <span style={{
       fontFamily: 'var(--font-sans)',
-      fontSize: 15,
+      fontSize: 18,
       fontWeight: 600,
       letterSpacing: '-0.02em',
       color: color,
@@ -1429,6 +1488,115 @@ function ShareMockup() {
             fontWeight: 500,
           }}>{tag}</span>
         ))}
+      </div>
+    </div>
+  )
+}
+
+function ChatMockup() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
+          <span style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>AereChat</span>
+        </div>
+        <div style={{ display: 'flex', gap: 6 }}>
+          {[
+            { icon: <Plus size={11} />, label: 'New' },
+            { icon: <MessageSquare size={11} />, label: 'History' },
+          ].map(btn => (
+            <div key={btn.label} style={{
+              padding: '4px 10px', borderRadius: 100, background: D.bgCard2,
+              border: `1px solid ${D.border}`, fontSize: 11, color: D.muted,
+              display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer',
+              fontFamily: 'var(--font-sans)',
+            }}>{btn.icon} {btn.label}</div>
+          ))}
+        </div>
+      </div>
+
+      {/* Goal context */}
+      <div style={{ background: D.bgCard2, border: `1px solid ${D.border}`, borderRadius: 'var(--radius-lg)', padding: '10px 14px' }}>
+        <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 4 }}>Intelligence focus</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 13, fontWeight: 500, color: D.text }}>Cardiovascular longevity optimization</span>
+          <span style={{ background: D.accentTint, color: D.accent, fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 100 }}>Cardiovascular</span>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* User message 1 */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div style={{ background: D.accent, color: 'white', borderRadius: 18, padding: '10px 14px', maxWidth: '80%', fontSize: 13, lineHeight: 1.6 }}>
+            My hs-CRP keeps coming back elevated. What could be driving it?
+          </div>
+        </div>
+
+        {/* AI response */}
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+          <div style={{
+            width: 28, height: 28, borderRadius: '50%', background: D.accent, color: 'white',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 12, fontWeight: 500, flexShrink: 0,
+          }}>A</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{
+              background: D.bgCard, border: `1px solid ${D.border}`, borderRadius: 18,
+              padding: '10px 14px', maxWidth: '85%', fontSize: 12.5, lineHeight: 1.65, color: D.text,
+            }}>
+              <p style={{ margin: 0 }}>
+                Your hs-CRP has been elevated across 3 consecutive lab panels — 1.8, 2.1, and 2.4 mg/L. The trend is moving in the wrong direction.
+              </p>
+              <p style={{ margin: '8px 0 0' }}>
+                Cross-referencing your Oura data, your HRV drops and sleep quality declines in the same weeks your hs-CRP is highest. Your labs and recovery data are telling the same story.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 2 }}>
+              {['Labs · 3 panels', 'Oura · 90 days', 'Trend analysis'].map(chip => (
+                <span key={chip} style={{
+                  background: D.bgCard2, border: `1px solid ${D.border}`, borderRadius: 100,
+                  fontSize: 10, color: D.muted, padding: '2px 8px',
+                }}>{chip}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* User message 2 */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div style={{ background: D.accent, color: 'white', borderRadius: 18, padding: '10px 14px', maxWidth: '80%', fontSize: 13, lineHeight: 1.6 }}>
+            What should I discuss with my provider about this?
+          </div>
+        </div>
+      </div>
+
+      {/* Input row */}
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 4 }}>
+        <div style={{
+          width: 28, height: 28, borderRadius: '50%', background: D.bgCard2,
+          border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+        }}>
+          <Plus size={13} color={D.muted} />
+        </div>
+        <div style={{
+          flex: 1, background: D.bgCard2, border: `1px solid ${D.border}`,
+          borderRadius: 'var(--radius-lg)', padding: '9px 14px',
+          fontSize: 12.5, color: D.muted, fontFamily: 'var(--font-sans)',
+        }}>
+          Ask anything about your health data...
+        </div>
+        <div style={{
+          width: 32, height: 32, borderRadius: 'var(--radius-md)', background: D.accent,
+          border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+        }}>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M14 8L2 2l2.5 6L2 14l12-6z" fill="white" stroke="white" strokeWidth="0.5" strokeLinejoin="round"/></svg>
+        </div>
+      </div>
+      <div style={{ fontSize: 11, color: D.muted, textAlign: 'center', marginTop: 6 }}>
+        Answers grounded in your health records · Not medical advice
       </div>
     </div>
   )
