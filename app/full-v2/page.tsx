@@ -679,7 +679,7 @@ export default function FullMarketingSite() {
                 Sleep alongside testosterone. Recovery alongside training load.
               </p>
               <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
-                The only readiness score that includes your bloodwork.
+                Your labs finally have more context — because they&apos;re connected to your wearables.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {[
@@ -1551,69 +1551,76 @@ function ShareMockup() {
   )
 }
 
+function PulseMetricCard({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div style={{
+      position: 'relative', background: D.bgCard2, border: `1px solid ${D.border}`,
+      borderRadius: 12, overflow: 'hidden', padding: '10px 10px 12px',
+    }}>
+      <div style={{ position: 'absolute', top: 0, left: '33%', width: '34%', height: 3, background: D.accent, borderRadius: '0 0 3px 3px' }} />
+      <div style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: D.muted, marginBottom: 8 }}>{label}</div>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center' }}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function PulseValue({ value, unit }: { value: string; unit?: string }) {
+  return (
+    <>
+      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 26, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{value}</span>
+      {unit && <span style={{ fontSize: 14, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 1 }}>{unit}</span>}
+    </>
+  )
+}
+
 function PulseMockup() {
-  const metrics = [
-    { label: 'HRV', type: 'simple', value: '68', unit: 'ms' },
-    { label: 'TOTAL SLEEP', type: 'time', h: '7', m: '42' },
-    { label: 'DEEP SLEEP', type: 'time', h: '1', m: '22' },
-    { label: 'READINESS', type: 'simple', value: '82', unit: '' },
-    { label: 'SPO2 AVG', type: 'simple', value: '97', unit: '%' },
-    { label: 'VO2 MAX', type: 'vo2', value: '52' },
-  ] as const
+  const devices = [
+    {
+      name: 'Oura Ring', synced: '4 min ago · 1,663 days',
+      metrics: [
+        { label: 'HRV', el: <PulseValue value="68" unit="ms" /> },
+        { label: 'TOTAL SLEEP', el: <><PulseValue value="7" unit="h" /><div style={{ width: 3 }} /><PulseValue value="42" unit="m" /></> },
+        { label: 'DEEP SLEEP', el: <><PulseValue value="1" unit="h" /><div style={{ width: 3 }} /><PulseValue value="22" unit="m" /></> },
+      ],
+    },
+    {
+      name: 'Withings Body+', synced: '2 days ago · 847 days',
+      metrics: [
+        { label: 'WEIGHT', el: <PulseValue value="175" unit="lb" /> },
+        { label: 'BODY FAT', el: <PulseValue value="14.2" unit="%" /> },
+        { label: 'MUSCLE MASS', el: <PulseValue value="68" unit="%" /> },
+      ],
+    },
+    {
+      name: 'Dexcom G7', synced: '12 min ago · 90 days',
+      metrics: [
+        { label: 'GLUCOSE', el: <PulseValue value="92" unit="mg/dL" /> },
+        { label: 'AVG (14D)', el: <PulseValue value="98" /> },
+        { label: 'TIME IN RANGE', el: <PulseValue value="94" unit="%" /> },
+      ],
+    },
+  ]
 
   return (
-    <div>
-      {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: D.success }} />
-          <span style={{ fontSize: 14, fontWeight: 500, color: D.text }}>Oura Ring</span>
-        </div>
-        <span style={{ fontSize: 11, color: D.muted }}>Synced 4 min ago · 1,663 days</span>
-      </div>
-
-      {/* Metric cards */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-        {metrics.map(m => (
-          <div key={m.label} style={{
-            width: 160, height: 110, position: 'relative',
-            background: D.bgCard2, border: `1px solid ${D.border}`,
-            borderRadius: 12, overflow: 'hidden',
-            display: 'flex', flexDirection: 'column',
-          }}>
-            {/* Accent bar */}
-            <div style={{ position: 'absolute', top: 0, left: '33%', width: '34%', height: 3, background: D.accent, borderRadius: '0 0 3px 3px' }} />
-
-            {/* Label */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 10px 0 10px' }}>
-              <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: D.muted }}>{m.label}</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {devices.map(device => (
+        <div key={device.name}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 7, height: 7, borderRadius: '50%', background: D.success }} />
+              <span style={{ fontSize: 13, fontWeight: 500, color: D.text }}>{device.name}</span>
             </div>
-
-            {/* Value */}
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: -22 }}>
-              {m.type === 'time' ? (
-                <div style={{ display: 'flex', alignItems: 'baseline' }}>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.h}</span>
-                  <span style={{ fontSize: 15, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 2 }}>h</span>
-                  <div style={{ width: 4 }} />
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.m}</span>
-                  <span style={{ fontSize: 15, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 2 }}>m</span>
-                </div>
-              ) : m.type === 'vo2' ? (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.value}</span>
-                  <div style={{ fontSize: 10, color: D.muted, marginTop: 2, textAlign: 'center' }}>ml/min/kg</div>
-                </div>
-              ) : (
-                <div style={{ display: 'flex', alignItems: 'baseline' }}>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{m.value}</span>
-                  {m.unit && <span style={{ fontSize: 15, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 2 }}>{m.unit}</span>}
-                </div>
-              )}
-            </div>
+            <span style={{ fontSize: 10, color: D.muted }}>{device.synced}</span>
           </div>
-        ))}
-      </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+            {device.metrics.map(m => (
+              <PulseMetricCard key={m.label} label={m.label}>{m.el}</PulseMetricCard>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
