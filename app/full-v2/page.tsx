@@ -35,10 +35,10 @@ const D = {
 /* ── Nav ── */
 
 const NAV_LINKS = [
-  { label: 'Features',          href: '/full-v2#features'      },
-  { label: 'How It Works',      href: '/full-v2#vault'         },
-  { label: 'Pricing',           href: '/full-v2#pricing'       },
-  { label: 'For Providers', href: '/full-v2#practitioners' },
+  { label: 'Features',          href: '/#features'      },
+  { label: 'How It Works',      href: '/#vault'         },
+  { label: 'Pricing',           href: '/#pricing'       },
+  { label: 'For Providers', href: '/#practitioners' },
 ]
 
 function SiteNav() {
@@ -64,7 +64,7 @@ function SiteNav() {
         transition: 'all 0.3s ease',
         height: 72, display: 'flex', alignItems: 'center', padding: '0 32px 2px',
       }}>
-        <Link href="/full-v2#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+        <Link href="/#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
           <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 46, display: 'block' }} />
         </Link>
 
@@ -217,7 +217,7 @@ export default function FullMarketingSite() {
             >
               Request early access <ChevronRight size={16} />
             </Link>
-            <Link href="/full-v2#vault" className="hero-ghost-btn" style={{
+            <Link href="/#vault" className="hero-ghost-btn" style={{
               padding: '12px 28px', background: 'transparent', color: D.accent,
               border: '1px solid rgba(200,124,255,0.35)', borderRadius: 'var(--radius-md)',
               fontSize: 15, fontWeight: 500, textDecoration: 'none',
@@ -1069,7 +1069,7 @@ export default function FullMarketingSite() {
             >
               Request early access <ChevronRight size={16} />
             </Link>
-            <Link href="/full-v2#pricing" style={{
+            <Link href="/#pricing" style={{
               padding: '14px 32px', background: 'none', color: D.accent,
               border: `1px solid ${D.border}`, borderRadius: 'var(--radius-md)',
               fontSize: 16, fontWeight: 500, textDecoration: 'none',
@@ -1091,15 +1091,15 @@ export default function FullMarketingSite() {
             <p style={{ fontSize: 12, color: D.mutedDim, lineHeight: 1.6 }}>Own Your Health.</p>
           </div>
           <FooterCol title="Product" links={[
-            { label: 'Features', href: '/full-v2#features' },
-            { label: 'AereVault', href: '/full-v2#vault' },
-            { label: 'AereShare', href: '/full-v2#share' },
-            { label: 'AereChat', href: '/full-v2#chat' },
+            { label: 'Features', href: '/#features' },
+            { label: 'AereVault', href: '/#vault' },
+            { label: 'AereShare', href: '/#share' },
+            { label: 'AereChat', href: '/#chat' },
           ]} />
           <FooterCol title="More" links={[
-            { label: 'AerePulse', href: '/full-v2#pulse' },
-            { label: 'For Providers', href: '/full-v2#practitioners' },
-            { label: 'Pricing', href: '/full-v2#pricing' },
+            { label: 'AerePulse', href: '/#pulse' },
+            { label: 'For Providers', href: '/#practitioners' },
+            { label: 'Pricing', href: '/#pricing' },
             { label: 'Optimal Ranges', href: '/science' },
           ]} />
           <FooterCol title="Contact" links={[
@@ -1109,7 +1109,7 @@ export default function FullMarketingSite() {
             { label: 'Privacy Policy', href: 'https://app.aere.health/privacy' },
             { label: 'Terms of Service', href: 'https://app.aere.health/terms' },
             { label: 'HIPAA Notice', href: 'https://app.aere.health/hipaa' },
-            { label: 'Security', href: '/full-v2#security' },
+            { label: 'Security', href: '/#security' },
           ]} />
         </div>
         <div style={{

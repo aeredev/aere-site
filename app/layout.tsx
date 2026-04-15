@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     images: ['https://aere.health/brand/og-image.png'],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 }
 
