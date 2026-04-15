@@ -1809,7 +1809,7 @@ function PricingSection() {
           <PricingCard
             tier="Vault"
             price="$8"
-            period={annual ? 'billed $96/yr' : 'Annual billing only'}
+            period={annual ? 'billed annually' : 'Annual billing only'}
             annualOnly
             description="For individuals who want a secure home for their health records."
             features={[
@@ -1830,7 +1830,7 @@ function PricingSection() {
           <PricingCard
             tier="Core"
             price={annual ? '$25' : '$34'}
-            period={annual ? 'billed $300/yr' : 'billed monthly'}
+            period={annual ? 'billed annually' : 'billed monthly'}
             description="For health optimizers who want intelligence across their complete history."
             features={[
               'Everything in Vault',
@@ -1851,7 +1851,7 @@ function PricingSection() {
           <PricingCard
             tier="Pro"
             price={annual ? '$125' : '$149'}
-            period={annual ? 'billed $1,500/yr' : 'billed monthly'}
+            period={annual ? 'billed annually' : 'billed monthly'}
             description="For providers who want their people&apos;s full health picture."
             features={[
               'Everything in Core for yourself',
@@ -1872,7 +1872,7 @@ function PricingSection() {
           <PricingCard
             tier="Practice"
             price={annual ? '$416' : '$499'}
-            period={annual ? 'billed $4,992/yr' : 'billed monthly'}
+            period={annual ? 'billed annually' : 'billed monthly'}
             description="For multi-provider practices that want to run their own health intelligence platform."
             features={[
               'Everything in Pro',
