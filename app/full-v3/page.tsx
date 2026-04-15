@@ -641,6 +641,64 @@ export default function FullMarketingSite() {
         </section>
       </SectionObserver>
 
+      {/* ═══════════════════════ AEREPULSE ═══════════════════════ */}
+      <SectionObserver>
+        <section id="pulse" style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+          <div className="pulse-grid" style={{
+            maxWidth: 1080, margin: '0 auto',
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center',
+          }}>
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute', inset: '-10%', zIndex: 0, pointerEvents: 'none',
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.08) 0%, transparent 70%)',
+              }} />
+              <div style={{
+                position: 'relative', zIndex: 1,
+                background: D.bgCard, borderRadius: 'var(--radius-xl)',
+                border: `1px solid ${D.border}`, padding: 24,
+              }}>
+                <PulseMockup />
+              </div>
+            </div>
+
+            <div>
+              <SectionLabel>AerePulse</SectionLabel>
+              <h2 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(28px, 3.5vw, 42px)',
+                fontWeight: 400, color: D.text,
+                letterSpacing: '-0.02em', lineHeight: 1.12,
+                margin: '0 0 20px',
+              }}>
+                Your wearables, finally connected to the full picture.
+              </h2>
+              <p style={{ fontSize: 15, color: D.mutedBody, lineHeight: 1.8, margin: '0 0 16px' }}>
+                Oura, Withings, Fitbit, Dexcom — AerePulse syncs your daily vitals
+                automatically and connects them to your lab data. HRV alongside hs-CRP.
+                Sleep alongside testosterone. Recovery alongside training load.
+              </p>
+              <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
+                Your labs finally have more context — because they&apos;re connected to your wearables.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {[
+                  'Daily HRV, sleep, recovery, and SpO\u2082',
+                  'Glucose trends from Dexcom and Stelo CGM',
+                  'Body composition from Withings',
+                  'All wearable data connected to your biomarker history',
+                ].map(f => (
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: D.text }}>
+                    <div style={{ width: 6, height: 6, background: '#9CDB7B', transform: 'rotate(45deg)', marginTop: 6, flexShrink: 0 }} />
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </SectionObserver>
+
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
         <section id="philosophy" style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
@@ -1058,7 +1116,7 @@ export default function FullMarketingSite() {
 
       <style>{`
         @media (max-width: 768px) {
-          .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid, .chat-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid, .chat-grid, .pulse-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .layers-grid { grid-template-columns: 1fr 1fr !important; }
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
@@ -1489,6 +1547,80 @@ function ShareMockup() {
           }}>{tag}</span>
         ))}
       </div>
+    </div>
+  )
+}
+
+function PulseMetricCard({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div style={{
+      position: 'relative', background: D.bgCard2, border: `1px solid ${D.border}`,
+      borderRadius: 12, overflow: 'hidden', padding: '10px 10px 12px',
+    }}>
+      <div style={{ position: 'absolute', top: 0, left: '33%', width: '34%', height: 3, background: D.accent, borderRadius: '0 0 3px 3px' }} />
+      <div style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: D.muted, marginBottom: 8 }}>{label}</div>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center' }}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function PulseValue({ value, unit }: { value: string; unit?: string }) {
+  return (
+    <>
+      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 26, fontWeight: 500, color: D.accent, lineHeight: 1 }}>{value}</span>
+      {unit && <span style={{ fontSize: 14, color: D.accent, fontWeight: 500, lineHeight: 1, paddingBottom: 1 }}>{unit}</span>}
+    </>
+  )
+}
+
+function PulseMockup() {
+  const devices = [
+    {
+      name: 'Oura Ring', synced: '4 min ago · 1,663 days',
+      metrics: [
+        { label: 'HRV', el: <PulseValue value="68" unit="ms" /> },
+        { label: 'TOTAL SLEEP', el: <><PulseValue value="7" unit="h" /><div style={{ width: 3 }} /><PulseValue value="42" unit="m" /></> },
+        { label: 'DEEP SLEEP', el: <><PulseValue value="1" unit="h" /><div style={{ width: 3 }} /><PulseValue value="22" unit="m" /></> },
+      ],
+    },
+    {
+      name: 'Withings Body+', synced: '2 days ago · 847 days',
+      metrics: [
+        { label: 'WEIGHT', el: <PulseValue value="175" unit="lb" /> },
+        { label: 'BODY FAT', el: <PulseValue value="14.2" unit="%" /> },
+        { label: 'MUSCLE MASS', el: <PulseValue value="68" unit="%" /> },
+      ],
+    },
+    {
+      name: 'Dexcom G7', synced: '12 min ago · 90 days',
+      metrics: [
+        { label: 'GLUCOSE', el: <PulseValue value="92" unit="mg/dL" /> },
+        { label: 'AVG (14D)', el: <PulseValue value="98" /> },
+        { label: 'TIME IN RANGE', el: <PulseValue value="94" unit="%" /> },
+      ],
+    },
+  ]
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {devices.map(device => (
+        <div key={device.name}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 7, height: 7, borderRadius: '50%', background: D.success }} />
+              <span style={{ fontSize: 13, fontWeight: 500, color: D.text }}>{device.name}</span>
+            </div>
+            <span style={{ fontSize: 10, color: D.muted }}>{device.synced}</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+            {device.metrics.map(m => (
+              <PulseMetricCard key={m.label} label={m.label}>{m.el}</PulseMetricCard>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
