@@ -734,7 +734,7 @@ export default function FullMarketingSite() {
                 marginTop: 24, fontSize: 14, fontWeight: 500,
                 color: D.accent, textDecoration: 'none',
               }}>
-                Explore the science <ChevronRight size={15} />
+                Explore optimal ranges <ChevronRight size={15} />
               </Link>
             </div>
           </div>
@@ -1084,20 +1084,26 @@ export default function FullMarketingSite() {
       }}>
         <div className="footer-grid" style={{
           maxWidth: 1000, margin: '0 auto',
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32,
+          display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 32,
         }}>
           <div>
             <div style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: D.accent, letterSpacing: '-0.03em', marginBottom: 8 }}>Aere.</div>
-            <p style={{ fontSize: 12, color: D.mutedDim, lineHeight: 1.6 }}>Own Your Health.<br />The Healthspan Intelligence Platform.</p>
+            <p style={{ fontSize: 12, color: D.mutedDim, lineHeight: 1.6 }}>Own Your Health.</p>
           </div>
           <FooterCol title="Product" links={[
-            { label: 'Features', href: '/full-v2#features' }, { label: 'Pricing', href: '/full-v2#pricing' },
-            { label: 'AereVault', href: '/full-v2#vault' }, { label: 'AereShare', href: '/full-v2#share' },
-            { label: 'Science', href: '/science' },
+            { label: 'Features', href: '/full-v2#features' },
+            { label: 'AereVault', href: '/full-v2#vault' },
+            { label: 'AereShare', href: '/full-v2#share' },
+            { label: 'AereChat', href: '/full-v2#chat' },
+          ]} />
+          <FooterCol title="More" links={[
+            { label: 'AerePulse', href: '/full-v2#pulse' },
+            { label: 'For Providers', href: '/full-v2#practitioners' },
+            { label: 'Pricing', href: '/full-v2#pricing' },
+            { label: 'Optimal Ranges', href: '/science' },
           ]} />
           <FooterCol title="Contact" links={[
             { label: 'Send a message', href: '/contact' },
-            { label: 'hello@aere.health', href: 'mailto:admin@aere.health' },
           ]} />
           <FooterCol title="Legal" links={[
             { label: 'Privacy Policy', href: 'https://app.aere.health/privacy' },

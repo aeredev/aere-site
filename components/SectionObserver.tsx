@@ -1,23 +1,12 @@
 'use client'
 
-import { useEffect, useRef, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
+// Animation removed — sections are visible by default
+// SectionObserver kept as a passthrough wrapper to avoid refactoring all usages
 export default function SectionObserver({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { el.classList.add('visible'); observer.disconnect() } },
-      { threshold: 0.1 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <div ref={ref} className={`section-animate ${className}`}>
+    <div className={className}>
       {children}
     </div>
   )
