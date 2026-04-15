@@ -547,7 +547,7 @@ export default function FullMarketingSite() {
                 complete health summary — biomarkers, trends, pre-visit brief, and original
                 documents. One tap. Everything your provider needs to actually understand you.
               </p>
-              <p style={{ fontSize: 15, color: D.text, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
+              <p style={{ fontSize: 17, color: D.accent, fontWeight: 500, lineHeight: 1.8, margin: '0 0 28px' }}>
                 Your new cardiologist sees five years of cardiac markers before you walk in the door.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -613,7 +613,7 @@ export default function FullMarketingSite() {
                 with a longer healthspan, grounded in functional medicine and longevity research.
               </p>
               <p style={{ fontSize: 15, color: D.text, lineHeight: 1.8, fontWeight: 500, margin: 0 }}>
-                Your provider optimizes for normal.<br />Aere optimizes for exceptional.
+                The system optimizes for normal.<br />Aere optimizes for exceptional.
               </p>
               <Link href="/science" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 4,
