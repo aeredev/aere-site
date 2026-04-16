@@ -244,7 +244,7 @@ export default function FullMarketingSite() {
         </div>
 
         {/* Hero product mockup — browser chrome */}
-        <div className="fade-up-5" style={{
+        <div className="fade-up-5 hero-mockup" style={{
           maxWidth: 900, width: '100%', marginTop: 116,
           position: 'relative', zIndex: 1,
           boxShadow: `0 40px 120px rgba(200,124,255,0.12), 0 20px 40px rgba(0,0,0,0.5)`,
@@ -293,7 +293,7 @@ export default function FullMarketingSite() {
         <div style={{
           maxWidth: 900, margin: '0 auto',
           display: 'flex', justifyContent: 'center', alignItems: 'center',
-          gap: 0, flexWrap: 'wrap',
+          gap: 24, flexWrap: 'wrap',
         }}>
           {[
             { value: '120+', label: 'Biomarkers tracked' },
@@ -1131,14 +1131,19 @@ export default function FullMarketingSite() {
           .insight-examples-grid { grid-template-columns: 1fr !important; }
           .integrations-row { gap: 32px !important; }
           .testimonial-grid { grid-template-columns: 1fr !important; }
-          .pricing-grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .pricing-grid { grid-template-columns: 1fr 1fr !important; }
+          .dash-mock-grid { grid-template-columns: 1fr !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
+          .hero-mockup { margin-top: 48px !important; }
         }
         @media (max-width: 560px) {
           .layers-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr !important; }
-          .pricing-grid { grid-template-columns: 1fr 1fr !important; }
+          .pricing-grid { grid-template-columns: 1fr !important; }
+          .dash-mock-grid { grid-template-columns: 1fr !important; }
           .footer-grid { grid-template-columns: 1fr !important; }
+          .hero-headline { white-space: normal !important; font-size: clamp(28px, 8vw, 48px) !important; }
+          .integrations-row { gap: 20px !important; }
         }
       `}</style>
     </div>
