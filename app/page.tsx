@@ -1106,9 +1106,9 @@ export default function FullMarketingSite() {
             { label: 'Send a message', href: '/contact' },
           ]} />
           <FooterCol title="Legal" links={[
-            { label: 'Privacy Policy', href: 'https://app.aere.health/privacy' },
-            { label: 'Terms of Service', href: 'https://app.aere.health/terms' },
-            { label: 'HIPAA Notice', href: 'https://app.aere.health/hipaa' },
+            { label: 'Privacy Policy', href: '/privacy' },
+            { label: 'Terms of Service', href: '/terms' },
+            { label: 'HIPAA Notice', href: '/hipaa' },
             { label: 'Security', href: '/#security' },
           ]} />
         </div>
