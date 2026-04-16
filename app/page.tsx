@@ -1249,7 +1249,7 @@ function PricingCard({ tier, price, period, description, features, cta, ctaHref,
           fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 100,
         }}>MOST POPULAR</div>
       )}
-      <div style={{ fontSize: 13, fontWeight: 600, color: effectiveAccent, marginBottom: 4 }}>{tier}</div>
+      <div style={{ fontSize: 23, fontWeight: 600, color: effectiveAccent, marginBottom: 4 }}>{tier}</div>
       <div style={{ marginBottom: 4 }}>
         {annualMuted ? (
           <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: D.muted, lineHeight: 1, padding: '8px 0' }}>Annual billing only</div>
