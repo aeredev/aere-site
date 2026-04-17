@@ -107,13 +107,22 @@ export default function SciencePage() {
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" width={107} height={40} fetchPriority="high" decoding="async" style={{ height: 40, width: 107, display: 'block' }} />
         </Link>
-        <Link href="https://aere.health/waitlist" style={{
-          padding: '8px 18px', background: 'var(--color-accent)', color: 'white',
-          borderRadius: '10px', fontSize: 13.5, fontWeight: 500,
-          textDecoration: 'none', whiteSpace: 'nowrap',
-        }}>
-          Request early access
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <Link href="/" className="muted-link" style={{
+            fontSize: 13.5, textDecoration: 'none', whiteSpace: 'nowrap',
+            transition: 'color 0.15s',
+          }}>
+            &larr; Return to site
+          </Link>
+          <Link href="/waitlist" className="cta-lift" style={{
+            padding: '8px 18px', background: 'var(--color-accent)', color: 'white',
+            borderRadius: '10px', fontSize: 13.5, fontWeight: 500,
+            textDecoration: 'none', whiteSpace: 'nowrap',
+            transition: 'transform 0.15s, box-shadow 0.15s',
+          }}>
+            Request early access
+          </Link>
+        </div>
       </nav>
 
       <main style={{ background: 'var(--color-bg)', minHeight: '100vh', paddingTop: 64, color: 'var(--color-text)' }}>
