@@ -9,5 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://aere.health/privacy', priority: 0.3, changeFrequency: 'yearly' },
     { url: 'https://aere.health/terms', priority: 0.3, changeFrequency: 'yearly' },
     { url: 'https://aere.health/hipaa', priority: 0.3, changeFrequency: 'yearly' },
+    { url: 'https://aere.health/disclaimer', priority: 0.3, changeFrequency: 'yearly' },
   ]
 }

@@ -1074,6 +1074,7 @@ export default function FullMarketingSite() {
             { label: 'Privacy Policy', href: '/privacy' },
             { label: 'Terms of Service', href: '/terms' },
             { label: 'HIPAA Notice', href: '/hipaa' },
+            { label: 'Medical Disclaimer', href: '/disclaimer' },
             { label: 'Security', href: '/#security' },
           ]} />
         </div>
