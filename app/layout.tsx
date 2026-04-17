@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     url: 'https://aere.health',
     siteName: 'Aere',
     type: 'website',
+    locale: 'en_US',
     images: [
       {
         url: 'https://aere.health/brand/og-image.png',
@@ -99,8 +100,10 @@ const softwareApplicationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
+    <html lang="en-US" className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
       <head>
+        <link rel="preconnect" href="https://app.aere.health" />
+        <link rel="dns-prefetch" href="https://app.aere.health" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

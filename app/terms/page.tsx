@@ -19,9 +19,22 @@ const M = 'rgba(240,234,248,0.7)'
 const A = '#c87cff'
 const B = 'rgba(200,124,255,0.15)'
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aere.health' },
+    { '@type': 'ListItem', position: 2, name: 'Terms', item: 'https://aere.health/terms' },
+  ],
+}
+
 export default function TermsPage() {
   return (
     <div style={{ background: '#0F0D1A', minHeight: '100vh' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         background: 'rgba(15,13,26,0.95)',
@@ -31,7 +44,7 @@ export default function TermsPage() {
         justifyContent: 'space-between', padding: '0 32px',
       }}>
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 40, display: 'block' }} />
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" width={107} height={40} fetchPriority="high" decoding="async" style={{ height: 40, width: 107, display: 'block' }} />
         </Link>
         <Link href="/" style={{
           fontSize: 13.5, color: M, textDecoration: 'none',

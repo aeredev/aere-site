@@ -1,5 +1,5 @@
 # Aere Marketing Site — Claude Code Technical Reference
-*Last updated: April 13, 2026*
+*Last updated: April 16, 2026*
 
 ## Read First
 **Before working on anything here, read the full context from the app:**
@@ -13,27 +13,25 @@ Everything in those files applies here too. This file contains only what is uniq
 
 ## This Project
 
-- Static Next.js — no auth, no Supabase, no API routes
+- Mostly static Next.js — no auth, no Supabase. One serverless route: `/api/waitlist` (Resend email notification)
 - Deployed on Vercel (aere-site project, GitHub: aeredev/aere-site)
 - `lib/biomarker-reference.ts` exists here — keep in sync with main app
 - All engineering standards, brand voice, and design rules from app CLAUDE.md apply here
 
 ---
 
-## Page Structure — CRITICAL
+## Page Structure
 
-| File | URL | Status | Rule |
+| File | URL | Status | Notes |
 |---|---|---|---|
-| `app/page.tsx` | aere.health | Live — waitlist teaser | SACRED — never overwrite, never confuse with full site |
-| `app/full-v2/page.tsx` | aere.health/full-v2 | New full site (pending swap to root) | Primary marketing site |
-| `app/waitlist/page.tsx` | aere.health/waitlist | Waitlist form | All public CTAs point here |
-| `app/science/page.tsx` | aere.health/science | Live | Science reference page |
-| `app/insight/page.tsx` | aere.health/insight | Live | AereInsight philosophy page |
-| `app/marketing/page.tsx` | aere.health/marketing | Hidden | Legacy light-theme version |
-
-**CRITICAL:** `app/page.tsx` (teaser) and `app/full-v2/page.tsx` (full site) are separate. Never copy one over the other. Never overwrite app/page.tsx with anything.
-
-**Pending:** `app/full-v2/page.tsx` will become `app/page.tsx` (root) when swapped. Until then, public CTAs on full-v2 point to `/waitlist`.
+| `app/page.tsx` | aere.health | Live — full marketing site | Primary marketing site (swapped in from former `/full-v2`) |
+| `app/waitlist/page.tsx` | aere.health/waitlist | Live — waitlist form | All public CTAs point here |
+| `app/science/page.tsx` | aere.health/science | Live | Biomarker science reference page |
+| `app/contact/page.tsx` | aere.health/contact | Live | Contact form |
+| `app/privacy/page.tsx` | aere.health/privacy | Live | Privacy policy (dark theme) |
+| `app/terms/page.tsx` | aere.health/terms | Live | Terms of service (dark theme) |
+| `app/hipaa/page.tsx` | aere.health/hipaa | Live | HIPAA NPP (dark theme) |
+| `app/full-v2/page.tsx` | aere.health/full-v2 | Deprecated — `noindex,nofollow` | Pre-swap duplicate; safe to delete once verified unused |
 
 ---
 
@@ -56,7 +54,7 @@ Sends notification to admin@aere.health via Resend.
 
 ## Marketing Site Design Tokens (dark theme)
 
-The full marketing site uses a dark purple theme. These are the D palette values used throughout `app/full-v2/page.tsx`:
+The full marketing site uses a dark purple theme. These are the D palette values used throughout `app/page.tsx`:
 
 ```
 bgDeep:    #0F0D1A    bgDark:   #150E26    bgPurple:  #1C1033
@@ -68,7 +66,7 @@ accent:    #c87cff    success:  #9CDB7B    amber: #FFB347
 accentTint: rgba(200,124,255,0.12)
 ```
 
-Editorial pages (science, insight) use light theme — same as app design system (#F5F4F0 bg).
+The legal pages and `/science` also use the dark theme.
 
 ---
 
@@ -78,6 +76,16 @@ Editorial pages (science, insight) use light theme — same as app design system
 - `public/brand/` is gitignored — populated via `npm run sync-brand`
 - Primary files: `wordmark-transparent-violet.svg`, `wordmark-transparent-dark.svg`
 - To resize: change width/height CSS properties only
+
+---
+
+## SEO & Performance
+
+- `app/layout.tsx` holds the site-wide Organization, WebSite, and SoftwareApplication JSON-LD
+- Page-specific JSON-LD lives in the page it describes (e.g., `MedicalWebPage` in `/science`)
+- Every public page should export its own `metadata` (title, description, canonical, OG, Twitter) — client-component pages do this via a sibling `layout.tsx`
+- `/full-v2` must remain `noindex, nofollow` while it exists
+- Sitemap is `app/sitemap.ts`; robots are `app/robots.ts`
 
 ---
 

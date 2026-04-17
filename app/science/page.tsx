@@ -57,6 +57,15 @@ const METHODOLOGY = [
   },
 ]
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aere.health' },
+    { '@type': 'ListItem', position: 2, name: 'Science', item: 'https://aere.health/science' },
+  ],
+}
+
 const medicalWebPageJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
@@ -80,6 +89,10 @@ export default function SciencePage() {
     <div data-theme="dark">
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageJsonLd) }}
       />
       {/* ── Minimal dark nav ── */}
@@ -92,7 +105,7 @@ export default function SciencePage() {
         justifyContent: 'space-between', padding: '0 32px',
       }}>
         <Link href="/full-v2" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 40, display: 'block' }} />
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" width={107} height={40} fetchPriority="high" decoding="async" style={{ height: 40, width: 107, display: 'block' }} />
         </Link>
         <Link href="https://aere.health/waitlist" style={{
           padding: '8px 18px', background: 'var(--color-accent)', color: 'white',

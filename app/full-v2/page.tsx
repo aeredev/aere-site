@@ -65,7 +65,7 @@ function SiteNav() {
         height: 72, display: 'flex', alignItems: 'center', padding: '0 32px 2px',
       }}>
         <Link href="/#hero" style={{ marginRight: 40, textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 46, display: 'block' }} />
+          <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" width={123} height={46} fetchPriority="high" decoding="async" style={{ height: 46, width: 123, display: 'block' }} />
         </Link>
 
         <div style={{ display: 'flex', gap: 2, flex: 1 }} className="nav-center">
