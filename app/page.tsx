@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, type FormEvent } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import SectionObserver from '@/components/SectionObserver'
 import {
@@ -70,36 +70,27 @@ function SiteNav() {
 
         <div style={{ display: 'flex', gap: 2, flex: 1 }} className="nav-center">
           {NAV_LINKS.map(link => (
-            <Link key={link.href} href={link.href} style={{
+            <Link key={link.href} href={link.href} className="nav-link" style={{
               padding: '6px 16px', borderRadius: 'var(--radius-sm)',
-              fontSize: 13.5, color: D.muted,
+              fontSize: 13.5,
               textDecoration: 'none', whiteSpace: 'nowrap',
               transition: 'color 0.15s, background 0.15s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.color = D.text; e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
-              onMouseLeave={e => { e.currentTarget.style.color = D.muted; e.currentTarget.style.background = 'none' }}
-            >
+            }}>
               {link.label}
             </Link>
           ))}
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="nav-right">
-          <Link href="https://app.aere.health/login" style={{
-            fontSize: 13.5, color: D.muted, textDecoration: 'none', transition: 'color 0.15s',
-          }}
-            onMouseEnter={e => e.currentTarget.style.color = D.text}
-            onMouseLeave={e => e.currentTarget.style.color = D.muted}
-          >Sign in</Link>
-          <Link href="https://app.aere.health/signup" style={{
+          <Link href="https://app.aere.health/login" className="muted-link" style={{
+            fontSize: 13.5, textDecoration: 'none', transition: 'color 0.15s',
+          }}>Sign in</Link>
+          <Link href="/waitlist" className="cta-lift" style={{
             padding: '8px 18px', background: D.accent, color: 'white',
             borderRadius: 'var(--radius-md)', fontSize: 13.5, fontWeight: 500,
             textDecoration: 'none', whiteSpace: 'nowrap',
             transition: 'transform 0.15s, box-shadow 0.15s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
-          >Request early access</Link>
+          }}>Request early access</Link>
         </div>
 
         <button onClick={() => setMobileOpen(o => !o)} className="hamburger" style={{
@@ -126,7 +117,7 @@ function SiteNav() {
           ))}
           <div style={{ height: 1, background: D.border, margin: '8px 0' }} />
           <Link href="https://app.aere.health/login" onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', fontSize: 15, color: D.muted, textDecoration: 'none' }}>Sign in</Link>
-          <Link href="https://app.aere.health/signup" onClick={() => setMobileOpen(false)} style={{
+          <Link href="/waitlist" onClick={() => setMobileOpen(false)} style={{
             padding: '12px', textAlign: 'center', background: D.accent, color: 'white',
             borderRadius: 'var(--radius-md)', fontSize: 15, fontWeight: 500, textDecoration: 'none', marginTop: 4,
           }}>Request early access</Link>
@@ -147,29 +138,9 @@ function SiteNav() {
   )
 }
 
-/* ── Waitlist / CTA form ── */
-
-function useSignupForm() {
-  const [email, setEmail] = useState('')
-  const [state, setState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault(); setState('loading'); setErrorMsg('')
-    try {
-      const res = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) })
-      const data = await res.json()
-      if (!res.ok) { setErrorMsg(data.error || 'Something went wrong.'); setState('error'); return }
-      setState('success')
-    } catch { setErrorMsg('Something went wrong. Please try again.'); setState('error') }
-  }
-  return { email, setEmail, state, errorMsg, handleSubmit }
-}
-
 /* ════════════════════════════════════════════════════════════════════════════ */
 
 export default function FullMarketingSite() {
-  const ctaForm = useSignupForm()
-
   return (
     <div style={{ background: D.bgDeep, minHeight: '100vh' }}>
       <SiteNav />
@@ -206,15 +177,12 @@ export default function FullMarketingSite() {
           </p>
 
           <div className="fade-up-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
-            <Link href="https://app.aere.health/signup" style={{
+            <Link href="/waitlist" className="cta-lift" style={{
               padding: '12px 28px', background: D.accent, color: 'white',
               borderRadius: 'var(--radius-md)', fontSize: 15, fontWeight: 500,
               textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
               transition: 'transform 0.15s, box-shadow 0.15s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
-            >
+            }}>
               Request early access <ChevronRight size={16} />
             </Link>
             <Link href="/#vault" className="hero-ghost-btn" style={{
@@ -1058,15 +1026,12 @@ export default function FullMarketingSite() {
           </p>
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="https://app.aere.health/signup" style={{
+            <Link href="/waitlist" className="cta-lift" style={{
               padding: '14px 32px', background: D.accent, color: 'white',
               borderRadius: 'var(--radius-md)', fontSize: 16, fontWeight: 500,
               textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
               transition: 'transform 0.15s, box-shadow 0.15s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,124,255,0.35)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
-            >
+            }}>
               Request early access <ChevronRight size={16} />
             </Link>
             <Link href="/#pricing" style={{
@@ -1325,20 +1290,6 @@ function InsightExampleCard({ label, headline, body }: { label: string; headline
     </div>
   )
 }
-
-function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div style={{
-      background: D.bgCard, borderRadius: 'var(--radius-lg)',
-      border: `1px solid ${D.border}`, padding: '20px',
-      display: 'flex', flexDirection: 'column', gap: 10,
-    }}>
-      <div style={{ color: D.accent }}>{icon}</div>
-      <p style={{ fontSize: 13, color: D.mutedBody, lineHeight: 1.7, margin: 0 }}>{text}</p>
-    </div>
-  )
-}
-
 
 function PracBriefCard({ label, text, children }: { label: string; text?: string; children?: React.ReactNode }) {
   return (
@@ -1835,7 +1786,7 @@ function PricingSection() {
               '7-day free trial',
             ]}
             cta="Request early access"
-            ctaHref="https://app.aere.health/signup"
+            ctaHref="/waitlist"
             accentColor="#4ECDC4"
             tintBg="rgba(0,212,170,0.04)"
           />
@@ -1855,7 +1806,7 @@ function PricingSection() {
               '7-day free trial',
             ]}
             cta="Request early access"
-            ctaHref="https://app.aere.health/signup"
+            ctaHref="/waitlist"
             highlighted
             accentColor="#c87cff"
             tintBg="rgba(200,124,255,0.06)"
@@ -1875,7 +1826,7 @@ function PricingSection() {
               '7-day free trial',
             ]}
             cta="Request early access"
-            ctaHref="https://app.aere.health/signup"
+            ctaHref="/waitlist"
             baa
             comingSoon
             accentColor="#FF6B2B"
@@ -1895,7 +1846,7 @@ function PricingSection() {
               'Custom domain',
             ]}
             cta="Request early access"
-            ctaHref="https://app.aere.health/signup"
+            ctaHref="/waitlist"
             baa
             comingSoon
             accentColor="#4B9CD3"

@@ -111,4 +111,14 @@ a {
 .fade-up-4 { opacity: 0; animation: fadeUp 0.55s 0.35s ease both; }
 .fade-up-5 { opacity: 0; animation: fadeUp 0.55s 0.45s ease both; }
 
+/* Interactive hover utilities (dark marketing surface) */
+.nav-link { color: rgba(240,234,248,0.7); background: none; }
+.nav-link:hover { color: #F0EAF8; background: rgba(255,255,255,0.05); }
+
+.muted-link { color: rgba(240,234,248,0.7); }
+.muted-link:hover { color: #F0EAF8; }
+
+.cta-lift { transform: scale(1); box-shadow: none; }
+.cta-lift:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(200,124,255,0.35); }
+
 

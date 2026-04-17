@@ -63,7 +63,7 @@ export default function ContactPage() {
     }}>
       <div style={{ maxWidth: 520, width: '100%' }}>
 
-        <Link href="/full-v2" style={{
+        <Link href="/" style={{
           fontSize: 13, color: D.muted, textDecoration: 'none',
           display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 48,
           transition: 'color 0.15s',

@@ -24,14 +24,13 @@ Everything in those files applies here too. This file contains only what is uniq
 
 | File | URL | Status | Notes |
 |---|---|---|---|
-| `app/page.tsx` | aere.health | Live — full marketing site | Primary marketing site (swapped in from former `/full-v2`) |
+| `app/page.tsx` | aere.health | Live — full marketing site | Primary marketing site |
 | `app/waitlist/page.tsx` | aere.health/waitlist | Live — waitlist form | All public CTAs point here |
 | `app/science/page.tsx` | aere.health/science | Live | Biomarker science reference page |
 | `app/contact/page.tsx` | aere.health/contact | Live | Contact form |
 | `app/privacy/page.tsx` | aere.health/privacy | Live | Privacy policy (dark theme) |
 | `app/terms/page.tsx` | aere.health/terms | Live | Terms of service (dark theme) |
 | `app/hipaa/page.tsx` | aere.health/hipaa | Live | HIPAA NPP (dark theme) |
-| `app/full-v2/page.tsx` | aere.health/full-v2 | Deprecated — `noindex,nofollow` | Pre-swap duplicate; safe to delete once verified unused |
 
 ---
 
@@ -84,7 +83,6 @@ The legal pages and `/science` also use the dark theme.
 - `app/layout.tsx` holds the site-wide Organization, WebSite, and SoftwareApplication JSON-LD
 - Page-specific JSON-LD lives in the page it describes (e.g., `MedicalWebPage` in `/science`)
 - Every public page should export its own `metadata` (title, description, canonical, OG, Twitter) — client-component pages do this via a sibling `layout.tsx`
-- `/full-v2` must remain `noindex, nofollow` while it exists
 - Sitemap is `app/sitemap.ts`; robots are `app/robots.ts`
 
 ---

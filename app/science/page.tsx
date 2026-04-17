@@ -104,7 +104,7 @@ export default function SciencePage() {
         height: 64, display: 'flex', alignItems: 'center',
         justifyContent: 'space-between', padding: '0 32px',
       }}>
-        <Link href="/full-v2" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" width={107} height={40} fetchPriority="high" decoding="async" style={{ height: 40, width: 107, display: 'block' }} />
         </Link>
         <Link href="https://aere.health/waitlist" style={{
