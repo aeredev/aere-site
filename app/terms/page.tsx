@@ -3,7 +3,15 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Terms of Service — Aere',
+  description:
+    'The terms governing your use of Aere — the healthspan intelligence platform. Rights, responsibilities, and how we handle your account and data.',
   alternates: { canonical: 'https://aere.health/terms' },
+  openGraph: {
+    title: 'Terms of Service — Aere',
+    description: 'Terms of use for the Aere platform.',
+    url: 'https://aere.health/terms',
+    type: 'website',
+  },
 }
 
 const T = '#F0EAF8'

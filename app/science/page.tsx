@@ -57,11 +57,31 @@ const METHODOLOGY = [
   },
 ]
 
+const medicalWebPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Biomarker Science Reference',
+  url: 'https://aere.health/science',
+  description:
+    "Evidence-based optimal ranges for 110+ biomarkers, grounded in peer-reviewed research. Learn why Aere's targets differ from standard lab ranges — and what those differences mean for your longevity.",
+  about: {
+    '@type': 'MedicalCondition',
+    name: 'Longevity and healthspan biomarker optimization',
+  },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  publisher: { '@type': 'Organization', name: 'Aere', url: 'https://aere.health' },
+  inLanguage: 'en-US',
+}
+
 export default function SciencePage() {
   const citationCount = BIOMARKERS.reduce((sum, b) => sum + b.citations.length, 0)
 
   return (
     <div data-theme="dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageJsonLd) }}
+      />
       {/* ── Minimal dark nav ── */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
@@ -74,7 +94,7 @@ export default function SciencePage() {
         <Link href="/full-v2" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <img src="/brand/wordmark-transparent-violet.svg" alt="Aere" style={{ height: 40, display: 'block' }} />
         </Link>
-        <Link href="https://app.aere.health/signup" style={{
+        <Link href="https://aere.health/waitlist" style={{
           padding: '8px 18px', background: 'var(--color-accent)', color: 'white',
           borderRadius: '10px', fontSize: 13.5, fontWeight: 500,
           textDecoration: 'none', whiteSpace: 'nowrap',

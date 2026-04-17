@@ -3,7 +3,15 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Aere',
+  description:
+    'How Aere collects, uses, and protects your health data. HIPAA-aligned, zero-knowledge encryption where possible, and no data sold to third parties.',
   alternates: { canonical: 'https://aere.health/privacy' },
+  openGraph: {
+    title: 'Privacy Policy — Aere',
+    description: 'How Aere protects your health data.',
+    url: 'https://aere.health/privacy',
+    type: 'website',
+  },
 }
 
 const T = '#F0EAF8'

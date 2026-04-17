@@ -3,7 +3,15 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'HIPAA Notice of Privacy Practices — Aere',
+  description:
+    'Aere HIPAA Notice of Privacy Practices — how we safeguard your protected health information (PHI), your rights as a patient, and our legal obligations.',
   alternates: { canonical: 'https://aere.health/hipaa' },
+  openGraph: {
+    title: 'HIPAA Notice of Privacy Practices — Aere',
+    description: 'How Aere safeguards your protected health information.',
+    url: 'https://aere.health/hipaa',
+    type: 'website',
+  },
 }
 
 const T = '#F0EAF8'
