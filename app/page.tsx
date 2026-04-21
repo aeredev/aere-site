@@ -670,10 +670,21 @@ export default function FullMarketingSite() {
 
       {/* ═══════════════════════ 8.5 WOMEN'S HEALTH ═══════════════════════ */}
       <SectionObserver>
-        <section id="womens-health" style={{ background: D.bgPurple, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
-          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 52, maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
-              <SectionLabel>Women&apos;s Health Intelligence</SectionLabel>
+        <section id="womens-health" style={{
+          background: D.bgPurple, padding: 'clamp(64px, 8vw, 100px) 24px',
+          position: 'relative', overflow: 'hidden',
+        }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: 52, maxWidth: 780, marginLeft: 'auto', marginRight: 'auto', position: 'relative' }}>
+              <div aria-hidden style={{
+                position: 'absolute', top: '-40%', left: '50%', transform: 'translateX(-50%)',
+                width: 720, height: 380, pointerEvents: 'none', zIndex: -1,
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.10) 0%, rgba(200,124,255,0.04) 50%, transparent 85%)',
+              }} />
+              <div style={{
+                fontSize: 22, fontWeight: 600, textTransform: 'uppercase',
+                letterSpacing: '0.08em', color: '#c87cff', marginBottom: 16,
+              }}>Women&apos;s Healthspan Intelligence</div>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(28px, 4vw, 44px)',
@@ -693,22 +704,22 @@ export default function FullMarketingSite() {
             <div className="womens-grid" style={{
               display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 48,
             }}>
-              <LayerCard icon={<Dna size={20} />} iconColor="#FF88B4" title="Hormonal Life Stage Intelligence"
+              <LayerCard icon={<Dna size={20} />} iconColor="#c87cff" title="Hormonal Life Stage Intelligence"
                 body="Aere understands whether you're cycling naturally, on hormonal contraception, in perimenopause, postmenopause, or on HRT. Every biomarker interpretation accounts for where you are hormonally — because the same lab value means something completely different at 28 vs 52." />
-              <LayerCard icon={<FlaskConical size={20} />} iconColor="#FF4444" title="Cycle-Aware Lab Interpretation"
+              <LayerCard icon={<FlaskConical size={20} />} iconColor="#E8A0CC" title="Cycle-Aware Lab Interpretation"
                 body="Estradiol, progesterone, LH, and testosterone are phase-dependent. A lab drawn on day 3 tells a different story than one drawn on day 21. Aere knows this and frames your results accordingly." />
-              <LayerCard icon={<BarChart3 size={20} />} iconColor="#C9A84C" title="Female-Optimized Reference Ranges"
+              <LayerCard icon={<BarChart3 size={20} />} iconColor="#F0B6D8" title="Female-Optimized Reference Ranges"
                 body="Standard lab ranges were largely built on male populations. Aere uses female-specific optimal ranges for ferritin, testosterone, thyroid, DHEA-S, and every hormone panel — the targets associated with how women actually thrive." />
-              <LayerCard icon={<TrendingUp size={20} />} iconColor="#39FF8F" title="Perimenopause & Menopause Tracking"
+              <LayerCard icon={<TrendingUp size={20} />} iconColor="#D9A3E5" title="Perimenopause & Menopause Tracking"
                 body="The hormonal transition is one of the most consequential and least-tracked events in a woman's health. Aere tracks FSH, estradiol, and LH trajectories longitudinally so you can see the transition happening in your data — and understand what it means." />
-              <LayerCard icon={<Sparkle size={20} />} iconColor="#4ECDC4" title="Microbiome & Vaginal Health"
+              <LayerCard icon={<Sparkle size={20} />} iconColor="#B87FB3" title="Microbiome & Vaginal Health"
                 body="Gut and vaginal microbiome testing from Tiny Health, Viome, and others is fully supported. Aere parses and contextualizes microbiome data alongside your full health picture — not as an isolated score, but as a connected piece of your biology." />
               <LayerCard icon={<FileText size={20} />} iconColor="#c87cff" title="Reproductive History in Every Insight"
                 body="Pregnancies, births, surgical history, PCOS, endometriosis, fibroids — all captured in your health profile and woven into every AI insight. Your reproductive history is part of your health story. Aere never ignores it." />
             </div>
 
             <div style={{ textAlign: 'center', marginBottom: 28, maxWidth: 680, marginLeft: 'auto', marginRight: 'auto' }}>
-              <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 12 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#c87cff', marginBottom: 12 }}>
                 What Aere Intelligence Looks Like
               </div>
               <h3 style={{
@@ -767,7 +778,7 @@ export default function FullMarketingSite() {
               <p style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(20px, 2.4vw, 28px)',
-                fontWeight: 400, color: D.accent,
+                fontWeight: 400, color: '#c87cff',
                 letterSpacing: '-0.02em', lineHeight: 1.4,
                 margin: 0,
               }}>
