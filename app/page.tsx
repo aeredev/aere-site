@@ -35,10 +35,11 @@ const D = {
 /* ── Nav ── */
 
 const NAV_LINKS = [
-  { label: 'Features',          href: '/#features'      },
-  { label: 'How It Works',      href: '/#vault'         },
-  { label: 'Pricing',           href: '/#pricing'       },
-  { label: 'For Providers', href: '/#practitioners' },
+  { label: 'Features',          href: '/#features'       },
+  { label: 'How It Works',      href: '/#vault'          },
+  { label: "Women's Health",    href: '/#womens-health'  },
+  { label: 'Pricing',           href: '/#pricing'        },
+  { label: 'For Providers',     href: '/#practitioners'  },
 ]
 
 function SiteNav() {
@@ -667,6 +668,116 @@ export default function FullMarketingSite() {
         </section>
       </SectionObserver>
 
+      {/* ═══════════════════════ 8.5 WOMEN'S HEALTH ═══════════════════════ */}
+      <SectionObserver>
+        <section id="womens-health" style={{ background: D.bgPurple, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 52, maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
+              <SectionLabel>Women&apos;s Health Intelligence</SectionLabel>
+              <h2 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(28px, 4vw, 44px)',
+                fontWeight: 400, color: D.text,
+                letterSpacing: '-0.02em', lineHeight: 1.12,
+                margin: '0 0 20px',
+              }}>
+                Your hormones, your cycle, your history.<br />Finally understood.
+              </h2>
+              <p style={{ fontSize: 16, color: D.mutedBody, lineHeight: 1.8, margin: 0 }}>
+                Most health platforms treat women as slightly different men. Aere is built
+                differently — with the depth, context, and longitudinal intelligence that
+                women&apos;s health actually demands and deserves.
+              </p>
+            </div>
+
+            <div className="womens-grid" style={{
+              display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 48,
+            }}>
+              <LayerCard icon={<Dna size={20} />} iconColor="#FF88B4" title="Hormonal Life Stage Intelligence"
+                body="Aere understands whether you're cycling naturally, on hormonal contraception, in perimenopause, postmenopause, or on HRT. Every biomarker interpretation accounts for where you are hormonally — because the same lab value means something completely different at 28 vs 52." />
+              <LayerCard icon={<FlaskConical size={20} />} iconColor="#FF4444" title="Cycle-Aware Lab Interpretation"
+                body="Estradiol, progesterone, LH, and testosterone are phase-dependent. A lab drawn on day 3 tells a different story than one drawn on day 21. Aere knows this and frames your results accordingly." />
+              <LayerCard icon={<BarChart3 size={20} />} iconColor="#C9A84C" title="Female-Optimized Reference Ranges"
+                body="Standard lab ranges were largely built on male populations. Aere uses female-specific optimal ranges for ferritin, testosterone, thyroid, DHEA-S, and every hormone panel — the targets associated with how women actually thrive." />
+              <LayerCard icon={<TrendingUp size={20} />} iconColor="#39FF8F" title="Perimenopause & Menopause Tracking"
+                body="The hormonal transition is one of the most consequential and least-tracked events in a woman's health. Aere tracks FSH, estradiol, and LH trajectories longitudinally so you can see the transition happening in your data — and understand what it means." />
+              <LayerCard icon={<Sparkle size={20} />} iconColor="#4ECDC4" title="Microbiome & Vaginal Health"
+                body="Gut and vaginal microbiome testing from Tiny Health, Viome, and others is fully supported. Aere parses and contextualizes microbiome data alongside your full health picture — not as an isolated score, but as a connected piece of your biology." />
+              <LayerCard icon={<FileText size={20} />} iconColor="#c87cff" title="Reproductive History in Every Insight"
+                body="Pregnancies, births, surgical history, PCOS, endometriosis, fibroids — all captured in your health profile and woven into every AI insight. Your reproductive history is part of your health story. Aere never ignores it." />
+            </div>
+
+            <div style={{ textAlign: 'center', marginBottom: 28, maxWidth: 680, marginLeft: 'auto', marginRight: 'auto' }}>
+              <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent, marginBottom: 12 }}>
+                What Aere Intelligence Looks Like
+              </div>
+              <h3 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(22px, 2.6vw, 30px)',
+                fontWeight: 400, color: D.text,
+                letterSpacing: '-0.02em', lineHeight: 1.2,
+                margin: 0,
+              }}>
+                Same lab value. Different intelligence.
+              </h3>
+            </div>
+
+            <div className="compare-grid" style={{
+              display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20,
+              textAlign: 'left', marginBottom: 56,
+            }}>
+              <div style={{
+                background: D.bgCard, borderRadius: 14,
+                border: `1px solid ${D.border}`, padding: '24px 28px',
+              }}>
+                <div style={{ fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.muted, marginBottom: 14 }}>Standard health app</div>
+                <p style={{ fontSize: 14, color: D.muted, lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+                  &ldquo;Your estradiol is 28 pg/mL — low.&rdquo;
+                </p>
+              </div>
+
+              <div style={{
+                background: D.accentTint, borderRadius: 14,
+                border: `1px solid ${D.borderStrong}`, padding: '24px 28px',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                  <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
+                  <span style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
+                </div>
+                <p style={{ fontSize: 14, color: D.text, lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+                  &ldquo;Your estradiol at 28 pg/mL is consistent with the early follicular phase.
+                  Compared to your panel from 14 months ago when you were mid-cycle at 118 pg/mL,
+                  this reading is appropriate timing-dependent — not a decline. Your FSH trend
+                  over 3 panels is more informative: it has risen from 6.2 to 9.1 IU/L, a pattern
+                  worth monitoring for early perimenopausal transition.&rdquo;
+                </p>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center', maxWidth: 820, margin: '0 auto' }}>
+              <p style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(20px, 2.4vw, 28px)',
+                fontWeight: 400, color: D.text,
+                letterSpacing: '-0.02em', lineHeight: 1.4,
+                margin: '0 0 16px',
+              }}>
+                The average woman sees 3 different specialists for conditions that share one hormonal root cause.
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(20px, 2.4vw, 28px)',
+                fontWeight: 400, color: D.accent,
+                letterSpacing: '-0.02em', lineHeight: 1.4,
+                margin: 0,
+              }}>
+                Aere connects the picture none of them have time to see.
+              </p>
+            </div>
+          </div>
+        </section>
+      </SectionObserver>
+
       {/* ═══════════════════════ 9. PHILOSOPHY ═══════════════════════ */}
       <SectionObserver>
         <section id="philosophy" style={{ background: D.bgDark, padding: 'clamp(64px, 8vw, 100px) 24px' }}>
@@ -1063,6 +1174,7 @@ export default function FullMarketingSite() {
           ]} />
           <FooterCol title="More" links={[
             { label: 'AerePulse', href: '/#pulse' },
+            { label: "Women's Health", href: '/#womens-health' },
             { label: 'For Providers', href: '/#practitioners' },
             { label: 'Pricing', href: '/#pricing' },
             { label: 'Optimal Ranges', href: '/science' },
@@ -1091,7 +1203,7 @@ export default function FullMarketingSite() {
       <style>{`
         @media (max-width: 768px) {
           .problem-grid, .vault-grid, .share-grid, .phil-grid, .prac-grid, .chat-grid, .pulse-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .layers-grid { grid-template-columns: 1fr 1fr !important; }
+          .layers-grid, .womens-grid { grid-template-columns: 1fr 1fr !important; }
           .compare-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr 1fr !important; }
           .insight-examples-grid { grid-template-columns: 1fr !important; }
@@ -1103,7 +1215,7 @@ export default function FullMarketingSite() {
           .hero-mockup { margin-top: 48px !important; }
         }
         @media (max-width: 560px) {
-          .layers-grid { grid-template-columns: 1fr !important; }
+          .layers-grid, .womens-grid { grid-template-columns: 1fr !important; }
           .trust-grid { grid-template-columns: 1fr !important; }
           .pricing-grid { grid-template-columns: 1fr !important; }
           .dash-mock-grid { grid-template-columns: 1fr !important; }
