@@ -718,6 +718,21 @@ export default function FullMarketingSite() {
                 body="Pregnancies, births, surgical history, PCOS, endometriosis, fibroids — all captured in your health profile and woven into every AI insight. Your reproductive history is part of your health story. Aere never ignores it." />
             </div>
 
+            {/* Hormonal Trend Mockup */}
+            <div style={{ position: 'relative', marginBottom: 56 }}>
+              <div aria-hidden style={{
+                position: 'absolute', inset: '-6%', zIndex: 0, pointerEvents: 'none',
+                background: 'radial-gradient(ellipse at center, rgba(200,124,255,0.10) 0%, transparent 70%)',
+              }} />
+              <div style={{
+                position: 'relative', zIndex: 1,
+                background: D.bgCard, borderRadius: 'var(--radius-xl)',
+                border: `1px solid ${D.border}`, padding: 'clamp(20px, 3vw, 32px)',
+              }}>
+                <HormonalTrendMockup />
+              </div>
+            </div>
+
             <div style={{ textAlign: 'center', marginBottom: 28, maxWidth: 680, marginLeft: 'auto', marginRight: 'auto' }}>
               <div style={{ fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#c87cff', marginBottom: 12 }}>
                 What Aere Intelligence Looks Like
@@ -1844,6 +1859,136 @@ function ChatMockup() {
       </div>
       <div style={{ fontSize: 11, color: D.muted, textAlign: 'center', marginTop: 6 }}>
         Answers grounded in your health records · Not medical advice
+      </div>
+    </div>
+  )
+}
+
+function HormonalTrendMockup() {
+  // FSH plot geometry — viewBox 720x200, plot area inset
+  const plot = { left: 60, right: 700, top: 20, bottom: 160 }
+  const yMin = 4, yMax = 12
+  const mapY = (v: number) => plot.bottom - ((v - yMin) / (yMax - yMin)) * (plot.bottom - plot.top)
+  const points = [
+    { date: "Apr '25", x: plot.left, value: 6.2 },
+    { date: "Sep '25", x: (plot.left + plot.right) / 2, value: 6.8 },
+    { date: "Apr '26", x: plot.right, value: 9.1 },
+  ]
+  const polyline = points.map(p => `${p.x},${mapY(p.value)}`).join(' ')
+  const areaPath = `M ${points[0].x},${plot.bottom} L ${polyline.replace(/\s+/g, ' L ')} L ${points[points.length - 1].x},${plot.bottom} Z`
+  const yLabels = [12, 10, 7, 4]
+  const thresholdY = mapY(10)
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.muted, marginBottom: 4 }}>Hormonal Panel</div>
+          <div style={{ fontSize: 16, fontWeight: 500, color: D.text, fontFamily: 'var(--font-sans)' }}>
+            April 2025 → April 2026
+          </div>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: D.accentTint, padding: '4px 10px', borderRadius: 100 }}>
+          <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
+          <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: D.accent }}>Tracking</span>
+        </div>
+      </div>
+
+      {/* FSH Chart */}
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: D.text }}>FSH <span style={{ color: D.muted, fontWeight: 400 }}>· IU/L</span></div>
+          <div style={{ fontSize: 11, color: D.muted }}>
+            <span style={{ display: 'inline-block', width: 8, height: 1, background: D.accent, marginRight: 6, verticalAlign: 'middle' }} />
+            Perimenopausal threshold
+          </div>
+        </div>
+        <svg viewBox="0 0 720 180" style={{ width: '100%', height: 'auto', display: 'block' }} preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="fsh-area" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#c87cff" stopOpacity="0.28" />
+              <stop offset="100%" stopColor="#c87cff" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
+          {/* Y gridlines + labels */}
+          {yLabels.map(v => (
+            <g key={v}>
+              <line x1={plot.left} x2={plot.right} y1={mapY(v)} y2={mapY(v)} stroke="rgba(200,124,255,0.08)" strokeWidth={1} />
+              <text x={plot.left - 12} y={mapY(v) + 3} fontSize={10} fill="rgba(240,234,248,0.4)" textAnchor="end" fontFamily="var(--font-sans)">{v}</text>
+            </g>
+          ))}
+
+          {/* Threshold line */}
+          <line x1={plot.left} x2={plot.right} y1={thresholdY} y2={thresholdY} stroke={D.accent} strokeWidth={1} strokeDasharray="3 4" opacity={0.55} />
+
+          {/* Area under curve */}
+          <path d={areaPath} fill="url(#fsh-area)" />
+
+          {/* Trend line */}
+          <polyline points={polyline} fill="none" stroke={D.accent} strokeWidth={2} strokeLinejoin="round" />
+
+          {/* Data points */}
+          {points.map((p, i) => {
+            const isLast = i === points.length - 1
+            return (
+              <g key={p.date}>
+                <circle cx={p.x} cy={mapY(p.value)} r={isLast ? 6.5 : 4.5} fill={D.bgCard} stroke={D.accent} strokeWidth={2} />
+                {isLast && <circle cx={p.x} cy={mapY(p.value)} r={11} fill="none" stroke={D.accent} strokeWidth={1} opacity={0.35} />}
+                <text x={p.x} y={mapY(p.value) - 14} fontSize={11.5} fontWeight={600} fill={D.text} textAnchor="middle" fontFamily="var(--font-sans)">{p.value}</text>
+              </g>
+            )
+          })}
+
+          {/* X axis labels */}
+          {points.map(p => (
+            <text key={p.date} x={p.x} y={plot.bottom + 18} fontSize={10.5} fill="rgba(240,234,248,0.55)" textAnchor="middle" fontFamily="var(--font-sans)">{p.date}</text>
+          ))}
+        </svg>
+      </div>
+
+      {/* Sparkline panel */}
+      <div style={{ borderTop: `1px solid ${D.border}`, paddingTop: 18, display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {[
+          { label: 'Estradiol', unit: 'pg/mL',  color: '#FF88B4', values: [88, 142, 96, 118, 102, 28], read: 'Cycling normally' },
+          { label: 'LH',        unit: 'IU/L',   color: '#D9A3E5', values: [4.8, 5.2, 5.4, 5.9, 6.1, 6.6], read: 'Rising slightly' },
+          { label: 'Progesterone', unit: 'ng/mL', color: '#B87FB3', values: [0.6, 8.4, 0.7, 7.9, 0.6, 7.1], read: 'Mid-luteal pattern' },
+        ].map(row => {
+          const min = Math.min(...row.values)
+          const max = Math.max(...row.values)
+          const sparkW = 180, sparkH = 22
+          const sparkPts = row.values.map((v, i) => {
+            const x = (i / (row.values.length - 1)) * sparkW
+            const y = sparkH - ((v - min) / (max - min || 1)) * sparkH
+            return `${x},${y}`
+          }).join(' ')
+          return (
+            <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ width: 100, fontSize: 12, color: D.text, fontWeight: 500 }}>
+                {row.label} <span style={{ color: D.mutedDim, fontWeight: 400 }}>· {row.unit}</span>
+              </div>
+              <svg viewBox={`0 0 ${sparkW} ${sparkH}`} width={sparkW} height={sparkH} style={{ flexShrink: 0 }} preserveAspectRatio="none">
+                <polyline points={sparkPts} fill="none" stroke={row.color} strokeWidth={1.5} strokeLinejoin="round" />
+                <circle cx={sparkW} cy={sparkH - ((row.values[row.values.length - 1] - min) / (max - min || 1)) * sparkH} r={2.5} fill={row.color} />
+              </svg>
+              <div style={{ fontSize: 11.5, color: D.muted, fontStyle: 'italic' }}>{row.read}</div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* AereInsight callout */}
+      <div style={{ background: D.accentTint, border: `1px solid ${D.borderStrong}`, borderRadius: 'var(--radius-lg)', padding: '14px 16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+          <Sparkles size={12} strokeWidth={1.75} color={D.accent} />
+          <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: D.accent }}>AereInsight</span>
+        </div>
+        <p style={{ fontSize: 13, color: D.text, lineHeight: 1.65, margin: 0, fontStyle: 'italic' }}>
+          Your FSH trajectory over 3 panels (6.2 → 6.8 → 9.1 IU/L) is consistent with early
+          perimenopausal transition. Estradiol still cycling normally and LH rising slightly —
+          a pattern worth monitoring, not yet a clinical menopause signal.
+        </p>
       </div>
     </div>
   )
